@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>La Vie en Code</title>
+    <link>https://elizurhz.cn/</link>
+    <description>Recent content on La Vie en Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://elizurhz.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Canvas 手写板的实现与优化</title>
+      <link>https://elizurhz.cn/frontend/canvas-writing-pad/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/canvas-writing-pad/</guid>
+      <description>最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。
+本文所涉及的代码是基于 szimek/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。
+Canvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。
+基本用法 &amp;lt;canvas&amp;gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：
+&amp;lt;canvas id=&amp;quot;test&amp;quot; width=&amp;quot;150&amp;quot; height=&amp;quot;150&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
+如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”
+const test = document.getElementById(&#39;test&#39;) const ctx = test.getContext(&#39;2d&#39;)  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。</description>
+    </item>
+    
+    <item>
+      <title>ECS 上的 git 管理工具踩坑记</title>
+      <link>https://elizurhz.cn/ops/remote-private-git-first-look/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/remote-private-git-first-look/</guid>
+      <description>ECS 上的 git 管理工具踩坑记 gitlab 在 CentOS 上安装 gitlab 参考 8 小时外实践系列(六) - 在阿里云服务器上搭建 GitLab(草稿) - CSDN 博客
+ gitlab 非常吃性能，在 1 核 1G 的服务器上安装后会导致机子非常卡，同时域名/IP 访问也会出现 502，查资料之后发现是配置太低的问题。官方推荐的配置是 2 核心 8G 内存，我们普通个人用户显然难以支付这么昂贵的服务器配置，更不用说海外主机了。
+ 使用 docker 部署 gitlab 只需要在 docker hub 中 docker pull gitlab/gitlab-ce 就行，然后我启动容器的的代码如下：
+sudo docker run --detach \ --hostname gitlab.mydomain.com \ --publish 8443:443 --publish 80:80 --publish 2222:22 \ --name gitlab \ --restart always \ --volume /srv/gitlab/config:/etc/gitlab \ --volume /srv/gitlab/logs:/var/log/gitlab \ --volume /srv/gitlab/data:/var/opt/gitlab \ gitlab/gitlab-ce  如需修改 gitlab.</description>
+    </item>
+    
+    <item>
+      <title>GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</title>
+      <link>https://elizurhz.cn/ops/git-upstream/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/git-upstream/</guid>
+      <description>GitHub 上 Fork 的仓库如何与原仓库同步并提交内容 我们可能有时会遇到需要向 GitHub 上的开源的项目提交代码。在 GitHub 中，由于你不是那个开源项目中有权限提交代码的人，你只能 Fork 后再发起 Pull Request。
+Fork 仓库 你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。
+然后你就可以将其 clone 到本地。
+Fork 的本地仓库与源仓库连接 参考：Syncing a fork - User Documentation
+首先在命令行工具中输入
+$ git remote -v  此时应该显示如下：
+origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)  因为我们没有将其连接到源仓库，所以需要用命令去连接。
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git  这里的地址是源仓库的地址。接着我们再输入
+$ git remote -v  这时应该能看到：
+origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) upstream https://github.</description>
+    </item>
+    
+    <item>
+      <title>React &#43; TypeScript 从云玩家到入门</title>
+      <link>https://elizurhz.cn/frontend/typescript-for-jser/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/typescript-for-jser/</guid>
+      <description>React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
+TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
+基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&amp;lt;string&amp;gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
+interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &amp;quot;asdf&amp;quot; };  Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</description>
+    </item>
+    
+    <item>
+      <title>mpvue 小程序开发踩坑记</title>
+      <link>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</guid>
+      <description>mpvue 小程序开发踩坑记 之前公司决定开发一款小程序。
+我接触微信小程序也就一两个月的时间，没使用过小程序官方的开发语言，而是直接使用 mpvue 上手了，自己开发了一个因为内容的原因无法上架的 DEMO。正好也被推上了前端部门的 leader，所以也就接下了这个任务。
+使用 mpvue 的因为本以为由 Vue 转小程序用 mpvue 会方便，不过没想到坑挺多的，一般的 Web 开发者如果以 Vue 的思维入手会遇到很多麻烦，因为小程序的运行环境和浏览器完全不同。
+另外京东凹凸实验室的 Taro 也是一个非常好的框架，不过我没有去深入研究它。考虑到公司技术栈转 Vue 的要求，我们团队选择了 mpvue，然而我个人认为 mpvue 还是个不太成熟的框架，文档不完善，在开发编译时也容易出 bug，另外就是分包加载的支持比较慢，好在最近出了新版本的 mpvue-loader。但是新版本的 mpvue-loader 完全更改了 app.json/main.json 文件的写法，文档中也没有明确提到，只能通过新的 quickstart 来了解新的写法。
+我对小程序和 mpvue 的理解 mpvue  mpvue 是美团开发的，允许开发者使用 Vue 语法来编写小程序的框架。 小程序和 Web 应用的不同之处是它依靠微信 App 内的 JavaScript 引擎和 WXML/WXSS 引擎进行渲染，所以与 Web 端相比，小程序里不存在 DOM，无法使用原生 DOM 的操作，也不存在浏览器的各种 API。 在使用 mpvue 时，实际上可以看作是用 Vue 构建多页 Web App。 在 Webpack 打包时，Vue Web App 是最终打包成 index.</description>
+    </item>
+    
+    <item>
+      <title>关于域名和备案</title>
+      <link>https://elizurhz.cn/ops/domain-and-website-approve/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/domain-and-website-approve/</guid>
+      <description>关于域名和备案 我本人主要也只做过个人备案，做博客和个人展示页面，所以不大了解企业备案，能提供的信息也有限。
+域名 ICP 备案 ICP 备案可以直接在阿里云或者其他平台上提供的备案服务中进行。
+所有 DNS 指向国内节点服务器的域名都需要进行 ICP 备案，如果不备案无法正常访问。如果是指向海外节点（包括港澳台），就可以不需要备案。
+个人备案对网站名的要求挺严格的，不能涉及行业信息，不能带域名中的关键字等等。
+个人备案有网站内容的限制，一般流量小的话是不会被发现，我是第一次完成备案后想要备案第二个域名，阿里云方面顺便告知我之前那个不行要下架整改。。。
+公安备案 这个没有什么需要注意的，只需要上公安备案的网站按流程操作就可以了。</description>
+    </item>
+    
+    <item>
+      <title>前后端分离项目在阿里云/七牛云的简单部署</title>
+      <link>https://elizurhz.cn/ops/c-s-ops/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/c-s-ops/</guid>
+      <description>前后端分离项目在阿里云/七牛云的简单部署 购买主机 我购买了两台主机，都是的是 1 核 + 1GHz + 1Mbps 的配置，系统一台是为 Ubuntu 14.04，另一台是 CentOS 7.4。直连实测 700 多 KB 的 Webpack 生产打包后的 React 的 js 文件需要十多秒才能加载，速度大约 60KB/s。
+启动实例 购买后实例是自动启动的，但是需要进行一些初始化的设置。
+进入 ECS 的实例页面，首先如果需要从控制台远程连接，阿里云会提供一个远程连接密码，这个密码需要记住，每次从控制台远程连接时会需要。
+我们正常的开发一般是从 Terminal 或者 FileZilla 等 SFTP 客户端去连接服务器，为了进行此操作，我们需要设置初始密码。控制台的实例页面点击 “更多” =&amp;gt; “密码/密钥” =&amp;gt; “重置密码” 即可重置 Linux 登录密码，也是 ssh 的密码。重置后我们就可以使用刚刚输入的密码，通过 ssh root@${yourServerIp} 登陆。如果你已经在购买的 ECS 时候设置了密码或者密钥，那可以不需要在此设置密码。
+而 FileZilla 也是一样，建立一个 SFTP 连接，使用用户 root 和更改好的密码即可。
+系统配置 首先我们需要把包管理器源替换成国内的源，Ubuntu 的 apt 可以使用清华的源，CentOS 的 yum 可以使用阿里云的源。
+ Ubuntu  cd /etc/apt/ sudo cp sources.</description>
+    </item>
+    
+    <item>
+      <title>前后端分离项目的容器化</title>
+      <link>https://elizurhz.cn/ops/docker-ops/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/docker-ops/</guid>
+      <description>前后端分离项目的容器化 docker CentOS 7 上
+yum install -y docker  基本命令 docker images # 列出当前本地所有的 docker 镜像  docker search [docker-name] # 在 docker hub 中搜索镜像  docker pull [docker-name] # 在 docker hub 中拉取镜像到本机  docker run \ # 启动镜像 -d \ # --detach -h example.com \ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \ # 容器的名字 -e XXX=xxx \ # 指定环境变量 -v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等  docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像  docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名  容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</description>
+    </item>
+    
+    <item>
+      <title>在 React 中使用防抖动</title>
+      <link>https://elizurhz.cn/frontend/react-debounce/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-debounce/</guid>
+      <description>在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
+更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
+基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
+function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
+function print(value) { console.log(value) } debounce(print, 100)(&#39;123&#39;)  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
+进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。</description>
+    </item>
+    
+    <item>
+      <title>掘金翻译计划</title>
+      <link>https://elizurhz.cn/translation/translation/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/translation/translation/</guid>
+      <description>掘金翻译计划译者 from 2018.12.20
+ 【译】 用 React 和 Node.js 实现受保护的路由和权限验证 - 掘金 【译】 2019 年你应该要知道的 11 个 React UI 组件库 【译】 2019 年值得学习的顶级 JavaScript 框架与主题  </description>
+    </item>
+    
+    <item>
+      <title>用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行</title>
+      <link>https://elizurhz.cn/backend/maven-tomcat-idea/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/backend/maven-tomcat-idea/</guid>
+      <description>用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行 作为一个前端开发，时不时会参与维护一些老的前后端未分离的项目，而服务端渲染的老项目大多还是以 Java 为主，这样就起码需要懂得怎样配置项目，怎样起服务，否则天天需要服务端的同学帮忙岂不是很麻烦。
+Java 环境 首先上官网下载 JDK，然后安装。我这里使用 1.8 的版本，因为太高版本好像不支持。
+然后下载 IntelliJ IDEA。
+接着打开项目。这里以 Windows 10 为例（公司内网服务只能用有线连接的台式机访问很蛋疼不能用 Mac 开发）。首先 File =&amp;gt; New =&amp;gt; Project from Existing Sources&amp;hellip;
+然后选择项目并使用默认配置即可。
+配置 Maven 点开右侧栏中的 Maven Projects，点击设置按钮
+按如图所示选择 Maven home directory（内有相应的依赖配置）。另外在 User settings file 右侧勾选 override，然后选择 Maven home directory 中的 /conf/settings.xml 文件。然后 Apply 即可。
+接着右下角会提示你是否需要 Import，选择 Import 即可。或者你可以在 Maven 面板中先双击 clean，然后再双击 install。这一步会完成 Maven 依赖的安装。
+配置 Tomcat 首先找到右上角的工具栏，红框所示位置如果你没有配置 Tomcat，会显示 Add Configuration。点击这里即可。</description>
+    </item>
+    
+    <item>
+      <title>关于我</title>
+      <link>https://elizurhz.cn/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/about/</guid>
+      <description> Intro  JavaScript 全栈 主 React，兴趣 Node.js &amp;amp; 移动开发 全平台主机游戏玩家 数码玩家 HiFi 发烧友  Education  2010.09 ~ 2014.06 福州大学物流管理专业学士 2015.03 ~ 2016.12 Master of Information Technology @ The University of Queensland, Major in Data Mining  Career  2017.03 开始第一份工作 2018.09 入职 网龙 @ 厦门  Open Source Contribution  掘金翻译计划译者 from 2018.12.20  Contact  GitHub 微博 LinkedIn Email: elizurhz@gmail.com  </description>
+    </item>
+    
+  </channel>
+</rss>

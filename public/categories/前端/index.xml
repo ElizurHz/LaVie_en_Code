@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on La Vie en Code</title>
+    <link>https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on La Vie en Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Canvas 手写板的实现与优化</title>
+      <link>https://elizurhz.cn/frontend/canvas-writing-pad/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/canvas-writing-pad/</guid>
+      <description>最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。
+本文所涉及的代码是基于 szimek/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。
+Canvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。
+基本用法 &amp;lt;canvas&amp;gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：
+&amp;lt;canvas id=&amp;quot;test&amp;quot; width=&amp;quot;150&amp;quot; height=&amp;quot;150&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
+如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”
+const test = document.getElementById(&#39;test&#39;) const ctx = test.getContext(&#39;2d&#39;)  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。</description>
+    </item>
+    
+  </channel>
+</rss>
