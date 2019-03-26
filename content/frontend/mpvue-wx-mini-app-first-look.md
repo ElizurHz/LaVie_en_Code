@@ -1,7 +1,8 @@
 ---
 title: mpvue 小程序开发踩坑记
 date: 2019-03-24
-categories: ["微信小程序", "Vue", "Javascript"]
+categories: ["前端"]
+tags: ["微信小程序", "Vue", "Javascript"]
 ---
 
 # mpvue 小程序开发踩坑记

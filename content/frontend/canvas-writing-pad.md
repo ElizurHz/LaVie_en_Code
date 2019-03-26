@@ -1,7 +1,8 @@
 ---
 title: Canvas 手写板的实现与优化
 date: 2019-03-24
-categories: ["前端", "Canvas", "数据可视化"]
+categories: ["前端"]
+tags: ["Canvas"]
 ---
 
 最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（[GitHub - ElizurHz/vue-percentage: 圆环百分比小组件](https://github.com/ElizurHz/vue-percentage)），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。

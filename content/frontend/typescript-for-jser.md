@@ -1,7 +1,8 @@
 ---
 title: React + TypeScript 从云玩家到入门
 date: 2019-03-24
-categories: ["typescript"]
+categories: ["前端"]
+tags: ["typescript"]
 ---
 
 # React + TypeScript 从云玩家到入门

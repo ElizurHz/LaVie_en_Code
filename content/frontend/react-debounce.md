@@ -1,7 +1,8 @@
 ---
 title: 在 React 中使用防抖动
 date: 2019-03-24
-categories: ["React", "Javascript"]
+categories: ["前端"]
+tags: ["React", "Javascript"]
 ---
 
 # 在 React 中使用防抖动
