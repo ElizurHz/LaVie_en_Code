@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz">
+  
+  
+  
+  
+  <link rel="next" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
+  <link rel="canonical" href="https://elizurhz.cn/frontend/react-debounce/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           在 React 中使用防抖动 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="在 React 中使用防抖动 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "frontend",
+    "name" : "在 React 中使用防抖动",
+    "headline" : "在 React 中使用防抖动",
+    "description" : "在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
+更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
+基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
+function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
+function print(value) { console.log(value) } debounce(print, 100)('123')  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
+进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz",
+    "creator" : "ElizurHz",
+    "publisher": "ElizurHz",
+    "accountablePerson" : "ElizurHz",
+    "copyrightHolder" : "ElizurHz",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/react-debounce/",
+    "wordCount" : "356",
+    "keywords" : [ "React","Javascript", "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">在 React 中使用防抖动</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-24 itemprop="datePublished">March 24, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="在-react-中使用防抖动">在 React 中使用防抖动</h1>
+
+<h2 id="什么是防抖动">什么是防抖动</h2>
+
+<p>防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。</p>
+
+<p>更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。</p>
+
+<h3 id="基础版">基础版</h3>
+
+<p>关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：<a href="https://juejin.im/post/5b651dc15188251aa30c8669">函数防抖和节流 - 掘金</a> 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。</p>
+
+<pre><code class="language-JavaScript">function debounce(func, wait) {
+  var timeout;
+
+  return function () {
+    var context = this;
+    var args = arguments;
+
+    if (timeout) clearTimeout(timeout);
+
+    timeout = setTimeout(function(){
+      func.apply(context, args)
+    }, wait);
+  }
+}
+</code></pre>
+
+<p>如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：</p>
+
+<pre><code class="language-JavaScript">function print(value) {
+  console.log(value)
+}
+
+debounce(print, 100)('123')
+</code></pre>
+
+<p>这也是 <a href="https://github.com/lodash/lodash/blob/4ea8c2ec249be046a0f4ae32539d652194caf74f/debounce.js">lodash</a> 和 <a href="https://github.com/jashkenas/underscore/blob/d5fe0fd4060f13b40608cb9d92eda6d857e8752c/underscore.js#L887">underscore</a> 中 debounce 的实现与使用方式。</p>
+
+<h3 id="进阶版">进阶版</h3>
+
+<p>当然，我们也可以使用 Promise 来实现防抖动，参考：<a href="https://juejin.im/post/5bdb155b5188257f62136ce8">理解函数防抖 Debounce - 掘金</a> 。</p>
+
+<pre><code class="language-JavaScript">function debounce(method, wait, immediate) {
+  let timeout
+  let result
+  let debounced = function(...args) {
+    return new Promise(resolve =&gt; {
+      let context = this
+      if (timeout) {
+        clearTimeout(timeout)
+      }
+      if (immediate) {
+        let callNow = !timeout
+        timeout = setTimeout(() =&gt; {
+          timeout = null
+        }, wait)
+        if (callNow) {
+          result = method.apply(context, args)
+          resolve(result)
+        }
+      } else {
+        timeout = setTimeout(() =&gt; {
+          result = method.apply(context, args)
+          resolve(result)
+        }, wait)
+      }
+    })
+  }
+
+  debounced.cancel = function() {
+    clearTimeout(timeout)
+    timeout = null
+  }
+
+  return debounced
+}
+</code></pre>
+
+<p>使用方法：</p>
+
+<pre><code class="language-JavaScript">function print(value) {
+  return value
+}
+
+let debouncedFn = debounce(print, 1000, false)
+
+debouncedFn('wtf').then(val =&gt; {
+  console.log(val)
+})
+</code></pre>
+
+<h2 id="react-中的防抖动">React 中的防抖动</h2>
+
+<p>在 React 中，我们经常会需要在虚拟 DOM 上添加事件，比如最常用的 button 的 onClick 以及 input 的 onChange。</p>
+
+<pre><code class="language-JavaScript">class Test extends React.Component {
+  onInputChange = (e) =&gt; {
+    console.log(e.target.value)
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input onChange={this.onInputChange} /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>假如有如上所示的一个组件，如果我们想实现 debounce 触发 onChange 的话，我们需要这么写（假设以上面的 Promise 版本作为组件中的 debounce 函数）：</p>
+
+<pre><code class="language-JavaScript">class Test extends React.Component {
+  constructor(props) {
+    super(props)
+    this.debounceInputChange = debounce(this.onInputChange, 666, false)
+  }
+
+  onInputChange = (e) =&gt; {
+    console.log(e.target.value)
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input onChange={this.debounceInputChange} /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>或者：</p>
+
+<pre><code class="language-JavaScript">class Test extends React.Component {
+  onInputChange = debounce((e) =&gt; {
+    console.log(e.target.value)
+  }, 666, false)
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input onChange={this.onInputChange} /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>不可以写成这样：</p>
+
+<pre><code class="language-JavaScript">class Test extends React.Component {
+  onInputChange = (e) =&gt; {
+    debounce(this.requestAPI(), 666, false)
+  }
+
+  requestAPI = () =&gt; {
+    // some API request
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;input onChange={this.onInputChange} /&gt;
+      &lt;/div&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>如果需要在输入的时候防抖动请求服务端数据，这样写的结果就是仍然每次输入都会触发 input 的 onChange 事件，并且每次都会向服务端发出请求，只是每个请求会在 666 ms 的延时之后依次执行。</p>
+
+<h2 id="事件对象">事件对象</h2>
+
+<p>React 中的事件都是<a href="https://reactjs.org/docs/events.html">合成事件（SyntheticEvent）</a>，而合成事件有个特性是 <a href="https://reactjs.org/docs/events.html#event-pooling">Event Pooling</a>。</p>
+
+<p>简单说就是在使用 debounce 函数之后 event 对象的所有属性都会变成 null。这时只要在代码前面加入 <code>e.persist()</code> 即可移除合成事件，这样在 debounce 包装之后，函数仍然可以获取到 event 对象。</p>
+
+<h2 id="ps">PS</h2>
+
+<p>在我使用百度地图的 localSearch 时，我将 setState 放在了它的 JSONP Callback 中，这样 debounce 也无法解决返回顺序不一致的问题。同时如果进行快速输入，触发和数据返回的时间可能也不太一样。所以当遇到有服务端请求的并且需要使用 debounce 来对触发事件进行防抖动时，最好加入一个判断，当服务端返回值和请求值能对应上时才 setState。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/frontend/react-debounce/>https://elizurhz.cn/frontend/react-debounce/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react/">
+                    #React</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/javascript/">
+                    #Javascript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="next" rel="next" title="mpvue 小程序开发踩坑记">mpvue 小程序开发踩坑记&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

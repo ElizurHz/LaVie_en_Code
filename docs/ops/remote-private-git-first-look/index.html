@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/ops/git-upstream/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/ops/remote-private-git-first-look/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ECS 上的 git 管理工具踩坑记 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="ECS 上的 git 管理工具踩坑记 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "ops",
+    "name" : "ECS 上的 git 管理工具踩坑记",
+    "headline" : "ECS 上的 git 管理工具踩坑记",
+    "description" : "ECS 上的 git 管理工具踩坑记 gitlab 在 CentOS 上安装 gitlab 参考 8 小时外实践系列(六) - 在阿里云服务器上搭建 GitLab(草稿) - CSDN 博客
+ gitlab 非常吃性能，在 1 核 1G 的服务器上安装后会导致机子非常卡，同时域名/IP 访问也会出现 502，查资料之后发现是配置太低的问题。官方推荐的配置是 2 核心 8G 内存，我们普通个人用户显然难以支付这么昂贵的服务器配置，更不用说海外主机了。
+ 使用 docker 部署 gitlab 只需要在 docker hub 中 docker pull gitlab/gitlab-ce 就行，然后我启动容器的的代码如下：
+sudo docker run --detach \ --hostname gitlab.mydomain.com \ --publish 8443:443 --publish 80:80 --publish 2222:22 \ --name gitlab \ --restart always \ --volume /srv/gitlab/config:/etc/gitlab \ --volume /srv/gitlab/logs:/var/log/gitlab \ --volume /srv/gitlab/data:/var/opt/gitlab \ gitlab/gitlab-ce  如需修改 gitlab.",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz",
+    "creator" : "ElizurHz",
+    "publisher": "ElizurHz",
+    "accountablePerson" : "ElizurHz",
+    "copyrightHolder" : "ElizurHz",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/ops/remote-private-git-first-look/",
+    "wordCount" : "282",
+    "keywords" : [  "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ECS 上的 git 管理工具踩坑记</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-24 itemprop="datePublished">March 24, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="ecs-上的-git-管理工具踩坑记">ECS 上的 git 管理工具踩坑记</h1>
+
+<h2 id="gitlab">gitlab</h2>
+
+<h3 id="在-centos-上安装-gitlab">在 CentOS 上安装 gitlab</h3>
+
+<p>参考 <a href="https://blog.csdn.net/caib1109/article/details/51756246">8 小时外实践系列(六) - 在阿里云服务器上搭建 GitLab(草稿) - CSDN 博客</a></p>
+
+<blockquote>
+<p>gitlab 非常吃性能，在 1 核 1G 的服务器上安装后会导致机子非常卡，同时域名/IP 访问也会出现 502，查资料之后发现是配置太低的问题。官方推荐的配置是 2 核心 8G 内存，我们普通个人用户显然难以支付这么昂贵的服务器配置，更不用说海外主机了。</p>
+</blockquote>
+
+<h3 id="使用-docker-部署-gitlab">使用 docker 部署 gitlab</h3>
+
+<p>只需要在 docker hub 中 <code>docker pull gitlab/gitlab-ce</code> 就行，然后我启动容器的的代码如下：</p>
+
+<pre><code class="language-bash">sudo docker run --detach \
+  --hostname gitlab.mydomain.com \
+  --publish 8443:443 --publish 80:80 --publish 2222:22 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab \
+  --volume /srv/gitlab/logs:/var/log/gitlab \
+  --volume /srv/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce
+</code></pre>
+
+<p>如需修改 gitlab.rb 的配置，只需要 <code>vim /srv/gitlab/config/gitlab.rb</code> 。</p>
+
+<p>一般需要配置的有：</p>
+
+<pre><code class="language-bash">external_url '你的域名或者IP' # 改成你的域名或者 IP，如果你的端口映射不是 80，那也不能在这里加端口
+gitlab_rails['gitlab_shell_ssh_port'] = 2222 # 防止和本机 22 端口冲突
+unicorn['port'] = 8999 # 如果你的 8080 端口被占用的话
+</code></pre>
+
+<p><strong>另外记住，如果单开某个端口，需要在 ECS 实例的安全组中允许这个端口被某个或者某些 IP 访问。</strong></p>
+
+<p>配置完成之后需要在容器中 reconfigure: <code>docker exec -it gitlab gitlab-ctl reconfigure</code></p>
+
+<blockquote>
+<p>然而我按照上面的方式完成之后，通过域名或者 IP 进入仍是 502。
+后来我尝试了在不同机子上部署。例如在群辉 DS218+ 上用同样的方式配置会出现 容器意外停止 的问题；在我的 iMac 本机上用 docker 部署就可以正常访问和进行代码管理</p>
+</blockquote>
+
+<h2 id="gogs">gogs</h2>
+
+<p>gogs 不像 gitlab 那样吃性能，功能也很完善，不过 gogs 需要有额外的数据库依赖，如 MySQL。具体的部署方式参考以下两篇文章：</p>
+
+<p><a href="https://www.jianshu.com/p/5f5e419b5de8">docker 安装 mysql - 简书</a></p>
+
+<p><a href="https://www.jianshu.com/p/2a7acb07b352">docker 安装 gogs - 简书</a></p>
+
+<blockquote>
+<p>勘误：在《docker 安装 mysql - 简书》中，创建网络的命令不是 <code>docker create network backend</code> 而是 <code>docker network create backend</code></p>
+</blockquote>
+
+<p>我的容器启动代码如下：</p>
+
+<pre><code class="language-bash"># 启动 MySQL
+docker run -d --name mysql57 \
+--net=backend \ # 加入创建的 backend 网络中
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=root \
+-v /srv/mysql/data:/var/lib/mysql \
+-v /srv/mysql/conf:/etc/mysql/conf.d \
+# 启动 gogs
+docker run -d \
+-p 10022:22 -p 3000:3000 \
+--name=gogs \
+--net=backend \ # 加入创建的 backend 网络中
+-v /srv/gogs/:/data gogs/gogs
+</code></pre>
+
+<p>此时访问服务器的 3000 端口即可进入设置界面，记住要把 localhost 全部改成服务器 ip。</p>
+
+<h3 id="关于-gogs-的数据库设置">关于 gogs 的数据库设置</h3>
+
+<p>首先由于本例使用了 docker network，所以可以直接使用 容器名:端口 来访问，例如 mysql57:3306。</p>
+
+<p>另外我们需要在 mysql 容器中创建一个数据库，否则 gogs 无法完成设置。</p>
+
+<pre><code class="language-bash">docker exec -it mysql57 /bin/bash
+mysql -u root -p
+# 然后输入密码，如果你没更改密码，则密码是 root
+</code></pre>
+
+<p>接着在 mysql 命令行中创建数据库，gogs 默认数据库名就是 gogs</p>
+
+<pre><code class="language-sql">CREATE DATABASE gogs;
+</code></pre>
+
+<p>接着我们在网页中就可以完成 gogs 的初始化设置了。</p>
+
+<p>如果想要使用 gogs，首先我们要注册一个账号，注意第一个注册的账号默认是拥有最高权限的账号。</p>
+
+<blockquote>
+<p>在实际使用中，我遇到了 git clone 时发现有 not a repository 的问题，可能是 IP/域名、端口等等设置的问题，仍在研究中</p>
+</blockquote>
+
+<hr />
+
+<p>参考：</p>
+
+<ol>
+<li><a href="https://blog.csdn.net/caib1109/article/details/51756246">8 小时外实践系列(六) - 在阿里云服务器上搭建 GitLab(草稿) - CSDN 博客</a></li>
+<li><a href="https://www.jianshu.com/p/5f5e419b5de8">docker 安装 mysql - 简书</a></li>
+<li><a href="https://www.jianshu.com/p/2a7acb07b352">docker 安装 gogs - 简书</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/ops/remote-private-git-first-look/>https://elizurhz.cn/ops/remote-private-git-first-look/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/ops/git-upstream/" class="prev" rel="prev" title="GitHub 上 Fork 的仓库如何与原仓库同步并提交内容"><i class="iconfont icon-left"></i>&nbsp;GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

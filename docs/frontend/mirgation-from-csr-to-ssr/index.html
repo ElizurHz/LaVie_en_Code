@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Next.js 实战：从 CSR 迁移到 SSR | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="Next.js 实战：从 CSR 迁移到 SSR | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "frontend",
+    "name" : "Next.js 实战：从 CSR 迁移到 SSR",
+    "headline" : "Next.js 实战：从 CSR 迁移到 SSR",
+    "description" : "CSR: 客户端渲染，Client Side Rendering SSR: 服务端渲染，Server Side Rendering   TL;DR 目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。
+下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。
+关于浏览器与 DOM SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 document is not defined 的错误。
+Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 @zeit 的一些 packages，它们与 SSR 相关。
+next.config.js 这个是放在根目录的 next 的配置文件，我们在这里可以配置一些 webpack loaders 的支持，例如 CSS（如果不配置就只能支持行内和 styled-jsx）, SASS, TypeScript 等，需要安装一些 @zeit 的 plugins。",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz",
+    "creator" : "ElizurHz",
+    "publisher": "ElizurHz",
+    "accountablePerson" : "ElizurHz",
+    "copyrightHolder" : "ElizurHz",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-26 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-26 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/",
+    "wordCount" : "570",
+    "keywords" : [ "React","SSR","Javascript","Next.js", "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Next.js 实战：从 CSR 迁移到 SSR</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-26 itemprop="datePublished">March 26, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<blockquote>
+<ul>
+<li>CSR: 客户端渲染，Client Side Rendering</li>
+<li>SSR: 服务端渲染，Server Side Rendering</li>
+</ul>
+</blockquote>
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<p>目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。</p>
+
+<p>下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。</p>
+
+<h2 id="关于浏览器与-dom">关于浏览器与 DOM</h2>
+
+<p>SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 <code>document is not defined</code> 的错误。</p>
+
+<h2 id="packages">Packages</h2>
+
+<p>大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 <code>@zeit</code> 的一些 packages，它们与 SSR 相关。</p>
+
+<h2 id="next-config-js">next.config.js</h2>
+
+<p>这个是放在根目录的 next 的配置文件，我们在这里可以配置一些 webpack loaders 的支持，例如 CSS（如果不配置就只能支持行内和 styled-jsx）, SASS, TypeScript 等，需要安装一些 <code>@zeit</code> 的 plugins。</p>
+
+<p>根据项目需求，我做了如下配置：</p>
+
+<pre><code class="language-javascript">const withTypescript = require(&quot;@zeit/next-typescript&quot;);
+const withCSS = require(&quot;@zeit/next-css&quot;);
+const withSass = require(&quot;@zeit/next-sass&quot;);
+
+module.exports = withSass(withCSS(withTypescript()));
+</code></pre>
+
+<h3 id="样式">样式</h3>
+
+<p>在 Next.js 中，样式默认使用的是 React 的 inline style 或者 Next.js 的 styled-jsx，它们只能写在组件文件中。如果需要使用独立的 css 文件或者其他 css 预处理器，那么需要安装相关的<a href="https://nextjs.org/docs/#importing-css--sass--less--stylus-files">插件</a>。</p>
+
+<p>就如上面代码所示，插件安装完之后需要在 <code>next.config.js</code> 中进行配置。</p>
+
+<h3 id="typescript">TypeScript</h3>
+
+<p>Next.js 官方有 TypeScript 支持，需要安装 <code>@zeit/next-typescript</code> 这个插件，并配置 <code>tsconfig.json</code> 和 <code>next.config.js</code>。</p>
+
+<h2 id="server-js">server.js</h2>
+
+<p>这是 SSR 和 CSR 最大的不同 —— 我们需要一个 Node.js 服务器。在 <code>package.json</code> 中，默认的 <code>scripts</code> 会运行 <code>next</code> 这个命令，启动的是 Next.js 内置的 SSR 服务器，而如果我们写一个 Node.js 服务器，并在 <code>scripts</code> 中运行它，同样可以实现 SSR 的功能，并且我们还可以在里面定制路由、渲染方式、缓存等等。</p>
+
+<h3 id="路由">路由</h3>
+
+<p>在 Next.js 中，我们使用 Node.js 框架（Koa）的路由，所以 <code>react-router</code> 相关的代码都必须更改。详情可以参考<a href="https://nextjs.org/docs/#routing">官方文档</a>。</p>
+
+<ul>
+<li><code>react-router</code> 的 history 无法在 Next.js 中使用，我们可以使用 <code>next/router</code> 替代之（<code>import Router from 'next/router'</code>）。例如 <code>history.push()</code> 可以用 <code>Router.push()</code> 替代；也可以 <code>import { withRouter } from 'next/router'</code> 来把路由参数注入到组件的 props 中。</li>
+<li>原本的 <code>react-router-dom</code> 中的 <code>&lt;Link&gt;</code> 可以被 <code>next/link</code> 的 <code>&lt;Link&gt;</code> 取代，但是 props 有所不同，比如 <code>to</code> 需要换成 <code>href</code>，以及 <code>&lt;Link&gt;</code> 中不能使用 text 节点等。</li>
+<li>路由与 <code>.js/.tsx</code> 文件的绑定在 Koa 中完成，使用 <code>koa-router</code> 的写法，当浏览器访问路由时，由服务端的中间件设置对应的 return body 并返回给前端。具体可以参考 <a href="https://github.com/ZijianHe/koa-router">koa-router</a>。</li>
+</ul>
+
+<h3 id="国际化">国际化</h3>
+
+<p>国际化的方式已经在上面的 <code>server.js</code> 的部分叙述过。在项目中我们一样需要一个存放 <code>.json</code> 翻译文件的地方。</p>
+
+<p>下面是一段官方的代码示例，我在官方使用的 express 框架的基础上将其修改成了适用于 koa 的版本。</p>
+
+<pre><code class="language-javascript">const supportedLanguages = glob
+  .sync(&quot;./lang/*.json&quot;)
+  .map(f =&gt; basename(f, &quot;.json&quot;));
+const localeDataCache = new Map();
+const getLocaleDataScript = locale =&gt; {
+  const lang = locale.split(&quot;-&quot;)[0];
+  if (!localeDataCache.has(lang)) {
+    const localeDataFile = require.resolve(`react-intl/locale-data/${lang}`);
+    const localeDataScript = readFileSync(localeDataFile, &quot;utf8&quot;);
+    localeDataCache.set(lang, localeDataScript);
+  }
+  return localeDataCache.get(lang);
+};
+
+const getMessages = locale =&gt; {
+  return require(`./lang/${locale}.json`);
+};
+
+const localization = ctx =&gt; {
+  const { req } = ctx;
+  const { query } = ctx.request;
+  let locale;
+  if (query.lang) {
+    locale = query.lang;
+  } else {
+    const accept = accepts(req);
+    locale = accept.language(accept.languages(supportedLanguages)) || &quot;en&quot;;
+  }
+  req.locale = locale;
+  req.localeDataScript = getLocaleDataScript(locale);
+  req.messages = getMessages(locale);
+  ctx.req = req;
+  return ctx;
+};
+</code></pre>
+
+<p>这段代码的目的是修改前端请求时的 context。来当浏览器访问路由时，服务端对应的 <code>Controller</code> 可以获取到 koa 的 <code>context</code> 对象，并通过一些方法把当前所需的国际化的文件内容加入到 <code>context.req</code> 中，这样前端页面就可以接收到这些数据。</p>
+
+<p>在路由的 <code>Controller</code> 处理 ctx 的时候，我们只需要调用 <code>localization</code> 这个函数，对 ctx 进行一层“包装”即可。</p>
+
+<h3 id="缓存">缓存</h3>
+
+<p>React SSR 或者说 Next.js 里，最常用的页面缓存工具就是 <code>lru-cache</code> 了。使用 <code>lru-cache</code> 可以减少不必要的渲染以及加快加载的速度。</p>
+
+<pre><code class="language-javascript">const getCacheKey = req =&gt; `${req.url}`;
+
+function renderAndCache(ctx, pagePath, queryParams) {
+  const key = getCacheKey(ctx.req);
+
+  // If we have a page in the cache, let's serve it
+  if (ssrCache.has(key)) {
+    console.log(`CACHE HIT: ${key}`);
+    ctx.body = ssrCache.get(key);
+    return;
+  }
+
+  // If not let's render the page into HTML
+  return app
+    .renderToHTML(ctx.req, ctx.res, pagePath, queryParams)
+    .then(html =&gt; {
+      // Let's cache this page
+      console.log(`CACHE MISS: ${key}`);
+      ssrCache.set(key, html);
+      ctx.body = html;
+    })
+    .catch(err =&gt; {
+      console.log(&quot;ERRR&quot;, err);
+      return app.renderError(err, ctx.req, ctx.res, pagePath, queryParams);
+    });
+}
+</code></pre>
+
+<p>它的基本原理就是在向前端返回数据时进行判断，如果 存在 cache key，则调取缓存中相应的内容；否则服务端才会根据路由调用相应的 <code>Controller</code> 向前端返回数据。</p>
+
+<p>如果需要使用它，我们可以将路由的 <code>Controller</code> 直接设成 <code>renderAndCache</code> 函数即可，例如：</p>
+
+<pre><code class="language-javascript">router.get(&quot;/your/path&quot;, async ctx =&gt; renderAndCache(ctx, &quot;/your/path&quot;));
+</code></pre>
+
+<p>如果需要结合国际化来使用，只要对 <code>renderAndCache</code> 的第一个参数 <code>ctx</code> 使用上面的 <code>localization</code> 函数进行处理即可。</p>
+
+<h2 id="pages">pages</h2>
+
+<p>根目录的 <code>pages</code> 文件夹是 Next.js 默认的路由对应的页面入口。</p>
+
+<h3 id="app-tsx">_app.tsx</h3>
+
+<p>这个文件相当于 CSR App 中的 <code>App.tsx</code>。如果你不创建这个文件，SSR App 也可以运行，因为 Next.js 中有一个默认的 <code>_app.tsx</code>。我们创建它是因为我们需要重写这个主入口组件，例如加入 Redux 的 <code>&lt;Provider&gt;</code> 和 <code>react-intl</code> 的 <code>&lt;IntlProvider&gt;</code> 等高阶组件。</p>
+
+<h3 id="document-tsx">_document.tsx</h3>
+
+<p>与 <code>_app.tsx</code> 一样，这也是个 Next.js 内置的组件，而如果我们需要实现某霞功能，也需要重写它。它相当于是 CSR App 中的 <code>index.html</code>。在 <code>_document.tsx</code> 中，有 <code>&lt;Head /&gt;</code>、<code>&lt;Main /&gt;</code>、<code>&lt;NextScript /&gt;</code> 等组件，<code>&lt;Head /&gt;</code> 对应的就是 html 的 <code>&lt;head /&gt;</code> 标签，<code>&lt;Main /&gt;</code> 的位置则会注入 <code>_app.tsx</code> 这个组件，<code>&lt;NextScript /&gt;</code> 则是打包后一些 js 文件插入的位置。你可以在里面添加 style 和 script 等标签，它们将最终会渲染在页面上。<code>&lt;NextScript /&gt;</code> 在 Next.js 的 production 环境中会默认启用 preload，这样可以节约加载的时间。</p>
+
+<h2 id="项目结构">项目结构</h2>
+
+<p>我们的实践方式是，把 <code>pages</code> 作为 Container，在这里进行高阶组件的连接，包括 redux、国际化等等。其他的结构与 react + redux + redux-saga 的最佳实践无异。</p>
+
+<h2 id="构建方式">构建方式</h2>
+
+<ul>
+<li><code>dev</code> 可以启动一个 dev server，它会自动构建项目到根目录下的 <code>.next</code> 文件夹中，可以在代码保存后热更新。</li>
+<li>如果需要在 EC/Docker 之类的生产环境中运行，需要先 <code>build</code>，以生产的环境变量构建项目，再 <code>start</code> 启动服务。这里我们相当于是直接部署/使用了 Node.js 的 runtime，开启了一个 Node.js 进程，所以这一步可以用 pm2 等管理工具来替代。</li>
+</ul>
+
+<h2 id="错误提示">错误提示</h2>
+
+<p>由于 Next.js 运行时每次都需要编译，如果编译未报错而在运行时报错，那么错误提示只会显示编译完的文件的错误位置，而不像 CSR 一样能显示原始文件的错误位置，这对调试非常不友好。</p>
+
+<h2 id="单元测试">单元测试</h2>
+
+<p>To be continue&hellip;</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react/">
+                    #React</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/ssr/">
+                    #SSR</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/javascript/">
+                    #Javascript</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/next.js/">
+                    #Next.js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" class="prev" rel="prev" title="TypeScript &#43; 单元测试：从零开始的经验之谈"><i class="iconfont icon-left"></i>&nbsp;TypeScript &#43; 单元测试：从零开始的经验之谈</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

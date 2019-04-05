@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSR on La Vie en Code - 编码人生</title>
+    <link>https://elizurhz.cn/tags/ssr/</link>
+    <description>Recent content in SSR on La Vie en Code - 编码人生</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://elizurhz.cn/tags/ssr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Next.js 实战：从 CSR 迁移到 SSR</title>
+      <link>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</guid>
+      <description>CSR: 客户端渲染，Client Side Rendering SSR: 服务端渲染，Server Side Rendering   TL;DR 目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。
+下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。
+关于浏览器与 DOM SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 document is not defined 的错误。
+Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 @zeit 的一些 packages，它们与 SSR 相关。
+next.config.js 这个是放在根目录的 next 的配置文件，我们在这里可以配置一些 webpack loaders 的支持，例如 CSS（如果不配置就只能支持行内和 styled-jsx）, SASS, TypeScript 等，需要安装一些 @zeit 的 plugins。</description>
+    </item>
+    
+  </channel>
+</rss>

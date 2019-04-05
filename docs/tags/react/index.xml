@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on La Vie en Code - 编码人生</title>
+    <link>https://elizurhz.cn/tags/react/</link>
+    <description>Recent content in React on La Vie en Code - 编码人生</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://elizurhz.cn/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Next.js 实战：从 CSR 迁移到 SSR</title>
+      <link>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</guid>
+      <description>CSR: 客户端渲染，Client Side Rendering SSR: 服务端渲染，Server Side Rendering   TL;DR 目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。
+下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。
+关于浏览器与 DOM SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 document is not defined 的错误。
+Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 @zeit 的一些 packages，它们与 SSR 相关。
+next.config.js 这个是放在根目录的 next 的配置文件，我们在这里可以配置一些 webpack loaders 的支持，例如 CSS（如果不配置就只能支持行内和 styled-jsx）, SASS, TypeScript 等，需要安装一些 @zeit 的 plugins。</description>
+    </item>
+    
+    <item>
+      <title>TypeScript &#43; 单元测试：从零开始的经验之谈</title>
+      <link>https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/</guid>
+      <description>TL;DR 公司和部门内部之前有在推广 TypeScript，但是由于种种原因很难投入使用，但这次我参与了一个从零开始的项目，没有技术栈限制，领导也说希望用 TypeScript 试一试。作为开发团队中唯一认真学过 TypeScript 的人（在部门进行过内部分享，写过内部博客），我们的经验其实都是很缺乏的。
+另外，在这个项目中，除了 TypeScript 之外，单元测试也是我们团队首次尝试的。
+同时，我的性格和开发风格也比较偏向“探索者”，所以领导也布置给我一些预研、新尝试，所以自然而然便成了一个 leader 的角色。
+项目构架 我们使用 create-react-app 搭建项目，没有 eject。
+而对于文件的组织，我们采用了按模块划分的方式，即各个模块集成自己的 store, reducers, actions, 展示组件, 容器组件等，并设置一个入口文件将它们都暴露给外部，外部需要引用的时候直接引用这个文件即可。
+主目录结构大致如下：
+├── docs // 文档 ├── e2e // E2E 测试 ├── src │ ├── App.tsx // 主页面 │ ├── index.tsx // 主入口 │ ├── common.d.ts // 全局通用类型 │ ├── components // 通用组件 │ ├── i18n // 国际化 │ ├── @types // 如果某个依赖包没有 TypeScript 支持，则在这里编写 d.ts 文件 │ ├── modules // 业务模块 │ │ ├── moduleA │ │ ├── moduleB │ │ .</description>
+    </item>
+    
+    <item>
+      <title>在 React 中使用防抖动</title>
+      <link>https://elizurhz.cn/frontend/react-debounce/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-debounce/</guid>
+      <description>在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
+更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
+基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
+function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
+function print(value) { console.log(value) } debounce(print, 100)(&#39;123&#39;)  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
+进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。</description>
+    </item>
+    
+  </channel>
+</rss>
