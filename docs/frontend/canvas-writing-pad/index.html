@@ -63,7 +63,7 @@ const test = document.getElementById('test') const ctx = test.getContext('2d')  
     "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
     "url" : "https://elizurhz.cn/frontend/canvas-writing-pad/",
-    "wordCount" : "1366",
+    "wordCount" : "1367",
     "keywords" : [ "Canvas", "La Vie en Code - 编码人生"]
 }
 </script>
@@ -217,13 +217,13 @@ const ctx = test.getContext('2d')
 
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A">贝塞尔曲线 - 维基百科，自由的百科全书</a></p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/canvas-writing-pad/Bezier_3_big.gif" alt="Bézier_cube" class="lazyload"><figcaption class="image-caption">Bézier_cube</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/canvas-writing-pad/Bezier_3_big.gif" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>这里主要讲一下本文涉及到的三次贝塞尔曲线。它有起点、控制点 1、控制点 2、终点四个关键的点。</p>
 
-<p>三次贝塞尔曲线的公式如下：</p>
+<p>三次贝塞尔曲线的公式如下（LeaveIt 主题的 Dark Mode 下会看不清，请切换到 Light Mode）：</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/canvas-writing-pad/bezier_3_formulation.jpg" alt="bezier_cube_formulation" class="lazyload"><figcaption class="image-caption">bezier_cube_formulation</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/canvas-writing-pad/bezier_3_formulation.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>其中 t 为参数。使 t 逐渐从 0 增大到 1，即可通过这个方程式画出贝塞尔曲线。</p>
 
@@ -297,7 +297,6 @@ Bezier.prototype.length = function () {
   return length;
 };
 
-/* eslint-disable no-multi-spaces, space-in-parens */
 Bezier.prototype._point = function (t, start, c1, c2, end) {
   return start * (1.0 - t) * (1.0 - t) * (1.0 - t) + 3.0 * c1 * (1.0 - t) * (1.0 - t) * t + 3.0 * c2 * (1.0 - t) * t * t + end * t * t * t;
 };

@@ -183,7 +183,7 @@ Java 环境 首先上官网下载 JDK，然后安装。我这里使用 1.8 的�
 
 <p>接着打开项目。这里以 Windows 10 为例（公司内网服务只能用有线连接的台式机访问很蛋疼不能用 Mac 开发）。首先 File =&gt; New =&gt; Project from Existing Sources&hellip;</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/open.png" alt="open" class="lazyload"><figcaption class="image-caption">open</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/open.png" alt="open" class="lazyload"><figcaption class="image-caption">open</figcaption></figure></p>
 
 <p>然后选择项目并使用默认配置即可。</p>
 
@@ -191,11 +191,11 @@ Java 环境 首先上官网下载 JDK，然后安装。我这里使用 1.8 的�
 
 <p>点开右侧栏中的 Maven Projects，点击设置按钮</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/maven-1.png" alt="maven-1" class="lazyload"><figcaption class="image-caption">maven-1</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/maven-1.png" alt="maven-1" class="lazyload"><figcaption class="image-caption">maven-1</figcaption></figure></p>
 
 <p>按如图所示选择 Maven home directory（内有相应的依赖配置）。另外在 User settings file 右侧勾选 override，然后选择 Maven home directory 中的 <code>/conf/settings.xml</code> 文件。然后 Apply 即可。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/maven-2.jpg" alt="maven-2" class="lazyload"><figcaption class="image-caption">maven-2</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/maven-2.jpg" alt="maven-2" class="lazyload"><figcaption class="image-caption">maven-2</figcaption></figure></p>
 
 <p>接着右下角会提示你是否需要 Import，选择 Import 即可。或者你可以在 Maven 面板中先双击 clean，然后再双击 install。这一步会完成 Maven 依赖的安装。</p>
 
@@ -203,27 +203,27 @@ Java 环境 首先上官网下载 JDK，然后安装。我这里使用 1.8 的�
 
 <p>首先找到右上角的工具栏，红框所示位置如果你没有配置 Tomcat，会显示 Add Configuration。点击这里即可。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-1.png" alt="tomcat-1" class="lazyload"><figcaption class="image-caption">tomcat-1</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-1.png" alt="tomcat-1" class="lazyload"><figcaption class="image-caption">tomcat-1</figcaption></figure></p>
 
 <p>然后点击 ➕ ，找到 Tomcat Server，添加 Local。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-2.png" alt="tomcat-2" class="lazyload"><figcaption class="image-caption">tomcat-2</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-2.png" alt="tomcat-2" class="lazyload"><figcaption class="image-caption">tomcat-2</figcaption></figure></p>
 
 <p>接着我们需要配置 Tomcat home。点击面板右侧的 Application server 右侧的 <code>Configure...</code>，</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-3.png" alt="tomcat-3" class="lazyload"><figcaption class="image-caption">tomcat-3</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-3.png" alt="tomcat-3" class="lazyload"><figcaption class="image-caption">tomcat-3</figcaption></figure></p>
 
 <p>配置 Tomcat home，选择你下好的 Tomcat 的包的根目录。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-4.jpg" alt="tomcat-4" class="lazyload"><figcaption class="image-caption">tomcat-4</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-4.jpg" alt="tomcat-4" class="lazyload"><figcaption class="image-caption">tomcat-4</figcaption></figure></p>
 
 <p>接着切换到 Deployment 标签，➕ =&gt; Artifact&hellip;</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-5.png" alt="tomcat-5" class="lazyload"><figcaption class="image-caption">tomcat-5</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-5.png" alt="tomcat-5" class="lazyload"><figcaption class="image-caption">tomcat-5</figcaption></figure></p>
 
 <p>这里你可以看到当前可用的 war 包，选择“war exploded”的那个，然后点 OK，Apply。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/tomcat-6.png" alt="tomcat-6" class="lazyload"><figcaption class="image-caption">tomcat-6</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/maven-tomcat-idea/tomcat-6.png" alt="tomcat-6" class="lazyload"><figcaption class="image-caption">tomcat-6</figcaption></figure></p>
 
 <p>最后点击右上角的 Debug（虫子）按钮，等待 Tomcat 服务器启动即可。IntelliJ IDEA 会在你指定的浏览器里自动打开你配置的那个本地地址，在那里即可访问你做好的模板页面。</p>
 

@@ -206,13 +206,13 @@ let obj2: IObj = {
 };
 </code></pre>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/typescript-for-jser/optional-error.png" alt="optional-error" class="lazyload"><figcaption class="image-caption">optional-error</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/optional-error.png" alt="optional-error" class="lazyload"><figcaption class="image-caption">optional-error</figcaption></figure></p>
 
 <h3 id="readonly">Readonly</h3>
 
 <p>一般在 Interface 和 Class 中会使用。设置为 <code>readonly</code> 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/typescript-for-jser/readonly-error.png" alt="readonly-error" class="lazyload"><figcaption class="image-caption">readonly-error</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/readonly-error.png" alt="readonly-error" class="lazyload"><figcaption class="image-caption">readonly-error</figcaption></figure></p>
 
 <h3 id="函数">函数</h3>
 
@@ -357,7 +357,7 @@ type Partial&lt;T&gt; = { [P in keyof T]?: T[P] };
 <p>TypeScript 的模块发布的时候都是打包成 JavaScript 来发布的，但是这样会丢失定义好的数据类型。 .d.ts 可以约定 type, class, interface, function, 变量以及常量等的行为，相当于是一个 package 或者 library 的“说明书”。</p>
 
 <p>在 React 中，我们常常会需要安装一些如 <code>@types/react-router-dom</code> 这种以 <code>@types</code> 作为开头的 package。在 JS 中我们直接 <code>npm install react-router-dom</code> 即可，但是在 TypeScript 中，如果没有 DefinitelyTyped，将会报如下的错误：
-<figure><img src="/images/ring.svg" data-sizes="auto" data-src="./static/typescript-for-jser/types-error.png" alt="@types-error" class="lazyload"><figcaption class="image-caption">@types-error</figcaption></figure></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/types-error.png" alt="@types-error" class="lazyload"><figcaption class="image-caption">@types-error</figcaption></figure></p>
 
 <p>当然并不是所有的 package 都需要一个对应的 <code>@types</code> ，不少 package 自身已经有 .d.ts 文件了，例如 antd，所以我们不需要额外的 <code>@types</code> 。</p>
 

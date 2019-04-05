@@ -419,13 +419,13 @@ const ctx = test.getContext(&#39;2d&#39;)
 
 &lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A&#34;&gt;贝塞尔曲线 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/canvas-writing-pad/Bezier_3_big.gif&#34; alt=&#34;Bézier_cube&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/canvas-writing-pad/Bezier_3_big.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这里主要讲一下本文涉及到的三次贝塞尔曲线。它有起点、控制点 1、控制点 2、终点四个关键的点。&lt;/p&gt;
 
-&lt;p&gt;三次贝塞尔曲线的公式如下：&lt;/p&gt;
+&lt;p&gt;三次贝塞尔曲线的公式如下（LeaveIt 主题的 Dark Mode 下会看不清，请切换到 Light Mode）：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/canvas-writing-pad/bezier_3_formulation.jpg&#34; alt=&#34;bezier_cube_formulation&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/canvas-writing-pad/bezier_3_formulation.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;其中 t 为参数。使 t 逐渐从 0 增大到 1，即可通过这个方程式画出贝塞尔曲线。&lt;/p&gt;
 
@@ -499,7 +499,6 @@ Bezier.prototype.length = function () {
   return length;
 };
 
-/* eslint-disable no-multi-spaces, space-in-parens */
 Bezier.prototype._point = function (t, start, c1, c2, end) {
   return start * (1.0 - t) * (1.0 - t) * (1.0 - t) + 3.0 * c1 * (1.0 - t) * (1.0 - t) * t + 3.0 * c2 * (1.0 - t) * t * t + end * t * t * t;
 };
@@ -907,7 +906,7 @@ mysql -u root -p
 
 &lt;p&gt;你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/git-upstream/1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/git-upstream/1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然后你就可以将其 clone 到本地。&lt;/p&gt;
 
@@ -1012,13 +1011,13 @@ let obj2: IObj = {
 };
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/typescript-for-jser/optional-error.png&#34; alt=&#34;optional-error&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/typescript-for-jser/optional-error.png&#34; alt=&#34;optional-error&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;readonly&#34;&gt;Readonly&lt;/h3&gt;
 
 &lt;p&gt;一般在 Interface 和 Class 中会使用。设置为 &lt;code&gt;readonly&lt;/code&gt; 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/typescript-for-jser/readonly-error.png&#34; alt=&#34;readonly-error&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/typescript-for-jser/readonly-error.png&#34; alt=&#34;readonly-error&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;
 
@@ -1163,7 +1162,7 @@ type Partial&amp;lt;T&amp;gt; = { [P in keyof T]?: T[P] };
 &lt;p&gt;TypeScript 的模块发布的时候都是打包成 JavaScript 来发布的，但是这样会丢失定义好的数据类型。 .d.ts 可以约定 type, class, interface, function, 变量以及常量等的行为，相当于是一个 package 或者 library 的“说明书”。&lt;/p&gt;
 
 &lt;p&gt;在 React 中，我们常常会需要安装一些如 &lt;code&gt;@types/react-router-dom&lt;/code&gt; 这种以 &lt;code&gt;@types&lt;/code&gt; 作为开头的 package。在 JS 中我们直接 &lt;code&gt;npm install react-router-dom&lt;/code&gt; 即可，但是在 TypeScript 中，如果没有 DefinitelyTyped，将会报如下的错误：
-&lt;img src=&#34;./static/typescript-for-jser/types-error.png&#34; alt=&#34;@types-error&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://elizurhz.cn/images/typescript-for-jser/types-error.png&#34; alt=&#34;@types-error&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;当然并不是所有的 package 都需要一个对应的 &lt;code&gt;@types&lt;/code&gt; ，不少 package 自身已经有 .d.ts 文件了，例如 antd，所以我们不需要额外的 &lt;code&gt;@types&lt;/code&gt; 。&lt;/p&gt;
 
@@ -2131,7 +2130,7 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 
 &lt;p&gt;接着打开项目。这里以 Windows 10 为例（公司内网服务只能用有线连接的台式机访问很蛋疼不能用 Mac 开发）。首先 File =&amp;gt; New =&amp;gt; Project from Existing Sources&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/open.png&#34; alt=&#34;open&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/open.png&#34; alt=&#34;open&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然后选择项目并使用默认配置即可。&lt;/p&gt;
 
@@ -2139,11 +2138,11 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 
 &lt;p&gt;点开右侧栏中的 Maven Projects，点击设置按钮&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/maven-1.png&#34; alt=&#34;maven-1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/maven-1.png&#34; alt=&#34;maven-1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;按如图所示选择 Maven home directory（内有相应的依赖配置）。另外在 User settings file 右侧勾选 override，然后选择 Maven home directory 中的 &lt;code&gt;/conf/settings.xml&lt;/code&gt; 文件。然后 Apply 即可。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/maven-2.jpg&#34; alt=&#34;maven-2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/maven-2.jpg&#34; alt=&#34;maven-2&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;接着右下角会提示你是否需要 Import，选择 Import 即可。或者你可以在 Maven 面板中先双击 clean，然后再双击 install。这一步会完成 Maven 依赖的安装。&lt;/p&gt;
 
@@ -2151,27 +2150,27 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 
 &lt;p&gt;首先找到右上角的工具栏，红框所示位置如果你没有配置 Tomcat，会显示 Add Configuration。点击这里即可。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-1.png&#34; alt=&#34;tomcat-1&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-1.png&#34; alt=&#34;tomcat-1&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;然后点击 ➕ ，找到 Tomcat Server，添加 Local。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-2.png&#34; alt=&#34;tomcat-2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-2.png&#34; alt=&#34;tomcat-2&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;接着我们需要配置 Tomcat home。点击面板右侧的 Application server 右侧的 &lt;code&gt;Configure...&lt;/code&gt;，&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-3.png&#34; alt=&#34;tomcat-3&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-3.png&#34; alt=&#34;tomcat-3&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;配置 Tomcat home，选择你下好的 Tomcat 的包的根目录。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-4.jpg&#34; alt=&#34;tomcat-4&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-4.jpg&#34; alt=&#34;tomcat-4&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;接着切换到 Deployment 标签，➕ =&amp;gt; Artifact&amp;hellip;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-5.png&#34; alt=&#34;tomcat-5&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-5.png&#34; alt=&#34;tomcat-5&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这里你可以看到当前可用的 war 包，选择“war exploded”的那个，然后点 OK，Apply。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;./static/tomcat-6.png&#34; alt=&#34;tomcat-6&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-6.png&#34; alt=&#34;tomcat-6&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最后点击右上角的 Debug（虫子）按钮，等待 Tomcat 服务器启动即可。IntelliJ IDEA 会在你指定的浏览器里自动打开你配置的那个本地地址，在那里即可访问你做好的模板页面。&lt;/p&gt;
 </description>
