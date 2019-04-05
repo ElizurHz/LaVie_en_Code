@@ -52,13 +52,13 @@ const ctx = test.getContext('2d')
 
 [贝塞尔曲线 - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A)
 
-![Bézier_cube](./static/canvas-writing-pad/Bezier_3_big.gif)
+![](/images/canvas-writing-pad/Bezier_3_big.gif)
 
 这里主要讲一下本文涉及到的三次贝塞尔曲线。它有起点、控制点 1、控制点 2、终点四个关键的点。
 
-三次贝塞尔曲线的公式如下：
+三次贝塞尔曲线的公式如下（LeaveIt 主题的 Dark Mode 下会看不清，请切换到 Light Mode）：
 
-![bezier_cube_formulation](./static/canvas-writing-pad/bezier_3_formulation.jpg)
+![](/images/canvas-writing-pad/bezier_3_formulation.jpg)
 
 其中 t 为参数。使 t 逐渐从 0 增大到 1，即可通过这个方程式画出贝塞尔曲线。
 
@@ -125,7 +125,6 @@ Bezier.prototype.length = function () {
   return length;
 };
 
-/* eslint-disable no-multi-spaces, space-in-parens */
 Bezier.prototype._point = function (t, start, c1, c2, end) {
   return start * (1.0 - t) * (1.0 - t) * (1.0 - t) + 3.0 * c1 * (1.0 - t) * (1.0 - t) * t + 3.0 * c2 * (1.0 - t) * t * t + end * t * t * t;
 };

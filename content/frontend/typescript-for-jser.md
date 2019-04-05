@@ -45,13 +45,13 @@ let obj2: IObj = {
 };
 ```
 
-![optional-error](./static/typescript-for-jser/optional-error.png)
+![optional-error](/images/typescript-for-jser/optional-error.png)
 
 ### Readonly
 
 一般在 Interface 和 Class 中会使用。设置为 `readonly` 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。
 
-![readonly-error](./static/typescript-for-jser/readonly-error.png)
+![readonly-error](/images/typescript-for-jser/readonly-error.png)
 
 ### 函数
 
@@ -191,7 +191,7 @@ type Partial<T> = { [P in keyof T]?: T[P] };
 TypeScript 的模块发布的时候都是打包成 JavaScript 来发布的，但是这样会丢失定义好的数据类型。 .d.ts 可以约定 type, class, interface, function, 变量以及常量等的行为，相当于是一个 package 或者 library 的“说明书”。
 
 在 React 中，我们常常会需要安装一些如 `@types/react-router-dom` 这种以 `@types` 作为开头的 package。在 JS 中我们直接 `npm install react-router-dom` 即可，但是在 TypeScript 中，如果没有 DefinitelyTyped，将会报如下的错误：
-![@types-error](./static/typescript-for-jser/types-error.png)
+![@types-error](/images/typescript-for-jser/types-error.png)
 
 当然并不是所有的 package 都需要一个对应的 `@types` ，不少 package 自身已经有 .d.ts 文件了，例如 antd，所以我们不需要额外的 `@types` 。
 

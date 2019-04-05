@@ -11,7 +11,7 @@ date: 2019-03-24
 
 你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。
 
-![](./static/git-upstream/1.png)
+![](/images/git-upstream/1.png)
 
 然后你就可以将其 clone 到本地。
 
