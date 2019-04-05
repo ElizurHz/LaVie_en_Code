@@ -34,6 +34,14 @@
 
 &lt;p&gt;SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 &lt;code&gt;document is not defined&lt;/code&gt; 的错误。&lt;/p&gt;
 
+&lt;p&gt;关于 &lt;code&gt;document is not defined&lt;/code&gt;，比较常遇到的情况有：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;页面调用了 document、window 相关的 API&lt;/li&gt;
+&lt;li&gt;使用了 ReactDOM.createPortal。由于 ReactDOM.createPortal 必须有一个挂载的 DOM 节点，所以在浏览器环境完成前是无法使用的，解决方法就是在 &lt;code&gt;componentDidMount&lt;/code&gt; 之后再加载：用变量进行条件渲染，参考&lt;a href=&#34;https://github.com/zeit/next.js/tree/canary/examples/with-portals&#34;&gt;官方例子&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;某些组件如果使用 DOM API，且在被引用时未使用 &lt;code&gt;next/dynamic&lt;/code&gt; 进行异步加载，也可能会导致这种问题&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;packages&#34;&gt;Packages&lt;/h2&gt;
 
 &lt;p&gt;大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 &lt;code&gt;@zeit&lt;/code&gt; 的一些 packages，它们与 SSR 相关。&lt;/p&gt;
@@ -183,15 +191,64 @@ function renderAndCache(ctx, pagePath, queryParams) {
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;dev&lt;/code&gt; 可以启动一个 dev server，它会自动构建项目到根目录下的 &lt;code&gt;.next&lt;/code&gt; 文件夹中，可以在代码保存后热更新。&lt;/li&gt;
 &lt;li&gt;如果需要在 EC/Docker 之类的生产环境中运行，需要先 &lt;code&gt;build&lt;/code&gt;，以生产的环境变量构建项目，再 &lt;code&gt;start&lt;/code&gt; 启动服务。这里我们相当于是直接部署/使用了 Node.js 的 runtime，开启了一个 Node.js 进程，所以这一步可以用 pm2 等管理工具来替代。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;next export&lt;/code&gt; 是可以输出静态文件的。它是根据 pages 的目录结构输出的，可以不依赖于服务端来展示静态页面，当然正常的 JavaScript 也是可以运行的。但是有一点就是，如果在后端加了一些修改渲染的操作，比如上面提到的缓存和国际化，那在这个打包方式下，它们是完全不可用的。也就是说如果你有在 Node.js 层加入一些除路由外的额外功能，那你是不能使用静态页面的方式构建并直接上传到 github pages 或者 firebase 等托管服务的。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;错误提示&#34;&gt;错误提示&lt;/h2&gt;
 
-&lt;p&gt;由于 Next.js 运行时每次都需要编译，如果编译未报错而在运行时报错，那么错误提示只会显示编译完的文件的错误位置，而不像 CSR 一样能显示原始文件的错误位置，这对调试非常不友好。&lt;/p&gt;
+&lt;p&gt;由于 Next.js 运行时每次都需要编译，如果编译未报错而在运行时报错，那么错误提示只会显示编译完的文件的错误位置，而不像 CSR 一样能显示原始文件的错误位置，这对调试非常不友好。最常遇到的就是 &lt;code&gt;document is not defined&lt;/code&gt;，但是大项目的迁移中很可能不记得自己那个地方用到了 DOM API 导致这样的报错。&lt;/p&gt;
 
 &lt;h2 id=&#34;单元测试&#34;&gt;单元测试&lt;/h2&gt;
 
-&lt;p&gt;To be continue&amp;hellip;&lt;/p&gt;
+&lt;p&gt;由于 &lt;code&gt;create-react-app&lt;/code&gt; 自带 jest 并且将测试命令集成在了 react-scripts 中（inject 之前），我们不需要额外对 jest 的 match、mock、transform 等属性进行配置。在 Next.js 中，我们则需要重新对 jest 进行配置。&lt;/p&gt;
+
+&lt;p&gt;我使用的 jest 配置如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;module.exports = {
+  moduleFileExtensions: [&amp;quot;ts&amp;quot;, &amp;quot;tsx&amp;quot;, &amp;quot;js&amp;quot;],
+  transform: {
+    &amp;quot;^.+\\.tsx?$&amp;quot;: &amp;quot;ts-jest&amp;quot;,
+    &amp;quot;^.+\\.js$&amp;quot;: &amp;quot;babel-jest&amp;quot;
+  },
+  testMatch: [&amp;quot;**/*.(test|spec).(ts|tsx)&amp;quot;, &amp;quot;**/__tests__/*&amp;quot;],
+  globals: {
+    &amp;quot;ts-jest&amp;quot;: {
+      babelConfig: true,
+      tsConfig: &amp;quot;jest.tsconfig.json&amp;quot;
+    }
+  },
+  coveragePathIgnorePatterns: [&amp;quot;/node_modules/&amp;quot;, &amp;quot;enzyme.js&amp;quot;],
+  setupFilesAfterEnv: [&amp;quot;&amp;lt;rootDir&amp;gt;/enzyme.js&amp;quot;],
+  coverageReporters: [&amp;quot;json&amp;quot;, &amp;quot;lcov&amp;quot;, &amp;quot;text&amp;quot;, &amp;quot;text-summary&amp;quot;],
+  moduleNameMapper: {
+    &amp;quot;\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$&amp;quot;:
+      &amp;quot;&amp;lt;rootDir&amp;gt;/__mocks__/fileMock.js&amp;quot;,
+    &amp;quot;\\.(css|less|scss)$&amp;quot;: &amp;quot;&amp;lt;rootDir&amp;gt;/__mocks__/styleMock.js&amp;quot;
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;由于我们项目使用了 TypeScript，所以需要用 ts-jest 来解析 TypeScript，同时我们需要配置一下运行单元测试是的 TypeScript 编译规则，也就是 &lt;code&gt;jest.tsconfig.json&lt;/code&gt; 这个文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+  &amp;quot;compilerOptions&amp;quot;: {
+    &amp;quot;allowSyntheticDefaultImports&amp;quot;: true,
+    &amp;quot;module&amp;quot;: &amp;quot;commonjs&amp;quot;,
+    &amp;quot;target&amp;quot;: &amp;quot;esnext&amp;quot;,
+    &amp;quot;jsx&amp;quot;: &amp;quot;react&amp;quot;,
+    &amp;quot;sourceMap&amp;quot;: false,
+    &amp;quot;experimentalDecorators&amp;quot;: true,
+    &amp;quot;noImplicitUseStrict&amp;quot;: true,
+    &amp;quot;removeComments&amp;quot;: true,
+    &amp;quot;moduleResolution&amp;quot;: &amp;quot;node&amp;quot;,
+    &amp;quot;lib&amp;quot;: [&amp;quot;es2017&amp;quot;, &amp;quot;dom&amp;quot;],
+    &amp;quot;typeRoots&amp;quot;: [&amp;quot;node_modules/@types&amp;quot;]
+  },
+  &amp;quot;exclude&amp;quot;: [&amp;quot;node_modules&amp;quot;, &amp;quot;out&amp;quot;, &amp;quot;.next&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样的配置仍然存在一个问题，就是：jest 中无法正常解析某些 import 语句。&lt;code&gt;&amp;quot;allowSyntheticDefaultImports&amp;quot;: true&lt;/code&gt; 这个 TypeScript 配置的目的是允许 default import。在某些包里是没有 default export 的，例如 React。在 JavaScript 中我们可以用 &lt;code&gt;import React from &#39;react&#39;&lt;/code&gt; 的原因是这个是直接从 react 包本体中引入的，而 react 包中是有 &lt;code&gt;module.exports&lt;/code&gt; 的语句的。但是在 TypeScript 中，import 实际上解析到的并不是 react 包本体，而是 &lt;code&gt;@types/react&lt;/code&gt; 这个包。而这个包的 index.d.ts 文件里是没有一个 default export 的，所以 TypeScript 中如果我们不使用 &lt;code&gt;&amp;quot;allowSyntheticDefaultImports&amp;quot;: true&lt;/code&gt; 的配置，&lt;code&gt;import React from &#39;react&#39;&lt;/code&gt; 是会报错的。而在 jest 执行的时候，我即使开启了配置，还是遇到了这样的报错。所以最后我们决定全部改成 &lt;code&gt;import * as React from &#39;react&#39;&lt;/code&gt; 的写法了。同样有这种情况的还有 &lt;code&gt;ReactDOM&lt;/code&gt; 和 &lt;code&gt;proptypes&lt;/code&gt; 这两个包。&lt;/p&gt;
 </description>
     </item>
     

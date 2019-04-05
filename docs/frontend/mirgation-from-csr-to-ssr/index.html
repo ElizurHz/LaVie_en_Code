@@ -49,8 +49,8 @@
     "description" : "CSR: 客户端渲染，Client Side Rendering SSR: 服务端渲染，Server Side Rendering   TL;DR 目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。
 下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。
 关于浏览器与 DOM SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 document is not defined 的错误。
-Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.js 中使用，例如 redux, redux-saga, react-intl 等，但是使用的方式和在 CSR App 中的有所区别。另外，Next.js 中需要使用 @zeit 的一些 packages，它们与 SSR 相关。
-next.config.js 这个是放在根目录的 next 的配置文件，我们在这里可以配置一些 webpack loaders 的支持，例如 CSS（如果不配置就只能支持行内和 styled-jsx）, SASS, TypeScript 等，需要安装一些 @zeit 的 plugins。",
+关于 document is not defined，比较常遇到的情况有：
+ 页面调用了 document、window 相关的 API 使用了 ReactDOM.createPortal。由于 ReactDOM.createPortal 必须有一个挂载的 DOM 节点，所以在浏览器环境完成前是无法使用的，解决方法就是在 componentDidMount 之后再加载：用变量进行条件渲染，参考官方例子。 某些组件如果使用 DOM API，且在被引用时未使用 next/dynamic 进行异步加载，也可能会导致这种问题  Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz",
     "creator" : "ElizurHz",
@@ -61,7 +61,7 @@ next.config.js 这个是放在根目录的 next 的配置文件，我们在这�
     "datePublished": "2019-03-26 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-03-26 00:00:00 &#43;0000 UTC",
     "url" : "https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/",
-    "wordCount" : "570",
+    "wordCount" : "776",
     "keywords" : [ "React","SSR","Javascript","Next.js", "La Vie en Code - 编码人生"]
 }
 </script>
@@ -180,6 +180,14 @@ next.config.js 这个是放在根目录的 next 的配置文件，我们在这�
 <h2 id="关于浏览器与-dom">关于浏览器与 DOM</h2>
 
 <p>SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 <code>document is not defined</code> 的错误。</p>
+
+<p>关于 <code>document is not defined</code>，比较常遇到的情况有：</p>
+
+<ul>
+<li>页面调用了 document、window 相关的 API</li>
+<li>使用了 ReactDOM.createPortal。由于 ReactDOM.createPortal 必须有一个挂载的 DOM 节点，所以在浏览器环境完成前是无法使用的，解决方法就是在 <code>componentDidMount</code> 之后再加载：用变量进行条件渲染，参考<a href="https://github.com/zeit/next.js/tree/canary/examples/with-portals">官方例子</a>。</li>
+<li>某些组件如果使用 DOM API，且在被引用时未使用 <code>next/dynamic</code> 进行异步加载，也可能会导致这种问题</li>
+</ul>
 
 <h2 id="packages">Packages</h2>
 
@@ -330,15 +338,64 @@ function renderAndCache(ctx, pagePath, queryParams) {
 <ul>
 <li><code>dev</code> 可以启动一个 dev server，它会自动构建项目到根目录下的 <code>.next</code> 文件夹中，可以在代码保存后热更新。</li>
 <li>如果需要在 EC/Docker 之类的生产环境中运行，需要先 <code>build</code>，以生产的环境变量构建项目，再 <code>start</code> 启动服务。这里我们相当于是直接部署/使用了 Node.js 的 runtime，开启了一个 Node.js 进程，所以这一步可以用 pm2 等管理工具来替代。</li>
+<li><code>next export</code> 是可以输出静态文件的。它是根据 pages 的目录结构输出的，可以不依赖于服务端来展示静态页面，当然正常的 JavaScript 也是可以运行的。但是有一点就是，如果在后端加了一些修改渲染的操作，比如上面提到的缓存和国际化，那在这个打包方式下，它们是完全不可用的。也就是说如果你有在 Node.js 层加入一些除路由外的额外功能，那你是不能使用静态页面的方式构建并直接上传到 github pages 或者 firebase 等托管服务的。</li>
 </ul>
 
 <h2 id="错误提示">错误提示</h2>
 
-<p>由于 Next.js 运行时每次都需要编译，如果编译未报错而在运行时报错，那么错误提示只会显示编译完的文件的错误位置，而不像 CSR 一样能显示原始文件的错误位置，这对调试非常不友好。</p>
+<p>由于 Next.js 运行时每次都需要编译，如果编译未报错而在运行时报错，那么错误提示只会显示编译完的文件的错误位置，而不像 CSR 一样能显示原始文件的错误位置，这对调试非常不友好。最常遇到的就是 <code>document is not defined</code>，但是大项目的迁移中很可能不记得自己那个地方用到了 DOM API 导致这样的报错。</p>
 
 <h2 id="单元测试">单元测试</h2>
 
-<p>To be continue&hellip;</p>
+<p>由于 <code>create-react-app</code> 自带 jest 并且将测试命令集成在了 react-scripts 中（inject 之前），我们不需要额外对 jest 的 match、mock、transform 等属性进行配置。在 Next.js 中，我们则需要重新对 jest 进行配置。</p>
+
+<p>我使用的 jest 配置如下：</p>
+
+<pre><code class="language-javascript">module.exports = {
+  moduleFileExtensions: [&quot;ts&quot;, &quot;tsx&quot;, &quot;js&quot;],
+  transform: {
+    &quot;^.+\\.tsx?$&quot;: &quot;ts-jest&quot;,
+    &quot;^.+\\.js$&quot;: &quot;babel-jest&quot;
+  },
+  testMatch: [&quot;**/*.(test|spec).(ts|tsx)&quot;, &quot;**/__tests__/*&quot;],
+  globals: {
+    &quot;ts-jest&quot;: {
+      babelConfig: true,
+      tsConfig: &quot;jest.tsconfig.json&quot;
+    }
+  },
+  coveragePathIgnorePatterns: [&quot;/node_modules/&quot;, &quot;enzyme.js&quot;],
+  setupFilesAfterEnv: [&quot;&lt;rootDir&gt;/enzyme.js&quot;],
+  coverageReporters: [&quot;json&quot;, &quot;lcov&quot;, &quot;text&quot;, &quot;text-summary&quot;],
+  moduleNameMapper: {
+    &quot;\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$&quot;:
+      &quot;&lt;rootDir&gt;/__mocks__/fileMock.js&quot;,
+    &quot;\\.(css|less|scss)$&quot;: &quot;&lt;rootDir&gt;/__mocks__/styleMock.js&quot;
+  }
+};
+</code></pre>
+
+<p>由于我们项目使用了 TypeScript，所以需要用 ts-jest 来解析 TypeScript，同时我们需要配置一下运行单元测试是的 TypeScript 编译规则，也就是 <code>jest.tsconfig.json</code> 这个文件：</p>
+
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;target&quot;: &quot;esnext&quot;,
+    &quot;jsx&quot;: &quot;react&quot;,
+    &quot;sourceMap&quot;: false,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;noImplicitUseStrict&quot;: true,
+    &quot;removeComments&quot;: true,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;lib&quot;: [&quot;es2017&quot;, &quot;dom&quot;],
+    &quot;typeRoots&quot;: [&quot;node_modules/@types&quot;]
+  },
+  &quot;exclude&quot;: [&quot;node_modules&quot;, &quot;out&quot;, &quot;.next&quot;]
+}
+</code></pre>
+
+<p>这样的配置仍然存在一个问题，就是：jest 中无法正常解析某些 import 语句。<code>&quot;allowSyntheticDefaultImports&quot;: true</code> 这个 TypeScript 配置的目的是允许 default import。在某些包里是没有 default export 的，例如 React。在 JavaScript 中我们可以用 <code>import React from 'react'</code> 的原因是这个是直接从 react 包本体中引入的，而 react 包中是有 <code>module.exports</code> 的语句的。但是在 TypeScript 中，import 实际上解析到的并不是 react 包本体，而是 <code>@types/react</code> 这个包。而这个包的 index.d.ts 文件里是没有一个 default export 的，所以 TypeScript 中如果我们不使用 <code>&quot;allowSyntheticDefaultImports&quot;: true</code> 的配置，<code>import React from 'react'</code> 是会报错的。而在 jest 执行的时候，我即使开启了配置，还是遇到了这样的报错。所以最后我们决定全部改成 <code>import * as React from 'react'</code> 的写法了。同样有这种情况的还有 <code>ReactDOM</code> 和 <code>proptypes</code> 这两个包。</p>
 
     </div>
 
