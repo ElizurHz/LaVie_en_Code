@@ -85,3 +85,5 @@ draft：
 ## 单元测试
 
 Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：`With React 16 and above, instance() returns null for stateless functional components.`。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了[对 Hooks 的支持](https://github.com/airbnb/enzyme#react-hooks-support)：目前只在 `shallow()` 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 [react-testing-library](https://github.com/testing-library/react-testing-library) 来测试。但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 `useDispatch` 和 `useSelector`，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有。所以只能稍微研究或者等待一下了。
+
+相比之下，class component 可以直接把所有的 connect 以及其他高阶组件和 dumb component 剥离开来测试，因为我们测试组件仅仅关注的是 dumb component 上的逻辑，高阶组件注入的 props 完全可以通过 mock 来做（通常我会直接无视 TypeScript 的类型错误，因为很多 props 其实测试中是不必要的，例如 react-intl 的高阶组件注入的那些 props）。但是对于 Hooks，没有了 connect，也就是说 redux 和 dumb component 其实是耦合在一起了，做单元测试首先就会提示，必须用 react-redux 的 `<Provider>` 把组件包裹起来。这样其实无形中增加了测试的难度。希望以后有更好的单元测试方案吧。
