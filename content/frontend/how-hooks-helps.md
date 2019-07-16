@@ -81,3 +81,7 @@ draft：
 对于“不必要的 re-render”，举个例子来说，就是父组件使用 `useSelector` 订阅了 redux store 的某个属性，但是它与子组件无关。如果这个属性有变化，那么按照 React 的 diff 算法，它的子组件都会 re-render 一遍。这也不能说 React 本身有问题，因为 diff 算法已经足够好，能够高效地解决 React 渲染计算的问题。那么我们其实是不希望与该属性无关的子组件去 re-render 的，因为对我们来说它其实一点变化都没有。所以 `React.memo`、`React.PureComponent` 和 `shouldComponentUpdate()` 就是用于解决这种问题的。
 
 它在 react-redux 中也挺重要的，因为官方说 `useSelector` 不会阻止子组件的不必要的 re-render，而官方也推荐使用 `React.memo` 进行优化。
+
+## 单元测试
+
+Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：`With React 16 and above, instance() returns null for stateless functional components.`。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了[对 Hooks 的支持](https://github.com/airbnb/enzyme#react-hooks-support)：目前只在 `shallow()` 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 [react-testing-library](https://github.com/testing-library/react-testing-library) 来测试。但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 `useDispatch` 和 `useSelector`，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有。所以只能稍微研究或者等待一下了。
