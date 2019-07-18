@@ -1,18 +1,90 @@
 ---
-title: React Hooks 对于我而言意味着什么
+title: React Hooks 能给我们带来什么
 date: 2019-07-08
 categories: ["前端"]
-tags: ["React", "react-redux", "JavaScript"]
-draft: true
+tags: ["React", "react-redux", "JavaScript", "TypeScript"]
 ---
 
 # TL;DR
 
 很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。
 
+这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。
+
 # Before & After Hooks
 
 使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。
+
+## Before
+
+```TypeScript
+/** container.ts */
+import { connect } from 'react-redux'
+import { injectIntl } from 'react-intl'
+import ComponentA from './componentA'
+import * as actions from 'your/path/to/actions'
+import { bindActionCreators, Dispatch } from 'redux'
+
+function mapStateToProps(state: any): any {
+  return {
+    variableA: state.stateA.variableA
+  }
+}
+
+function mapDispatchToProps(dispatch: Dispatch): any {
+  return {
+    actionA: bindActionCreators(actions.actionA, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentA) as any
+```
+
+```tsx
+/** component.tsx */
+interface Props {
+  actionA: () => void;
+  variableA: string;
+}
+
+export default class ComponentA extends React.Component {
+  public render(): JSX.Element {
+    return <div onClick={() => this.props.actionA}>{this.props.variableA}</div>;
+  }
+}
+```
+
+## After
+
+```tsx
+/** index.tsx */
+import * as React from "react";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import * as actions from "path/to/actions";
+
+interface Props {
+  stateA: string;
+}
+
+export const ComponentA = (props: Props) => {
+  const dispatch = useDispatch();
+  const variableA = useSelector(
+    (state: any) => state.stateA.variableA,
+    shallowEqual
+  );
+
+  return <div onClick={() => dispatch(actions.actionA())}>{variableA}</div>;
+};
+
+export default injectIntl(React.memo(ComponentA));
+```
+
+## So?
+
+从改造前的代码和改造后的代码中，我们可以看出，使用 Hooks 确实节省了很多代码的行数。在 connect 的写法中，上面的例子并未指定 mapDispatchToProps 的返回值类型。而在 dumb component 中，组件的 action 类型其实是遵循于组件内定义的 props 的类型的，如果我们在组件内定义的 action 类型和 action creator 中定义的类型不同，例如传入参数不同，那么实际上 TypeScript 是检测不出这个问题的。这样就会引起不必要的 Bug。而使用 Hooks 完全可以避免这个问题，因为我们是直接把 action creator 引进来的，TypeScript 可以识别出 action creator 中定义的类型。也就是说如果你传入了错误的参数，那么此时 TypeScript 编译是不会通过的。所以可见，使用 Hooks 可以减少开发中产生 bug 的几率，也简化了代码，更易读更易维护。
 
 # Tech Spec
 
@@ -67,11 +139,21 @@ type EffectCallback = () => (void | (() => void | undefined));
 
 ## Hooks in react-redux
 
-draft：
+[Hooks](https://react-redux.js.org/api/hooks) 在 react-redux 中有专门的文档介绍。常用的 API 其实就两个：用于获取 state 的 `useSelector` 和用户 dispatch action 的 `useDispatch`。使用的方式很简单，参考官方文档就可以了。
 
-1. 使用 Hooks 重写了 connect
-2. 提供了 Hooks 来替代 connect，可以在 Functional Component 中使用
-3. useSelector 和 shallowEqual
+### useSelector
+
+`useSelector` 允许我们使用 `reselect` 的 selector 进行 memorize 的操作，也可以直接从 redux store 中获取相应的 property。但是有个“比较”的问题，就是官方文档使用了 === 的比较（[参考源码](https://github.com/reduxjs/react-redux/blob/316467a07e29911d82ba0342364a907e05d9066c/src/hooks/useSelector.js#L17)），而如果我们 select 出来的是 Object，那每次比较出来的 Object 都是不同的。因为 reducer 遵循了纯函数的原则，每次都会 return 一个新的 state，而 state 是一个 JavaScript Plain Object，也就是说每次 return 出来的 Object 指向的内存地址都是不同的，那么 select 出来的 Object 也是不同的。这样就会导致**每次 redux store 有变化，这个组件就会重新渲染**。这时候我们就需要浅比较了。官方给我们提供了一个 `shallowEqual` 函数，让我们可以做浅比较。这个方法其实在早前的 react-redux 版本中就有了，因为之前 react-redux 的 connect 就是用了 shallowEqual 的。当然我们也可以使用诸如 lodash 中的浅比较方法。
+
+### useDispatch
+
+`useDispatch` 其实没有什么好说的，它就是一个函数，不接收任何参数，只能在组件中使用：
+
+```JavaScript
+const dispatch = useDispatch()
+```
+
+它的功能就是 redux 中的 `store.dispatch`。
 
 ## React.memo
 
@@ -84,6 +166,12 @@ draft：
 
 ## 单元测试
 
-Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：`With React 16 and above, instance() returns null for stateless functional components.`。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了[对 Hooks 的支持](https://github.com/airbnb/enzyme#react-hooks-support)：目前只在 `shallow()` 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 [react-testing-library](https://github.com/testing-library/react-testing-library) 来测试。但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 `useDispatch` 和 `useSelector`，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有。所以只能稍微研究或者等待一下了。
+其实 Hooks 并不是完美的，比如单元测试。
 
-相比之下，class component 可以直接把所有的 connect 以及其他高阶组件和 dumb component 剥离开来测试，因为我们测试组件仅仅关注的是 dumb component 上的逻辑，高阶组件注入的 props 完全可以通过 mock 来做（通常我会直接无视 TypeScript 的类型错误，因为很多 props 其实测试中是不必要的，例如 react-intl 的高阶组件注入的那些 props）。但是对于 Hooks，没有了 connect，也就是说 redux 和 dumb component 其实是耦合在一起了，做单元测试首先就会提示，必须用 react-redux 的 `<Provider>` 把组件包裹起来。这样其实无形中增加了测试的难度。希望以后有更好的单元测试方案吧。
+Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：`With React 16 and above, instance() returns null for stateless functional components.`。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了[对 Hooks 的支持](https://github.com/airbnb/enzyme#react-hooks-support)：目前只在 `shallow()` 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 [react-testing-library](https://github.com/testing-library/react-testing-library) 来测试。**但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 `useDispatch` 和 `useSelector`，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有详细的教程。**
+
+相比之下，class component 可以直接把所有的 connect 以及其他高阶组件和 dumb component 剥离开来测试，因为我们测试组件仅仅关注的是 dumb component 上的逻辑，高阶组件注入的 props 完全可以通过 mock 来做（通常我会直接无视 TypeScript 的类型错误，因为很多 props 其实测试中是不必要的，例如 react-intl 的高阶组件注入的那些 props）。但是对于 Hooks，没有了 connect，也就是说 redux 和 dumb component 其实是耦合在一起了，做单元测试首先就会提示，必须用 react-redux 的 `<Provider>` 把组件包裹起来。这样其实无形中增加了测试的难度。
+
+# 总结
+
+Hooks 是个新技术，它确实给我们的开发带来了便利，但是单元测试上却并不是那么容易。这也是我们经常遇到的问题，就是只在意功能而忽视了代码质量。只有功能和质量同时有保障的代码才是好的代码。关于单元测试这部分，我会继续研究并继续关注社区上的相关动态。

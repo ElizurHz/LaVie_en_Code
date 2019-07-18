@@ -1,6 +1,7 @@
 ---
 title: Amazon AWS Serverless 部署 React 项目
 date: 2019-07-18
+tags: ["React", "AWS"]
 ---
 
 # 写在前面
