@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/ops/remote-private-git-first-look/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/ops/aws-serverless-deployment/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Amazon AWS Serverless 部署 React 项目 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="Amazon AWS Serverless 部署 React 项目 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "ops",
+    "name" : "Amazon AWS Serverless 部署 React 项目",
+    "headline" : "Amazon AWS Serverless 部署 React 项目",
+    "description" : "写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。
+Prerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。
+CSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。
+手动部署 首先只要在 AWS S3 的控制面板里创建存储桶就可以了，配置可以都用默认配置。
+其次，我们需要进入已经建好的存储桶，把静态网站托管打开。
+接着我们需要注意，一定要把 error.html 指向 index.html。因为我们可能在项目中使用 react-router，而在 S3 的静态文件托管中，任何子路径都会被认为是 error，因为我们使用 create-react-app 创建的项目，入口文件只有一个 index.html，而不是有其他 html 文件的多页面应用。只有把错误页面指向 index.html，才能正常使用 react-router。
+这里会显示该存储桶的访问地址，通过这个地址就可以访问了。接着我们在存储桶的“概述”标签页上传我们打包好的文件（index.html 需要在存储桶的根目录），这样我们的站点就可以访问了。
+如果需要 https，我们可以在 CloudFront 上创建一个域名，把源指向我们的 S3 bucket 就可以了。这个过程无需我们申请任何的证书。
+serverless 命令行部署 首先我们需要安装 serverless：运行 yarn add --global serverless(如果你安装了 yarn) 或者 npm install -g serverless。",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz",
+    "creator" : "ElizurHz",
+    "publisher": "ElizurHz",
+    "accountablePerson" : "ElizurHz",
+    "copyrightHolder" : "ElizurHz",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-07-18 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-07-18 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/ops/aws-serverless-deployment/",
+    "wordCount" : "584",
+    "keywords" : [  "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Amazon AWS Serverless 部署 React 项目</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-07-18 itemprop="datePublished">July 18, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="写在前面">写在前面</h1>
+
+<h2 id="为什么使用-serverless">为什么使用 Serverless</h2>
+
+<p>因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。</p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<p>如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 <code>serverless</code> 的 npm package。同时我们还需要在项目下编写 <code>serverless.yml</code>。具体的写法可以参考 <code>serverless</code> 的<a href="https://serverless.com/">官方文档</a>。</p>
+
+<h1 id="csr-create-react-app">CSR(create-react-app)</h1>
+
+<p>客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。</p>
+
+<h2 id="手动部署">手动部署</h2>
+
+<p>首先只要在 AWS S3 的控制面板里创建存储桶就可以了，配置可以都用默认配置。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-1.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>其次，我们需要进入已经建好的存储桶，把静态网站托管打开。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>接着我们需要注意，一定要把 error.html 指向 index.html。因为我们可能在项目中使用 react-router，而在 S3 的静态文件托管中，任何子路径都会被认为是 error，因为我们使用 create-react-app 创建的项目，入口文件只有一个 index.html，而不是有其他 html 文件的多页面应用。只有把错误页面指向 index.html，才能正常使用 react-router。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-3.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>这里会显示该存储桶的访问地址，通过这个地址就可以访问了。接着我们在存储桶的“概述”标签页上传我们打包好的文件（index.html 需要在存储桶的根目录），这样我们的站点就可以访问了。</p>
+
+<p>如果需要 https，我们可以在 CloudFront 上创建一个域名，把源指向我们的 S3 bucket 就可以了。这个过程无需我们申请任何的证书。</p>
+
+<h2 id="serverless-命令行部署">serverless 命令行部署</h2>
+
+<p>首先我们需要安装 serverless：运行 <code>yarn add --global serverless</code>(如果你安装了 yarn) 或者 <code>npm install -g serverless</code>。</p>
+
+<p>serverless 这个 npm package 可以使用插件来辅助进行部署。这里推荐使用 <code>serverless-finch</code> 进行部署。我们需要编写一个 <code>serverless.yml</code> 文件，serverless 包会读取这个文件的配置进行部署。参考配置如下：</p>
+
+<pre><code class="language-yaml">service: your-app-name
+
+frameworkVersion: &quot;=1.38.0&quot;
+
+# AWS 的配置
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-2
+  profile: default
+
+plugins:
+  - serverless-finch
+
+# 以下为 serverless-finch 的配置
+custom:
+  client:
+    bucketName: your-bucket-name # 需要和 S3 上创建的 bucket 同名
+    distributionFolder: build # 本地打包的输出目录
+    indexDocument: index.html # 同 S3 上静态文件托管中设置的入口文档
+    errorDocument: index.html # 同 S3 上静态文件托管中设置的错误文档
+</code></pre>
+
+<p>然后我们需要在 AWS Console 的 IAM 上创建一个能读写 S3 的角色。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-4.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>进入 IAM 的控制台，左侧菜单选择“用户”，然后添加用户。接着填写用户名，并且需要勾选“编程访问”。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-5.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>接着要给创建的用户附加权限，这边推荐可以选择 AmazonS3FullAccess。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/aws-serverless-deployment/aws-6.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>完成创建之后，这里会出现 ID 和密钥，接着我们需要用它：</p>
+
+<pre><code class="language-bash">serverless config credentials --provider aws --key [YOUR_KEY] --secret [YOUR_SECRET]
+</code></pre>
+
+<p>这里的 key 填写 ID，secret 填写密钥。这一步是设置我们 serverless 的当前用户权限。<strong>注意如果需要切换用户，需要用 AWS CLI 来切换，实测 serverless 中覆盖掉 credentials 的配置并不会生效。</strong></p>
+
+<p>这样我们就完成了配置。需要部署的时候，我们只需要打包好文件，然后运行 <code>serverless client deploy</code> 即可。</p>
+
+<h1 id="ssr-next-js">SSR(Next.js)</h1>
+
+<p>由于篇幅限制，并且我个人踩坑踩了好几个星期，很多细节没法回忆起来或者无法详细说明。并且作为前端开发者，我们其实并不需要了解整个 AWS Serverless 的工作原理，我们只需要配合后端/运维人员把我们代码层面需要做的做好即可。所以这里只提供一个大概的方案。</p>
+
+<h2 id="原理">原理</h2>
+
+<p>与 CSR App 不同的是，SSR App 部署完成后并不能直接访问静态页面，而是要通过 API Gateway 去访问（地址会在部署完之后显示在命令行，或者可以在 AWS 的 API Gateway 控制台查看）。当我们访问 API Gateway 时，API Gateway 会解析相应的请求（也就是路由），并转发至 AWS Lambda。而 AWS Lambda 则会根据我们写好的 Lambda 函数（<code>./server/lambda.js</code>）来访问 S3 上存储的对应的静态文件。</p>
+
+<p>当然我们也可以设置自定义的域名，但是最好是在 Route53 申请，这样才能享受到 AWS 的一系列服务（全家桶）。</p>
+
+<h2 id="api-gateway">API Gateway</h2>
+
+<p>API Gateway 有几个基本概念/配置项。</p>
+
+<p>首先是 stage，它代表的是不同的阶段，例如开发环境、测试环境、生产环境等等。在 API Gateway 的访问域名中会有一个 <code>/{stage}</code> 的路径。</p>
+
+<p>其次是&rdquo;资源&rdquo;，这里就是配置 API 访问的了。我们只需要设置一个通用的访问如 <code>/{proxy+}</code> 即可，因为我们有许多路由，不可能每个都配置到这里来，而不可访问的路由最好使用 Next.js 中的 <code>_error.js</code> 来做，而不是在这里限制。</p>
+
+<h2 id="serverless">serverless</h2>
+
+<p>这里会使用到一些不同的插件，原来的 serverless-finch 将不再使用，因为它是设置静态文件托管的。这里使用到了两个：<code>serverless-apigw-binary</code> 和 <code>serverless-domain-manager</code>。<code>serverless-apigw-binary</code> 是用于配置 API Gateway 的，而 <code>serverless-domain-manager</code> 可以把自定义域名到 S3 bucket 的整个流程的配置都配置好。由于涉及到机密问题，这里就不把 <code>serverless.yml</code> 放出来了，具体可以去搜索一下这两个包的使用方式。</p>
+
+<h2 id="lambda">Lambda</h2>
+
+<p>Lambda 其实就是一个压缩文件，里面是各种函数包。它实际上有点类似于一个小型的虚拟机，所以 Next.js 中每个页面打包出来都有 5.9MB。AWS 上的 Lambda 平台会做一个从 API Gateway 到我们上传的函数包中对应的文件的映射，这样就实现了路由功能。</p>
+
+<p>Lambda 在 SSR(Next.js) 中其实就是那个进行渲染和路由导航的 Node.js 服务。而实际上它就是一个 Node 服务器，可以用任意的 Node 框架来写。这里我使用的是 Express。示例代码如下：</p>
+
+<pre><code class="language-javascript">const express = require(&quot;express&quot;);
+const routes = require(&quot;./routes&quot;); // next-routes 做的自定义路由
+
+const app = express();
+
+// host the static files
+app.use(&quot;/_next/static&quot;, express.static(path.join(__dirname, &quot;/static&quot;)));
+app.use(&quot;/static&quot;, express.static(&quot;static&quot;));
+
+app.get(&quot;*&quot;, (req, res) =&gt; {
+  const parsedUrl = parse(req.url, true);
+  const { pathname, query, search } = parsedUrl;
+
+  // Map url to page directory
+  const matchRoute = routes.match(pathname);
+  if (matchRoute &amp;&amp; matchRoute.route) {
+    const page = matchRoute.route.page;
+    const params = matchRoute.params;
+
+    if (params) {
+      if (search) {
+        req.url += &quot;&amp;&quot; + querystring.stringify(params);
+      } else {
+        req.url += &quot;?&quot; + querystring.stringify(params);
+      }
+
+      try {
+        __non_webpack_require__(`./serverless/pages${page}`).render(
+          req,
+          res,
+          parsedUrl,
+          Object.assign(params, query)
+        );
+      } catch (err) {
+        __non_webpack_require__(&quot;./serverless/pages/_error&quot;).render(
+          req,
+          res,
+          parsedUrl,
+          Object.assign(params, query)
+        );
+      }
+    } else {
+      try {
+        __non_webpack_require__(`./serverless/pages${page}`).render(
+          req,
+          res,
+          parsedUrl
+        );
+      } catch (err) {
+        __non_webpack_require__(&quot;./serverless/pages/_error&quot;).render(
+          req,
+          res,
+          parsedUrl
+        );
+      }
+    }
+  } else {
+    __non_webpack_require__(&quot;./serverless/pages/_error&quot;).render(
+      req,
+      res,
+      parsedUrl
+    );
+  }
+});
+</code></pre>
+
+<p>这边实际上就是在做路由的映射，然后载入 Next.js 打包出来对应的页面入口，接着就可以使用 React 的能力进行渲染。关于 Next.js，可以参考我的另一篇博文：<a href="https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/">Next.js 实战：从 CSR 迁移到 SSR</a>。但是在实际生产中，这个文件是需要被编译成 ES5 的。所以我们还需要写一个 Webpack 配置来打包它，只需要在根目录建一个 <code>webpack.config.js</code> 即可：</p>
+
+<pre><code class="language-javascript">// webpack.config.js
+const path = require(&quot;path&quot;);
+const CopyWebpackPlugin = require(&quot;copy-webpack-plugin&quot;);
+
+const LAMBDA_FILE_LOC = path.join(__dirname, &quot;./server/lambda.js&quot;);
+const LAMBDA_DIR = path.join(__dirname, &quot;./build&quot;);
+const LAMBDA_FILE_PROD = &quot;./lambda_prod.js&quot;;
+
+const plugins = [
+  new CopyWebpackPlugin([
+    // your custom config
+  ])
+];
+
+// 打包配置
+module.exports = {
+  entry: LAMBDA_FILE_LOC,
+  externals: [&quot;aws-sdk&quot;], // 设置成 AWS Lambda 支持的格式
+  output: {
+    libraryTarget: &quot;commonjs&quot;,
+    filename: LAMBDA_FILE_PROD,
+    path: LAMBDA_DIR
+  },
+  target: &quot;node&quot;,
+  node: {
+    __filename: false,
+    __dirname: false
+  },
+  mode: &quot;production&quot;,
+  plugins
+};
+</code></pre>
+
+<p>然后运行 <code>npx webpack</code> 即可进行打包。使用 <code>CopyWebpackPlugin</code> 的原因主要是，我们会遇到一些文件无法被 Next.js 打包，但是它们又是 Web App 运行必需的，或者是 AWS Lambda 的函数包需要的。所以我们只能手动把它们拷贝到 Next.js 的 build 目录，因为 serverless 会根据这个目录来打包出 AWS Lambda 所需的函数包。</p>
+
+<h2 id="部署流程">部署流程</h2>
+
+<ol>
+<li><p>首先会先运行 <code>next build</code>，将文件打包至 <code>./build</code> 目录。由于在 <code>next.config.js</code> 中设置了 <code>target: 'serverless'</code>，所以打包出来的文件是 serverless 的版本，会与云主机、容器部署的版本不同。</p></li>
+
+<li><p>编译 <code>./server/lambda.js</code>. 并在 <code>./build</code> 目录下生成 <code>lambda_prod.js</code>。这一步主要是要把 ES6 写的 lambda 函数编译成 ES5，这样 AWS Lambda 才能正常访问它。</p></li>
+
+<li><p>将所需文件打包成 <code>.zip</code>。压缩文件会在 <code>./.serverless</code> 目录下生成。 需要打包的内容可以在 <code>serverless.yml</code> 的如下字段中设置：</p></li>
+</ol>
+
+<pre><code class="language-yaml">package:
+  exclude:
+    - ./**
+  include:
+    - build/**
+    - static/**
+</code></pre>
+
+<ol>
+<li>上传压缩文件至 S3，同时会自动修改 API Gateway 和 AWS Lambda 的相应设置。</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/ops/aws-serverless-deployment/>https://elizurhz.cn/ops/aws-serverless-deployment/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/ops/remote-private-git-first-look/" class="prev" rel="prev" title="ECS 上的 git 管理工具踩坑记"><i class="iconfont icon-left"></i>&nbsp;ECS 上的 git 管理工具踩坑记</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

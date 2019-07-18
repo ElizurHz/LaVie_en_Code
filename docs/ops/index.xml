@@ -6,10 +6,27 @@
     <description>Recent content in Ops on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/ops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Amazon AWS Serverless 部署 React 项目</title>
+      <link>https://elizurhz.cn/ops/aws-serverless-deployment/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/ops/aws-serverless-deployment/</guid>
+      <description>写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。
+Prerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。
+CSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。
+手动部署 首先只要在 AWS S3 的控制面板里创建存储桶就可以了，配置可以都用默认配置。
+其次，我们需要进入已经建好的存储桶，把静态网站托管打开。
+接着我们需要注意，一定要把 error.html 指向 index.html。因为我们可能在项目中使用 react-router，而在 S3 的静态文件托管中，任何子路径都会被认为是 error，因为我们使用 create-react-app 创建的项目，入口文件只有一个 index.html，而不是有其他 html 文件的多页面应用。只有把错误页面指向 index.html，才能正常使用 react-router。
+这里会显示该存储桶的访问地址，通过这个地址就可以访问了。接着我们在存储桶的“概述”标签页上传我们打包好的文件（index.html 需要在存储桶的根目录），这样我们的站点就可以访问了。
+如果需要 https，我们可以在 CloudFront 上创建一个域名，把源指向我们的 S3 bucket 就可以了。这个过程无需我们申请任何的证书。
+serverless 命令行部署 首先我们需要安装 serverless：运行 yarn add --global serverless(如果你安装了 yarn) 或者 npm install -g serverless。</description>
+    </item>
     
     <item>
       <title>ECS 上的 git 管理工具踩坑记</title>

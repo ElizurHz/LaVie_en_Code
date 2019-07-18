@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://elizurhz.cn/ops/aws-serverless-deployment/</loc>
+      
+      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</loc>
       
       <lastmod>2019-03-26T00:00:00+00:00</lastmod>
@@ -187,7 +197,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/categories/java/</loc>
+      <loc>https://elizurhz.cn/tags/java/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -199,7 +209,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/tags/java/</loc>
+      <loc>https://elizurhz.cn/categories/java/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -225,7 +235,7 @@
     <url>
       <loc>https://elizurhz.cn/</loc>
       
-      <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
       
       
       
@@ -249,7 +259,7 @@
     <url>
       <loc>https://elizurhz.cn/ops/</loc>
       
-      <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
       
       
       
@@ -391,7 +401,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/categories/%E7%BF%BB%E8%AF%91/</loc>
+      <loc>https://elizurhz.cn/tags/%E7%BF%BB%E8%AF%91/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -403,7 +413,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/tags/%E7%BF%BB%E8%AF%91/</loc>
+      <loc>https://elizurhz.cn/categories/%E7%BF%BB%E8%AF%91/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
