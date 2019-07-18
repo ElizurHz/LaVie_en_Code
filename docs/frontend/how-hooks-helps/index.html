@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz_">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/frontend/how-hooks-helps/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           React Hooks 能给我们带来什么 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="React Hooks 能给我们带来什么 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "frontend",
+    "name" : "React Hooks 能给我们带来什么",
+    "headline" : "React Hooks 能给我们带来什么",
+    "description" : "TL;DR 很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。
+这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。
+Before &amp; After Hooks 使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。
+Before /** container.ts */ import { connect } from 'react-redux' import { injectIntl } from 'react-intl' import ComponentA from './componentA' import * as actions from 'your/path/to/actions' import { bindActionCreators, Dispatch } from 'redux' function mapStateToProps(state: any): any { return { variableA: state.",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz_",
+    "creator" : "ElizurHz_",
+    "publisher": "ElizurHz_",
+    "accountablePerson" : "ElizurHz_",
+    "copyrightHolder" : "ElizurHz_",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-07-18 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-07-18 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/how-hooks-helps/",
+    "wordCount" : "628",
+    "keywords" : [ "React","react-redux","JavaScript","TypeScript", "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">React Hooks 能给我们带来什么</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-07-18 itemprop="datePublished">July 18, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<p>很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。</p>
+
+<p>这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。</p>
+
+<h1 id="before-after-hooks">Before &amp; After Hooks</h1>
+
+<p>使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。</p>
+
+<h2 id="before">Before</h2>
+
+<pre><code class="language-TypeScript">/** container.ts */
+import { connect } from 'react-redux'
+import { injectIntl } from 'react-intl'
+import ComponentA from './componentA'
+import * as actions from 'your/path/to/actions'
+import { bindActionCreators, Dispatch } from 'redux'
+
+function mapStateToProps(state: any): any {
+  return {
+    variableA: state.stateA.variableA
+  }
+}
+
+function mapDispatchToProps(dispatch: Dispatch): any {
+  return {
+    actionA: bindActionCreators(actions.actionA, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentA) as any
+</code></pre>
+
+<pre><code class="language-tsx">/** component.tsx */
+interface Props {
+  actionA: () =&gt; void;
+  variableA: string;
+}
+
+export default class ComponentA extends React.Component {
+  public render(): JSX.Element {
+    return &lt;div onClick={() =&gt; this.props.actionA}&gt;{this.props.variableA}&lt;/div&gt;;
+  }
+}
+</code></pre>
+
+<h2 id="after">After</h2>
+
+<pre><code class="language-tsx">/** index.tsx */
+import * as React from &quot;react&quot;;
+import { useDispatch, useSelector, shallowEqual } from &quot;react-redux&quot;;
+import * as actions from &quot;path/to/actions&quot;;
+
+interface Props {
+  stateA: string;
+}
+
+export const ComponentA = (props: Props) =&gt; {
+  const dispatch = useDispatch();
+  const variableA = useSelector(
+    (state: any) =&gt; state.stateA.variableA,
+    shallowEqual
+  );
+
+  return &lt;div onClick={() =&gt; dispatch(actions.actionA())}&gt;{variableA}&lt;/div&gt;;
+};
+
+export default injectIntl(React.memo(ComponentA));
+</code></pre>
+
+<h2 id="so">So?</h2>
+
+<p>从改造前的代码和改造后的代码中，我们可以看出，使用 Hooks 确实节省了很多代码的行数。在 connect 的写法中，上面的例子并未指定 mapDispatchToProps 的返回值类型。而在 dumb component 中，组件的 action 类型其实是遵循于组件内定义的 props 的类型的，如果我们在组件内定义的 action 类型和 action creator 中定义的类型不同，例如传入参数不同，那么实际上 TypeScript 是检测不出这个问题的。这样就会引起不必要的 Bug。而使用 Hooks 完全可以避免这个问题，因为我们是直接把 action creator 引进来的，TypeScript 可以识别出 action creator 中定义的类型。也就是说如果你传入了错误的参数，那么此时 TypeScript 编译是不会通过的。所以可见，使用 Hooks 可以减少开发中产生 bug 的几率，也简化了代码，更易读更易维护。</p>
+
+<h1 id="tech-spec">Tech Spec</h1>
+
+<h2 id="useeffect">useEffect</h2>
+
+<p>Class Component 对于我们来说有足够的功能新，因为我们可以通过自定义生命周期钩子来实现很多复杂的功能，这是在 React v16.8 前 Functional Component 无法实现的。这也是之前我喜欢用 Class Component 的原因。而 useEffect 这个近乎“万能”的 hook 可以实现几乎所有的生命周期钩子，这对于 Functional Component 非常关键，也是我重构组件最依赖的一个 hook。useEffect 的类型签名如下:</p>
+
+<pre><code class="language-TypeScript">function useEffect(effect: EffectCallback, deps?: DependencyList): void;
+
+type EffectCallback = () =&gt; (void | (() =&gt; void | undefined));
+type DependencyList = ReadonlyArray&lt;any&gt;;
+</code></pre>
+
+<p>可以看到 <code>useEffect</code> 有两个参数，第一个参数是一个 callback，里面写的是我们的逻辑。而第二个参数不要小看它，虽然它是可选参数，但是如何玩转 <code>useEffect</code> 完全就靠它了！它是“依赖”，React 官网也有不小的篇幅来描述怎样使用它。简而言之，这个“依赖”，就是<strong>当它改变的时候才会执行里面的 callback</strong>。先说下不传这个参数的情况，那就是每次 re-render 都会调用这个 hook。而我们在实际开发中往往不会希望我们所有的 <code>useEffect</code> 的 callback 在每次渲染都被调用一次。所以“依赖”的作用就在于此，例如：</p>
+
+<pre><code class="language-TypeScript">useEffect(() =&gt; {
+  console.log(props.name)
+}, [props.name])
+</code></pre>
+
+<p>这个 hook 只会在 <code>props.name</code> 发生变化的时候把 <code>props.name</code> 在控制台打印出来。这个相当于 Class Component 中的：</p>
+
+<pre><code class="language-TypeScript">public componentDidUpdate(prevProps) {
+  if (this.props.name !== prevProps.name) {
+    console.log(this.props.name)
+  }
+}
+</code></pre>
+
+<p>或者是即将被废弃的 <code>componentWillReceiveProps</code>。</p>
+
+<p>而如果我们修改一下这个依赖呢？这其实挺纠结的，因为如果你在你的项目中使用了 eslint，那么这里它会提示一个 <code>exhaustive-deps</code> 的 warning。而如果你开了 Prettier 的 eslint 错误自动修复。。。那不好意思，要么你只能不写，要么会被强制改成里面所有用到的依赖，如 state、props 或者其他变量等。起初我也陷入了深思，到底是不允许这么写，还是 eslint 有毛病呢？但是实际上，我们应该先抛弃 eslint，先在这将它 disable 了，因为 <code>useEffect</code> 能够做到的远比我们想象的多。</p>
+
+<p>上面既然我们实现了 <code>componentDidUpdate</code>，那其他的钩子呢？有两个很关键的钩子 <code>componentDidMount</code> 和 <code>componentWillUnmount</code> 我们还不知道怎么实现呢。而我之前提到它是“近乎‘万能’”的，是的，它就是可以实现这些生命周期钩子的效果。</p>
+
+<p>为了实现 <code>componentDidMount</code>，我们只需要在依赖中传入一个空数组 <code>[]</code>。</p>
+
+<p>而为了实现 <code>componentWillUnmount</code>，我们只需要在 <code>useEffect</code> 中 return 一个 callback，那个 callback 便是在 <code>componentWillUnmount</code> 时执行的。上面提到的</p>
+
+<pre><code class="language-TypeScript">type EffectCallback = () =&gt; (void | (() =&gt; void | undefined));
+</code></pre>
+
+<p>是有写返回值类型的，而它也不是白写的，正是用在这种场景。</p>
+
+<hr />
+
+<p>依赖很万能，但是不要乱用，因为乱写依赖会导致你的组件渲染的行为异常，甚至会导致 Infinite Loop (<code>useEffect</code> 的 callback 触发了某个变量的变化导致了 re-render, 而 re-render 又触发了 useEffect 并运行了 callback)。因为 re-render 大概是我们在 React 开发中最经常需要处理的一件事了，所以用好 <code>useEffect</code> 是用好 React hooks 的关键。</p>
+
+<h2 id="hooks-in-react-redux">Hooks in react-redux</h2>
+
+<p><a href="https://react-redux.js.org/api/hooks">Hooks</a> 在 react-redux 中有专门的文档介绍。常用的 API 其实就两个：用于获取 state 的 <code>useSelector</code> 和用户 dispatch action 的 <code>useDispatch</code>。使用的方式很简单，参考官方文档就可以了。</p>
+
+<h3 id="useselector">useSelector</h3>
+
+<p><code>useSelector</code> 允许我们使用 <code>reselect</code> 的 selector 进行 memorize 的操作，也可以直接从 redux store 中获取相应的 property。但是有个“比较”的问题，就是官方文档使用了 === 的比较（<a href="https://github.com/reduxjs/react-redux/blob/316467a07e29911d82ba0342364a907e05d9066c/src/hooks/useSelector.js#L17">参考源码</a>），而如果我们 select 出来的是 Object，那每次比较出来的 Object 都是不同的。因为 reducer 遵循了纯函数的原则，每次都会 return 一个新的 state，而 state 是一个 JavaScript Plain Object，也就是说每次 return 出来的 Object 指向的内存地址都是不同的，那么 select 出来的 Object 也是不同的。这样就会导致<strong>每次 redux store 有变化，这个组件就会重新渲染</strong>。这时候我们就需要浅比较了。官方给我们提供了一个 <code>shallowEqual</code> 函数，让我们可以做浅比较。这个方法其实在早前的 react-redux 版本中就有了，因为之前 react-redux 的 connect 就是用了 shallowEqual 的。当然我们也可以使用诸如 lodash 中的浅比较方法。</p>
+
+<h3 id="usedispatch">useDispatch</h3>
+
+<p><code>useDispatch</code> 其实没有什么好说的，它就是一个函数，不接收任何参数，只能在组件中使用：</p>
+
+<pre><code class="language-JavaScript">const dispatch = useDispatch()
+</code></pre>
+
+<p>它的功能就是 redux 中的 <code>store.dispatch</code>。</p>
+
+<h2 id="react-memo">React.memo</h2>
+
+<p><code>React.memo</code> 其实并不是 Hooks 的内容，但是由于我们只能在 Functional Component 中使用 Hooks，Class Component 中能用的生命周期钩子也都不能用，所以之前的
+<code>React.PureComponent</code> 和 <code>shouldComponentUpdate()</code> 也都无法使用。那么对于应用优化，我们常用的手段在 Functional Component 中都无法使用了。<code>React.memo</code> 的出现就很有效地解决了这个问题。它能实现与 <code>React.PureComponent</code> 和 <code>shouldComponentUpdate()</code> 相同的功能，就是防止父组件 re-render 导致的子组件的不必要的 re-render。</p>
+
+<p>对于“不必要的 re-render”，举个例子来说，就是父组件使用 <code>useSelector</code> 订阅了 redux store 的某个属性，但是它与子组件无关。如果这个属性有变化，那么按照 React 的 diff 算法，它的子组件都会 re-render 一遍。这也不能说 React 本身有问题，因为 diff 算法已经足够好，能够高效地解决 React 渲染计算的问题。那么我们其实是不希望与该属性无关的子组件去 re-render 的，因为对我们来说它其实一点变化都没有。所以 <code>React.memo</code>、<code>React.PureComponent</code> 和 <code>shouldComponentUpdate()</code> 就是用于解决这种问题的。</p>
+
+<p>它在 react-redux 中也挺重要的，因为官方说 <code>useSelector</code> 不会阻止子组件的不必要的 re-render，而官方也推荐使用 <code>React.memo</code> 进行优化。</p>
+
+<h2 id="单元测试">单元测试</h2>
+
+<p>其实 Hooks 并不是完美的，比如单元测试。</p>
+
+<p>Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：<code>With React 16 and above, instance() returns null for stateless functional components.</code>。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了<a href="https://github.com/airbnb/enzyme#react-hooks-support">对 Hooks 的支持</a>：目前只在 <code>shallow()</code> 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 <a href="https://github.com/testing-library/react-testing-library">react-testing-library</a> 来测试。<strong>但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 <code>useDispatch</code> 和 <code>useSelector</code>，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有详细的教程。</strong></p>
+
+<p>相比之下，class component 可以直接把所有的 connect 以及其他高阶组件和 dumb component 剥离开来测试，因为我们测试组件仅仅关注的是 dumb component 上的逻辑，高阶组件注入的 props 完全可以通过 mock 来做（通常我会直接无视 TypeScript 的类型错误，因为很多 props 其实测试中是不必要的，例如 react-intl 的高阶组件注入的那些 props）。但是对于 Hooks，没有了 connect，也就是说 redux 和 dumb component 其实是耦合在一起了，做单元测试首先就会提示，必须用 react-redux 的 <code>&lt;Provider&gt;</code> 把组件包裹起来。这样其实无形中增加了测试的难度。</p>
+
+<h1 id="总结">总结</h1>
+
+<p>Hooks 是个新技术，它确实给我们的开发带来了便利，但是单元测试上却并不是那么容易。这也是我们经常遇到的问题，就是只在意功能而忽视了代码质量。只有功能和质量同时有保障的代码才是好的代码。关于单元测试这部分，我会继续研究并继续关注社区上的相关动态。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz_ </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/frontend/how-hooks-helps/>https://elizurhz.cn/frontend/how-hooks-helps/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react/">
+                    #React</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react-redux/">
+                    #react-redux</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/javascript/">
+                    #JavaScript</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/typescript/">
+                    #TypeScript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/" class="prev" rel="prev" title="Next.js 实战：从 CSR 迁移到 SSR"><i class="iconfont icon-left"></i>&nbsp;Next.js 实战：从 CSR 迁移到 SSR</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

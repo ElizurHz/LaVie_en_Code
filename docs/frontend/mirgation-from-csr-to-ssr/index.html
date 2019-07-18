@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="ElizurHz">
+  <meta name="author" content="ElizurHz_">
   
   
   
   <link rel="prev" href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" />
-  
+  <link rel="next" href="https://elizurhz.cn/frontend/how-hooks-helps/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -52,11 +52,11 @@
 关于 document is not defined，比较常遇到的情况有：
  页面调用了 document、window 相关的 API 使用了 ReactDOM.createPortal。由于 ReactDOM.createPortal 必须有一个挂载的 DOM 节点，所以在浏览器环境完成前是无法使用的，解决方法就是在 componentDidMount 之后再加载：用变量进行条件渲染，参考官方例子。 某些组件如果使用 DOM API，且在被引用时未使用 next/dynamic 进行异步加载，也可能会导致这种问题  Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.",
     "inLanguage" : "zh-CN",
-    "author" : "ElizurHz",
-    "creator" : "ElizurHz",
-    "publisher": "ElizurHz",
-    "accountablePerson" : "ElizurHz",
-    "copyrightHolder" : "ElizurHz",
+    "author" : "ElizurHz_",
+    "creator" : "ElizurHz_",
+    "publisher": "ElizurHz_",
+    "accountablePerson" : "ElizurHz_",
+    "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
     "datePublished": "2019-03-26 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-03-26 00:00:00 &#43;0000 UTC",
@@ -134,7 +134,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Next.js 实战：从 CSR 迁移到 SSR</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz</a> with ♥ 
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2019-03-26 itemprop="datePublished">March 26, 2019</time>
                 </span>
@@ -403,7 +403,7 @@ function renderAndCache(ctx, pagePath, queryParams) {
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>ElizurHz </span>
+                <span>ElizurHz_ </span>
                 </p>
             
            
@@ -415,7 +415,7 @@ function renderAndCache(ctx, pagePath, queryParams) {
             
              
             <p class="copyright-item lincese">
-                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
             </p>
             
     </div>
@@ -451,6 +451,8 @@ function renderAndCache(ctx, pagePath, queryParams) {
         <a href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" class="prev" rel="prev" title="TypeScript &#43; 单元测试：从零开始的经验之谈"><i class="iconfont icon-left"></i>&nbsp;TypeScript &#43; 单元测试：从零开始的经验之谈</a>
          
         
+        <a href="https://elizurhz.cn/frontend/how-hooks-helps/" class="next" rel="next" title="React Hooks 能给我们带来什么">React Hooks 能给我们带来什么&nbsp;<i class="iconfont icon-right"></i></a>
+        
     </div>
 
     <div class="post-comment">
@@ -471,7 +473,7 @@ function renderAndCache(ctx, pagePath, queryParams) {
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
          
 
          

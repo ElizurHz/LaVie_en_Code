@@ -256,6 +256,179 @@ module.exports = {
     </item>
     
     <item>
+      <title>React Hooks 能给我们带来什么</title>
+      <link>https://elizurhz.cn/frontend/how-hooks-helps/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/how-hooks-helps/</guid>
+      <description>
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。&lt;/p&gt;
+
+&lt;p&gt;这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。&lt;/p&gt;
+
+&lt;h1 id=&#34;before-after-hooks&#34;&gt;Before &amp;amp; After Hooks&lt;/h1&gt;
+
+&lt;p&gt;使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。&lt;/p&gt;
+
+&lt;h2 id=&#34;before&#34;&gt;Before&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;/** container.ts */
+import { connect } from &#39;react-redux&#39;
+import { injectIntl } from &#39;react-intl&#39;
+import ComponentA from &#39;./componentA&#39;
+import * as actions from &#39;your/path/to/actions&#39;
+import { bindActionCreators, Dispatch } from &#39;redux&#39;
+
+function mapStateToProps(state: any): any {
+  return {
+    variableA: state.stateA.variableA
+  }
+}
+
+function mapDispatchToProps(dispatch: Dispatch): any {
+  return {
+    actionA: bindActionCreators(actions.actionA, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ComponentA) as any
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tsx&#34;&gt;/** component.tsx */
+interface Props {
+  actionA: () =&amp;gt; void;
+  variableA: string;
+}
+
+export default class ComponentA extends React.Component {
+  public render(): JSX.Element {
+    return &amp;lt;div onClick={() =&amp;gt; this.props.actionA}&amp;gt;{this.props.variableA}&amp;lt;/div&amp;gt;;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;after&#34;&gt;After&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tsx&#34;&gt;/** index.tsx */
+import * as React from &amp;quot;react&amp;quot;;
+import { useDispatch, useSelector, shallowEqual } from &amp;quot;react-redux&amp;quot;;
+import * as actions from &amp;quot;path/to/actions&amp;quot;;
+
+interface Props {
+  stateA: string;
+}
+
+export const ComponentA = (props: Props) =&amp;gt; {
+  const dispatch = useDispatch();
+  const variableA = useSelector(
+    (state: any) =&amp;gt; state.stateA.variableA,
+    shallowEqual
+  );
+
+  return &amp;lt;div onClick={() =&amp;gt; dispatch(actions.actionA())}&amp;gt;{variableA}&amp;lt;/div&amp;gt;;
+};
+
+export default injectIntl(React.memo(ComponentA));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;so&#34;&gt;So?&lt;/h2&gt;
+
+&lt;p&gt;从改造前的代码和改造后的代码中，我们可以看出，使用 Hooks 确实节省了很多代码的行数。在 connect 的写法中，上面的例子并未指定 mapDispatchToProps 的返回值类型。而在 dumb component 中，组件的 action 类型其实是遵循于组件内定义的 props 的类型的，如果我们在组件内定义的 action 类型和 action creator 中定义的类型不同，例如传入参数不同，那么实际上 TypeScript 是检测不出这个问题的。这样就会引起不必要的 Bug。而使用 Hooks 完全可以避免这个问题，因为我们是直接把 action creator 引进来的，TypeScript 可以识别出 action creator 中定义的类型。也就是说如果你传入了错误的参数，那么此时 TypeScript 编译是不会通过的。所以可见，使用 Hooks 可以减少开发中产生 bug 的几率，也简化了代码，更易读更易维护。&lt;/p&gt;
+
+&lt;h1 id=&#34;tech-spec&#34;&gt;Tech Spec&lt;/h1&gt;
+
+&lt;h2 id=&#34;useeffect&#34;&gt;useEffect&lt;/h2&gt;
+
+&lt;p&gt;Class Component 对于我们来说有足够的功能新，因为我们可以通过自定义生命周期钩子来实现很多复杂的功能，这是在 React v16.8 前 Functional Component 无法实现的。这也是之前我喜欢用 Class Component 的原因。而 useEffect 这个近乎“万能”的 hook 可以实现几乎所有的生命周期钩子，这对于 Functional Component 非常关键，也是我重构组件最依赖的一个 hook。useEffect 的类型签名如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;function useEffect(effect: EffectCallback, deps?: DependencyList): void;
+
+type EffectCallback = () =&amp;gt; (void | (() =&amp;gt; void | undefined));
+type DependencyList = ReadonlyArray&amp;lt;any&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到 &lt;code&gt;useEffect&lt;/code&gt; 有两个参数，第一个参数是一个 callback，里面写的是我们的逻辑。而第二个参数不要小看它，虽然它是可选参数，但是如何玩转 &lt;code&gt;useEffect&lt;/code&gt; 完全就靠它了！它是“依赖”，React 官网也有不小的篇幅来描述怎样使用它。简而言之，这个“依赖”，就是&lt;strong&gt;当它改变的时候才会执行里面的 callback&lt;/strong&gt;。先说下不传这个参数的情况，那就是每次 re-render 都会调用这个 hook。而我们在实际开发中往往不会希望我们所有的 &lt;code&gt;useEffect&lt;/code&gt; 的 callback 在每次渲染都被调用一次。所以“依赖”的作用就在于此，例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;useEffect(() =&amp;gt; {
+  console.log(props.name)
+}, [props.name])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个 hook 只会在 &lt;code&gt;props.name&lt;/code&gt; 发生变化的时候把 &lt;code&gt;props.name&lt;/code&gt; 在控制台打印出来。这个相当于 Class Component 中的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;public componentDidUpdate(prevProps) {
+  if (this.props.name !== prevProps.name) {
+    console.log(this.props.name)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者是即将被废弃的 &lt;code&gt;componentWillReceiveProps&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;而如果我们修改一下这个依赖呢？这其实挺纠结的，因为如果你在你的项目中使用了 eslint，那么这里它会提示一个 &lt;code&gt;exhaustive-deps&lt;/code&gt; 的 warning。而如果你开了 Prettier 的 eslint 错误自动修复。。。那不好意思，要么你只能不写，要么会被强制改成里面所有用到的依赖，如 state、props 或者其他变量等。起初我也陷入了深思，到底是不允许这么写，还是 eslint 有毛病呢？但是实际上，我们应该先抛弃 eslint，先在这将它 disable 了，因为 &lt;code&gt;useEffect&lt;/code&gt; 能够做到的远比我们想象的多。&lt;/p&gt;
+
+&lt;p&gt;上面既然我们实现了 &lt;code&gt;componentDidUpdate&lt;/code&gt;，那其他的钩子呢？有两个很关键的钩子 &lt;code&gt;componentDidMount&lt;/code&gt; 和 &lt;code&gt;componentWillUnmount&lt;/code&gt; 我们还不知道怎么实现呢。而我之前提到它是“近乎‘万能’”的，是的，它就是可以实现这些生命周期钩子的效果。&lt;/p&gt;
+
+&lt;p&gt;为了实现 &lt;code&gt;componentDidMount&lt;/code&gt;，我们只需要在依赖中传入一个空数组 &lt;code&gt;[]&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;而为了实现 &lt;code&gt;componentWillUnmount&lt;/code&gt;，我们只需要在 &lt;code&gt;useEffect&lt;/code&gt; 中 return 一个 callback，那个 callback 便是在 &lt;code&gt;componentWillUnmount&lt;/code&gt; 时执行的。上面提到的&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;type EffectCallback = () =&amp;gt; (void | (() =&amp;gt; void | undefined));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;是有写返回值类型的，而它也不是白写的，正是用在这种场景。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;依赖很万能，但是不要乱用，因为乱写依赖会导致你的组件渲染的行为异常，甚至会导致 Infinite Loop (&lt;code&gt;useEffect&lt;/code&gt; 的 callback 触发了某个变量的变化导致了 re-render, 而 re-render 又触发了 useEffect 并运行了 callback)。因为 re-render 大概是我们在 React 开发中最经常需要处理的一件事了，所以用好 &lt;code&gt;useEffect&lt;/code&gt; 是用好 React hooks 的关键。&lt;/p&gt;
+
+&lt;h2 id=&#34;hooks-in-react-redux&#34;&gt;Hooks in react-redux&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://react-redux.js.org/api/hooks&#34;&gt;Hooks&lt;/a&gt; 在 react-redux 中有专门的文档介绍。常用的 API 其实就两个：用于获取 state 的 &lt;code&gt;useSelector&lt;/code&gt; 和用户 dispatch action 的 &lt;code&gt;useDispatch&lt;/code&gt;。使用的方式很简单，参考官方文档就可以了。&lt;/p&gt;
+
+&lt;h3 id=&#34;useselector&#34;&gt;useSelector&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;useSelector&lt;/code&gt; 允许我们使用 &lt;code&gt;reselect&lt;/code&gt; 的 selector 进行 memorize 的操作，也可以直接从 redux store 中获取相应的 property。但是有个“比较”的问题，就是官方文档使用了 === 的比较（&lt;a href=&#34;https://github.com/reduxjs/react-redux/blob/316467a07e29911d82ba0342364a907e05d9066c/src/hooks/useSelector.js#L17&#34;&gt;参考源码&lt;/a&gt;），而如果我们 select 出来的是 Object，那每次比较出来的 Object 都是不同的。因为 reducer 遵循了纯函数的原则，每次都会 return 一个新的 state，而 state 是一个 JavaScript Plain Object，也就是说每次 return 出来的 Object 指向的内存地址都是不同的，那么 select 出来的 Object 也是不同的。这样就会导致&lt;strong&gt;每次 redux store 有变化，这个组件就会重新渲染&lt;/strong&gt;。这时候我们就需要浅比较了。官方给我们提供了一个 &lt;code&gt;shallowEqual&lt;/code&gt; 函数，让我们可以做浅比较。这个方法其实在早前的 react-redux 版本中就有了，因为之前 react-redux 的 connect 就是用了 shallowEqual 的。当然我们也可以使用诸如 lodash 中的浅比较方法。&lt;/p&gt;
+
+&lt;h3 id=&#34;usedispatch&#34;&gt;useDispatch&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;useDispatch&lt;/code&gt; 其实没有什么好说的，它就是一个函数，不接收任何参数，只能在组件中使用：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;const dispatch = useDispatch()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;它的功能就是 redux 中的 &lt;code&gt;store.dispatch&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;react-memo&#34;&gt;React.memo&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;React.memo&lt;/code&gt; 其实并不是 Hooks 的内容，但是由于我们只能在 Functional Component 中使用 Hooks，Class Component 中能用的生命周期钩子也都不能用，所以之前的
+&lt;code&gt;React.PureComponent&lt;/code&gt; 和 &lt;code&gt;shouldComponentUpdate()&lt;/code&gt; 也都无法使用。那么对于应用优化，我们常用的手段在 Functional Component 中都无法使用了。&lt;code&gt;React.memo&lt;/code&gt; 的出现就很有效地解决了这个问题。它能实现与 &lt;code&gt;React.PureComponent&lt;/code&gt; 和 &lt;code&gt;shouldComponentUpdate()&lt;/code&gt; 相同的功能，就是防止父组件 re-render 导致的子组件的不必要的 re-render。&lt;/p&gt;
+
+&lt;p&gt;对于“不必要的 re-render”，举个例子来说，就是父组件使用 &lt;code&gt;useSelector&lt;/code&gt; 订阅了 redux store 的某个属性，但是它与子组件无关。如果这个属性有变化，那么按照 React 的 diff 算法，它的子组件都会 re-render 一遍。这也不能说 React 本身有问题，因为 diff 算法已经足够好，能够高效地解决 React 渲染计算的问题。那么我们其实是不希望与该属性无关的子组件去 re-render 的，因为对我们来说它其实一点变化都没有。所以 &lt;code&gt;React.memo&lt;/code&gt;、&lt;code&gt;React.PureComponent&lt;/code&gt; 和 &lt;code&gt;shouldComponentUpdate()&lt;/code&gt; 就是用于解决这种问题的。&lt;/p&gt;
+
+&lt;p&gt;它在 react-redux 中也挺重要的，因为官方说 &lt;code&gt;useSelector&lt;/code&gt; 不会阻止子组件的不必要的 re-render，而官方也推荐使用 &lt;code&gt;React.memo&lt;/code&gt; 进行优化。&lt;/p&gt;
+
+&lt;h2 id=&#34;单元测试&#34;&gt;单元测试&lt;/h2&gt;
+
+&lt;p&gt;其实 Hooks 并不是完美的，比如单元测试。&lt;/p&gt;
+
+&lt;p&gt;Jest + Enzyme 是 React 中常用的单元测试库，但是 Enzyme 官方文档中提到：&lt;code&gt;With React 16 and above, instance() returns null for stateless functional components.&lt;/code&gt;。对于 Hooks 而言（使用了 Hooks 的组件必然是 functional components），虽然官方文档也说明了&lt;a href=&#34;https://github.com/airbnb/enzyme#react-hooks-support&#34;&gt;对 Hooks 的支持&lt;/a&gt;：目前只在 &lt;code&gt;shallow()&lt;/code&gt; 里提供有限的支持，但是想要照搬 class component 中用的测试套路显然是不行的。React 官方则推荐使用 &lt;a href=&#34;https://github.com/testing-library/react-testing-library&#34;&gt;react-testing-library&lt;/a&gt; 来测试。&lt;strong&gt;但是这些目前只能测试 React 官方的 Hooks，对于 react-redux 的 &lt;code&gt;useDispatch&lt;/code&gt; 和 &lt;code&gt;useSelector&lt;/code&gt;，目前我还没有找到测试的方法，也没有找到相关的教程或者文档，甚至 react-redux 官方也没有详细的教程。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;相比之下，class component 可以直接把所有的 connect 以及其他高阶组件和 dumb component 剥离开来测试，因为我们测试组件仅仅关注的是 dumb component 上的逻辑，高阶组件注入的 props 完全可以通过 mock 来做（通常我会直接无视 TypeScript 的类型错误，因为很多 props 其实测试中是不必要的，例如 react-intl 的高阶组件注入的那些 props）。但是对于 Hooks，没有了 connect，也就是说 redux 和 dumb component 其实是耦合在一起了，做单元测试首先就会提示，必须用 react-redux 的 &lt;code&gt;&amp;lt;Provider&amp;gt;&lt;/code&gt; 把组件包裹起来。这样其实无形中增加了测试的难度。&lt;/p&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+
+&lt;p&gt;Hooks 是个新技术，它确实给我们的开发带来了便利，但是单元测试上却并不是那么容易。这也是我们经常遇到的问题，就是只在意功能而忽视了代码质量。只有功能和质量同时有保障的代码才是好的代码。关于单元测试这部分，我会继续研究并继续关注社区上的相关动态。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Next.js 实战：从 CSR 迁移到 SSR</title>
       <link>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</link>
       <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
@@ -1195,10 +1368,10 @@ mysql -u root -p
     
     <item>
       <title>GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</title>
-      <link>https://elizurhz.cn/ops/git-upstream/</link>
+      <link>https://elizurhz.cn/tips/git-upstream/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/ops/git-upstream/</guid>
+      <guid>https://elizurhz.cn/tips/git-upstream/</guid>
       <description>
 
 &lt;h1 id=&#34;github-上-fork-的仓库如何与原仓库同步并提交内容&#34;&gt;GitHub 上 Fork 的仓库如何与原仓库同步并提交内容&lt;/h1&gt;
@@ -2476,63 +2649,6 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 &lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-6.png&#34; alt=&#34;tomcat-6&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最后点击右上角的 Debug（虫子）按钮，等待 Tomcat 服务器启动即可。IntelliJ IDEA 会在你指定的浏览器里自动打开你配置的那个本地地址，在那里即可访问你做好的模板页面。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://elizurhz.cn/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/about/</guid>
-      <description>
-
-&lt;h2 id=&#34;about-the-blog-s-name&#34;&gt;About the Blog&amp;rsquo;s Name&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://i.y.qq.com/v8/playsong.html?songid=218828571&amp;amp;source=yqq#wechat_redirect&#34;&gt;라비앙로즈 (La Vie en Rose) - IZ*ONE (아이즈원)&lt;/a&gt;：玫瑰人生。&lt;/p&gt;
-
-&lt;p&gt;因此受到启发而产生的名字。&lt;/p&gt;
-
-&lt;h2 id=&#34;me&#34;&gt;Me&lt;/h2&gt;
-
-&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;JavaScript 全栈&lt;/li&gt;
-&lt;li&gt;主 React，兴趣 Node.js &amp;amp; 移动开发&lt;/li&gt;
-&lt;li&gt;全平台主机游戏玩家&lt;/li&gt;
-&lt;li&gt;数码玩家&lt;/li&gt;
-&lt;li&gt;HiFi 发烧友&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;education&#34;&gt;Education&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2010.09 ~ 2014.06 福州大学物流管理专业学士&lt;/li&gt;
-&lt;li&gt;2015.03 ~ 2016.12 Master of Information Technology @ The University of Queensland, Major in Data Mining&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;career&#34;&gt;Career&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2017.03 开始第一份工作&lt;/li&gt;
-&lt;li&gt;2018.09 入职 &lt;a href=&#34;http://www.nd.com.cn&#34;&gt;网龙&lt;/a&gt; @ 厦门&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;open-source-contribution&#34;&gt;Open Source Contribution&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;掘金翻译计划译者 from 2018.12.20&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ElizurHz&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://weibo.com/1955273297&#34;&gt;微博&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/%E7%9A%93%E6%B3%BD-%E5%BE%90-88877090/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Email: elizurhz@gmail.com&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

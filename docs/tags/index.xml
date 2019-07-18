@@ -6,10 +6,19 @@
     <description>Recent content in Tags on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://elizurhz.cn/tags/aws/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/aws/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Canvas</title>
@@ -26,6 +35,15 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://elizurhz.cn/tags/javascript/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/javascript/</guid>
       <description></description>
     </item>
     
@@ -50,7 +68,7 @@
     <item>
       <title>React</title>
       <link>https://elizurhz.cn/tags/react/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/react/</guid>
       <description></description>
@@ -68,7 +86,7 @@
     <item>
       <title>TypeScript</title>
       <link>https://elizurhz.cn/tags/typescript/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/typescript/</guid>
       <description></description>
@@ -80,6 +98,15 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>react-redux</title>
+      <link>https://elizurhz.cn/tags/react-redux/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/react-redux/</guid>
       <description></description>
     </item>
     

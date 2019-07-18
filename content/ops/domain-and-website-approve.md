@@ -1,7 +1,7 @@
 ---
 title: 关于域名和备案
 date: 2019-03-24
-categories: ["运维"]
+categories: ["运维/部署"]
 ---
 
 # 关于域名和备案

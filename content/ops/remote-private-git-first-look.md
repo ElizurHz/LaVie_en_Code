@@ -1,7 +1,7 @@
 ---
 title: ECS 上的 git 管理工具踩坑记
 date: 2019-03-24
-categories: ["运维"]
+categories: ["运维/部署"]
 ---
 
 # ECS 上的 git 管理工具踩坑记

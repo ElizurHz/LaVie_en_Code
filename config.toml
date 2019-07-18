@@ -50,9 +50,9 @@ preserveTaxonomyNames = true
 
 [params]
     since = 2019
-    author = "ElizurHz"                           # Author's name
+    author = "ElizurHz_"                           # Author's name
     avatar = "/images/me/avatar.jpg"           # Author's avatar
-    subtitle = "꿈을 꾸는 동안"         # Subtitle
+    subtitle = "君しか見えない / ボ ボ ボクハ / ミ ミ ミカタ / これから頑張れ"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 
@@ -64,15 +64,15 @@ preserveTaxonomyNames = true
     beian = ""
     baiduAnalytics = ""
 
-    license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
+    license= '本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。'
 
 [params.social]
     GitHub = "elizurhz"
-    # Twitter = "xxoo"
+    Twitter = "elizurhz"
     Email = "elizurhz@gmail.com"
-    # Instagram = "xxoo"
-    # Wechat = "/images/me/wechat.png"  # Wechat QRcode image
-    # Facebook = "xxoo"
+    Instagram = "elizur_hz"
+    Wechat = "/images/me/wechat.jpg"  # Wechat QRcode image
+    Facebook = "elizurhz"
     # Telegram = "xxoo"
     # Dribbble = "xxoo"
     # Medium = "xxoo"
