@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://elizurhz.cn/frontend/flutter-tittle-tattle/</loc>
+      
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://elizurhz.cn/ops/aws-serverless-deployment/</loc>
       
       <lastmod>2019-07-18T00:00:00+00:00</lastmod>
@@ -207,9 +217,9 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/frontend/</loc>
+      <loc>https://elizurhz.cn/tags/dart/</loc>
       
-      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
       
       
       
@@ -219,7 +229,19 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/tags/java/</loc>
+      <loc>https://elizurhz.cn/frontend/</loc>
+      
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://elizurhz.cn/categories/java/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -231,7 +253,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/categories/java/</loc>
+      <loc>https://elizurhz.cn/tags/java/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -269,7 +291,7 @@
     <url>
       <loc>https://elizurhz.cn/</loc>
       
-      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
       
       
       
@@ -387,6 +409,30 @@
     </url>
   
     <url>
+      <loc>https://elizurhz.cn/tags/flutter/</loc>
+      
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://elizurhz.cn/tags/flutter_web/</loc>
+      
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://elizurhz.cn/tags/react-redux/</loc>
       
       <lastmod>2019-07-18T00:00:00+00:00</lastmod>
@@ -413,7 +459,7 @@
     <url>
       <loc>https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/</loc>
       
-      <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+      <lastmod>2019-07-19T00:00:00+00:00</lastmod>
       
       
       
@@ -471,7 +517,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/tags/%E7%BF%BB%E8%AF%91/</loc>
+      <loc>https://elizurhz.cn/categories/%E7%BF%BB%E8%AF%91/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       
@@ -483,7 +529,7 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/categories/%E7%BF%BB%E8%AF%91/</loc>
+      <loc>https://elizurhz.cn/tags/%E7%BF%BB%E8%AF%91/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
       

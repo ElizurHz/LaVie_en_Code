@@ -6,8 +6,107 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jul 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>面向前端的 Flutter 与 flutter_web 杂谈</title>
+      <link>https://elizurhz.cn/frontend/flutter-tittle-tattle/</link>
+      <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/flutter-tittle-tattle/</guid>
+      <description>
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;写在前面：本文写于 flutter_web 技术预览版（也就是 Flutter 1.5）发布后不久，由于 Preview 版本迭代很快如有后续更新，当您看到本文时，本文所提及的内容可能会 out of date。我也会持续关注 flutter 以及 flutter_web 的发展。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;flutter 与前端开发到底有什么关系呢？Flutter 其实是移动 App 的框架，它与之前的移动端开发最大的不同就是使用了声明式的 UI，并且 Flutter 的许多概念都是受了 react 的启发的，例如 stateful &amp;amp; stateless component。开发团队曾经说要支持 web 端，而终于在 2019 年 5 月的 Google I/O 上的 1.5 版本发布时，公布了 flutter_web 的第一个技术预览版。现在 Flutter 也已经更新到了 1.8.0 版了。对于前端开发而言，跨平台的技术也是我们需要关注的，毕竟现在的趋势就是这样，说不定我们可能也有被移动端开发者“抢饭碗”的可能性，因为之前的 React Native 不是戏称前端开发要“抢了移动端开发的饭碗”嘛（但是事实上还差得远呢）。对于 React Native 没做到的事，我会很期待 Google 的 Flutter 能不能做到。&lt;/p&gt;
+
+&lt;h1 id=&#34;从-flutter-说起&#34;&gt;从 flutter 说起&lt;/h1&gt;
+
+&lt;p&gt;可能很多前端更关注的是 flutter_web 到底是什么东西，这边可以先说，它其实和 Flutter 是同一个东西，只是运用了不同的编译和渲染方式而已。所以为了了解 flutter_web，我们需要先了解 Flutter。下面就说下基本的原理（算是从&lt;a href=&#34;https://flutter.dev/docs/resources/technical-overview&#34;&gt;官网的 Technical Overview&lt;/a&gt;上总结出来的，我个人认为是对于前端开发者来说易理解的）：&lt;/p&gt;
+
+&lt;h2 id=&#34;everything-s-a-widget&#34;&gt;Everything&amp;rsquo;s a Widget&lt;/h2&gt;
+
+&lt;p&gt;这里就先不说 Widget 具体是什么以及底层实现了，我们可以把它当做是和 React.Component 一样的东西，但是它所涉及的会比 React.Component 更多，例如样式、布局等等，这是与 JavaScript 的开发最大的不同（与 SwiftUI 其实是一样的）。&lt;/p&gt;
+
+&lt;h2 id=&#34;building-widget&#34;&gt;Building Widget&lt;/h2&gt;
+
+&lt;p&gt;我们写出来的 App 最后会被编译成一个 Widget Tree。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A widget’s build function should be free of side effects. Whenever it is asked to build, the widget should return a new tree of widgets regardless of what the widget previously returned.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这个 Widget Tree，我们其实可以把它理解成是 React 的虚拟 DOM 一样的东西。如果需要 build 的时候，也就是说 Widget Tree 有变更的时候，会返回一棵新的 Widget Tree，并且无副作用。这个生成新 Tree 的算法，大致相当于 React 的 diff 算法。在构建 Widget 的时候，我们需要一个 key 的 property，这个就是用于比较 Widget Tree 的。&lt;/p&gt;
+
+&lt;h2 id=&#34;handling-user-interaction&#34;&gt;Handling user interaction&lt;/h2&gt;
+
+&lt;p&gt;这部分其实就是关于 Stateful Widget 的。这部分用起来其实和 React 的 state 区别不大，前端理解起来也不难。&lt;/p&gt;
+
+&lt;h1 id=&#34;dart&#34;&gt;Dart&lt;/h1&gt;
+
+&lt;p&gt;提到 Flutter，就不得不说到 Dart 这个语言。我们在做 JavaScript 开发时肯定会遇到很多痛点，例如静态类型检查。而我们确实有相应的解决方法，比如 flow 和 TypeScript，但是不是所有开发者都会用它们，迁移起来也有一定的难度，特别是 TypeScript，对于没有 Java/C++ 开发经验的人可能会有点棘手，并且上手一段时间后能可能能跑起来，但是写出来的代码仍然有漏洞，比如滥用 &lt;code&gt;any&lt;/code&gt;、类型约束丢失等等。
+而我会把 Dart 看做和 TypeScript 类似的语言，对于 JavaScript 开发者，或是 Java 开发者，都很好上手。但是 Dart 确实有一些很强大的功能，这也是 Flutter 高性能的基础。&lt;/p&gt;
+
+&lt;h2 id=&#34;jit-just-in-time&#34;&gt;JIT(Just-in-Time)&lt;/h2&gt;
+
+&lt;p&gt;JIT 编译是 Flutter 在开发中能够实现 hot reload 的基础。它会使用 DartVM 来进行 JIT 编译。&lt;/p&gt;
+
+&lt;h2 id=&#34;aot-ahead-of-time&#34;&gt;AOT(Ahead-of-Time)&lt;/h2&gt;
+
+&lt;p&gt;AOT 编译是在生产环境编译时，直接将我们的代码编译成 ARM Code，这样用 Flutter 写的 app 就不像用其他框架写的 app 那样需要在运行时编译，可以极大提高运行的速度，这也是 Flutter 的主要亮点之一。&lt;/p&gt;
+
+&lt;h2 id=&#34;compile-to-javascript&#34;&gt;Compile to JavaScript&lt;/h2&gt;
+
+&lt;p&gt;Dart 可以通过 dart2js 编译成 JavaScript 代码，这是 flutter_web 的基础。&lt;/p&gt;
+
+&lt;h2 id=&#34;异步编程&#34;&gt;异步编程&lt;/h2&gt;
+
+&lt;p&gt;和 JavaScript 一样，Dart 中有内置一些异步编程的 library。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;async/await，和 ES7 的 async/await 是类似的，可以参考 &lt;a href=&#34;https://www.youtube.com/watch?v=SmTCmDMi4BY&#34;&gt;Flutter 官方教程视频&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Future，和 Promise 是类似的，可以参考 &lt;a href=&#34;https://www.youtube.com/watch?v=OTS-ap9_aXc&#34;&gt;Flutter 官方教程视频&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stream，提供了流的发布与订阅，是 Dart 异步编程的核心之一，可以参考 &lt;a href=&#34;https://www.youtube.com/watch?v=nQBpOIHE4eE&#34;&gt;Flutter 官方教程视频&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;从-flutter-到-flutter-web&#34;&gt;从 Flutter 到 flutter_web&lt;/h1&gt;
+
+&lt;p&gt;上面已经简要说明了一下 Flutter，那么 flutter_web 又是什么呢，它和 Flutter 有什么关系呢？我们可以通过两张 layer cake 图来看下吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/flutter-tittle-tattle/flutter-layer-cake.png&#34; alt=&#34;Flutter&#39;s Layer Cake&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/flutter-tittle-tattle/flutter_web-layer-cake.png&#34; alt=&#34;flutter_web&#39;s Layer Cake&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;从上面两张图我们可以看到，Framework 层其实二者是完全一样的！不同之处仅仅在于渲染引擎。在 Flutter 中，绘图引擎使用的是 skia，而在 flutter_web 中，元素都是绘制在 canvas 上的！&lt;/p&gt;
+
+&lt;p&gt;我们可以结合实际的例子来看看，例如 NYTIMES 做的 &lt;a href=&#34;https://www.nytimes.com/games/prototype/kenken#/&#34;&gt;KENKEN&lt;/a&gt; 小游戏。&lt;/p&gt;
+
+&lt;p&gt;如果使用 Chrome Devtools 查看的话，我们可以看出它的 DOM 结构是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/flutter-tittle-tattle/kenken-1.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们认知的 Web App 结构完全不一样。然后我在 &lt;a href=&#34;https://www.reddit.com/r/FlutterDev/comments/blvrou/flutter_for_web_preview_goes_public/&#34;&gt;Reddit&lt;/a&gt; 上找到了一位 flutter_web 的开发者的留言：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/flutter-tittle-tattle/kenken-2.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大意是：&lt;code&gt;&amp;lt;flt-scene-host&amp;gt;&lt;/code&gt; 是展示层，包括 DOM 和 Canvas 等；&lt;code&gt;&amp;lt;flt-glass-pane&amp;gt;&lt;/code&gt; 是用于监听事件的层；&lt;code&gt;&amp;lt;flt-ruler-host&amp;gt;&lt;/code&gt; 是用于测量 text 的层。&lt;/p&gt;
+
+&lt;p&gt;这种渲染方式就与 Flutter 在移动端的渲染方式完全一样了。在移动端，Flutter 靠 skia 在原生的 Canvas 上直接绘制元素/控件，这样不仅渲染速度快，而且在不同平台上可以显示出同样的样式，不会因为各平台原生控件的不同而导致样式的不同。目前 Flutter 提供了 Cupertino 和 Material 两种风格可供选择，分别代表 iOS 与 Android 的两种设计风格。&lt;/p&gt;
+
+&lt;p&gt;换句话说，Flutter 团队是完整地将移动端的渲染方式搬运到了 web 上，以使用 canvas 为主，而不是像 React 那样还是会渲染成真实 DOM。&lt;/p&gt;
+
+&lt;h2 id=&#34;实际体验&#34;&gt;实际体验&lt;/h2&gt;
+
+&lt;p&gt;要把项目从 Flutter 迁移到 flutter_web 不是一件容易的事。首先 flutter_web 不使用 Cupertino 和 Material，所以 Widget 需要更改；其次它们的依赖库不一样，项目依赖也需要更改。我尝试过把 Flutter 应用迁移到 flutter_web，但是仍然没法处理好这两个问题，所以暂时放弃了。&lt;/p&gt;
+
+&lt;p&gt;我更期待的其实是像 Taro 那样，能够在一个项目中，根据配置和命令的不同，能够编译成不同的版本。这样的好处就是，我们可以直接编译出 Native App 的 H5 版本，这对于一些分享功能是非常方便的，因为分享出来的页面是需要 H5 的。看来 flutter_web 还有很长的路要走，我也很期待它发布正式版的时候会是什么样子。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>
@@ -2583,72 +2682,6 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 &lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c260f13e51d45473a5c07a4&#34;&gt;【译】 2019 年你应该要知道的 11 个 React UI 组件库&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c3cbb91e51d4550932771ce&#34;&gt;【译】 2019 年值得学习的顶级 JavaScript 框架与主题&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行</title>
-      <link>https://elizurhz.cn/backend/maven-tomcat-idea/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/backend/maven-tomcat-idea/</guid>
-      <description>
-
-&lt;h1 id=&#34;用-intellij-idea-配置-maven-project-并使用-tomcat-在本机运行&#34;&gt;用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行&lt;/h1&gt;
-
-&lt;p&gt;作为一个前端开发，时不时会参与维护一些老的前后端未分离的项目，而服务端渲染的老项目大多还是以 Java 为主，这样就起码需要懂得怎样配置项目，怎样起服务，否则天天需要服务端的同学帮忙岂不是很麻烦。&lt;/p&gt;
-
-&lt;h2 id=&#34;java-环境&#34;&gt;Java 环境&lt;/h2&gt;
-
-&lt;p&gt;首先上官网下载 JDK，然后安装。我这里使用 1.8 的版本，因为太高版本好像不支持。&lt;/p&gt;
-
-&lt;p&gt;然后下载 IntelliJ IDEA。&lt;/p&gt;
-
-&lt;p&gt;接着打开项目。这里以 Windows 10 为例（公司内网服务只能用有线连接的台式机访问很蛋疼不能用 Mac 开发）。首先 File =&amp;gt; New =&amp;gt; Project from Existing Sources&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/open.png&#34; alt=&#34;open&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后选择项目并使用默认配置即可。&lt;/p&gt;
-
-&lt;h2 id=&#34;配置-maven&#34;&gt;配置 Maven&lt;/h2&gt;
-
-&lt;p&gt;点开右侧栏中的 Maven Projects，点击设置按钮&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/maven-1.png&#34; alt=&#34;maven-1&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;按如图所示选择 Maven home directory（内有相应的依赖配置）。另外在 User settings file 右侧勾选 override，然后选择 Maven home directory 中的 &lt;code&gt;/conf/settings.xml&lt;/code&gt; 文件。然后 Apply 即可。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/maven-2.jpg&#34; alt=&#34;maven-2&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;接着右下角会提示你是否需要 Import，选择 Import 即可。或者你可以在 Maven 面板中先双击 clean，然后再双击 install。这一步会完成 Maven 依赖的安装。&lt;/p&gt;
-
-&lt;h2 id=&#34;配置-tomcat&#34;&gt;配置 Tomcat&lt;/h2&gt;
-
-&lt;p&gt;首先找到右上角的工具栏，红框所示位置如果你没有配置 Tomcat，会显示 Add Configuration。点击这里即可。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-1.png&#34; alt=&#34;tomcat-1&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后点击 ➕ ，找到 Tomcat Server，添加 Local。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-2.png&#34; alt=&#34;tomcat-2&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;接着我们需要配置 Tomcat home。点击面板右侧的 Application server 右侧的 &lt;code&gt;Configure...&lt;/code&gt;，&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-3.png&#34; alt=&#34;tomcat-3&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;配置 Tomcat home，选择你下好的 Tomcat 的包的根目录。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-4.jpg&#34; alt=&#34;tomcat-4&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;接着切换到 Deployment 标签，➕ =&amp;gt; Artifact&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-5.png&#34; alt=&#34;tomcat-5&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这里你可以看到当前可用的 war 包，选择“war exploded”的那个，然后点 OK，Apply。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://elizurhz.cn/images/maven-tomcat-idea/tomcat-6.png&#34; alt=&#34;tomcat-6&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最后点击右上角的 Debug（虫子）按钮，等待 Tomcat 服务器启动即可。IntelliJ IDEA 会在你指定的浏览器里自动打开你配置的那个本地地址，在那里即可访问你做好的模板页面。&lt;/p&gt;
 </description>
     </item>
     
