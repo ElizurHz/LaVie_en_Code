@@ -6,10 +6,21 @@
     <description>Recent content in React on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/tags/react/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
+      <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/how-to-use-context-in-react/</guid>
+      <description>Radio 组件是什么样的 以官方文档的例子：
+import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&amp;gt; { console.log(&amp;quot;radio checked&amp;quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &amp;lt;Radio.Group onChange={this.onChange} value={this.state.value}&amp;gt; &amp;lt;Radio value={1}&amp;gt;A&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={2}&amp;gt;B&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={3}&amp;gt;C&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={4}&amp;gt;D&amp;lt;/Radio&amp;gt; &amp;lt;/Radio.Group&amp;gt; ); } } ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
+import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; const plainOptions = [&amp;quot;Apple&amp;quot;, &amp;quot;Pear&amp;quot;, &amp;quot;Orange&amp;quot;]; const options = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot; } ]; const optionsWithDisabled = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot;, disabled: false } ]; class App extends React.</description>
+    </item>
     
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>

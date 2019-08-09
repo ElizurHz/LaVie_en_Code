@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>移动 on La Vie en Code - 编码人生</title>
+    <link>https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8/</link>
+    <description>Recent content in 移动 on La Vie en Code - 编码人生</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>面向前端的 Flutter 与 flutter_web 杂谈</title>
+      <link>https://elizurhz.cn/frontend/flutter-tittle-tattle/</link>
+      <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/flutter-tittle-tattle/</guid>
+      <description>TL;DR  写在前面：本文写于 flutter_web 技术预览版（也就是 Flutter 1.5）发布后不久，由于 Preview 版本迭代很快如有后续更新，当您看到本文时，本文所提及的内容可能会 out of date。我也会持续关注 flutter 以及 flutter_web 的发展。
+ flutter 与前端开发到底有什么关系呢？Flutter 其实是移动 App 的框架，它与之前的移动端开发最大的不同就是使用了声明式的 UI，并且 Flutter 的许多概念都是受了 react 的启发的，例如 stateful &amp;amp; stateless component。开发团队曾经说要支持 web 端，而终于在 2019 年 5 月的 Google I/O 上的 1.5 版本发布时，公布了 flutter_web 的第一个技术预览版。现在 Flutter 也已经更新到了 1.8.0 版了。对于前端开发而言，跨平台的技术也是我们需要关注的，毕竟现在的趋势就是这样，说不定我们可能也有被移动端开发者“抢饭碗”的可能性，因为之前的 React Native 不是戏称前端开发要“抢了移动端开发的饭碗”嘛（但是事实上还差得远呢）。对于 React Native 没做到的事，我会很期待 Google 的 Flutter 能不能做到。
+从 flutter 说起 可能很多前端更关注的是 flutter_web 到底是什么东西，这边可以先说，它其实和 Flutter 是同一个东西，只是运用了不同的编译和渲染方式而已。所以为了了解 flutter_web，我们需要先了解 Flutter。下面就说下基本的原理（算是从官网的 Technical Overview上总结出来的，我个人认为是对于前端开发者来说易理解的）：</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz_">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/frontend/flutter-tittle-tattle/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/frontend/how-to-use-context-in-react/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "frontend",
+    "name" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
+    "headline" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
+    "description" : "Radio 组件是什么样的 以官方文档的例子：
+import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&gt; { console.log(&quot;radio checked&quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &lt;Radio.Group onChange={this.onChange} value={this.state.value}&gt; &lt;Radio value={1}&gt;A&lt;/Radio&gt; &lt;Radio value={2}&gt;B&lt;/Radio&gt; &lt;Radio value={3}&gt;C&lt;/Radio&gt; &lt;Radio value={4}&gt;D&lt;/Radio&gt; &lt;/Radio.Group&gt; ); } } ReactDOM.render(&lt;App /&gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
+import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; const plainOptions = [&quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot;]; const options = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot; } ]; const optionsWithDisabled = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot;, disabled: false } ]; class App extends React.",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz_",
+    "creator" : "ElizurHz_",
+    "publisher": "ElizurHz_",
+    "accountablePerson" : "ElizurHz_",
+    "copyrightHolder" : "ElizurHz_",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-07-22 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-07-22 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/how-to-use-context-in-react/",
+    "wordCount" : "668",
+    "keywords" : [ "React", "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">前端</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/ops/" title="">运维/部署</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-07-22 itemprop="datePublished">July 22, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="radio-组件是什么样的">Radio 组件是什么样的</h1>
+
+<p>以官方文档的例子：</p>
+
+<pre><code class="language-jsx">import React from &quot;react&quot;;
+import { Radio } from &quot;antd&quot;;
+
+class App extends React.Component {
+  state = {
+    value: 1
+  };
+
+  onChange = e =&gt; {
+    console.log(&quot;radio checked&quot;, e.target.value);
+    this.setState({
+      value: e.target.value
+    });
+  };
+
+  render() {
+    return (
+      &lt;Radio.Group onChange={this.onChange} value={this.state.value}&gt;
+        &lt;Radio value={1}&gt;A&lt;/Radio&gt;
+        &lt;Radio value={2}&gt;B&lt;/Radio&gt;
+        &lt;Radio value={3}&gt;C&lt;/Radio&gt;
+        &lt;Radio value={4}&gt;D&lt;/Radio&gt;
+      &lt;/Radio.Group&gt;
+    );
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, mountNode);
+</code></pre>
+
+<p>除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：</p>
+
+<pre><code class="language-jsx">import React from &quot;react&quot;;
+import { Radio } from &quot;antd&quot;;
+
+const plainOptions = [&quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot;];
+const options = [
+  { label: &quot;Apple&quot;, value: &quot;Apple&quot; },
+  { label: &quot;Pear&quot;, value: &quot;Pear&quot; },
+  { label: &quot;Orange&quot;, value: &quot;Orange&quot; }
+];
+const optionsWithDisabled = [
+  { label: &quot;Apple&quot;, value: &quot;Apple&quot; },
+  { label: &quot;Pear&quot;, value: &quot;Pear&quot; },
+  { label: &quot;Orange&quot;, value: &quot;Orange&quot;, disabled: false }
+];
+
+class App extends React.Component {
+  state = {
+    value1: &quot;Apple&quot;,
+    value2: &quot;Apple&quot;,
+    value3: &quot;Apple&quot;
+  };
+
+  onChange1 = e =&gt; {
+    console.log(&quot;radio1 checked&quot;, e.target.value);
+    this.setState({
+      value1: e.target.value
+    });
+  };
+
+  onChange2 = e =&gt; {
+    console.log(&quot;radio2 checked&quot;, e.target.value);
+    this.setState({
+      value2: e.target.value
+    });
+  };
+
+  onChange3 = e =&gt; {
+    console.log(&quot;radio3 checked&quot;, e.target.value);
+    this.setState({
+      value3: e.target.value
+    });
+  };
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;Radio.Group
+          options={plainOptions}
+          onChange={this.onChange1}
+          value={this.state.value1}
+        /&gt;
+        &lt;Radio.Group
+          options={options}
+          onChange={this.onChange2}
+          value={this.state.value2}
+        /&gt;
+        &lt;Radio.Group
+          options={optionsWithDisabled}
+          onChange={this.onChange3}
+          value={this.state.value3}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(&lt;App /&gt;, mountNode);
+</code></pre>
+
+<h1 id="ant-design-怎样实现的">ant design 怎样实现的</h1>
+
+<p>从 ant design 的 <a href="https://github.com/ant-design/ant-design/tree/master/components/radio">github</a> 上，可以看到（这里我们只关心 radio group）这个模块里面有 radio.tsx 和 group.tsx 组件。</p>
+
+<h2 id="index-tsx">index.tsx</h2>
+
+<p>首先在 index.tsx 中，实现的是模块的 export，这里通过 Radio 的 static property 把 Group 组件引入，这样就可以实现 <code>&lt;Radio.Group&gt;</code> 的写法。同时由于 TypeScript 的类型检查，我们需要再 Radio 的类里面写上 static property。</p>
+
+<pre><code class="language-TypeScript">/** index.tsx */
+import Radio from './radio';
+import Group from './group';
+
+Radio.Group = Group;
+export { Group };
+export default Radio;
+
+/** radio.tsx */
+static Group: typeof RadioGroup;
+</code></pre>
+
+<h2 id="group-tsx-与-radio-tsx">group.tsx 与 radio.tsx</h2>
+
+<p>首先这里使用了 <a href="https://github.com/ant-design/ant-design/blob/master/components/config-provider/index.tsx">config-provider</a>，这个组件的作用是使用 <code>@ant-design/create-react-context</code> 注入了一些配置在 context 中。在这里我们不需要关注它的实现方式，只需要知道它使用了 React 的 context。</p>
+
+<p>接着我们看 group.tsx 中 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L98">render</a> 的部分。</p>
+
+<p>使用 options 的部分就不多说了，根据数组渲染 Radio 组件即可。关键是另一种渲染方式，我们知道我们需要在 Radio.Group 的 props 传入这个 radio group 的 value 和 onChange 事件，而 <code>&lt;Radio.Group&gt;</code> 在这里只是一个包裹的组件，在 Radio.Group 中我们需要将 Radio 的 onChange 和 props 的 onChange 关联起来。在使用 options 的方式中，我们可以直接把 onChange 通过 props 传给 Radio，但是 Radio 作为 Radio.Group 的 children 时我们却不能这样传。</p>
+
+<p>ant design 的做法是在 group.tsx 中用了 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L68">getChildContext</a> 将父组件的 onChange 设置到 context 中：</p>
+
+<pre><code class="language-TypeScript">getChildContext() {
+  return {
+    radioGroup: {
+      onChange: this.onRadioChange,
+      value: this.state.value,
+      disabled: this.props.disabled,
+      name: this.props.name,
+    },
+  };
+}
+</code></pre>
+
+<p>同时在 radio.tsx 中，在 Radio 的 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/radio.tsx#L40">onChange</a> 中调用 context 的 onChange：</p>
+
+<pre><code class="language-TypeScript"> onChange = (e: RadioChangeEvent) =&gt; {
+  if (this.props.onChange) {
+    this.props.onChange(e);
+  }
+
+  if (this.context.radioGroup &amp;&amp; this.context.radioGroup.onChange) {
+    this.context.radioGroup.onChange(e);
+  }
+};
+</code></pre>
+
+<p><code>getChildContext</code> 是 legacy 的 Context API 了，React 官方也推荐使用最新的 <a href="https://reactjs.org/docs/context.html">Context API</a>。</p>
+
+<h1 id="我的实现方式">我的实现方式</h1>
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<p>首先为什么会有这种需求呢，是因为正在做的项目的设计风格是 antd + Material Design 的结合体，我们使用了 antd，但是有很多 Material Design 的动画效果无法简单地实现，所以需要一部分 Material Design 的组件。而 material-ui 的学习成本对我们团队来说有点高，恰好 Material Design 官方有提供 web 组件与封装好的 <a href="https://github.com/material-components/material-components-web-react">React 组件</a>，引入单个组件以适应某些控件的设计需求比较不容易增加包大小。同时，这些 React 组件其实并不易用，做一层封装之后会让它能够和 ant design 的组件具有相同的用法，同样也更适合为业务组件定制样式、统一管理样式等。</p>
+
+<h2 id="具体实现">具体实现</h2>
+
+<pre><code class="language-TypeScript">// context.ts
+import React from 'react'
+
+export const RadioGroupContext = React.createContext({
+  groupValue: '',
+  onChange: (value: string) =&gt; {}
+})
+</code></pre>
+
+<p>这里使用了新的 Context API 创建了 context。</p>
+
+<pre><code class="language-tsx">// radio.tsx
+import React from &quot;react&quot;;
+import Radio, { NativeRadioControl } from &quot;@material/react-radio&quot;;
+import { RadioGroupContext } from &quot;./context&quot;;
+import &quot;@material/react-radio/dist/radio.css&quot;;
+
+export default class MyRadio extends React.Component&lt;RadioProps&gt; {
+  public static Group: typeof RadioGroup;
+
+  public render(): JSX.Element {
+    const { disabled, nativeProps, value, children } = this.props;
+    return (
+      &lt;RadioGroupContext.Consumer&gt;
+        {({
+          groupValue,
+          onChange
+        }: {
+          groupValue: string;
+          onChange: (value: string) =&gt; void;
+        }) =&gt; (
+          &lt;div&gt;
+            &lt;Radio&gt;
+              &lt;NativeRadioControl
+                {...nativeProps}
+                checked={value === groupValue}
+                value={value}
+                disabled={disabled}
+                onChange={(e: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+                  onChange(e.target.value);
+                }}
+              /&gt;
+            &lt;/Radio&gt;
+            {children}
+          &lt;/div&gt;
+        )}
+      &lt;/RadioGroupContext.Consumer&gt;
+    );
+  }
+}
+</code></pre>
+
+<pre><code class="language-tsx">// group.tsx
+import React from &quot;react&quot;;
+import { RadioGroupContext } from &quot;./context&quot;;
+
+xport default class MyRadioGroup extends React.Component&lt;PortalRadioGroupProps, PortalRadioGroupState&gt; {
+  public constructor(props: PortalRadioGroupProps) {
+    super(props)
+    this.state = {
+      value: props.value || ''
+    }
+  }
+
+  private onChange = (value: string) =&gt; {
+    const { onChange } = this.props
+    this.setState({
+      value
+    })
+    onChange &amp;&amp; onChange(value)
+  }
+
+  public render(): JSX.Element {
+    const { children } = this.props
+    return (
+      &lt;RadioGroupContext.Provider
+        value={{
+          groupValue: this.state.value,
+          onChange: this.onChange
+        }}
+      &gt;
+        {children}
+      &lt;/RadioGroupContext.Provider&gt;
+    )
+  }
+}
+</code></pre>
+
+<p>新 Context API 的使用方式很简单，在父组件用 Provider 传入 value，这样所有的子组件就可以接收到 value 了。而在使用的地方需要用到 Consumer，要注意的是这个组件是以 render callback 的方式实现的，所以我们也需要写成 render callback 的形式。callback 的参数是上述的 value，而返回值则是我们需要的组件，在这里我们就可以使用从 Provider 传入的 context 了。</p>
+
+<p>而它使用的方式也很简单，和 antd 基本相同。</p>
+
+<pre><code class="language-tsx">&lt;Radio.Group onChange={onChange} value={value}&gt;
+  &lt;Radio key=&quot;1&quot; value=&quot;1&quot;&gt;
+    111
+  &lt;/Radio&gt;
+  &lt;Radio key=&quot;2&quot; value=&quot;2&quot;&gt;
+    222
+  &lt;/Radio&gt;
+&lt;/Radio.Group&gt;
+</code></pre>
+
+<p>这个组件唯一的问题是无法在 antd 的表单中使用。antd Form 其实实现了双向绑定，劫持了 value（或者自定义属性）以及 onChange，但是这个组件点击的时候无法触发 onChange，可能与 Material Design 组件的<a href="https://github.com/material-components/material-components-web-react/blob/master/packages/checkbox/index.tsx">内部实现</a>有关。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz_ </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/frontend/how-to-use-context-in-react/>https://elizurhz.cn/frontend/how-to-use-context-in-react/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react/">
+                    #React</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/frontend/flutter-tittle-tattle/" class="prev" rel="prev" title="面向前端的 Flutter 与 flutter_web 杂谈"><i class="iconfont icon-left"></i>&nbsp;面向前端的 Flutter 与 flutter_web 杂谈</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

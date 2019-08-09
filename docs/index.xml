@@ -6,8 +6,292 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 19 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
+      <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/how-to-use-context-in-react/</guid>
+      <description>
+
+&lt;h1 id=&#34;radio-组件是什么样的&#34;&gt;Radio 组件是什么样的&lt;/h1&gt;
+
+&lt;p&gt;以官方文档的例子：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-jsx&#34;&gt;import React from &amp;quot;react&amp;quot;;
+import { Radio } from &amp;quot;antd&amp;quot;;
+
+class App extends React.Component {
+  state = {
+    value: 1
+  };
+
+  onChange = e =&amp;gt; {
+    console.log(&amp;quot;radio checked&amp;quot;, e.target.value);
+    this.setState({
+      value: e.target.value
+    });
+  };
+
+  render() {
+    return (
+      &amp;lt;Radio.Group onChange={this.onChange} value={this.state.value}&amp;gt;
+        &amp;lt;Radio value={1}&amp;gt;A&amp;lt;/Radio&amp;gt;
+        &amp;lt;Radio value={2}&amp;gt;B&amp;lt;/Radio&amp;gt;
+        &amp;lt;Radio value={3}&amp;gt;C&amp;lt;/Radio&amp;gt;
+        &amp;lt;Radio value={4}&amp;gt;D&amp;lt;/Radio&amp;gt;
+      &amp;lt;/Radio.Group&amp;gt;
+    );
+  }
+}
+
+ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-jsx&#34;&gt;import React from &amp;quot;react&amp;quot;;
+import { Radio } from &amp;quot;antd&amp;quot;;
+
+const plainOptions = [&amp;quot;Apple&amp;quot;, &amp;quot;Pear&amp;quot;, &amp;quot;Orange&amp;quot;];
+const options = [
+  { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; },
+  { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; },
+  { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot; }
+];
+const optionsWithDisabled = [
+  { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; },
+  { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; },
+  { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot;, disabled: false }
+];
+
+class App extends React.Component {
+  state = {
+    value1: &amp;quot;Apple&amp;quot;,
+    value2: &amp;quot;Apple&amp;quot;,
+    value3: &amp;quot;Apple&amp;quot;
+  };
+
+  onChange1 = e =&amp;gt; {
+    console.log(&amp;quot;radio1 checked&amp;quot;, e.target.value);
+    this.setState({
+      value1: e.target.value
+    });
+  };
+
+  onChange2 = e =&amp;gt; {
+    console.log(&amp;quot;radio2 checked&amp;quot;, e.target.value);
+    this.setState({
+      value2: e.target.value
+    });
+  };
+
+  onChange3 = e =&amp;gt; {
+    console.log(&amp;quot;radio3 checked&amp;quot;, e.target.value);
+    this.setState({
+      value3: e.target.value
+    });
+  };
+
+  render() {
+    return (
+      &amp;lt;div&amp;gt;
+        &amp;lt;Radio.Group
+          options={plainOptions}
+          onChange={this.onChange1}
+          value={this.state.value1}
+        /&amp;gt;
+        &amp;lt;Radio.Group
+          options={options}
+          onChange={this.onChange2}
+          value={this.state.value2}
+        /&amp;gt;
+        &amp;lt;Radio.Group
+          options={optionsWithDisabled}
+          onChange={this.onChange3}
+          value={this.state.value3}
+        /&amp;gt;
+      &amp;lt;/div&amp;gt;
+    );
+  }
+}
+
+ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;ant-design-怎样实现的&#34;&gt;ant design 怎样实现的&lt;/h1&gt;
+
+&lt;p&gt;从 ant design 的 &lt;a href=&#34;https://github.com/ant-design/ant-design/tree/master/components/radio&#34;&gt;github&lt;/a&gt; 上，可以看到（这里我们只关心 radio group）这个模块里面有 radio.tsx 和 group.tsx 组件。&lt;/p&gt;
+
+&lt;h2 id=&#34;index-tsx&#34;&gt;index.tsx&lt;/h2&gt;
+
+&lt;p&gt;首先在 index.tsx 中，实现的是模块的 export，这里通过 Radio 的 static property 把 Group 组件引入，这样就可以实现 &lt;code&gt;&amp;lt;Radio.Group&amp;gt;&lt;/code&gt; 的写法。同时由于 TypeScript 的类型检查，我们需要再 Radio 的类里面写上 static property。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;/** index.tsx */
+import Radio from &#39;./radio&#39;;
+import Group from &#39;./group&#39;;
+
+Radio.Group = Group;
+export { Group };
+export default Radio;
+
+/** radio.tsx */
+static Group: typeof RadioGroup;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;group-tsx-与-radio-tsx&#34;&gt;group.tsx 与 radio.tsx&lt;/h2&gt;
+
+&lt;p&gt;首先这里使用了 &lt;a href=&#34;https://github.com/ant-design/ant-design/blob/master/components/config-provider/index.tsx&#34;&gt;config-provider&lt;/a&gt;，这个组件的作用是使用 &lt;code&gt;@ant-design/create-react-context&lt;/code&gt; 注入了一些配置在 context 中。在这里我们不需要关注它的实现方式，只需要知道它使用了 React 的 context。&lt;/p&gt;
+
+&lt;p&gt;接着我们看 group.tsx 中 &lt;a href=&#34;https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L98&#34;&gt;render&lt;/a&gt; 的部分。&lt;/p&gt;
+
+&lt;p&gt;使用 options 的部分就不多说了，根据数组渲染 Radio 组件即可。关键是另一种渲染方式，我们知道我们需要在 Radio.Group 的 props 传入这个 radio group 的 value 和 onChange 事件，而 &lt;code&gt;&amp;lt;Radio.Group&amp;gt;&lt;/code&gt; 在这里只是一个包裹的组件，在 Radio.Group 中我们需要将 Radio 的 onChange 和 props 的 onChange 关联起来。在使用 options 的方式中，我们可以直接把 onChange 通过 props 传给 Radio，但是 Radio 作为 Radio.Group 的 children 时我们却不能这样传。&lt;/p&gt;
+
+&lt;p&gt;ant design 的做法是在 group.tsx 中用了 &lt;a href=&#34;https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L68&#34;&gt;getChildContext&lt;/a&gt; 将父组件的 onChange 设置到 context 中：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;getChildContext() {
+  return {
+    radioGroup: {
+      onChange: this.onRadioChange,
+      value: this.state.value,
+      disabled: this.props.disabled,
+      name: this.props.name,
+    },
+  };
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时在 radio.tsx 中，在 Radio 的 &lt;a href=&#34;https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/radio.tsx#L40&#34;&gt;onChange&lt;/a&gt; 中调用 context 的 onChange：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt; onChange = (e: RadioChangeEvent) =&amp;gt; {
+  if (this.props.onChange) {
+    this.props.onChange(e);
+  }
+
+  if (this.context.radioGroup &amp;amp;&amp;amp; this.context.radioGroup.onChange) {
+    this.context.radioGroup.onChange(e);
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;getChildContext&lt;/code&gt; 是 legacy 的 Context API 了，React 官方也推荐使用最新的 &lt;a href=&#34;https://reactjs.org/docs/context.html&#34;&gt;Context API&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h1 id=&#34;我的实现方式&#34;&gt;我的实现方式&lt;/h1&gt;
+
+&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;p&gt;首先为什么会有这种需求呢，是因为正在做的项目的设计风格是 antd + Material Design 的结合体，我们使用了 antd，但是有很多 Material Design 的动画效果无法简单地实现，所以需要一部分 Material Design 的组件。而 material-ui 的学习成本对我们团队来说有点高，恰好 Material Design 官方有提供 web 组件与封装好的 &lt;a href=&#34;https://github.com/material-components/material-components-web-react&#34;&gt;React 组件&lt;/a&gt;，引入单个组件以适应某些控件的设计需求比较不容易增加包大小。同时，这些 React 组件其实并不易用，做一层封装之后会让它能够和 ant design 的组件具有相同的用法，同样也更适合为业务组件定制样式、统一管理样式等。&lt;/p&gt;
+
+&lt;h2 id=&#34;具体实现&#34;&gt;具体实现&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-TypeScript&#34;&gt;// context.ts
+import React from &#39;react&#39;
+
+export const RadioGroupContext = React.createContext({
+  groupValue: &#39;&#39;,
+  onChange: (value: string) =&amp;gt; {}
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里使用了新的 Context API 创建了 context。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tsx&#34;&gt;// radio.tsx
+import React from &amp;quot;react&amp;quot;;
+import Radio, { NativeRadioControl } from &amp;quot;@material/react-radio&amp;quot;;
+import { RadioGroupContext } from &amp;quot;./context&amp;quot;;
+import &amp;quot;@material/react-radio/dist/radio.css&amp;quot;;
+
+export default class MyRadio extends React.Component&amp;lt;RadioProps&amp;gt; {
+  public static Group: typeof RadioGroup;
+
+  public render(): JSX.Element {
+    const { disabled, nativeProps, value, children } = this.props;
+    return (
+      &amp;lt;RadioGroupContext.Consumer&amp;gt;
+        {({
+          groupValue,
+          onChange
+        }: {
+          groupValue: string;
+          onChange: (value: string) =&amp;gt; void;
+        }) =&amp;gt; (
+          &amp;lt;div&amp;gt;
+            &amp;lt;Radio&amp;gt;
+              &amp;lt;NativeRadioControl
+                {...nativeProps}
+                checked={value === groupValue}
+                value={value}
+                disabled={disabled}
+                onChange={(e: React.ChangeEvent&amp;lt;HTMLInputElement&amp;gt;) =&amp;gt; {
+                  onChange(e.target.value);
+                }}
+              /&amp;gt;
+            &amp;lt;/Radio&amp;gt;
+            {children}
+          &amp;lt;/div&amp;gt;
+        )}
+      &amp;lt;/RadioGroupContext.Consumer&amp;gt;
+    );
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tsx&#34;&gt;// group.tsx
+import React from &amp;quot;react&amp;quot;;
+import { RadioGroupContext } from &amp;quot;./context&amp;quot;;
+
+xport default class MyRadioGroup extends React.Component&amp;lt;PortalRadioGroupProps, PortalRadioGroupState&amp;gt; {
+  public constructor(props: PortalRadioGroupProps) {
+    super(props)
+    this.state = {
+      value: props.value || &#39;&#39;
+    }
+  }
+
+  private onChange = (value: string) =&amp;gt; {
+    const { onChange } = this.props
+    this.setState({
+      value
+    })
+    onChange &amp;amp;&amp;amp; onChange(value)
+  }
+
+  public render(): JSX.Element {
+    const { children } = this.props
+    return (
+      &amp;lt;RadioGroupContext.Provider
+        value={{
+          groupValue: this.state.value,
+          onChange: this.onChange
+        }}
+      &amp;gt;
+        {children}
+      &amp;lt;/RadioGroupContext.Provider&amp;gt;
+    )
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;新 Context API 的使用方式很简单，在父组件用 Provider 传入 value，这样所有的子组件就可以接收到 value 了。而在使用的地方需要用到 Consumer，要注意的是这个组件是以 render callback 的方式实现的，所以我们也需要写成 render callback 的形式。callback 的参数是上述的 value，而返回值则是我们需要的组件，在这里我们就可以使用从 Provider 传入的 context 了。&lt;/p&gt;
+
+&lt;p&gt;而它使用的方式也很简单，和 antd 基本相同。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-tsx&#34;&gt;&amp;lt;Radio.Group onChange={onChange} value={value}&amp;gt;
+  &amp;lt;Radio key=&amp;quot;1&amp;quot; value=&amp;quot;1&amp;quot;&amp;gt;
+    111
+  &amp;lt;/Radio&amp;gt;
+  &amp;lt;Radio key=&amp;quot;2&amp;quot; value=&amp;quot;2&amp;quot;&amp;gt;
+    222
+  &amp;lt;/Radio&amp;gt;
+&amp;lt;/Radio.Group&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个组件唯一的问题是无法在 antd 的表单中使用。antd Form 其实实现了双向绑定，劫持了 value（或者自定义属性）以及 onChange，但是这个组件点击的时候无法触发 onChange，可能与 Material Design 组件的&lt;a href=&#34;https://github.com/material-components/material-components-web-react/blob/master/packages/checkbox/index.tsx&#34;&gt;内部实现&lt;/a&gt;有关。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>面向前端的 Flutter 与 flutter_web 杂谈</title>
@@ -2666,22 +2950,6 @@ debouncedFn(&#39;wtf&#39;).then(val =&amp;gt; {
 &lt;h2 id=&#34;ps&#34;&gt;PS&lt;/h2&gt;
 
 &lt;p&gt;在我使用百度地图的 localSearch 时，我将 setState 放在了它的 JSONP Callback 中，这样 debounce 也无法解决返回顺序不一致的问题。同时如果进行快速输入，触发和数据返回的时间可能也不太一样。所以当遇到有服务端请求的并且需要使用 debounce 来对触发事件进行防抖动时，最好加入一个判断，当服务端返回值和请求值能对应上时才 setState。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>掘金翻译计划</title>
-      <link>https://elizurhz.cn/translation/translation/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/translation/translation/</guid>
-      <description>&lt;p&gt;掘金翻译计划译者 from 2018.12.20&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c1cdaaa6fb9a049aa6f0f8b&#34;&gt;【译】 用 React 和 Node.js 实现受保护的路由和权限验证 - 掘金&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c260f13e51d45473a5c07a4&#34;&gt;【译】 2019 年你应该要知道的 11 个 React UI 组件库&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5c3cbb91e51d4550932771ce&#34;&gt;【译】 2019 年值得学习的顶级 JavaScript 框架与主题&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     
