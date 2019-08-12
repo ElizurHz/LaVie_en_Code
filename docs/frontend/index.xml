@@ -6,7 +6,7 @@
     <description>Recent content in Frontends on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/frontend/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>React 中一些容易被忽视的 API</title>
       <link>https://elizurhz.cn/frontend/react-apis/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/frontend/react-apis/</guid>
       <description>useMemo &amp;amp; useCallback Hooks 都只存在于 Functional Component 之中，而 Functional Component 在 re-render 时会把整个函数执行一遍，而不是像 Class Component 一样只执行生命周期钩子而不会单独执行类方法。并且由于和 React 渲染相关的函数/计算都要写在 Functional Component 的函数体中，所以这些函数不免会再执行一遍。当我们遇到比较耗性能的计算时，运算函数的重复执行会占用大量的资源。这时候就需要 useMemo 了。
@@ -28,7 +28,7 @@ function useCallback&amp;lt;T extends (...args: any[]) =&amp;gt; any&amp;gt;(cal
     <item>
       <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
       <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/frontend/how-to-use-context-in-react/</guid>
       <description>Radio 组件是什么样的 以官方文档的例子：

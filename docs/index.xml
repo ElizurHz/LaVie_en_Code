@@ -6,13 +6,13 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>React 中一些容易被忽视的 API</title>
       <link>https://elizurhz.cn/frontend/react-apis/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/frontend/react-apis/</guid>
       <description>
@@ -95,7 +95,7 @@ const ref = React.createRef()
     <item>
       <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
       <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
-      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/frontend/how-to-use-context-in-react/</guid>
       <description>
