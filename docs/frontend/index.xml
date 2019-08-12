@@ -12,6 +12,20 @@
     
     
     <item>
+      <title>React 中一些容易被忽视的 API</title>
+      <link>https://elizurhz.cn/frontend/react-apis/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-apis/</guid>
+      <description>useMemo &amp;amp; useCallback Hooks 都只存在于 Functional Component 之中，而 Functional Component 在 re-render 时会把整个函数执行一遍，而不是像 Class Component 一样只执行生命周期钩子而不会单独执行类方法。并且由于和 React 渲染相关的函数/计算都要写在 Functional Component 的函数体中，所以这些函数不免会再执行一遍。当我们遇到比较耗性能的计算时，运算函数的重复执行会占用大量的资源。这时候就需要 useMemo 了。
+useMemo 会保存一个带记忆功能的值。它会在 render 的时候，根据设定的依赖来执行。
+从 @types/react 的包中可以找到 useMemo 的函数签名：
+function useMemo&amp;lt;T&amp;gt;(factory: () =&amp;gt; T, deps: DependencyList | undefined): T;  它的第一个参数是一个函数，也就是在 hook 被执行的时候，会执行这个函数。但需要注意的是这个函数必须要有一个返回值，因为我们的目的就是要得到一个值啊。然后第二个参数是依赖，是一个数组，它的意思是只有数组里的变量发生变化时才会执行这个 hook，这一点和之前我写过的 useEffect 是一样的。
+然后，useCallback(fn, deps) 实际上就相当于 useMemo(() =&amp;gt; fn, deps)：
+function useCallback&amp;lt;T extends (...args: any[]) =&amp;gt; any&amp;gt;(callback: T, deps: DependencyList): T;  useRef useRef 其实可以把它视为 React 中 ref 的 hooks 版本。它也有“记忆”的功能，但是和 useMemo 不一样的是，它会创建一个包含 .</description>
+    </item>
+    
+    <item>
       <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
       <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
@@ -20,17 +34,6 @@
       <description>Radio 组件是什么样的 以官方文档的例子：
 import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&amp;gt; { console.log(&amp;quot;radio checked&amp;quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &amp;lt;Radio.Group onChange={this.onChange} value={this.state.value}&amp;gt; &amp;lt;Radio value={1}&amp;gt;A&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={2}&amp;gt;B&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={3}&amp;gt;C&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={4}&amp;gt;D&amp;lt;/Radio&amp;gt; &amp;lt;/Radio.Group&amp;gt; ); } } ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
 import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; const plainOptions = [&amp;quot;Apple&amp;quot;, &amp;quot;Pear&amp;quot;, &amp;quot;Orange&amp;quot;]; const options = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot; } ]; const optionsWithDisabled = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot;, disabled: false } ]; class App extends React.</description>
-    </item>
-    
-    <item>
-      <title>面向前端的 Flutter 与 flutter_web 杂谈</title>
-      <link>https://elizurhz.cn/frontend/flutter-tittle-tattle/</link>
-      <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/frontend/flutter-tittle-tattle/</guid>
-      <description>TL;DR  写在前面：本文写于 flutter_web 技术预览版（也就是 Flutter 1.5）发布后不久，由于 Preview 版本迭代很快如有后续更新，当您看到本文时，本文所提及的内容可能会 out of date。我也会持续关注 flutter 以及 flutter_web 的发展。
- flutter 与前端开发到底有什么关系呢？Flutter 其实是移动 App 的框架，它与之前的移动端开发最大的不同就是使用了声明式的 UI，并且 Flutter 的许多概念都是受了 react 的启发的，例如 stateful &amp;amp; stateless component。开发团队曾经说要支持 web 端，而终于在 2019 年 5 月的 Google I/O 上的 1.5 版本发布时，公布了 flutter_web 的第一个技术预览版。现在 Flutter 也已经更新到了 1.8.0 版了。对于前端开发而言，跨平台的技术也是我们需要关注的，毕竟现在的趋势就是这样，说不定我们可能也有被移动端开发者“抢饭碗”的可能性，因为之前的 React Native 不是戏称前端开发要“抢了移动端开发的饭碗”嘛（但是事实上还差得远呢）。对于 React Native 没做到的事，我会很期待 Google 的 Flutter 能不能做到。
-从 flutter 说起 可能很多前端更关注的是 flutter_web 到底是什么东西，这边可以先说，它其实和 Flutter 是同一个东西，只是运用了不同的编译和渲染方式而已。所以为了了解 flutter_web，我们需要先了解 Flutter。下面就说下基本的原理（算是从官网的 Technical Overview上总结出来的，我个人认为是对于前端开发者来说易理解的）：</description>
     </item>
     
     <item>

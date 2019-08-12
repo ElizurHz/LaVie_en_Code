@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz_">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/backend/maven-tomcat-idea/" />
+  <link rel="next" href="https://elizurhz.cn/backend/c-s-ops/" />
+  <link rel="canonical" href="https://elizurhz.cn/backend/docker-ops/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           前后端分离项目的容器化 | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="前后端分离项目的容器化 | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "backend",
+    "name" : "前后端分离项目的容器化",
+    "headline" : "前后端分离项目的容器化",
+    "description" : "前后端分离项目的容器化 docker CentOS 7 上
+yum install -y docker  基本命令 docker images # 列出当前本地所有的 docker 镜像  docker search [docker-name] # 在 docker hub 中搜索镜像  docker pull [docker-name] # 在 docker hub 中拉取镜像到本机  docker run \ # 启动镜像 -d \ # --detach -h example.com \ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \ # 容器的名字 -e XXX=xxx \ # 指定环境变量 -v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等  docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像  docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名  容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz_",
+    "creator" : "ElizurHz_",
+    "publisher": "ElizurHz_",
+    "accountablePerson" : "ElizurHz_",
+    "copyrightHolder" : "ElizurHz_",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/backend/docker-ops/",
+    "wordCount" : "104",
+    "keywords" : [  "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">前后端分离项目的容器化</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-03-24 itemprop="datePublished">March 24, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="前后端分离项目的容器化">前后端分离项目的容器化</h1>
+
+<h2 id="docker">docker</h2>
+
+<p>CentOS 7 上</p>
+
+<pre><code class="language-bash">yum install -y docker
+</code></pre>
+
+<h3 id="基本命令">基本命令</h3>
+
+<pre><code class="language-bash">docker images # 列出当前本地所有的 docker 镜像
+</code></pre>
+
+<pre><code class="language-bash">docker search [docker-name] # 在 docker hub 中搜索镜像
+</code></pre>
+
+<pre><code class="language-bash">docker pull [docker-name] # 在 docker hub 中拉取镜像到本机
+</code></pre>
+
+<pre><code class="language-bash">docker run \ # 启动镜像
+-d \ # --detach
+-h example.com  \ # --hostname，主机
+-p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口
+--name example \ # 容器的名字
+-e XXX=xxx \ # 指定环境变量
+-v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据
+[docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等
+</code></pre>
+
+<pre><code class="language-bash">docker ps # 查看所有已创建的镜像
+docker ps -a # 查看所有运行中的镜像
+</code></pre>
+
+<pre><code class="language-bash">docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名
+</code></pre>
+
+<p>容器在 docker run 之后会在 <code>docker ps -a</code> 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz_ </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/backend/docker-ops/>https://elizurhz.cn/backend/docker-ops/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/backend/maven-tomcat-idea/" class="prev" rel="prev" title="用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行"><i class="iconfont icon-left"></i>&nbsp;用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行</a>
+         
+        
+        <a href="https://elizurhz.cn/backend/c-s-ops/" class="next" rel="next" title="前后端分离项目在阿里云/七牛云的简单部署">前后端分离项目在阿里云/七牛云的简单部署&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

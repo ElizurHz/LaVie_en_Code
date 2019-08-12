@@ -12,6 +12,20 @@
     
     
     <item>
+      <title>React 中一些容易被忽视的 API</title>
+      <link>https://elizurhz.cn/frontend/react-apis/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-apis/</guid>
+      <description>useMemo &amp;amp; useCallback Hooks 都只存在于 Functional Component 之中，而 Functional Component 在 re-render 时会把整个函数执行一遍，而不是像 Class Component 一样只执行生命周期钩子而不会单独执行类方法。并且由于和 React 渲染相关的函数/计算都要写在 Functional Component 的函数体中，所以这些函数不免会再执行一遍。当我们遇到比较耗性能的计算时，运算函数的重复执行会占用大量的资源。这时候就需要 useMemo 了。
+useMemo 会保存一个带记忆功能的值。它会在 render 的时候，根据设定的依赖来执行。
+从 @types/react 的包中可以找到 useMemo 的函数签名：
+function useMemo&amp;lt;T&amp;gt;(factory: () =&amp;gt; T, deps: DependencyList | undefined): T;  它的第一个参数是一个函数，也就是在 hook 被执行的时候，会执行这个函数。但需要注意的是这个函数必须要有一个返回值，因为我们的目的就是要得到一个值啊。然后第二个参数是依赖，是一个数组，它的意思是只有数组里的变量发生变化时才会执行这个 hook，这一点和之前我写过的 useEffect 是一样的。
+然后，useCallback(fn, deps) 实际上就相当于 useMemo(() =&amp;gt; fn, deps)：
+function useCallback&amp;lt;T extends (...args: any[]) =&amp;gt; any&amp;gt;(callback: T, deps: DependencyList): T;  useRef useRef 其实可以把它视为 React 中 ref 的 hooks 版本。它也有“记忆”的功能，但是和 useMemo 不一样的是，它会创建一个包含 .</description>
+    </item>
+    
+    <item>
       <title>用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</title>
       <link>https://elizurhz.cn/frontend/how-to-use-context-in-react/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
@@ -24,10 +38,10 @@ import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;ant
     
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>
-      <link>https://elizurhz.cn/ops/aws-serverless-deployment/</link>
+      <link>https://elizurhz.cn/backend/aws-serverless-deployment/</link>
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/ops/aws-serverless-deployment/</guid>
+      <guid>https://elizurhz.cn/backend/aws-serverless-deployment/</guid>
       <description>写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。
 Prerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。
 CSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。

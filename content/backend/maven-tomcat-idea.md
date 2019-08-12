@@ -1,7 +1,7 @@
 ---
 title: 用 IntelliJ IDEA 配置 Maven Project 并使用 Tomcat 在本机运行
 date: 2019-03-24
-categories: ["后端", "Java"]
+categories: ["后端"]
 tags: ["Java"]
 ---
 

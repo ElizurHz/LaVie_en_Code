@@ -17,42 +17,50 @@ preserveTaxonomyNames = true
 
 [menu]
   [[menu.main]]
-    name = "前端"
+    name = "Web 前端"
     url = "/frontend/"
     weight = 1
+    
   [[menu.main]]
-    name = "后端"
+    name = "移动开发"
+    url = "/mobile/"
+    weight = 1
+
+  [[menu.main]]
+    name = "后端/运维/部署"
     url = "/backend/"
-    weight = 1
-  [[menu.main]]
-    name = "运维/部署"
-    url = "/ops/"
-    weight = 1
+    weight = 2
+
   [[menu.main]]
     name = "翻译"
     url = "/translation/"
-    weight = 1
+    weight = 2
+
+  [[menu.main]]
+    name = "其他"
+    url = "/tips/"
+    weight = 3
 
   [[menu.main]]
     name = "Categories"
     url = "/categories/"
-    weight = 2
+    weight = 97
 
   [[menu.main]]
     name = "Tags"
     url = "/tags/"
-    weight = 3
+    weight = 98
 
   [[menu.main]]
     name = "About"
     url = "/about"
-    weight = 4
+    weight = 99
 
 [params]
     since = 2019
     author = "ElizurHz_"                           # Author's name
     avatar = "/images/me/avatar.jpg"           # Author's avatar
-    subtitle = "君しか見えない / ボ ボ ボクハ / ミ ミ ミカタ / これから頑張れ"         # Subtitle
+    subtitle = "EYES ON ME"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 

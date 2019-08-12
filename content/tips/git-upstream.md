@@ -1,7 +1,7 @@
 ---
 title: GitHub 上 Fork 的仓库如何与原仓库同步并提交内容
 date: 2019-03-24
-categories: ["小技巧"]
+categories: ["其他"]
 ---
 
 # GitHub 上 Fork 的仓库如何与原仓库同步并提交内容

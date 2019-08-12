@@ -13,10 +13,10 @@
     
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>
-      <link>https://elizurhz.cn/ops/aws-serverless-deployment/</link>
+      <link>https://elizurhz.cn/backend/aws-serverless-deployment/</link>
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/ops/aws-serverless-deployment/</guid>
+      <guid>https://elizurhz.cn/backend/aws-serverless-deployment/</guid>
       <description>写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。
 Prerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。
 CSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。

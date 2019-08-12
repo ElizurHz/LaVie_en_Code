@@ -1,7 +1,7 @@
 ---
 title: 面向前端的 Flutter 与 flutter_web 杂谈
 date: 2019-07-19
-categories: ["前端", "移动"]
+categories: ["移动开发"]
 tags: ["flutter", "flutter_web", "Dart"]
 ---
 

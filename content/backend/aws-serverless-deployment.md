@@ -1,7 +1,7 @@
 ---
 title: Amazon AWS Serverless 部署 React 项目
 date: 2019-07-18
-categories: ["运维/部署"]
+categories: ["后端"]
 tags: ["React", "AWS"]
 ---
 
