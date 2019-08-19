@@ -239,24 +239,27 @@ export default class MyRadio extends React.Component<RadioProps> {
 import React from "react";
 import { RadioGroupContext } from "./context";
 
-xport default class MyRadioGroup extends React.Component<PortalRadioGroupProps, PortalRadioGroupState> {
+export default class MyRadioGroup extends React.Component<
+  PortalRadioGroupProps,
+  PortalRadioGroupState
+> {
   public constructor(props: PortalRadioGroupProps) {
-    super(props)
+    super(props);
     this.state = {
-      value: props.value || ''
-    }
+      value: props.value || ""
+    };
   }
 
   private onChange = (value: string) => {
-    const { onChange } = this.props
+    const { onChange } = this.props;
     this.setState({
       value
-    })
-    onChange && onChange(value)
-  }
+    });
+    onChange && onChange(value);
+  };
 
   public render(): JSX.Element {
-    const { children } = this.props
+    const { children } = this.props;
     return (
       <RadioGroupContext.Provider
         value={{
@@ -266,7 +269,7 @@ xport default class MyRadioGroup extends React.Component<PortalRadioGroupProps, 
       >
         {children}
       </RadioGroupContext.Provider>
-    )
+    );
   }
 }
 ```

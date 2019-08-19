@@ -326,24 +326,27 @@ export default class MyRadio extends React.Component&amp;lt;RadioProps&amp;gt; {
 import React from &amp;quot;react&amp;quot;;
 import { RadioGroupContext } from &amp;quot;./context&amp;quot;;
 
-xport default class MyRadioGroup extends React.Component&amp;lt;PortalRadioGroupProps, PortalRadioGroupState&amp;gt; {
+export default class MyRadioGroup extends React.Component&amp;lt;
+  PortalRadioGroupProps,
+  PortalRadioGroupState
+&amp;gt; {
   public constructor(props: PortalRadioGroupProps) {
-    super(props)
+    super(props);
     this.state = {
-      value: props.value || &#39;&#39;
-    }
+      value: props.value || &amp;quot;&amp;quot;
+    };
   }
 
   private onChange = (value: string) =&amp;gt; {
-    const { onChange } = this.props
+    const { onChange } = this.props;
     this.setState({
       value
-    })
-    onChange &amp;amp;&amp;amp; onChange(value)
-  }
+    });
+    onChange &amp;amp;&amp;amp; onChange(value);
+  };
 
   public render(): JSX.Element {
-    const { children } = this.props
+    const { children } = this.props;
     return (
       &amp;lt;RadioGroupContext.Provider
         value={{
@@ -353,7 +356,7 @@ xport default class MyRadioGroup extends React.Component&amp;lt;PortalRadioGroup
       &amp;gt;
         {children}
       &amp;lt;/RadioGroupContext.Provider&amp;gt;
-    )
+    );
   }
 }
 &lt;/code&gt;&lt;/pre&gt;
