@@ -4,19 +4,18 @@ title: About
 
 ## About the Blog's Name
 
-[라비앙로즈 (La Vie en Rose) - IZ\*ONE (아이즈원)](https://i.y.qq.com/v8/playsong.html?songid=218828571&source=yqq#wechat_redirect)：玫瑰人生。
+受到最喜欢的一首歌：[라비앙로즈 (La Vie en Rose) - IZ\*ONE (아이즈원)](https://i.y.qq.com/v8/playsong.html?songid=218828571&source=yqq#wechat_redirect)（中译：玫瑰人生）启发，而产生的名字。
 
-因此受到启发而产生的名字。
-
-## Me
+## About Me
 
 ### Intro
 
-- JavaScript 全栈
-- 主 React，兴趣 Node.js & 移动开发
+- JavaScript 全栈，主 React
+- 兴趣 Node.js & 跨平台移动开发
 - 全平台主机游戏玩家
 - 数码玩家
 - HiFi 发烧友
+- 客制化键盘玩家
 
 ### Education
 
@@ -25,7 +24,7 @@ title: About
 
 ### Career
 
-- 2017.03 开始第一份工作
+- 2017.03 开始第一份工作（漂泊...）
 - 2018.09 入职 [网龙](http://www.nd.com.cn) @ 厦门
 
 ### Open Source Contribution
