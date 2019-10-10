@@ -6,16 +6,34 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>React 中一些容易被忽视的 API</title>
-      <link>https://elizurhz.cn/frontend/react-apis/</link>
-      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      <title>More About React Hooks</title>
+      <link>https://elizurhz.cn/frontend/more-about-react-hooks/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/frontend/react-apis/</guid>
+      <guid>https://elizurhz.cn/frontend/more-about-react-hooks/</guid>
       <description>
+
+&lt;h1 id=&#34;写在前面&#34;&gt;写在前面&lt;/h1&gt;
+
+&lt;p&gt;这篇文章是关于我前一篇关于 React Hooks 的文章（&lt;a href=&#34;https://elizurhz.cn/frontend/how-hooks-helps/&#34;&gt;React Hooks 能给我们带来什么 | La Vie en Code - 编码人生&lt;/a&gt;）的延伸。如果说前一篇文章是基础，告诉大家怎么使用基本的 hooks 的话，那这篇文章则是一些踩坑和更多 hooks 的用法。&lt;/p&gt;
+
+&lt;h1 id=&#34;不当的使用可能导致无限循环&#34;&gt;不当的使用可能导致无限循环&lt;/h1&gt;
+
+&lt;p&gt;当你写下 &lt;code&gt;useState&lt;/code&gt; 那一行后，你可能会在某处去重设这个 state。有一个误区就是在函数式组件的函数体直接调用 set 的方法。虽然这样确实可以运行得到（它会在每次 render 的时候调用到），但是要知道 state 改变了之后组件会 re-render 的。这样就会又一次调用 set 的方法而造成无限循环:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Too many re-renders. React limits the number of renders to prevent an infinite loop.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;设置成不变的基础类型也会导致这个问题。&lt;/p&gt;
+
+&lt;p&gt;所以如果你想重设 state，请用 &lt;code&gt;useEffect&lt;/code&gt; 或者通过事件触发。但是在使用 &lt;code&gt;useEffect&lt;/code&gt; 的时候也切记不要造成无限循环。如果你懂得怎样使用 &lt;code&gt;componentWillReceiveProps&lt;/code&gt;、&lt;code&gt;componentDidUpdate&lt;/code&gt; 或者 &lt;code&gt;getDerivedStateFromProps&lt;/code&gt; 这些生命周期更钩子的话，那么也应该知道怎样在特定的时候执行特定的操作，例如某个 prop 变化时：要用条件语句来判断，否则会在不必要的情况下执行了你编写的语句。&lt;code&gt;useEffect&lt;/code&gt; 也一样。最糟糕的情况就是在 &lt;code&gt;useEffect&lt;/code&gt; 中多次地、重复地重设 state，处理不当的话也会导致 re-render 的无限循环。当然除了用条件语句来判断之外，还有 dependencies，也就是 &lt;code&gt;useEffect&lt;/code&gt; 的第二个参数可以用。&lt;/p&gt;
+
+&lt;p&gt;另外 &lt;code&gt;useSelector&lt;/code&gt; 也可能导致这种问题，除了使用 &lt;code&gt;react-redux&lt;/code&gt; 提供的 &lt;code&gt;shallowEqual&lt;/code&gt; 之外，还可能出现各种复杂的情况。所以处理这种问题，关键是要了解 React 在什么情况下会 re-render，functional component 和 class component 在处理渲染上又有什么区别。&lt;/p&gt;
 
 &lt;h1 id=&#34;usememo-usecallback&#34;&gt;useMemo &amp;amp; useCallback&lt;/h1&gt;
 
@@ -64,6 +82,26 @@ interface MutableRefObject&amp;lt;T&amp;gt; {
   );
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;存储组件内部的私有变量&#34;&gt;存储组件内部的私有变量&lt;/h2&gt;
+
+&lt;p&gt;官方的例子是用于获取原生 DOM 节点，而 useRef 其实并没有被限制必需用于 DOM 节点上。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-jsx&#34;&gt;function TestComponent() {
+  const count = useRef(0);
+  useEffect(() =&amp;gt; {
+    count.current = 1;
+  }, []);
+  return &amp;lt;div&amp;gt;{count.current}&amp;lt;/div&amp;gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如上面的例子所示，我们可以将它设成一个值，他会返回这样一个对象：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;{ current: 1 }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过直接给 &lt;code&gt;current&lt;/code&gt; 赋值，即可修改它。并且它不会触发 re-render。这其实就很类似 class component 中的类的私有变量了。&lt;/p&gt;
 
 &lt;h1 id=&#34;react-forwardref&#34;&gt;React.forwardRef&lt;/h1&gt;
 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ElizurHz_">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/frontend/how-to-use-context-in-react/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/frontend/more-about-react-hooks/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           More About React Hooks | La Vie en Code - 编码人生
+       
+  </title>
+  <meta name="title" content="More About React Hooks | La Vie en Code - 编码人生">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://elizurhz.cn/"
+    },
+    "articleSection" : "frontend",
+    "name" : "More About React Hooks",
+    "headline" : "More About React Hooks",
+    "description" : "写在前面 这篇文章是关于我前一篇关于 React Hooks 的文章（React Hooks 能给我们带来什么 | La Vie en Code - 编码人生）的延伸。如果说前一篇文章是基础，告诉大家怎么使用基本的 hooks 的话，那这篇文章则是一些踩坑和更多 hooks 的用法。
+不当的使用可能导致无限循环 当你写下 useState 那一行后，你可能会在某处去重设这个 state。有一个误区就是在函数式组件的函数体直接调用 set 的方法。虽然这样确实可以运行得到（它会在每次 render 的时候调用到），但是要知道 state 改变了之后组件会 re-render 的。这样就会又一次调用 set 的方法而造成无限循环:
+ Too many re-renders. React limits the number of renders to prevent an infinite loop.
+ 设置成不变的基础类型也会导致这个问题。
+所以如果你想重设 state，请用 useEffect 或者通过事件触发。但是在使用 useEffect 的时候也切记不要造成无限循环。如果你懂得怎样使用 componentWillReceiveProps、componentDidUpdate 或者 getDerivedStateFromProps 这些生命周期更钩子的话，那么也应该知道怎样在特定的时候执行特定的操作，例如某个 prop 变化时：要用条件语句来判断，否则会在不必要的情况下执行了你编写的语句。useEffect 也一样。最糟糕的情况就是在 useEffect 中多次地、重复地重设 state，处理不当的话也会导致 re-render 的无限循环。当然除了用条件语句来判断之外，还有 dependencies，也就是 useEffect 的第二个参数可以用。",
+    "inLanguage" : "zh-CN",
+    "author" : "ElizurHz_",
+    "creator" : "ElizurHz_",
+    "publisher": "ElizurHz_",
+    "accountablePerson" : "ElizurHz_",
+    "copyrightHolder" : "ElizurHz_",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-10 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-10-10 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/more-about-react-hooks/",
+    "wordCount" : "317",
+    "keywords" : [ "React", "La Vie en Code - 编码人生"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">La Vie en Code - 编码人生</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/translation/" title="">翻译</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">More About React Hooks</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-10 itemprop="datePublished">October 10, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="写在前面">写在前面</h1>
+
+<p>这篇文章是关于我前一篇关于 React Hooks 的文章（<a href="https://elizurhz.cn/frontend/how-hooks-helps/">React Hooks 能给我们带来什么 | La Vie en Code - 编码人生</a>）的延伸。如果说前一篇文章是基础，告诉大家怎么使用基本的 hooks 的话，那这篇文章则是一些踩坑和更多 hooks 的用法。</p>
+
+<h1 id="不当的使用可能导致无限循环">不当的使用可能导致无限循环</h1>
+
+<p>当你写下 <code>useState</code> 那一行后，你可能会在某处去重设这个 state。有一个误区就是在函数式组件的函数体直接调用 set 的方法。虽然这样确实可以运行得到（它会在每次 render 的时候调用到），但是要知道 state 改变了之后组件会 re-render 的。这样就会又一次调用 set 的方法而造成无限循环:</p>
+
+<blockquote>
+<p>Too many re-renders. React limits the number of renders to prevent an infinite loop.</p>
+</blockquote>
+
+<p>设置成不变的基础类型也会导致这个问题。</p>
+
+<p>所以如果你想重设 state，请用 <code>useEffect</code> 或者通过事件触发。但是在使用 <code>useEffect</code> 的时候也切记不要造成无限循环。如果你懂得怎样使用 <code>componentWillReceiveProps</code>、<code>componentDidUpdate</code> 或者 <code>getDerivedStateFromProps</code> 这些生命周期更钩子的话，那么也应该知道怎样在特定的时候执行特定的操作，例如某个 prop 变化时：要用条件语句来判断，否则会在不必要的情况下执行了你编写的语句。<code>useEffect</code> 也一样。最糟糕的情况就是在 <code>useEffect</code> 中多次地、重复地重设 state，处理不当的话也会导致 re-render 的无限循环。当然除了用条件语句来判断之外，还有 dependencies，也就是 <code>useEffect</code> 的第二个参数可以用。</p>
+
+<p>另外 <code>useSelector</code> 也可能导致这种问题，除了使用 <code>react-redux</code> 提供的 <code>shallowEqual</code> 之外，还可能出现各种复杂的情况。所以处理这种问题，关键是要了解 React 在什么情况下会 re-render，functional component 和 class component 在处理渲染上又有什么区别。</p>
+
+<h1 id="usememo-usecallback">useMemo &amp; useCallback</h1>
+
+<p>Hooks 都只存在于 Functional Component 之中，而 Functional Component 在 re-render 时会把整个函数执行一遍，而不是像 Class Component 一样只执行生命周期钩子而不会单独执行类方法。并且由于和 React 渲染相关的函数/计算都要写在 Functional Component 的函数体中，所以这些函数不免会再执行一遍。当我们遇到比较耗性能的计算时，运算函数的重复执行会占用大量的资源。这时候就需要 useMemo 了。</p>
+
+<p>useMemo 会保存一个带记忆功能的值。它会在 render 的时候，根据设定的依赖来执行。</p>
+
+<p>从 <code>@types/react</code> 的包中可以找到 useMemo 的函数签名：</p>
+
+<pre><code class="language-TypeScript">function useMemo&lt;T&gt;(factory: () =&gt; T, deps: DependencyList | undefined): T;
+</code></pre>
+
+<p>它的第一个参数是一个函数，也就是在 hook 被执行的时候，会执行这个函数。但需要注意的是这个函数必须要有一个返回值，因为我们的目的就是要得到一个值啊。然后第二个参数是依赖，是一个数组，它的意思是只有数组里的变量发生变化时才会执行这个 hook，这一点和<a href="https://elizurhz.cn/frontend/how-hooks-helps/">之前我写过的 <code>useEffect</code></a> 是一样的。</p>
+
+<p>然后，<i><code>useCallback(fn, deps)</code> 实际上就相当于 <code>useMemo(() =&gt; fn, deps)</code></i>：</p>
+
+<pre><code class="language-TypeScript">function useCallback&lt;T extends (...args: any[]) =&gt; any&gt;(callback: T, deps: DependencyList): T;
+</code></pre>
+
+<h1 id="useref">useRef</h1>
+
+<p><code>useRef</code> 其实可以把它视为 React 中 <code>ref</code> 的 hooks 版本。它也有“记忆”的功能，但是和 useMemo 不一样的是，它会创建一个包含 <code>.current</code> 的 JavaScript Object，并且每次 render 都会返回<i>相同</i>的 Object。我们可以在 Functional Component 中用它替代 ref 的功能，也可以<a href="https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables">用于记忆其他的东西</a>。</p>
+
+<p>函数签名如下：</p>
+
+<pre><code class="language-TypeScript">function useRef&lt;T&gt;(initialValue: T): MutableRefObject&lt;T&gt;;
+
+interface MutableRefObject&lt;T&gt; {
+  current: T;
+}
+</code></pre>
+
+<p>用法参考 <a href="https://reactjs.org/docs/hooks-reference.html#useref">React 官方文档</a>：</p>
+
+<pre><code class="language-jsx">function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () =&gt; {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+  return (
+    &lt;&gt;
+      &lt;input ref={inputEl} type=&quot;text&quot; /&gt;
+      &lt;button onClick={onButtonClick}&gt;Focus the input&lt;/button&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre>
+
+<h2 id="存储组件内部的私有变量">存储组件内部的私有变量</h2>
+
+<p>官方的例子是用于获取原生 DOM 节点，而 useRef 其实并没有被限制必需用于 DOM 节点上。</p>
+
+<pre><code class="language-jsx">function TestComponent() {
+  const count = useRef(0);
+  useEffect(() =&gt; {
+    count.current = 1;
+  }, []);
+  return &lt;div&gt;{count.current}&lt;/div&gt;;
+}
+</code></pre>
+
+<p>如上面的例子所示，我们可以将它设成一个值，他会返回这样一个对象：</p>
+
+<pre><code class="language-JavaScript">{ current: 1 }
+</code></pre>
+
+<p>通过直接给 <code>current</code> 赋值，即可修改它。并且它不会触发 re-render。这其实就很类似 class component 中的类的私有变量了。</p>
+
+<h1 id="react-forwardref">React.forwardRef</h1>
+
+<p>这东西在业务开发里基本是用不着的，在组件设计可能会用到。我们知道 Class Component 中 ref 的使用方法如下：</p>
+
+<pre><code class="language-jsx">class MyInput extends React.Component {
+  render() {
+    return &lt;input ref={ref =&gt; (this.inputElem = ref)} /&gt;;
+  }
+}
+</code></pre>
+
+<p>但是在某些需求里，我们可能会需要在这个组件外部创建 ref，并以此来管理它的 focus 状态、动画等。</p>
+
+<p>使用方法如下：</p>
+
+<pre><code class="language-jsx">const MyInput = React.forwardRef((props, ref) =&gt; (
+  &lt;input ref={(ref) =&gt; this.inputElem = ref} /&gt;
+))
+
+const ref = React.createRef()
+&lt;MyInput ref={ref} /&gt;
+</code></pre>
+
+<p>它和 <code>React.createRef</code> 是需要一起使用的。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ElizurHz_ </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/frontend/more-about-react-hooks/>https://elizurhz.cn/frontend/more-about-react-hooks/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/react/">
+                    #React</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/frontend/how-to-use-context-in-react/" class="prev" rel="prev" title="用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件"><i class="iconfont icon-left"></i>&nbsp;用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

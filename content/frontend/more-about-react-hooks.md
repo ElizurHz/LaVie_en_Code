@@ -1,9 +1,25 @@
 ---
-title: React 中一些容易被忽视的 API
-date: 2019-08-12
+title: More About React Hooks
+date: 2019-10-10
 categories: ["前端"]
 tags: ["React"]
 ---
+
+# 写在前面
+
+这篇文章是关于我前一篇关于 React Hooks 的文章（[React Hooks 能给我们带来什么 | La Vie en Code - 编码人生](https://elizurhz.cn/frontend/how-hooks-helps/)）的延伸。如果说前一篇文章是基础，告诉大家怎么使用基本的 hooks 的话，那这篇文章则是一些踩坑和更多 hooks 的用法。
+
+# 不当的使用可能导致无限循环
+
+当你写下 `useState` 那一行后，你可能会在某处去重设这个 state。有一个误区就是在函数式组件的函数体直接调用 set 的方法。虽然这样确实可以运行得到（它会在每次 render 的时候调用到），但是要知道 state 改变了之后组件会 re-render 的。这样就会又一次调用 set 的方法而造成无限循环:
+
+> Too many re-renders. React limits the number of renders to prevent an infinite loop.
+
+设置成不变的基础类型也会导致这个问题。
+
+所以如果你想重设 state，请用 `useEffect` 或者通过事件触发。但是在使用 `useEffect` 的时候也切记不要造成无限循环。如果你懂得怎样使用 `componentWillReceiveProps`、`componentDidUpdate` 或者 `getDerivedStateFromProps` 这些生命周期更钩子的话，那么也应该知道怎样在特定的时候执行特定的操作，例如某个 prop 变化时：要用条件语句来判断，否则会在不必要的情况下执行了你编写的语句。`useEffect` 也一样。最糟糕的情况就是在 `useEffect` 中多次地、重复地重设 state，处理不当的话也会导致 re-render 的无限循环。当然除了用条件语句来判断之外，还有 dependencies，也就是 `useEffect` 的第二个参数可以用。
+
+另外 `useSelector` 也可能导致这种问题，除了使用 `react-redux` 提供的 `shallowEqual` 之外，还可能出现各种复杂的情况。所以处理这种问题，关键是要了解 React 在什么情况下会 re-render，functional component 和 class component 在处理渲染上又有什么区别。
 
 # useMemo & useCallback
 
@@ -56,6 +72,28 @@ function TextInputWithFocusButton() {
   );
 }
 ```
+
+## 存储组件内部的私有变量
+
+官方的例子是用于获取原生 DOM 节点，而 useRef 其实并没有被限制必需用于 DOM 节点上。
+
+```jsx
+function TestComponent() {
+  const count = useRef(0);
+  useEffect(() => {
+    count.current = 1;
+  }, []);
+  return <div>{count.current}</div>;
+}
+```
+
+如上面的例子所示，我们可以将它设成一个值，他会返回这样一个对象：
+
+```JavaScript
+{ current: 1 }
+```
+
+通过直接给 `current` 赋值，即可修改它。并且它不会触发 re-render。这其实就很类似 class component 中的类的私有变量了。
 
 # React.forwardRef
 
