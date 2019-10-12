@@ -6,8 +6,101 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>重新了解 React - React Fiber</title>
+      <link>https://elizurhz.cn/frontend/react-fiber/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-fiber/</guid>
+      <description>
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;我第一次使用 React 大概是在 2017 年吧，那个时候大概是 React v15 的时代。我学 React 的方法确实很普通，从例子入手，让代码能够跑起来而已。接着就是看各种实战和开源的 sample。然后我在任职的第一家公司，从不知道怎么定位的大学刚毕业的新人，正式转岗到前端。那个时候在做 Vue 的项目（我硕士的时候在学校就有在做 Vue 的项目了），也有幸碰到了几位有点经验的前端，稍微学了学一个完整的项目是怎样的构架。接着就是跳槽，背了一大堆应付面试的东西，包括 React 的一些东西，结果发现实际面试的效果却不理想。由于一直在小公司，一直追求功能的发布上线，而不是原理和性能，因此我根本没有什么机会去学习、运用这些知识。就这样，我到了网龙，在网龙前前后后也做了几个项目。大公司里，同事的水平确实不太一样，大家也会更多关注这些方面的东西。特别是最近做了新的项目，我算是项目从 0 开始搭建的主力了。我们在项目中用了最新的技术，包括 Hooks 这种社区中还没有大规模投入生产的技术，我也发现我在技术上其实存在很多的不足。在工作的过程中，一次次地看文档、一次次地与同事交流，能一次次地学到新东西，也发现其实很有必要把这些东西总结起来。&lt;/p&gt;
+
+&lt;h1 id=&#34;还在谈-react-的-diff-算法和虚拟-dom-你可能已经-out-了&#34;&gt;还在谈 React 的 diff 算法和虚拟 DOM？你可能已经 Out 了！&lt;/h1&gt;
+
+&lt;p&gt;2018 年初和年中我经历过一些面试，React 的 diff 算法和虚拟 DOM 其实是遇到得比较多的 React 的原理的面试题，当然这些知识从一些专门讲面试的文章里可以看到。其实很多人都会为了准备面试而去背这些原理，包括我。不过说实话，里面有些东西确实开发中有用，例如列表渲染时 key 的使用，以及找出为什么列表渲染时数据不会变化的问题。但是真的要认真讨论起来，其实有一些概念并不完全正确，比如“虚拟 DOM”：
+React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于一个运算器，最终的渲染需要靠一个渲染环境来完成，例如浏览器的 DOM 环境。我们把它称作“虚拟 DOM”不过是因为这个名词使用很广泛而已，而它实际上是个 Tree 而已。React Native 也用它，在 React Native 中我们可能不应该把它称作为“虚拟 DOM”，因为 React Native 中并没有 DOM，而是会渲染成原生控件。&lt;/p&gt;
+
+&lt;h1 id=&#34;从-diff-算法-说起&#34;&gt;从“diff 算法”说起&lt;/h1&gt;
+
+&lt;p&gt;其实 diff 这个概念并不是很严格地能代指我们现在的场景。&lt;a href=&#34;https://en.wikipedia.org/wiki/Diff&#34;&gt;Wikipedia&lt;/a&gt; 上 diff 的定义是：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;In computing, the diff utility is a data comparison tool that calculates and displays the differences between two files.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;而 &lt;a href=&#34;https://reactjs.org/docs/reconciliation.html&#34;&gt;React 官方文档&lt;/a&gt;中提到的 &lt;code&gt;“diffing” algorithm&lt;/code&gt; 其实是来自于&lt;a href=&#34;https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf&#34;&gt;这篇论文&lt;/a&gt;，是计算&lt;strong&gt;从一棵树转变成另一棵树需要的最少操作次数&lt;/strong&gt;的 state of the art 的算法，算法复杂度是 O(n³)。React 团队对它做了改进，实现了启发式的 O(n) 的算法，&lt;strong&gt;这个算法叫做 &lt;a href=&#34;https://reactjs.org/docs/reconciliation.html&#34;&gt;Reconciliation&lt;/a&gt;&lt;/strong&gt;。&lt;code&gt;Reconciliation&lt;/code&gt; 这个名词很少在中文社区被提到，我也是看了 React Fiber 的相关文章才知道它的，然而它可是天天被面试官问到的东西啊！不知道是大家英文不好还是怎么的，在二次传播的过程中竟然把这东西给忽略掉了。这样的二次传播其实是不友好的，这也是为什么都推荐去阅读英文文档。而 Reconciliation 具体的策略是什么，想必大家都应该了然于胸了：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在比较中遇到不同的的 DOM Element 或者 Component 会直接重建该子树&lt;/li&gt;
+&lt;li&gt;相同 type 的元素则不会，但是会判断是否重渲染。官方文档说的是 &amp;ldquo;React updates the props of the underlying component instance to match the new element, and calls componentWillReceiveProps() and componentWillUpdate() on the underlying instance.&amp;ldquo;，但是这个文档应该是很早写的，v16.3 以后应该有所变化了，首先我们有用于优化的 PureComponent、shouldComponentUpdate、React.memo 等方式，其次 componentWillReceiveProps() and componentWillUpdate() 即将 deprecated 了&lt;/li&gt;
+&lt;li&gt;遇到同类但不同 key 的元素会直接重建该子树，反之则不会&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;“diff 算法”在 v16.8 中当然还是有用的，但是现在的 React 渲染没有这么简单了！如果继续使用“diff 算法”，那在渲染大量元素的时候会出现严重的“掉帧”现象。而 React 团队在 v16 发布的时候就已经对渲染算法进行了重构。所以现在你还只停留在“diff 算法”中的话，你就 out 了！&lt;/p&gt;
+
+&lt;h1 id=&#34;react-fiber&#34;&gt;React Fiber&lt;/h1&gt;
+
+&lt;p&gt;在 React 中，有一个 Reconciler，它就是负责运行 reconciliation 算法的。在 React v15 以及更早的版本，React 使用的是 Stack Reconciler，而 v16 开始使用的则是 Fiber Reconciler，也就是我们所说的“React Fiber”。&lt;/p&gt;
+
+&lt;h2 id=&#34;why-react-fiber&#34;&gt;Why React Fiber&lt;/h2&gt;
+
+&lt;p&gt;简单总结下就是：Stack Reconciler （React v16 以前）在执行渲染的时候，会占用浏览器的主线程，直到渲染完成，这样任何的操作都会被阻塞；而 Fiber Reconciler （React v16 以后）则可以拆分渲染任务，每隔一段时间可以去确定是否有更高优先级的任务（例如用户输入），并优先执行它们。这个最直观的体现就是渲染一棵很大的组件树的性能大大提高了。&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-fiber&#34;&gt;What is fiber&lt;/h2&gt;
+
+&lt;p&gt;官方文档的介绍：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Its main goals are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ability to split interruptible work in chunks.&lt;/li&gt;
+&lt;li&gt;Ability to prioritize, rebase and reuse work in progress.&lt;/li&gt;
+&lt;li&gt;Ability to yield back and forth between parents and children to support layout in React.&lt;/li&gt;
+&lt;li&gt;Ability to return multiple elements from render().&lt;/li&gt;
+&lt;li&gt;Better support for error boundaries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;requestidlecallback-requestanimationframe&#34;&gt;requestIdleCallback &amp;amp; requestAnimationFrame&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/acdlite/react-fiber-architecture&#34;&gt;React Fiber Architecture&lt;/a&gt; 这篇文章说到，fiber 是基于这两个浏览器 API 来优化的。&lt;/p&gt;
+
+&lt;p&gt;MDN 上这两个 API 的定义如下：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;window.requestIdleCallback() 会在浏览器空闲时期依次调用函数，这就可以让开发者在主事件循环中执行后台或低优先级的任务，而且不会对像动画和用户交互这样延迟敏感的事件产生影响。&lt;/p&gt;
+
+&lt;p&gt;window.requestAnimationFrame() 告诉浏览器——你希望执行一个动画，并且要求浏览器在下次重绘之前调用指定的回调函数更新动画。该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘之前执行。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;也就是说，requestAnimationFrame 可以用于执行高优先级的任务，而 requestIdleCallback 可以用于执行低优先级的任务。那么二者到底是怎么执行的呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://cdn-images-1.medium.com/max/2600/1*ad-k5hYKQnRQJF8tv8BIqg.png&#34; alt=&#34;Life of a frame (main thread edition)&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;浏览器中，每一帧里需要做的事如上图所示。其中 也就是说，requestAnimationFrame 的 callback 会在 rAF 阶段执行。假设我们想要我们动画的 FPS 保持在 60，那么我们需要保证在 1 帧（1000/60 ms）里能够做完这些事。而如果 1 帧里做完了这些事并且有空闲时间，那么就可以执行 requestIdleCallback 的 callback。另外关于 60FPS，通常我们认为 60 是个理想的数值，FPS 小于 20 会感受到明显的卡顿，而大于 60 需要额外的资源但是人眼无法感受到明显的变化。&lt;/p&gt;
+
+&lt;h2 id=&#34;scheduling&#34;&gt;Scheduling&lt;/h2&gt;
+
+&lt;p&gt;关于调度：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;没必要实时更新所有的 UI&lt;/li&gt;
+&lt;li&gt;不同类型的更新有不同的优先级，例如动画的优先级会高于 store 的更新&lt;/li&gt;
+&lt;li&gt;React 的实现方式是 &amp;ldquo;pull&amp;rdquo; 的，它会帮助我我们决定事务的优先级。它不像某些库的 &amp;ldquo;push&amp;rdquo; 方式，在有新的 data 的时候就执行计算。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;而 Fiber Reconciler 中有个 Scheduler，它可以用于调度任务，高优先级的任务会被先执行，而 diff 属于低优先级的任务，会在高优先级的任务执行完成后再执行。&lt;/p&gt;
+
+&lt;h2 id=&#34;tbd&#34;&gt;&amp;hellip;TBD&lt;/h2&gt;
+</description>
+    </item>
     
     <item>
       <title>More About React Hooks</title>
@@ -2832,55 +2925,6 @@ yum update
 &lt;h2 id=&#34;安全组&#34;&gt;安全组&lt;/h2&gt;
 
 &lt;h2 id=&#34;ssl&#34;&gt;SSL&lt;/h2&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>前后端分离项目的容器化</title>
-      <link>https://elizurhz.cn/backend/docker-ops/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/backend/docker-ops/</guid>
-      <description>
-
-&lt;h1 id=&#34;前后端分离项目的容器化&#34;&gt;前后端分离项目的容器化&lt;/h1&gt;
-
-&lt;h2 id=&#34;docker&#34;&gt;docker&lt;/h2&gt;
-
-&lt;p&gt;CentOS 7 上&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;yum install -y docker
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;基本命令&#34;&gt;基本命令&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker images # 列出当前本地所有的 docker 镜像
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker search [docker-name] # 在 docker hub 中搜索镜像
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull [docker-name] # 在 docker hub 中拉取镜像到本机
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run \ # 启动镜像
--d \ # --detach
--h example.com  \ # --hostname，主机
--p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口
---name example \ # 容器的名字
--e XXX=xxx \ # 指定环境变量
--v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据
-[docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker ps # 查看所有已创建的镜像
-docker ps -a # 查看所有运行中的镜像
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;容器在 docker run 之后会在 &lt;code&gt;docker ps -a&lt;/code&gt; 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。&lt;/p&gt;
 </description>
     </item>
     

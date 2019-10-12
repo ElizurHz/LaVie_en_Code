@@ -1,9 +1,8 @@
 ---
 title: 重新了解 React - React Fiber
-date: 2019-07-22
+date: 2019-10-12
 categories: ["前端"]
 tags: ["React"]
-draft: true
 ---
 
 # TL;DR
@@ -64,3 +63,15 @@ MDN 上这两个 API 的定义如下：
 ![Life of a frame (main thread edition)](https://cdn-images-1.medium.com/max/2600/1*ad-k5hYKQnRQJF8tv8BIqg.png)
 
 浏览器中，每一帧里需要做的事如上图所示。其中 也就是说，requestAnimationFrame 的 callback 会在 rAF 阶段执行。假设我们想要我们动画的 FPS 保持在 60，那么我们需要保证在 1 帧（1000/60 ms）里能够做完这些事。而如果 1 帧里做完了这些事并且有空闲时间，那么就可以执行 requestIdleCallback 的 callback。另外关于 60FPS，通常我们认为 60 是个理想的数值，FPS 小于 20 会感受到明显的卡顿，而大于 60 需要额外的资源但是人眼无法感受到明显的变化。
+
+## Scheduling
+
+关于调度：
+
+1. 没必要实时更新所有的 UI
+2. 不同类型的更新有不同的优先级，例如动画的优先级会高于 store 的更新
+3. React 的实现方式是 "pull" 的，它会帮助我我们决定事务的优先级。它不像某些库的 "push" 方式，在有新的 data 的时候就执行计算。
+
+而 Fiber Reconciler 中有个 Scheduler，它可以用于调度任务，高优先级的任务会被先执行，而 diff 属于低优先级的任务，会在高优先级的任务执行完成后再执行。
+
+## ...TBD

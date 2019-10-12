@@ -6,10 +6,21 @@
     <description>Recent content in React on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/tags/react/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>重新了解 React - React Fiber</title>
+      <link>https://elizurhz.cn/frontend/react-fiber/</link>
+      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/react-fiber/</guid>
+      <description>TL;DR 我第一次使用 React 大概是在 2017 年吧，那个时候大概是 React v15 的时代。我学 React 的方法确实很普通，从例子入手，让代码能够跑起来而已。接着就是看各种实战和开源的 sample。然后我在任职的第一家公司，从不知道怎么定位的大学刚毕业的新人，正式转岗到前端。那个时候在做 Vue 的项目（我硕士的时候在学校就有在做 Vue 的项目了），也有幸碰到了几位有点经验的前端，稍微学了学一个完整的项目是怎样的构架。接着就是跳槽，背了一大堆应付面试的东西，包括 React 的一些东西，结果发现实际面试的效果却不理想。由于一直在小公司，一直追求功能的发布上线，而不是原理和性能，因此我根本没有什么机会去学习、运用这些知识。就这样，我到了网龙，在网龙前前后后也做了几个项目。大公司里，同事的水平确实不太一样，大家也会更多关注这些方面的东西。特别是最近做了新的项目，我算是项目从 0 开始搭建的主力了。我们在项目中用了最新的技术，包括 Hooks 这种社区中还没有大规模投入生产的技术，我也发现我在技术上其实存在很多的不足。在工作的过程中，一次次地看文档、一次次地与同事交流，能一次次地学到新东西，也发现其实很有必要把这些东西总结起来。
+还在谈 React 的 diff 算法和虚拟 DOM？你可能已经 Out 了！ 2018 年初和年中我经历过一些面试，React 的 diff 算法和虚拟 DOM 其实是遇到得比较多的 React 的原理的面试题，当然这些知识从一些专门讲面试的文章里可以看到。其实很多人都会为了准备面试而去背这些原理，包括我。不过说实话，里面有些东西确实开发中有用，例如列表渲染时 key 的使用，以及找出为什么列表渲染时数据不会变化的问题。但是真的要认真讨论起来，其实有一些概念并不完全正确，比如“虚拟 DOM”： React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于一个运算器，最终的渲染需要靠一个渲染环境来完成，例如浏览器的 DOM 环境。我们把它称作“虚拟 DOM”不过是因为这个名词使用很广泛而已，而它实际上是个 Tree 而已。React Native 也用它，在 React Native 中我们可能不应该把它称作为“虚拟 DOM”，因为 React Native 中并没有 DOM，而是会渲染成原生控件。
+从“diff 算法”说起 其实 diff 这个概念并不是很严格地能代指我们现在的场景。Wikipedia 上 diff 的定义是：</description>
+    </item>
     
     <item>
       <title>More About React Hooks</title>
