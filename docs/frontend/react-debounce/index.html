@@ -10,7 +10,7 @@
   
   
   
-  <link rel="next" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
+  <link rel="next" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/react-debounce/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
     "name" : "在 React 中使用防抖动",
     "headline" : "在 React 中使用防抖动",
-    "description" : "在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
-更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
-基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
-function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
-function print(value) { console.log(value) } debounce(print, 100)('123')  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
-进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。",
+    "description" : "在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。\n更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。\n基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。\nfunction debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 \x2b 闭包的形式编写 debounce 函数，那么使用方法如下：\nfunction print(value) { console.log(value) } debounce(print, 100)(\x27123\x27)  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。\n进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz_",
     "creator" : "ElizurHz_",
@@ -59,9 +54,9 @@ function print(value) { console.log(value) } debounce(print, 100)('123')  这也
     "accountablePerson" : "ElizurHz_",
     "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/react-debounce/",
+    "datePublished": "2019-03-24 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/react-debounce\/",
     "wordCount" : "356",
     "keywords" : [ "React","Javascript", "La Vie en Code - 编码人生"]
 }
@@ -398,7 +393,7 @@ debouncedFn('wtf').then(val =&gt; {
     <div class="post-nav">
          
         
-        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="next" rel="next" title="mpvue 小程序开发踩坑记">mpvue 小程序开发踩坑记&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://elizurhz.cn/frontend/typescript-for-jser/" class="next" rel="next" title="React &#43; TypeScript 从云玩家到入门">React &#43; TypeScript 从云玩家到入门&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

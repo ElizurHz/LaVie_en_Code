@@ -23,8 +23,21 @@ Before &amp;amp; After Hooks 使用 Hooks 对代码的修改不少，但是完�
 Before /** container.ts */ import { connect } from &#39;react-redux&#39; import { injectIntl } from &#39;react-intl&#39; import ComponentA from &#39;./componentA&#39; import * as actions from &#39;your/path/to/actions&#39; import { bindActionCreators, Dispatch } from &#39;redux&#39; function mapStateToProps(state: any): any { return { variableA: state.</description>
     </item>
     
-  </channel>
-</rss> <title>mpvue 小程序开发踩坑记</title>
+    <item>
+      <title>Next.js 实战：从 CSR 迁移到 SSR</title>
+      <link>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/mirgation-from-csr-to-ssr/</guid>
+      <description>CSR: 客户端渲染，Client Side Rendering SSR: 服务端渲染，Server Side Rendering   TL;DR 目前正在做一个项目，由于采用了敏捷开发，所以我们的自主权比较大，领导也让我们尝试使用 SSR，所以我们自然而然在原有的 create-react-app 创建的应用的基础上选择了 Next.js。
+下面大致说明一下 SSR 项目与 CSR 项目到底有什么不同。
+关于浏览器与 DOM SSR 项目还是一个运行在浏览器的项目，所以是可以支持浏览器 API 的，但是它是由一个 Node.js 服务器来写入 html，而不是像 CSR 一样加载静态的 js 来渲染。这样会导致问题就是，如果在渲染时立即调用了浏览器/DOM 相关的 API，此时可能浏览器环境还未加载完成，那么就会出现 document is not defined 的错误。
+关于 document is not defined，比较常遇到的情况有：
+ 页面调用了 document、window 相关的 API 使用了 ReactDOM.createPortal。由于 ReactDOM.createPortal 必须有一个挂载的 DOM 节点，所以在浏览器环境完成前是无法使用的，解决方法就是在 componentDidMount 之后再加载：用变量进行条件渲染，参考官方例子。 某些组件如果使用 DOM API，且在被引用时未使用 next/dynamic 进行异步加载，也可能会导致这种问题  Packages 大部分 CSR App 中关键的 packages 都可以直接在 Next.</description>
+    </item>
+    
+    <item>
+      <title>mpvue 小程序开发踩坑记</title>
       <link>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       

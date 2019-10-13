@@ -74,4 +74,14 @@ MDN 上这两个 API 的定义如下：
 
 而 Fiber Reconciler 中有个 Scheduler，它可以用于调度任务，高优先级的任务会被先执行，而 diff 属于低优先级的任务，会在高优先级的任务执行完成后再执行。
 
-## ...TBD
+## 渲染过程
+
+在执行渲染的时候，Fiber Reconciler 会根据虚拟 DOM 生成一棵 Fiber Tree。这个阶段是可以被打断的。在生成 Fiber Tree 的时候，每生成一个节点，都会把控制权交还给主线程，看是否有更高优先级的任务，如果没有则继续构建，否则会打断 Fiber Tree 的构建。如果在这个阶段被打断，那么 Fiber Reconciler 会重新生成新的 Fiber Tree。这个阶段主要是在 React 组件的 render/reconciliation 阶段，对应生命周期钩子就是渲染或者重渲染前那些。
+
+在经过这个阶段之后，会进入到 commit 的阶段，此时会对需要更新的节点进行批量更新，该阶段不能被打断。
+
+## 参考
+
+[React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture)
+
+[React Fiber 原理介绍 - 前端大宝剑 - SegmentFault 思否](https://segmentfault.com/a/1190000018250127)

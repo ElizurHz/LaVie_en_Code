@@ -9,8 +9,8 @@
   
   
   
-  <link rel="prev" href="https://elizurhz.cn/frontend/react-debounce/" />
-  <link rel="next" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
+  <link rel="prev" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
+  <link rel="next" href="https://elizurhz.cn/frontend/canvas-writing-pad/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,16 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
     "name" : "mpvue 小程序开发踩坑记",
     "headline" : "mpvue 小程序开发踩坑记",
-    "description" : "mpvue 小程序开发踩坑记 之前公司决定开发一款小程序。
-我接触微信小程序也就一两个月的时间，没使用过小程序官方的开发语言，而是直接使用 mpvue 上手了，自己开发了一个因为内容的原因无法上架的 DEMO。正好也被推上了前端部门的 leader，所以也就接下了这个任务。
-使用 mpvue 的因为本以为由 Vue 转小程序用 mpvue 会方便，不过没想到坑挺多的，一般的 Web 开发者如果以 Vue 的思维入手会遇到很多麻烦，因为小程序的运行环境和浏览器完全不同。
-另外京东凹凸实验室的 Taro 也是一个非常好的框架，不过我没有去深入研究它。考虑到公司技术栈转 Vue 的要求，我们团队选择了 mpvue，然而我个人认为 mpvue 还是个不太成熟的框架，文档不完善，在开发编译时也容易出 bug，另外就是分包加载的支持比较慢，好在最近出了新版本的 mpvue-loader。但是新版本的 mpvue-loader 完全更改了 app.json/main.json 文件的写法，文档中也没有明确提到，只能通过新的 quickstart 来了解新的写法。
-我对小程序和 mpvue 的理解 mpvue  mpvue 是美团开发的，允许开发者使用 Vue 语法来编写小程序的框架。 小程序和 Web 应用的不同之处是它依靠微信 App 内的 JavaScript 引擎和 WXML/WXSS 引擎进行渲染，所以与 Web 端相比，小程序里不存在 DOM，无法使用原生 DOM 的操作，也不存在浏览器的各种 API。 在使用 mpvue 时，实际上可以看作是用 Vue 构建多页 Web App。 在 Webpack 打包时，Vue Web App 是最终打包成 index.",
+    "description" : "mpvue 小程序开发踩坑记 之前公司决定开发一款小程序。\n我接触微信小程序也就一两个月的时间，没使用过小程序官方的开发语言，而是直接使用 mpvue 上手了，自己开发了一个因为内容的原因无法上架的 DEMO。正好也被推上了前端部门的 leader，所以也就接下了这个任务。\n使用 mpvue 的因为本以为由 Vue 转小程序用 mpvue 会方便，不过没想到坑挺多的，一般的 Web 开发者如果以 Vue 的思维入手会遇到很多麻烦，因为小程序的运行环境和浏览器完全不同。\n另外京东凹凸实验室的 Taro 也是一个非常好的框架，不过我没有去深入研究它。考虑到公司技术栈转 Vue 的要求，我们团队选择了 mpvue，然而我个人认为 mpvue 还是个不太成熟的框架，文档不完善，在开发编译时也容易出 bug，另外就是分包加载的支持比较慢，好在最近出了新版本的 mpvue-loader。但是新版本的 mpvue-loader 完全更改了 app.json\/main.json 文件的写法，文档中也没有明确提到，只能通过新的 quickstart 来了解新的写法。\n我对小程序和 mpvue 的理解 mpvue  mpvue 是美团开发的，允许开发者使用 Vue 语法来编写小程序的框架。 小程序和 Web 应用的不同之处是它依靠微信 App 内的 JavaScript 引擎和 WXML\/WXSS 引擎进行渲染，所以与 Web 端相比，小程序里不存在 DOM，无法使用原生 DOM 的操作，也不存在浏览器的各种 API。 在使用 mpvue 时，实际上可以看作是用 Vue 构建多页 Web App。 在 Webpack 打包时，Vue Web App 是最终打包成 index.",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz_",
     "creator" : "ElizurHz_",
@@ -58,9 +54,9 @@
     "accountablePerson" : "ElizurHz_",
     "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/",
+    "datePublished": "2019-03-24 00:00:00 \x2b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/mpvue-wx-mini-app-first-look\/",
     "wordCount" : "871",
     "keywords" : [ "微信小程序","Vue","Javascript", "La Vie en Code - 编码人生"]
 }
@@ -503,10 +499,10 @@ export default {
 
     <div class="post-nav">
         
-        <a href="https://elizurhz.cn/frontend/react-debounce/" class="prev" rel="prev" title="在 React 中使用防抖动"><i class="iconfont icon-left"></i>&nbsp;在 React 中使用防抖动</a>
+        <a href="https://elizurhz.cn/frontend/typescript-for-jser/" class="prev" rel="prev" title="React &#43; TypeScript 从云玩家到入门"><i class="iconfont icon-left"></i>&nbsp;React &#43; TypeScript 从云玩家到入门</a>
          
         
-        <a href="https://elizurhz.cn/frontend/typescript-for-jser/" class="next" rel="next" title="React &#43; TypeScript 从云玩家到入门">React &#43; TypeScript 从云玩家到入门&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://elizurhz.cn/frontend/canvas-writing-pad/" class="next" rel="next" title="Canvas 手写板的实现与优化">Canvas 手写板的实现与优化&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
