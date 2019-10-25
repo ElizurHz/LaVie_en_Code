@@ -41,12 +41,14 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/elizurhz.cn\/"
+         "@id": "https://elizurhz.cn/"
     },
     "articleSection" : "frontend",
     "name" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
     "headline" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
-    "description" : "Radio 组件是什么样的 以官方文档的例子：\nimport React from \x26quot;react\x26quot;; import { Radio } from \x26quot;antd\x26quot;; class App extends React.Component { state = { value: 1 }; onChange = e =\x26gt; { console.log(\x26quot;radio checked\x26quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( \x26lt;Radio.Group onChange={this.onChange} value={this.state.value}\x26gt; \x26lt;Radio value={1}\x26gt;A\x26lt;\/Radio\x26gt; \x26lt;Radio value={2}\x26gt;B\x26lt;\/Radio\x26gt; \x26lt;Radio value={3}\x26gt;C\x26lt;\/Radio\x26gt; \x26lt;Radio value={4}\x26gt;D\x26lt;\/Radio\x26gt; \x26lt;\/Radio.Group\x26gt; ); } } ReactDOM.render(\x26lt;App \/\x26gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：\nimport React from \x26quot;react\x26quot;; import { Radio } from \x26quot;antd\x26quot;; const plainOptions = [\x26quot;Apple\x26quot;, \x26quot;Pear\x26quot;, \x26quot;Orange\x26quot;]; const options = [ { label: \x26quot;Apple\x26quot;, value: \x26quot;Apple\x26quot; }, { label: \x26quot;Pear\x26quot;, value: \x26quot;Pear\x26quot; }, { label: \x26quot;Orange\x26quot;, value: \x26quot;Orange\x26quot; } ]; const optionsWithDisabled = [ { label: \x26quot;Apple\x26quot;, value: \x26quot;Apple\x26quot; }, { label: \x26quot;Pear\x26quot;, value: \x26quot;Pear\x26quot; }, { label: \x26quot;Orange\x26quot;, value: \x26quot;Orange\x26quot;, disabled: false } ]; class App extends React.",
+    "description" : "Radio 组件是什么样的 以官方文档的例子：
+import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&gt; { console.log(&quot;radio checked&quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &lt;Radio.Group onChange={this.onChange} value={this.state.value}&gt; &lt;Radio value={1}&gt;A&lt;/Radio&gt; &lt;Radio value={2}&gt;B&lt;/Radio&gt; &lt;Radio value={3}&gt;C&lt;/Radio&gt; &lt;Radio value={4}&gt;D&lt;/Radio&gt; &lt;/Radio.Group&gt; ); } } ReactDOM.render(&lt;App /&gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
+import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; const plainOptions = [&quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot;]; const options = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot; } ]; const optionsWithDisabled = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot;, disabled: false } ]; class App extends React.",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz_",
     "creator" : "ElizurHz_",
@@ -54,9 +56,9 @@
     "accountablePerson" : "ElizurHz_",
     "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-09 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-08-09 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/elizurhz.cn\/frontend\/how-to-use-context-in-react\/",
+    "datePublished": "2019-08-09 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-08-09 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/how-to-use-context-in-react/",
     "wordCount" : "670",
     "keywords" : [ "React", "La Vie en Code - 编码人生"]
 }

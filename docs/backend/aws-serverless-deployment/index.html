@@ -41,12 +41,20 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/elizurhz.cn\/"
+         "@id": "https://elizurhz.cn/"
     },
     "articleSection" : "backend",
     "name" : "Amazon AWS Serverless 部署 React 项目",
     "headline" : "Amazon AWS Serverless 部署 React 项目",
-    "description" : "写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。\nPrerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。\nCSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。\n手动部署 首先只要在 AWS S3 的控制面板里创建存储桶就可以了，配置可以都用默认配置。\n其次，我们需要进入已经建好的存储桶，把静态网站托管打开。\n接着我们需要注意，一定要把 error.html 指向 index.html。因为我们可能在项目中使用 react-router，而在 S3 的静态文件托管中，任何子路径都会被认为是 error，因为我们使用 create-react-app 创建的项目，入口文件只有一个 index.html，而不是有其他 html 文件的多页面应用。只有把错误页面指向 index.html，才能正常使用 react-router。\n这里会显示该存储桶的访问地址，通过这个地址就可以访问了。接着我们在存储桶的“概述”标签页上传我们打包好的文件（index.html 需要在存储桶的根目录），这样我们的站点就可以访问了。\n如果需要 https，我们可以在 CloudFront 上创建一个域名，把源指向我们的 S3 bucket 就可以了。这个过程无需我们申请任何的证书。\nserverless 命令行部署 首先我们需要安装 serverless：运行 yarn add --global serverless(如果你安装了 yarn) 或者 npm install -g serverless。",
+    "description" : "写在前面 为什么使用 Serverless 因为它是按量(请求数)付费的，相比于 EC 或者容器的按时间付费会节省很多成本，并且 EC 往往会遇到带宽限制的问题，增加带宽会提高很多成本。
+Prerequisite 如果要使用 Amazon AWS Serverless 来部署 React 项目，我们需要一个叫做 serverless 的 npm package。同时我们还需要在项目下编写 serverless.yml。具体的写法可以参考 serverless 的官方文档。
+CSR(create-react-app) 客户端渲染，也就是我们最常用的 create-react-app 搭出来的项目，使用 Serverless 的方式部署到 AWS 其实很简单。要让我们的部署能够运行起来，在 AWS 上我们只需要一个服务：S3。S3 有一个静态页面托管的服务，并且会自动生成一个可访问的地址。这个静态站点可以运行我们打包好的 web app。
+手动部署 首先只要在 AWS S3 的控制面板里创建存储桶就可以了，配置可以都用默认配置。
+其次，我们需要进入已经建好的存储桶，把静态网站托管打开。
+接着我们需要注意，一定要把 error.html 指向 index.html。因为我们可能在项目中使用 react-router，而在 S3 的静态文件托管中，任何子路径都会被认为是 error，因为我们使用 create-react-app 创建的项目，入口文件只有一个 index.html，而不是有其他 html 文件的多页面应用。只有把错误页面指向 index.html，才能正常使用 react-router。
+这里会显示该存储桶的访问地址，通过这个地址就可以访问了。接着我们在存储桶的“概述”标签页上传我们打包好的文件（index.html 需要在存储桶的根目录），这样我们的站点就可以访问了。
+如果需要 https，我们可以在 CloudFront 上创建一个域名，把源指向我们的 S3 bucket 就可以了。这个过程无需我们申请任何的证书。
+serverless 命令行部署 首先我们需要安装 serverless：运行 yarn add --global serverless(如果你安装了 yarn) 或者 npm install -g serverless。",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz_",
     "creator" : "ElizurHz_",
@@ -54,9 +62,9 @@
     "accountablePerson" : "ElizurHz_",
     "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
-    "datePublished": "2019-07-18 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-07-18 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/elizurhz.cn\/backend\/aws-serverless-deployment\/",
+    "datePublished": "2019-07-18 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-07-18 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/backend/aws-serverless-deployment/",
     "wordCount" : "584",
     "keywords" : [ "React","AWS", "La Vie en Code - 编码人生"]
 }
@@ -387,17 +395,19 @@ module.exports = {
 
 <li><p>编译 <code>./server/lambda.js</code>. 并在 <code>./build</code> 目录下生成 <code>lambda_prod.js</code>。这一步主要是要把 ES6 写的 lambda 函数编译成 ES5，这样 AWS Lambda 才能正常访问它。</p></li>
 
-<li><p>将所需文件打包成 <code>.zip</code>。压缩文件会在 <code>./.serverless</code> 目录下生成。 需要打包的内容可以在 <code>serverless.yml</code> 的如下字段中设置：</p>
+<li><p>将所需文件打包成 <code>.zip</code>。压缩文件会在 <code>./.serverless</code> 目录下生成。 需要打包的内容可以在 <code>serverless.yml</code> 的如下字段中设置：</p></li>
+</ol>
 
 <pre><code class="language-yaml">package:
-exclude:
-- ./**
-include:
-- build/**
-- static/**
-</code></pre></li>
+  exclude:
+    - ./**
+  include:
+    - build/**
+    - static/**
+</code></pre>
 
-<li><p>上传压缩文件至 S3，同时会自动修改 API Gateway 和 AWS Lambda 的相应设置。</p></li>
+<ol>
+<li>上传压缩文件至 S3，同时会自动修改 API Gateway 和 AWS Lambda 的相应设置。</li>
 </ol>
 
     </div>

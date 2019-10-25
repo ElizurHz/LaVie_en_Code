@@ -9,7 +9,7 @@
   
   
   
-  <link rel="prev" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
+  <link rel="prev" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
   <link rel="next" href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/canvas-writing-pad/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -41,12 +41,18 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/elizurhz.cn\/"
+         "@id": "https://elizurhz.cn/"
     },
     "articleSection" : "frontend",
     "name" : "Canvas 手写板的实现与优化",
     "headline" : "Canvas 手写板的实现与优化",
-    "description" : "最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz\/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。\n本文所涉及的代码是基于 szimek\/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。\nCanvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。\n基本用法 \x26lt;canvas\x26gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：\n\x26lt;canvas id=\x26quot;test\x26quot; width=\x26quot;150\x26quot; height=\x26quot;150\x26quot;\x26gt;\x26lt;\/canvas\x26gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】\n如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”\nconst test = document.getElementById(\x27test\x27) const ctx = test.getContext(\x272d\x27)  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。",
+    "description" : "最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。
+本文所涉及的代码是基于 szimek/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。
+Canvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。
+基本用法 &lt;canvas&gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：
+&lt;canvas id=&quot;test&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
+如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”
+const test = document.getElementById('test') const ctx = test.getContext('2d')  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。",
     "inLanguage" : "zh-CN",
     "author" : "ElizurHz_",
     "creator" : "ElizurHz_",
@@ -54,9 +60,9 @@
     "accountablePerson" : "ElizurHz_",
     "copyrightHolder" : "ElizurHz_",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/elizurhz.cn\/frontend\/canvas-writing-pad\/",
+    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/canvas-writing-pad/",
     "wordCount" : "1367",
     "keywords" : [ "Canvas", "La Vie en Code - 编码人生"]
 }
@@ -606,7 +612,7 @@ SignaturePad.prototype._drawDot = function (point) {
 
     <div class="post-nav">
         
-        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="prev" rel="prev" title="mpvue 小程序开发踩坑记"><i class="iconfont icon-left"></i>&nbsp;mpvue 小程序开发踩坑记</a>
+        <a href="https://elizurhz.cn/frontend/typescript-for-jser/" class="prev" rel="prev" title="React &#43; TypeScript 从云玩家到入门"><i class="iconfont icon-left"></i>&nbsp;React &#43; TypeScript 从云玩家到入门</a>
          
         
         <a href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" class="next" rel="next" title="TypeScript &#43; 单元测试：从零开始的经验之谈">TypeScript &#43; 单元测试：从零开始的经验之谈&nbsp;<i class="iconfont icon-right"></i></a>

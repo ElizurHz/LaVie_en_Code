@@ -76,12 +76,14 @@ MDN 上这两个 API 的定义如下：
 
 ## 渲染过程
 
-在执行渲染的时候，Fiber Reconciler 会根据虚拟 DOM 生成一棵 Fiber Tree。这个阶段是可以被打断的。在生成 Fiber Tree 的时候，每生成一个节点，都会把控制权交还给主线程，看是否有更高优先级的任务，如果没有则继续构建，否则会打断 Fiber Tree 的构建。如果在这个阶段被打断，那么 Fiber Reconciler 会重新生成新的 Fiber Tree。这个阶段主要是在 React 组件的 render/reconciliation 阶段，对应生命周期钩子就是渲染或者重渲染前那些。
+在执行渲染的时候，Fiber Reconciler 会根据虚拟 DOM 生成一棵 Fiber Tree。这个阶段是可以被打断的。在生成 Fiber Tree 的时候，每生成一个节点，都会把控制权交还给主线程，看是否有更高优先级的任务，如果没有则继续构建，否则会打断 Fiber Tree 的构建。如果在这个阶段被打断，那么 Fiber Reconciler 会重新生成新的 Fiber Tree。这个阶段主要是在 React 组件的 render/reconciliation 阶段，对应生命周期钩子就是渲染或者重渲染前那些。而 Fiber Tree 上的每个节点中，如果有 side effect，就会进行标记，在这个阶段中会生成一个 effect list。
 
-在经过这个阶段之后，会进入到 commit 的阶段，此时会对需要更新的节点进行批量更新，该阶段不能被打断。
+在经过这个阶段之后，会进入到 commit 的阶段，此时会对需要更新的节点进行批量更新，如更新 DOM 树、调用组件生命周期函数以及更新 ref 等内部状态。该阶段不能被打断，所以尽可能不要在 componentDidMount、componentDidUpdate 和 componentWillUnmount 中做很耗资源的操作。
 
 ## 参考
 
 [React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture)
 
 [React Fiber 原理介绍 - 前端大宝剑 - SegmentFault 思否](https://segmentfault.com/a/1190000018250127)
+
+[完全理解 React Fiber | 黯羽轻扬](http://www.ayqy.net/blog/dive-into-react-fiber/#articleHeader3)
