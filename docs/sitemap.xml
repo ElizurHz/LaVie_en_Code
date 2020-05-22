@@ -3,9 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+<<<<<<< HEAD
       <loc>https://elizurhz.cn/frontend/react-fiber/</loc>
+=======
+      <loc>https://elizurhz.cn/frontend/apollo-react/</loc>
       
-      <lastmod>2019-10-12T00:00:00+00:00</lastmod>
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://elizurhz.cn/categories/</loc>
+>>>>>>> update Apollo article
+      
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
       
       
       
@@ -15,7 +29,21 @@
     <url>
       <loc>https://elizurhz.cn/frontend/more-about-react-hooks/</loc>
       
+<<<<<<< HEAD
       <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+=======
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://elizurhz.cn/tags/graphql/</loc>
+      
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+>>>>>>> update Apollo article
       
       
       
@@ -25,7 +53,11 @@
     <url>
       <loc>https://elizurhz.cn/frontend/how-to-use-context-in-react/</loc>
       
+<<<<<<< HEAD
       <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+=======
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+>>>>>>> update Apollo article
       
       
       
@@ -35,7 +67,11 @@
     <url>
       <loc>https://elizurhz.cn/mobile/flutter-tittle-tattle/</loc>
       
+<<<<<<< HEAD
       <lastmod>2019-07-19T00:00:00+00:00</lastmod>
+=======
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+>>>>>>> update Apollo article
       
       
       
@@ -45,7 +81,11 @@
     <url>
       <loc>https://elizurhz.cn/backend/aws-serverless-deployment/</loc>
       
+<<<<<<< HEAD
       <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+=======
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+>>>>>>> update Apollo article
       
       
       
@@ -55,7 +95,11 @@
     <url>
       <loc>https://elizurhz.cn/frontend/how-hooks-helps/</loc>
       
+<<<<<<< HEAD
       <lastmod>2019-07-18T00:00:00+00:00</lastmod>
+=======
+      <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+>>>>>>> update Apollo article
       
       
       
@@ -391,6 +435,7 @@
     </url>
   
     <url>
+<<<<<<< HEAD
       <loc>https://elizurhz.cn/translation/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
@@ -415,6 +460,8 @@
     </url>
   
     <url>
+=======
+>>>>>>> update Apollo article
       <loc>https://elizurhz.cn/tags/vue/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
@@ -499,9 +546,13 @@
     </url>
   
     <url>
+<<<<<<< HEAD
       <loc>https://elizurhz.cn/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
       
       <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+=======
+      <loc>https://elizurhz.cn/tips/translation/</loc>
+>>>>>>> update Apollo article
       
       
       

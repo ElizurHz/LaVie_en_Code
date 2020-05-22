@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="ElizurHz_">
+  <meta name="author" content="Haoze Harry Xu">
   
   
   
   <link rel="prev" href="https://elizurhz.cn/frontend/more-about-react-hooks/" />
-  
+  <link rel="next" href="https://elizurhz.cn/frontend/apollo-react/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/react-fiber/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -50,11 +50,11 @@
 还在谈 React 的 diff 算法和虚拟 DOM？你可能已经 Out 了！ 2018 年初和年中我经历过一些面试，React 的 diff 算法和虚拟 DOM 其实是遇到得比较多的 React 的原理的面试题，当然这些知识从一些专门讲面试的文章里可以看到。其实很多人都会为了准备面试而去背这些原理，包括我。不过说实话，里面有些东西确实开发中有用，例如列表渲染时 key 的使用，以及找出为什么列表渲染时数据不会变化的问题。但是真的要认真讨论起来，其实有一些概念并不完全正确，比如“虚拟 DOM”： React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于一个运算器，最终的渲染需要靠一个渲染环境来完成，例如浏览器的 DOM 环境。我们把它称作“虚拟 DOM”不过是因为这个名词使用很广泛而已，而它实际上是个 Tree 而已。React Native 也用它，在 React Native 中我们可能不应该把它称作为“虚拟 DOM”，因为 React Native 中并没有 DOM，而是会渲染成原生控件。
 从“diff 算法”说起 其实 diff 这个概念并不是很严格地能代指我们现在的场景。Wikipedia 上 diff 的定义是：",
     "inLanguage" : "zh-CN",
-    "author" : "ElizurHz_",
-    "creator" : "ElizurHz_",
-    "publisher": "ElizurHz_",
-    "accountablePerson" : "ElizurHz_",
-    "copyrightHolder" : "ElizurHz_",
+    "author" : "Haoze Harry Xu",
+    "creator" : "Haoze Harry Xu",
+    "publisher": "Haoze Harry Xu",
+    "accountablePerson" : "Haoze Harry Xu",
+    "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
     "datePublished": "2019-10-12 00:00:00 &#43;0000 UTC",
     "dateModified" : "2019-10-12 00:00:00 &#43;0000 UTC",
@@ -85,8 +85,6 @@
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/translation/" title="">翻译</a>
-                
                 <a class="menu-item" href="/tips/" title="">其他</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
@@ -116,8 +114,6 @@
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/translation/" title="">翻译</a>
-                
                 <a class="menu-item" href="/tips/" title="">其他</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
@@ -136,7 +132,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">重新了解 React - React Fiber</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">ElizurHz_</a> with ♥ 
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">Haoze Harry Xu</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2019-10-12 itemprop="datePublished">October 12, 2019</time>
                 </span>
@@ -269,7 +265,7 @@ React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>ElizurHz_ </span>
+                <span>Haoze Harry Xu </span>
                 </p>
             
            
@@ -308,6 +304,8 @@ React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于
         <a href="https://elizurhz.cn/frontend/more-about-react-hooks/" class="prev" rel="prev" title="More About React Hooks"><i class="iconfont icon-left"></i>&nbsp;More About React Hooks</a>
          
         
+        <a href="https://elizurhz.cn/frontend/apollo-react/" class="next" rel="next" title="Apollo GraphQL 在 React 中的应用">Apollo GraphQL 在 React 中的应用&nbsp;<i class="iconfont icon-right"></i></a>
+        
     </div>
 
     <div class="post-comment">
@@ -322,13 +320,13 @@ React 中有 reconciler，它是负责运行 diff 算法的。它仅仅相当于
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2019 - 2019</span>
+        <span itemprop="copyrightYear">2019 - 2020</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">ElizurHz_</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">Haoze Harry Xu</a> | </span> 
          
 
          

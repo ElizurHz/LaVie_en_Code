@@ -32,11 +32,6 @@ preserveTaxonomyNames = true
     weight = 2
 
   [[menu.main]]
-    name = "翻译"
-    url = "/translation/"
-    weight = 2
-
-  [[menu.main]]
     name = "其他"
     url = "/tips/"
     weight = 3
@@ -58,9 +53,9 @@ preserveTaxonomyNames = true
 
 [params]
     since = 2019
-    author = "ElizurHz_"                           # Author's name
-    avatar = "/images/me/avatar.jpg"           # Author's avatar
-    subtitle = "EYES ON ME"         # Subtitle
+    author = "Haoze Harry Xu"                           # Author's name
+    avatar = "/images/me/avatar.png"           # Author's avatar
+    subtitle = "温馨提示：点击左上角的心可开灯/关灯"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 

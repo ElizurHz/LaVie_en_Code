@@ -6,13 +6,19 @@
     <description>Recent content in La Vie en Code - 编码人生 on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+<<<<<<< HEAD
       <title>重新了解 React - React Fiber</title>
       <link>https://elizurhz.cn/frontend/react-fiber/</link>
       <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
+=======
+      <title>Frontends</title>
+      <link>https://elizurhz.cn/frontend/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+>>>>>>> update Apollo article
       
       <guid>https://elizurhz.cn/frontend/react-fiber/</guid>
       <description>
@@ -2484,18 +2490,30 @@ type State = Readonly&amp;lt;typeof initialState&amp;gt;;
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>mpvue 小程序开发踩坑记</title>
       <link>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</guid>
+=======
+      <title>About</title>
+      <link>https://elizurhz.cn/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/about/</guid>
+>>>>>>> update Apollo article
       <description>
 
 &lt;h1 id=&#34;mpvue-小程序开发踩坑记&#34;&gt;mpvue 小程序开发踩坑记&lt;/h1&gt;
 
 &lt;p&gt;之前公司决定开发一款小程序。&lt;/p&gt;
 
+<<<<<<< HEAD
 &lt;p&gt;我接触微信小程序也就一两个月的时间，没使用过小程序官方的开发语言，而是直接使用 mpvue 上手了，自己开发了一个因为内容的原因无法上架的 DEMO。正好也被推上了前端部门的 leader，所以也就接下了这个任务。&lt;/p&gt;
+=======
+&lt;p&gt;受到曾经最喜欢的一首歌：&lt;a href=&#34;https://i.y.qq.com/v8/playsong.html?songid=218828571&amp;amp;source=yqq#wechat_redirect&#34;&gt;라비앙로즈 (La Vie en Rose) - IZ*ONE (아이즈원)&lt;/a&gt;（中译：玫瑰人生）启发，而产生的名字。&lt;/p&gt;
+>>>>>>> update Apollo article
 
 &lt;p&gt;使用 mpvue 的因为本以为由 Vue 转小程序用 mpvue 会方便，不过没想到坑挺多的，一般的 Web 开发者如果以 Vue 的思维入手会遇到很多麻烦，因为小程序的运行环境和浏览器完全不同。&lt;/p&gt;
 
@@ -2506,10 +2524,21 @@ type State = Readonly&amp;lt;typeof initialState&amp;gt;;
 &lt;h3 id=&#34;mpvue&#34;&gt;mpvue&lt;/h3&gt;
 
 &lt;ul&gt;
+<<<<<<< HEAD
 &lt;li&gt;mpvue 是美团开发的，允许开发者使用 Vue 语法来编写小程序的框架。&lt;/li&gt;
 &lt;li&gt;小程序和 Web 应用的不同之处是它依靠微信 App 内的 JavaScript 引擎和 WXML/WXSS 引擎进行渲染，所以与 Web 端相比，小程序里不存在 DOM，无法使用原生 DOM 的操作，也不存在浏览器的各种 API。&lt;/li&gt;
 &lt;li&gt;在使用 mpvue 时，实际上可以看作是用 Vue 构建多页 Web App。&lt;/li&gt;
 &lt;li&gt;在 Webpack 打包时，Vue Web App 是最终打包成 index.html 以及 css 和 js 文件各 1 个（如果你不开 source map 的话）。而 mpvue-loader 是将 Vue 语法转换成小程序原生语法的 Webpack loader，打包后的文件实际上就是原生小程序的语法（js 除外），这样就可以在小程序开发工具中预览和 debug。&lt;/li&gt;
+=======
+&lt;li&gt;JavaScript 全栈，主 React&lt;/li&gt;
+&lt;li&gt;关注跨平台移动开发&lt;/li&gt;
+&lt;li&gt;宅，喜欢动漫&lt;/li&gt;
+&lt;li&gt;Fate 迷，Fate/Grand Order 国日双服玩家&lt;/li&gt;
+&lt;li&gt;全平台主机游戏玩家&lt;/li&gt;
+&lt;li&gt;数码玩家&lt;/li&gt;
+&lt;li&gt;HiFi 发烧友&lt;/li&gt;
+&lt;li&gt;客制化键盘玩家&lt;/li&gt;
+>>>>>>> update Apollo article
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;weui&#34;&gt;weui&lt;/h3&gt;
@@ -2641,12 +2670,16 @@ type State = Readonly&amp;lt;typeof initialState&amp;gt;;
 &lt;p&gt;分页加载有两种方式: onReachBottom 和 scroll-view&lt;/p&gt;
 
 &lt;ul&gt;
+<<<<<<< HEAD
 &lt;li&gt;使用 onReachBottom 时不能使用 scroll-view，只能使用普通的 view / div。scroll-view 使用 @scrolltolower (原生小程序是 bindscrolltolower) 的 event。&lt;/li&gt;
 &lt;li&gt;包裹着列表组件的容器必须保证能滚动到屏幕底部，也就是说 CSS 里对高度的设置需要注意&lt;/li&gt;
 &lt;li&gt;页面&lt;em&gt;组件中需要有变量记录当前页码或者下一页的页码，在触发 onReachBottom&lt;/em&gt;@scrolltolower 时使用这个页码去获取新的分页数据&lt;/li&gt;
 &lt;li&gt;分页加载完成后，数据需要加到原列表数组的最后&lt;/li&gt;
 &lt;li&gt;页面&lt;em&gt;组件中需要有变量记录总页数，在 onReachBottom&lt;/em&gt;@scrolltolower 时，如果已经到最后一页则不继续加载或者弹出提示&lt;/li&gt;
 &lt;li&gt;在进行一些复杂操作的时候记得清空当前页码和总页数，防止数据混乱&lt;/li&gt;
+=======
+&lt;li&gt;曾是掘金翻译计划译者&lt;/li&gt;
+>>>>>>> update Apollo article
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;图片&#34;&gt;图片&lt;/h3&gt;
@@ -2889,11 +2922,17 @@ yum update
 &lt;p&gt;需要安装的依赖：&lt;/p&gt;
 
 &lt;ul&gt;
+<<<<<<< HEAD
 &lt;li&gt;gcc gcc-c++&lt;/li&gt;
 &lt;li&gt;pcre&lt;/li&gt;
 &lt;li&gt;openssl&lt;/li&gt;
 &lt;li&gt;zlib&lt;/li&gt;
 &lt;li&gt;zlib-devel&lt;/li&gt;
+=======
+&lt;li&gt;&lt;a href=&#34;https://github.com/ElizurHz&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://weibo.com/1955273297&#34;&gt;微博&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Email: elizurhz@gmail.com&lt;/li&gt;
+>>>>>>> update Apollo article
 &lt;/ul&gt;
 
 &lt;p&gt;以上可以都用 yum 安装。安装完成之后 &lt;code&gt;yum install -y nginx&lt;/code&gt; 即可成功安装 nginx。如果以上依赖未完全安装，在安装 nginx 时则会提示某个包未安装。&lt;/p&gt;

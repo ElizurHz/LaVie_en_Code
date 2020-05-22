@@ -6,15 +6,34 @@
     <description>Recent content in Tags on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+=======
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+>>>>>>> update Apollo article
     
 	<atom:link href="https://elizurhz.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+<<<<<<< HEAD
       <title>AWS</title>
       <link>https://elizurhz.cn/tags/aws/</link>
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+=======
+      <title>GraphQL</title>
+      <link>https://elizurhz.cn/tags/graphql/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/graphql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://elizurhz.cn/tags/react/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+>>>>>>> update Apollo article
       
       <guid>https://elizurhz.cn/tags/aws/</guid>
       <description></description>

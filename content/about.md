@@ -4,14 +4,16 @@ title: About
 
 ## About the Blog's Name
 
-受到最喜欢的一首歌：[라비앙로즈 (La Vie en Rose) - IZ\*ONE (아이즈원)](https://i.y.qq.com/v8/playsong.html?songid=218828571&source=yqq#wechat_redirect)（中译：玫瑰人生）启发，而产生的名字。
+受到曾经最喜欢的一首歌：[라비앙로즈 (La Vie en Rose) - IZ\*ONE (아이즈원)](https://i.y.qq.com/v8/playsong.html?songid=218828571&source=yqq#wechat_redirect)（中译：玫瑰人生）启发，而产生的名字。
 
 ## About Me
 
 ### Intro
 
 - JavaScript 全栈，主 React
-- 兴趣 Node.js & 跨平台移动开发
+- 关注跨平台移动开发
+- 宅，喜欢动漫
+- Fate 迷，Fate/Grand Order 国日双服玩家
 - 全平台主机游戏玩家
 - 数码玩家
 - HiFi 发烧友
@@ -29,11 +31,10 @@ title: About
 
 ### Open Source Contribution
 
-- 掘金翻译计划译者 from 2018.12.20
+- 曾是掘金翻译计划译者
 
 ### Contact
 
 - [GitHub](https://github.com/ElizurHz)
 - [微博](https://weibo.com/1955273297)
-- [LinkedIn](https://www.linkedin.com/in/%E7%9A%93%E6%B3%BD-%E5%BE%90-88877090/)
 - Email: elizurhz@gmail.com

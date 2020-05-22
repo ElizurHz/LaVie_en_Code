@@ -6,10 +6,24 @@
     <description>Recent content in Frontends on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/frontend/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Apollo GraphQL 在 React 中的应用</title>
+      <link>https://elizurhz.cn/frontend/apollo-react/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/apollo-react/</guid>
+      <description>这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。
+Apollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。
+GraphQL 注：本节示例代码大多来自于 GraphQL 官网。
+提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。
+import gql from &#39;graphql-tag&#39; const SAMPLE_QUERY = gql` { hero { name height } } `  上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：
+const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } `  HeroNameAndFriends 在 GraphQL 里叫做 operation name。</description>
+    </item>
     
     <item>
       <title>重新了解 React - React Fiber</title>

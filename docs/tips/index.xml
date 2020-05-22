@@ -29,5 +29,15 @@ $ git remote -v  这时应该能看到：
 origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) upstream https://github.</description>
     </item>
     
+    <item>
+      <title>掘金翻译计划存档</title>
+      <link>https://elizurhz.cn/tips/translation/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tips/translation/</guid>
+      <description>掘金翻译计划译者 from 2018.12.20
+ 【译】 用 React 和 Node.js 实现受保护的路由和权限验证 - 掘金 【译】 2019 年你应该要知道的 11 个 React UI 组件库 【译】 2019 年值得学习的顶级 JavaScript 框架与主题  </description>
+    </item>
+    
   </channel>
 </rss>
