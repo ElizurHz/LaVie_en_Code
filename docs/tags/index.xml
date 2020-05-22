@@ -6,21 +6,12 @@
     <description>Recent content in Tags on La Vie en Code - 编码人生</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-<<<<<<< HEAD
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
-=======
     <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
->>>>>>> update Apollo article
     
 	<atom:link href="https://elizurhz.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-<<<<<<< HEAD
-      <title>AWS</title>
-      <link>https://elizurhz.cn/tags/aws/</link>
-      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
-=======
       <title>GraphQL</title>
       <link>https://elizurhz.cn/tags/graphql/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
@@ -33,18 +24,8 @@
       <title>React</title>
       <link>https://elizurhz.cn/tags/react/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
->>>>>>> update Apollo article
       
-      <guid>https://elizurhz.cn/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Canvas</title>
-      <link>https://elizurhz.cn/tags/canvas/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/canvas/</guid>
+      <guid>https://elizurhz.cn/tags/react/</guid>
       <description></description>
     </item>
     
@@ -54,78 +35,6 @@
       <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/dart/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Java</title>
-      <link>https://elizurhz.cn/tags/java/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://elizurhz.cn/tags/javascript/</link>
-      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
-      <link>https://elizurhz.cn/tags/javascript/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Next.js</title>
-      <link>https://elizurhz.cn/tags/next.js/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/next.js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>React</title>
-      <link>https://elizurhz.cn/tags/react/</link>
-      <pubDate>Sat, 12 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SSR</title>
-      <link>https://elizurhz.cn/tags/ssr/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/ssr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>TypeScript</title>
-      <link>https://elizurhz.cn/tags/typescript/</link>
-      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/typescript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vue</title>
-      <link>https://elizurhz.cn/tags/vue/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/vue/</guid>
       <description></description>
     </item>
     
@@ -148,6 +57,24 @@
     </item>
     
     <item>
+      <title>AWS</title>
+      <link>https://elizurhz.cn/tags/aws/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://elizurhz.cn/tags/javascript/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>react-redux</title>
       <link>https://elizurhz.cn/tags/react-redux/</link>
       <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
@@ -157,11 +84,29 @@
     </item>
     
     <item>
-      <title>typescript</title>
+      <title>TypeScript</title>
       <link>https://elizurhz.cn/tags/typescript/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Next.js</title>
+      <link>https://elizurhz.cn/tags/next.js/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/next.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSR</title>
+      <link>https://elizurhz.cn/tags/ssr/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/ssr/</guid>
       <description></description>
     </item>
     
@@ -171,6 +116,33 @@
       <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Canvas</title>
+      <link>https://elizurhz.cn/tags/canvas/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/canvas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://elizurhz.cn/tags/java/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://elizurhz.cn/tags/vue/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/vue/</guid>
       <description></description>
     </item>
     

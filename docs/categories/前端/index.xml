@@ -116,18 +116,6 @@ const test = document.getElementById(&#39;test&#39;) const ctx = test.getContext
     </item>
     
     <item>
-      <title>React &#43; TypeScript 从云玩家到入门</title>
-      <link>https://elizurhz.cn/frontend/typescript-for-jser/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/frontend/typescript-for-jser/</guid>
-      <description>React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
-TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
-基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&amp;lt;string&amp;gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
-interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &amp;quot;asdf&amp;quot; };  Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</description>
-    </item>
-    
-    <item>
       <title>mpvue 小程序开发踩坑记</title>
       <link>https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
@@ -138,6 +126,18 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
 使用 mpvue 的因为本以为由 Vue 转小程序用 mpvue 会方便，不过没想到坑挺多的，一般的 Web 开发者如果以 Vue 的思维入手会遇到很多麻烦，因为小程序的运行环境和浏览器完全不同。
 另外京东凹凸实验室的 Taro 也是一个非常好的框架，不过我没有去深入研究它。考虑到公司技术栈转 Vue 的要求，我们团队选择了 mpvue，然而我个人认为 mpvue 还是个不太成熟的框架，文档不完善，在开发编译时也容易出 bug，另外就是分包加载的支持比较慢，好在最近出了新版本的 mpvue-loader。但是新版本的 mpvue-loader 完全更改了 app.json/main.json 文件的写法，文档中也没有明确提到，只能通过新的 quickstart 来了解新的写法。
 我对小程序和 mpvue 的理解 mpvue  mpvue 是美团开发的，允许开发者使用 Vue 语法来编写小程序的框架。 小程序和 Web 应用的不同之处是它依靠微信 App 内的 JavaScript 引擎和 WXML/WXSS 引擎进行渲染，所以与 Web 端相比，小程序里不存在 DOM，无法使用原生 DOM 的操作，也不存在浏览器的各种 API。 在使用 mpvue 时，实际上可以看作是用 Vue 构建多页 Web App。 在 Webpack 打包时，Vue Web App 是最终打包成 index.</description>
+    </item>
+    
+    <item>
+      <title>React &#43; TypeScript 从云玩家到入门</title>
+      <link>https://elizurhz.cn/frontend/typescript-for-jser/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/typescript-for-jser/</guid>
+      <description>React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
+TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
+基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&amp;lt;string&amp;gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
+interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &amp;quot;asdf&amp;quot; };  Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</description>
     </item>
     
     <item>
