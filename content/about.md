@@ -4,7 +4,7 @@ title: About
 
 ## About the Blog's Name
 
-受到曾经最喜欢的一首歌：[라비앙로즈 (La Vie en Rose) - IZ\*ONE (아이즈원)](https://i.y.qq.com/v8/playsong.html?songid=218828571&source=yqq#wechat_redirect)（中译：玫瑰人生）启发，而产生的名字。
+帕拉迪昂(又写作帕拉狄昂，英文为[Palladium]或 Palladion)，是海神特里同的女儿——帕拉斯的雕像的名字。它由宙斯赐予特洛伊城，是城市的护城神像；但雅典娜并未因此而站在特洛伊一边。但这里指的并不是它的本意，FGO 中经历了 CCC 联动活动，有感而发。
 
 ## About Me
 
