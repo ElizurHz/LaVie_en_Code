@@ -4,6 +4,8 @@ title: About
 
 ## About the Blog's Name
 
+Variation Palladion: 帕拉迪昂变奏曲，FGO 中莉莉丝的 ex 攻击的台词。莉莉丝的人就与芭蕾舞相关，包括 CCC 联动活动也是。有很多名词需要详细考据，这里不再赘述。
+
 帕拉迪昂(又写作帕拉狄昂，英文为[Palladium]或 Palladion)，是海神特里同的女儿——帕拉斯的雕像的名字。它由宙斯赐予特洛伊城，是城市的护城神像；但雅典娜并未因此而站在特洛伊一边。但这里指的并不是它的本意，FGO 中经历了 CCC 联动活动，有感而发。
 
 ## About Me
