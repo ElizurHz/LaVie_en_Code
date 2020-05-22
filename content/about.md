@@ -10,7 +10,7 @@ title: About
 
 ### Intro
 
-- JavaScript 全栈，主 React
+- 前端，主 React & TypeScript
 - 关注跨平台移动开发
 - 宅，喜欢动漫
 - Fate 迷，Fate/Grand Order 国日双服玩家
