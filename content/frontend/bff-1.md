@@ -44,8 +44,18 @@ draft: true
 
 对比二者，我们可以发现 V8 是二者都有的部分（事实上不同浏览器使用的 JavaScript 引擎不大一样，如果是 Chrome 就和 Node.js 一样）。Event Loop 也是二者都有，但是它们的实现方式有所区别：Node.js 靠的是 libuv，而在浏览器端它是由 [HTML 规范](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model) 所定义的，具体交由各浏览器的开发者自行实现。另外浏览器端独有的是 Web API，这点我们应该都很熟悉。而 Node.js 独有的则是 Node.js Binding，它主要负责的是 Node.js 与操作系统的交互，这是后端语言必备的能力。举例来说，有可以读取系统信息的 API，可以用于性能监测；有读写文件的 API，这个是非常常用的。
 
-那么这样分析我们大致可以了解到，在 Node.js 中 JavaScript 的执行机制其实和在 Chrome 浏览器中比较类似，然后在 Node.js 中我们不需要也不能使用 Web API，比如 window 全局对象、DOM API 等。
+那么这样分析我们大致可以了解到，在 Node.js 中 JavaScript 的执行机制其实和在 Chrome 浏览器中比较类似，然后在 Node.js 中我们不需要也不能使用 Web API，比如 window 全局对象、DOM API 等。那么接下来稍微讲讲 Node.js 中有区别的、独有的部分
 
-## RPC 原理与实现
+### Event Loop
+
+(process.nextTick, setImmediate)
+
+### Node.js Binding
+
+## 前端需要知道的 RPC
+
+RPC(Remote Procedure Call Protocol)，远程过程调用
+
+Why: HTTP 效率低
 
 ## 二进制协议的实现 - Buffer
