@@ -1,42 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TypeScript on Variation Palladion - 撕裂时间的帕拉迪昂</title>
+    <title>typescript on Variation Palladion - 撕裂时间的帕拉迪昂</title>
     <link>https://elizurhz.cn/tags/typescript/</link>
-    <description>Recent content in TypeScript on Variation Palladion - 撕裂时间的帕拉迪昂</description>
+    <description>Recent content in typescript on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>React Hooks 能给我们带来什么</title>
-      <link>https://elizurhz.cn/frontend/how-hooks-helps/</link>
-      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/frontend/how-hooks-helps/</guid>
-      <description>TL;DR 很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。
-这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。
-Before &amp;amp; After Hooks 使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。
-Before /** container.ts */ import { connect } from &#39;react-redux&#39; import { injectIntl } from &#39;react-intl&#39; import ComponentA from &#39;./componentA&#39; import * as actions from &#39;your/path/to/actions&#39; import { bindActionCreators, Dispatch } from &#39;redux&#39; function mapStateToProps(state: any): any { return { variableA: state.</description>
-    </item>
-    
-    <item>
-      <title>TypeScript &#43; 单元测试：从零开始的经验之谈</title>
-      <link>https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/</guid>
-      <description>TL;DR 公司和部门内部之前有在推广 TypeScript，但是由于种种原因很难投入使用，但这次我参与了一个从零开始的项目，没有技术栈限制，领导也说希望用 TypeScript 试一试。作为开发团队中唯一认真学过 TypeScript 的人（在部门进行过内部分享，写过内部博客），我们的经验其实都是很缺乏的。
-另外，在这个项目中，除了 TypeScript 之外，单元测试也是我们团队首次尝试的。
-同时，我的性格和开发风格也比较偏向“探索者”，所以领导也布置给我一些预研、新尝试，所以自然而然便成了一个 leader 的角色。
-项目构架 我们使用 create-react-app 搭建项目，没有 eject。
-而对于文件的组织，我们采用了按模块划分的方式，即各个模块集成自己的 store, reducers, actions, 展示组件, 容器组件等，并设置一个入口文件将它们都暴露给外部，外部需要引用的时候直接引用这个文件即可。
-主目录结构大致如下：
-├── docs // 文档 ├── e2e // E2E 测试 ├── src │ ├── App.tsx // 主页面 │ ├── index.tsx // 主入口 │ ├── common.d.ts // 全局通用类型 │ ├── components // 通用组件 │ ├── i18n // 国际化 │ ├── @types // 如果某个依赖包没有 TypeScript 支持，则在这里编写 d.ts 文件 │ ├── modules // 业务模块 │ │ ├── moduleA │ │ ├── moduleB │ │ .</description>
-    </item>
     
     <item>
       <title>React &#43; TypeScript 从云玩家到入门</title>

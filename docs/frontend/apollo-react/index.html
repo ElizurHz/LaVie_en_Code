@@ -41,12 +41,17 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/elizurhz.cn\/"
+         "@id": "https://elizurhz.cn/"
     },
     "articleSection" : "frontend",
     "name" : "Apollo GraphQL 在 React 中的应用",
     "headline" : "Apollo GraphQL 在 React 中的应用",
-    "description" : "这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。\nApollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。\nGraphQL 注：本节示例代码大多来自于 GraphQL 官网。\n提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。\nimport gql from \x27graphql-tag\x27 const SAMPLE_QUERY = gql` { hero { name height } } `  上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：\nconst SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } `  HeroNameAndFriends 在 GraphQL 里叫做 operation name。",
+    "description" : "这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。
+Apollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。
+GraphQL 注：本节示例代码大多来自于 GraphQL 官网。
+提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。
+import gql from 'graphql-tag' const SAMPLE_QUERY = gql` { hero { name height } } `  上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：
+const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } `  HeroNameAndFriends 在 GraphQL 里叫做 operation name。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -54,9 +59,9 @@
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2020",
-    "datePublished": "2020-05-22 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2020-05-22 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/elizurhz.cn\/frontend\/apollo-react\/",
+    "datePublished": "2020-05-22 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2020-05-22 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/frontend/apollo-react/",
     "wordCount" : "909",
     "keywords" : [ "GraphQL","React", "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }

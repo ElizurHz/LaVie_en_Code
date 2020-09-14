@@ -41,12 +41,18 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/elizurhz.cn\/"
+         "@id": "https://elizurhz.cn/"
     },
     "articleSection" : "backend",
-    "name" : "前后端分离项目在阿里云\/七牛云的简单部署",
-    "headline" : "前后端分离项目在阿里云\/七牛云的简单部署",
-    "description" : "前后端分离项目在阿里云\/七牛云的简单部署 购买主机 我购买了两台主机，都是的是 1 核 \x2b 1GHz \x2b 1Mbps 的配置，系统一台是为 Ubuntu 14.04，另一台是 CentOS 7.4。直连实测 700 多 KB 的 Webpack 生产打包后的 React 的 js 文件需要十多秒才能加载，速度大约 60KB\/s。\n启动实例 购买后实例是自动启动的，但是需要进行一些初始化的设置。\n进入 ECS 的实例页面，首先如果需要从控制台远程连接，阿里云会提供一个远程连接密码，这个密码需要记住，每次从控制台远程连接时会需要。\n我们正常的开发一般是从 Terminal 或者 FileZilla 等 SFTP 客户端去连接服务器，为了进行此操作，我们需要设置初始密码。控制台的实例页面点击 “更多” =\x26gt; “密码\/密钥” =\x26gt; “重置密码” 即可重置 Linux 登录密码，也是 ssh 的密码。重置后我们就可以使用刚刚输入的密码，通过 ssh root@${yourServerIp} 登陆。如果你已经在购买的 ECS 时候设置了密码或者密钥，那可以不需要在此设置密码。\n而 FileZilla 也是一样，建立一个 SFTP 连接，使用用户 root 和更改好的密码即可。\n系统配置 首先我们需要把包管理器源替换成国内的源，Ubuntu 的 apt 可以使用清华的源，CentOS 的 yum 可以使用阿里云的源。\n Ubuntu",
+    "name" : "前后端分离项目在阿里云/七牛云的简单部署",
+    "headline" : "前后端分离项目在阿里云/七牛云的简单部署",
+    "description" : "前后端分离项目在阿里云/七牛云的简单部署 购买主机 我购买了两台主机，都是的是 1 核 + 1GHz + 1Mbps 的配置，系统一台是为 Ubuntu 14.04，另一台是 CentOS 7.4。直连实测 700 多 KB 的 Webpack 生产打包后的 React 的 js 文件需要十多秒才能加载，速度大约 60KB/s。
+启动实例 购买后实例是自动启动的，但是需要进行一些初始化的设置。
+进入 ECS 的实例页面，首先如果需要从控制台远程连接，阿里云会提供一个远程连接密码，这个密码需要记住，每次从控制台远程连接时会需要。
+我们正常的开发一般是从 Terminal 或者 FileZilla 等 SFTP 客户端去连接服务器，为了进行此操作，我们需要设置初始密码。控制台的实例页面点击 “更多” =&gt; “密码/密钥” =&gt; “重置密码” 即可重置 Linux 登录密码，也是 ssh 的密码。重置后我们就可以使用刚刚输入的密码，通过 ssh root@${yourServerIp} 登陆。如果你已经在购买的 ECS 时候设置了密码或者密钥，那可以不需要在此设置密码。
+而 FileZilla 也是一样，建立一个 SFTP 连接，使用用户 root 和更改好的密码即可。
+系统配置 首先我们需要把包管理器源替换成国内的源，Ubuntu 的 apt 可以使用清华的源，CentOS 的 yum 可以使用阿里云的源。
+ Ubuntu  cd /etc/apt/ sudo cp sources.",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -54,9 +60,9 @@
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 \x2b0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 \x2b0000 UTC",
-    "url" : "https:\/\/elizurhz.cn\/backend\/c-s-ops\/",
+    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
+    "url" : "https://elizurhz.cn/backend/c-s-ops/",
     "wordCount" : "287",
     "keywords" : [  "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -181,13 +187,13 @@
 <p>首先我们需要把包管理器源替换成国内的源，Ubuntu 的 apt 可以使用清华的源，CentOS 的 yum 可以使用阿里云的源。</p>
 
 <ol>
-<li><p>Ubuntu</p>
+<li>Ubuntu</li>
+</ol>
 
 <pre><code class="language-bash">cd /etc/apt/
 sudo cp sources.list sources.list.bak  # 备份 source.list
 sudo vim sources.list
-</code></pre></li>
-</ol>
+</code></pre>
 
 <p>接着将 source.list 中的源替换为清华的源</p>
 
@@ -213,7 +219,8 @@ sudo apt-get upgrade # 更新软件
 </code></pre>
 
 <ol>
-<li><p>CentOS</p>
+<li>CentOS</li>
+</ol>
 
 <pre><code class="language-bash">cd /etc/yum.repos.d/
 wget http://mirrors.aliyun.com/repo/Centos-7.repo # 下载 repo
@@ -223,8 +230,7 @@ mv Centos-7.repo CentOs-Base.repo # 替换
 yum clean all
 yum makecache
 yum update
-</code></pre></li>
-</ol>
+</code></pre>
 
 <h3 id="安装-nginx">安装 nginx</h3>
 

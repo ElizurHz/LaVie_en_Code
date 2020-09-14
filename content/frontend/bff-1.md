@@ -62,12 +62,62 @@ draft: true
 
 ## 前端需要知道的 RPC
 
-RPC(Remote Procedure Call Protocol)，中文名叫远程过程调用。实际上它就是两个服务之间的一种通信方式。而说到通信方式，主流的 RPC 框架分为基于 HTTP 和基于 TCP 的两种。HTTP 的缺点主要是协议传输效率低，短连接开销大。如果使用基于 TCP 的 RPC，我们可以对它进行灵活的定制，来解决性能和效率上的需求。业界中基于 HTTP 的 RPC 框架有非常著名的 gRPC，它是基于 HTTP/2 的，而基于 TCP 的方案则有很多，例如阿里的 Dubbo 和 HSF。
+RPC(Remote Procedure Call Protocol)，中文名叫远程过程调用。实际上它就是两个服务之间的一种通信方式。而说到通信方式，主流的 RPC 框架分为基于 HTTP 和基于 TCP 的两种。HTTP 的缺点主要是协议传输效率低，短连接开销大。如果使用基于 TCP 的 RPC，我们可以对它进行灵活的定制，来解决性能和效率上的需求。业界中基于 HTTP 的 RPC 框架有非常著名的 gRPC，它是基于 HTTP/2 的，而基于 TCP 的方案则有很多，例如阿里的 Dubbo 和 HSF。而一个 RPC 调用的流程大概是：客户端寻址，客户端数据序列化并发送，服务端接收数据并反序列化，服务端执行本地代码并将返回数据序列化通过 TCP/HTTP 通道返回给调用方，客户端将数据反序列化并执行相应的业务代码。
 
-而一个 RPC 调用的流程大概是：客户端寻址，客户端数据序列化并发送，服务端接收数据并反序列化，服务端执行本地代码并将返回数据序列化通过 TCP/HTTP 通道返回给调用方，客户端将数据反序列化并执行相应的业务代码。
-
-这里我们提到了“序列化”和“反序列化”。在 HTTP 请求 RESTful 接口的时候，我们常用的往往是 application/json 的数据格式，这样我们前端只需要拼接出一个 JavaScript 对象，然后使用 fetch API 或者 axios 即可将其发送给后端。而在 RPC 中，使用的数据格式往往没这么简单。为了效率，在数据传输方面，很多框架使用了二进制协议，也就是传输的数据是二进制的。那么如果要进行 RPC 调用，我们客户端需要将数据转换成二进制格式，这对于前端来说是比较麻烦的事。不过好在 Node.js 给我们提供了一个很简单的 API，也就是 Buffer。
+这里我们提到了“序列化”和“反序列化”。在 HTTP 请求 RESTful 接口的时候，我们常用的往往是 application/json 的数据格式，这样我们前端只需要拼接出一个 JavaScript 对象，然后使用 fetch API 或者 axios 即可将其发送给后端。而在 RPC 中，为了效率，在数据传输方面，很多框架使用了二进制协议。在客户端向服务端发送数据的时候，HTTP 需要发送一个 JSON，包含众多键值对，而基于二进制协议的 RPC 则可以发送一个二进制流。而二进制数据序列化和反序列化的开销往往会比 JSON 更好，序列化后的数据包体积也往往更小（具体取决于不同框架的不同实现方式）。
 
 ## RPC 中的二进制数据
 
-在前端，我们常见的"二进制"有 Blob 和 ArrayBuffer，但是它们和 Node.js、RPC 没有什么关系。前端想要直接把数据序列化成二进制的格式倒不是不行，只是这么做没有必要。
+### Buffer
+
+在 Node.js 中，我们通常会使用 Buffer 来实现数据的序列化和反序列化，实现 JavaScript 中的数据类型与二进制数据间的互相转换。当然在前端我们也有用于读写二进制数据的类似实现，ES6 中有 ArrayBuffer、TypedArray 和 DataView 的对象。它们常常应用于 JS 与显卡交互（WebGL）和与声卡交互（Web Audio API）等场景。而在 [Node.js 的文档](https://nodejs.org/dist/latest-v14.x/docs/api/buffer.html#buffer_buffers_and_typedarrays)中有相关说明，Node.js 的 Buffer 继承并且拓展了 JavaScript 的 Uint8Array，一个 Buffer 实例同样也是 Uint8Array 实例和 TypedArray 实例 (Node.js > 4.x)。
+
+#### 创建
+
+```JavaScript
+// create
+const buf1 = Buffer.alloc(10)
+// create with initial values
+const buf2 = Buffer.alloc(10, 1)
+// convert from other JavaScript data structure
+const buf3 = Buffer.from([1, 2, 3])
+const buf4 = Buffer.from('tést')
+const buf5 = Buffer.from('tést', 'latin1')
+```
+
+`Buffer.alloc` 即为创建一个固定长度的 buffer，而 `Buffer.from` 则是创建一个包含所给定数据的 buffer。
+
+#### 读写
+
+```JavaScript
+const buf1 = Buffer.alloc(3)
+buf.writeInt8(3) // <Buffer 03 00 00>
+
+const buf2 = Buffer.alloc(3)
+buf.writeInt8(3, 1) // <Buffer 00 03 00>
+
+const buf3 = Buffer.alloc(3)
+buf.writeInt16BE(0x0102, 1) // <Buffer 00 01 02>
+
+const buf4 = Buffer.alloc(3)
+buf.writeInt16LE(0x0304, 1) // <Buffer 00 04 03>
+
+const buf4 = Buffer.alloc(3)
+buf.writeInt16LE(0x0304, 2) // RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 1. Received 2
+```
+
+读写的方法分为 `writeInt8`, `writeInt16BE`, `writeInt16LE` 等等。它们之间的区别是，它们表示了不同进制，比如 int8 就是八进制数，范围是 -254 到 255，占一个字节；int16 就是十六进制数，占两个字节，而 BE 和 LE 表示写入的顺序，是“从左往右”还是“从右往左”。当然要注意用 `Buffer.alloc` 的时候你是规定了一个 Buffer 的长度的，写入的内容必须在范围内，否则会报错。例如长度为 3 的 buffer 写入 int16 是无法从 offset = 2 的位置开始写入的，也无法写入 int32。当然想要扩展 Buffer 长度也不是没办法，比如 `Buffer.concat`：
+
+```JavaScript
+const buf1 = Buffer.alloc(3)
+buf1.writeInt16LE(0x0304, 1)
+const buf2 = Buffer.alloc(3)
+buf2.writeInt16BE(0x0102, 1)
+const targetBuf = Buffer.concat([buf1, buf2], 9) // <Buffer 00 04 03 00 01 02 00 00 00>
+```
+
+其余的使用方法请查阅 [Node.js 官方文档](https://nodejs.org/dist/latest-v14.x/docs/api/buffer.html#buffer_buffer)。
+
+### Protobuf
+
+如果在做业务的时候，我们每次都需要这样手动写入 Buffer，那样的工作效率显然太低了，因此我们就要依赖一些高效的序列化框架。例如 Protobuf，它是 Google 开发的一个结构化数据的格式，有在不同语言不同框架下的实现。其实这非常类似 GraphQL，但是 GraphQL 本质上仍然是 HTTP 请求而不是 RPC。

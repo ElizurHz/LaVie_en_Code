@@ -66,7 +66,7 @@ sudo docker run --detach \ --hostname gitlab.mydomain.com \ --publish 8443:443 -
 我们正常的开发一般是从 Terminal 或者 FileZilla 等 SFTP 客户端去连接服务器，为了进行此操作，我们需要设置初始密码。控制台的实例页面点击 “更多” =&amp;gt; “密码/密钥” =&amp;gt; “重置密码” 即可重置 Linux 登录密码，也是 ssh 的密码。重置后我们就可以使用刚刚输入的密码，通过 ssh root@${yourServerIp} 登陆。如果你已经在购买的 ECS 时候设置了密码或者密钥，那可以不需要在此设置密码。
 而 FileZilla 也是一样，建立一个 SFTP 连接，使用用户 root 和更改好的密码即可。
 系统配置 首先我们需要把包管理器源替换成国内的源，Ubuntu 的 apt 可以使用清华的源，CentOS 的 yum 可以使用阿里云的源。
- Ubuntu</description>
+ Ubuntu  cd /etc/apt/ sudo cp sources.</description>
     </item>
     
     <item>

@@ -6,10 +6,18 @@
     <description>Recent content in Categories on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://elizurhz.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>其他</title>
+      <link>https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>前端</title>
@@ -17,15 +25,6 @@
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>移动开发</title>
-      <link>https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
@@ -39,11 +38,11 @@
     </item>
     
     <item>
-      <title>其他</title>
-      <link>https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      <title>移动开发</title>
+      <link>https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/</guid>
+      <guid>https://elizurhz.cn/categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
