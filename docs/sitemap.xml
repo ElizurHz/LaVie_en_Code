@@ -377,18 +377,6 @@
     </url>
   
     <url>
-      <loc>https://elizurhz.cn/tags/node.js/</loc>
-      
-      <lastmod>2020-12-10T00:00:00+00:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://elizurhz.cn/tags/react/</loc>
       
       <lastmod>2020-05-22T00:00:00+00:00</lastmod>
@@ -521,9 +509,33 @@
     </url>
   
     <url>
+      <loc>https://elizurhz.cn/tags/%E5%85%B6%E4%BB%96/</loc>
+      
+      <lastmod>2020-12-10T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/</loc>
       
       <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://elizurhz.cn/tags/%E5%89%8D%E7%AB%AF/</loc>
+      
+      <lastmod>2020-12-10T00:00:00+00:00</lastmod>
       
       
       

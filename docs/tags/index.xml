@@ -84,15 +84,6 @@
     </item>
     
     <item>
-      <title>Node.js</title>
-      <link>https://elizurhz.cn/tags/node.js/</link>
-      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/tags/node.js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>React</title>
       <link>https://elizurhz.cn/tags/react/</link>
       <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
@@ -161,6 +152,24 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://elizurhz.cn/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>其他</title>
+      <link>https://elizurhz.cn/tags/%E5%85%B6%E4%BB%96/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/%E5%85%B6%E4%BB%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>前端</title>
+      <link>https://elizurhz.cn/tags/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/tags/%E5%89%8D%E7%AB%AF/</guid>
       <description></description>
     </item>
     
