@@ -10,7 +10,7 @@
   
   
   <link rel="prev" href="https://elizurhz.cn/tips/translation/" />
-  <link rel="next" href="https://elizurhz.cn/tips/apple-m1-for-fe/" />
+  
   <link rel="canonical" href="https://elizurhz.cn/tips/git-upstream/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,21 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "tips",
     "name" : "GitHub 上 Fork 的仓库如何与原仓库同步并提交内容",
     "headline" : "GitHub 上 Fork 的仓库如何与原仓库同步并提交内容",
-    "description" : "GitHub 上 Fork 的仓库如何与原仓库同步并提交内容 我们可能有时会遇到需要向 GitHub 上的开源的项目提交代码。在 GitHub 中，由于你不是那个开源项目中有权限提交代码的人，你只能 Fork 后再发起 Pull Request。
-Fork 仓库 你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。
-然后你就可以将其 clone 到本地。
-Fork 的本地仓库与源仓库连接 参考：Syncing a fork - User Documentation
-首先在命令行工具中输入
-$ git remote -v  此时应该显示如下：
-origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)  因为我们没有将其连接到源仓库，所以需要用命令去连接。
-$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git  这里的地址是源仓库的地址。接着我们再输入
-$ git remote -v  这时应该能看到：
-origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) upstream https://github.",
+    "description" : "GitHub 上 Fork 的仓库如何与原仓库同步并提交内容 我们可能有时会遇到需要向 GitHub 上的开源的项目提交代码。在 GitHub 中，由于你不是那个开源项目中有权限提交代码的人，你只能 Fork 后再发起 Pull Request。\nFork 仓库 你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。\n然后你就可以将其 clone 到本地。\nFork 的本地仓库与源仓库连接 参考：Syncing a fork - User Documentation\n首先在命令行工具中输入\n$ git remote -v 此时应该显示如下：\norigin https:\/\/github.com\/YOUR_USERNAME\/YOUR_FORK.git (fetch) origin https:\/\/github.com\/YOUR_USERNAME\/YOUR_FORK.git (push) 因为我们没有将其连接到源仓库，所以需要用命令去连接。\n$ git remote add upstream https:\/\/github.com\/ORIGINAL_OWNER\/ORIGINAL_REPOSITORY.git 这里的地址是源仓库的地址。接着我们再输入\n$ git remote -v 这时应该能看到：\norigin https:\/\/github.com\/YOUR_USERNAME\/YOUR_FORK.git (fetch) origin https:\/\/github.com\/YOUR_USERNAME\/YOUR_FORK.git (push) upstream https:\/\/github.com\/ORIGINAL_OWNER\/ORIGINAL_REPOSITORY.git (fetch) upstream https:\/\/github.com\/ORIGINAL_OWNER\/ORIGINAL_REPOSITORY.git (push) 这样我们就完成了与与源仓库的连接。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -63,9 +54,9 @@ origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://git
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/tips/git-upstream/",
+    "datePublished": "2019-03-24 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/tips\/git-upstream\/",
     "wordCount" : "92",
     "keywords" : [  "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -88,11 +79,13 @@ origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://git
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -117,11 +110,13 @@ origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://git
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -169,69 +164,36 @@ origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://git
           
           
 
-          
-
-<h1 id="github-上-fork-的仓库如何与原仓库同步并提交内容">GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</h1>
-
+          <h1 id="github-上-fork-的仓库如何与原仓库同步并提交内容">GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</h1>
 <p>我们可能有时会遇到需要向 GitHub 上的开源的项目提交代码。在 GitHub 中，由于你不是那个开源项目中有权限提交代码的人，你只能 Fork 后再发起 Pull Request。</p>
-
 <h2 id="fork-仓库">Fork 仓库</h2>
-
 <p>你可以在 GitHub 网页上点击 Fork，之后你可以在你的个人主页的 Repository 中找到你 Fork 的仓库。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/git-upstream/1.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
-
+<p><img src="/images/git-upstream/1.png" alt=""></p>
 <p>然后你就可以将其 clone 到本地。</p>
-
 <h2 id="fork-的本地仓库与源仓库连接">Fork 的本地仓库与源仓库连接</h2>
-
 <p>参考：<a href="https://help.github.com/articles/syncing-a-fork/">Syncing a fork - User Documentation</a></p>
-
 <p>首先在命令行工具中输入</p>
-
-<pre><code class="language-bash">$ git remote -v
-</code></pre>
-
-<p>此时应该显示如下：</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote -v
+</code></pre></div><p>此时应该显示如下：</p>
 <pre><code>origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
 origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
-</code></pre>
-
-<p>因为我们没有将其连接到源仓库，所以需要用命令去连接。</p>
-
-<pre><code class="language-bash">$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
-</code></pre>
-
-<p>这里的地址是<strong>源仓库</strong>的地址。接着我们再输入</p>
-
-<pre><code class="language-bash">$ git remote -v
-</code></pre>
-
-<p>这时应该能看到：</p>
-
+</code></pre><p>因为我们没有将其连接到源仓库，所以需要用命令去连接。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+</code></pre></div><p>这里的地址是<strong>源仓库</strong>的地址。接着我们再输入</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git remote -v
+</code></pre></div><p>这时应该能看到：</p>
 <pre><code>origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
 origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
 upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
 upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
-</code></pre>
-
-<p>这样我们就完成了与与源仓库的连接。</p>
-
+</code></pre><p>这样我们就完成了与与源仓库的连接。</p>
 <h2 id="fork-的仓库与源仓库同步代码">Fork 的仓库与源仓库同步代码</h2>
-
 <p>首先：</p>
-
 <pre><code>$ git fetch upstream
-</code></pre>
-
-<p>获取源仓库更新。</p>
-
+</code></pre><p>获取源仓库更新。</p>
 <pre><code>$ git checkout master
 $ git merge upstream/master
-</code></pre>
-
-<p>这样就可以将本地 master 分支更新到最新。我们就可以在此基础上创建新分支提交 PR。</p>
+</code></pre><p>这样就可以将本地 master 分支更新到最新。我们就可以在此基础上创建新分支提交 PR。</p>
 
     </div>
 
@@ -269,8 +231,6 @@ $ git merge upstream/master
         
         <a href="https://elizurhz.cn/tips/translation/" class="prev" rel="prev" title="掘金翻译计划存档"><i class="iconfont icon-left"></i>&nbsp;掘金翻译计划存档</a>
          
-        
-        <a href="https://elizurhz.cn/tips/apple-m1-for-fe/" class="next" rel="next" title="Apple M1 对前端开发者有什么影响">Apple M1 对前端开发者有什么影响&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

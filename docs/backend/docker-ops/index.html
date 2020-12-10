@@ -41,13 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "backend",
     "name" : "前后端分离项目的容器化",
     "headline" : "前后端分离项目的容器化",
-    "description" : "前后端分离项目的容器化 docker CentOS 7 上
-yum install -y docker  基本命令 docker images # 列出当前本地所有的 docker 镜像  docker search [docker-name] # 在 docker hub 中搜索镜像  docker pull [docker-name] # 在 docker hub 中拉取镜像到本机  docker run \ # 启动镜像 -d \ # --detach -h example.com \ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \ # 容器的名字 -e XXX=xxx \ # 指定环境变量 -v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等  docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像  docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名  容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。",
+    "description" : "前后端分离项目的容器化 docker CentOS 7 上\nyum install -y docker 基本命令 docker images # 列出当前本地所有的 docker 镜像 docker search [docker-name] # 在 docker hub 中搜索镜像 docker pull [docker-name] # 在 docker hub 中拉取镜像到本机 docker run \\ # 启动镜像 -d \\ # --detach -h example.com \\ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \\ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \\ # 容器的名字 -e XXX=xxx \\ # 指定环境变量 -v \/your\/local\/path:\/your\/image\/path \\ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab\/gitlab-ce 等 docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像 docker start\/stop\/restart\/rm [container id\/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名 容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -55,9 +54,9 @@ yum install -y docker  基本命令 docker images # 列出当前本地所有的 
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/backend/docker-ops/",
+    "datePublished": "2019-03-24 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/backend\/docker-ops\/",
     "wordCount" : "104",
     "keywords" : [  "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -80,11 +79,13 @@ yum install -y docker  基本命令 docker images # 列出当前本地所有的 
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -109,11 +110,13 @@ yum install -y docker  基本命令 docker images # 列出当前本地所有的 
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -159,46 +162,26 @@ yum install -y docker  基本命令 docker images # 列出当前本地所有的 
           
           
 
-          
-
-<h1 id="前后端分离项目的容器化">前后端分离项目的容器化</h1>
-
+          <h1 id="前后端分离项目的容器化">前后端分离项目的容器化</h1>
 <h2 id="docker">docker</h2>
-
 <p>CentOS 7 上</p>
-
-<pre><code class="language-bash">yum install -y docker
-</code></pre>
-
-<h3 id="基本命令">基本命令</h3>
-
-<pre><code class="language-bash">docker images # 列出当前本地所有的 docker 镜像
-</code></pre>
-
-<pre><code class="language-bash">docker search [docker-name] # 在 docker hub 中搜索镜像
-</code></pre>
-
-<pre><code class="language-bash">docker pull [docker-name] # 在 docker hub 中拉取镜像到本机
-</code></pre>
-
-<pre><code class="language-bash">docker run \ # 启动镜像
--d \ # --detach
--h example.com  \ # --hostname，主机
--p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口
---name example \ # 容器的名字
--e XXX=xxx \ # 指定环境变量
--v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据
-[docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等
-</code></pre>
-
-<pre><code class="language-bash">docker ps # 查看所有已创建的镜像
-docker ps -a # 查看所有运行中的镜像
-</code></pre>
-
-<pre><code class="language-bash">docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名
-</code></pre>
-
-<p>容器在 docker run 之后会在 <code>docker ps -a</code> 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install -y docker
+</code></pre></div><h3 id="基本命令">基本命令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker images <span style="color:#75715e"># 列出当前本地所有的 docker 镜像</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker search <span style="color:#f92672">[</span>docker-name<span style="color:#f92672">]</span> <span style="color:#75715e"># 在 docker hub 中搜索镜像</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull <span style="color:#f92672">[</span>docker-name<span style="color:#f92672">]</span> <span style="color:#75715e"># 在 docker hub 中拉取镜像到本机</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 启动镜像</span>
+-d <span style="color:#ae81ff">\ </span><span style="color:#75715e"># --detach</span>
+-h example.com  <span style="color:#ae81ff">\ </span><span style="color:#75715e"># --hostname，主机</span>
+-p 8443:443 -p 8888:80 -p 2222:22 <span style="color:#ae81ff">\ </span><span style="color:#75715e"># --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口</span>
+--name example <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 容器的名字</span>
+-e XXX<span style="color:#f92672">=</span>xxx <span style="color:#ae81ff">\ </span><span style="color:#75715e"># 指定环境变量</span>
+-v /your/local/path:/your/image/path <span style="color:#ae81ff">\ </span><span style="color:#75715e"># --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据</span>
+<span style="color:#f92672">[</span>docker-name<span style="color:#f92672">]</span> <span style="color:#75715e"># 镜像名字，如 mysql, gitlab/gitlab-ce 等</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps <span style="color:#75715e"># 查看所有已创建的镜像</span>
+docker ps -a <span style="color:#75715e"># 查看所有运行中的镜像</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker start/stop/restart/rm <span style="color:#f92672">[</span>container id/container name<span style="color:#f92672">]</span> <span style="color:#75715e"># 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名</span>
+</code></pre></div><p>容器在 docker run 之后会在 <code>docker ps -a</code> 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</p>
 
     </div>
 

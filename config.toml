@@ -24,7 +24,7 @@ preserveTaxonomyNames = true
   [[menu.main]]
     name = "移动开发"
     url = "/mobile/"
-    weight = 1
+    weight = 2
 
   [[menu.main]]
     name = "后端/运维/部署"
@@ -32,7 +32,12 @@ preserveTaxonomyNames = true
     weight = 2
 
   [[menu.main]]
-    name = "其他"
+    name = "开发杂谈"
+    url = "/by-talk/"
+    weight = 1
+
+  [[menu.main]]
+    name = "其他技术"
     url = "/tips/"
     weight = 3
 
@@ -55,7 +60,7 @@ preserveTaxonomyNames = true
     since = 2019
     author = "Haoze Harry Xu"                           # Author's name
     avatar = "/images/me/avatar.png"           # Author's avatar
-    subtitle = "温馨提示：点击左上角的心可开灯/关灯。本 Blog 的 GitHub 仓库已开启 Discussion，详见顶部导航的 “About” 栏目"         # Subtitle
+    subtitle = "温馨提示：点击左上角的心可切换成暗黑模式。本 Blog 的 GitHub 仓库已开启 Discussion，详见顶部导航的 “About” 栏目"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 

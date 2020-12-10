@@ -41,14 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
     "name" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
     "headline" : "用 React 16.3 的 Context API 实现类似 ant design 的 Material Design 版 Radio Group 组件",
-    "description" : "Radio 组件是什么样的 以官方文档的例子：
-import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&gt; { console.log(&quot;radio checked&quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &lt;Radio.Group onChange={this.onChange} value={this.state.value}&gt; &lt;Radio value={1}&gt;A&lt;/Radio&gt; &lt;Radio value={2}&gt;B&lt;/Radio&gt; &lt;Radio value={3}&gt;C&lt;/Radio&gt; &lt;Radio value={4}&gt;D&lt;/Radio&gt; &lt;/Radio.Group&gt; ); } } ReactDOM.render(&lt;App /&gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
-import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; const plainOptions = [&quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot;]; const options = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot; } ]; const optionsWithDisabled = [ { label: &quot;Apple&quot;, value: &quot;Apple&quot; }, { label: &quot;Pear&quot;, value: &quot;Pear&quot; }, { label: &quot;Orange&quot;, value: &quot;Orange&quot;, disabled: false } ]; class App extends React.",
+    "description" : "Radio 组件是什么样的 以官方文档的例子：\nimport React from \u0026#34;react\u0026#34;; import { Radio } from \u0026#34;antd\u0026#34;; class App extends React.Component { state = { value: 1 }; onChange = e =\u0026gt; { console.log(\u0026#34;radio checked\u0026#34;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( \u0026lt;Radio.Group onChange={this.onChange} value={this.state.value}\u0026gt; \u0026lt;Radio value={1}\u0026gt;A\u0026lt;\/Radio\u0026gt; \u0026lt;Radio value={2}\u0026gt;B\u0026lt;\/Radio\u0026gt; \u0026lt;Radio value={3}\u0026gt;C\u0026lt;\/Radio\u0026gt; \u0026lt;Radio value={4}\u0026gt;D\u0026lt;\/Radio\u0026gt; \u0026lt;\/Radio.Group\u0026gt; ); } } ReactDOM.render(\u0026lt;App \/\u0026gt;, mountNode); 除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：\nimport React from \u0026#34;react\u0026#34;; import { Radio } from \u0026#34;antd\u0026#34;; const plainOptions = [\u0026#34;Apple\u0026#34;, \u0026#34;Pear\u0026#34;, \u0026#34;Orange\u0026#34;]; const options = [ { label: \u0026#34;Apple\u0026#34;, value: \u0026#34;Apple\u0026#34; }, { label: \u0026#34;Pear\u0026#34;, value: \u0026#34;Pear\u0026#34; }, { label: \u0026#34;Orange\u0026#34;, value: \u0026#34;Orange\u0026#34; } ]; const optionsWithDisabled = [ { label: \u0026#34;Apple\u0026#34;, value: \u0026#34;Apple\u0026#34; }, { label: \u0026#34;Pear\u0026#34;, value: \u0026#34;Pear\u0026#34; }, { label: \u0026#34;Orange\u0026#34;, value: \u0026#34;Orange\u0026#34;, disabled: false } ]; class App extends React.",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -56,9 +54,9 @@ import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; con
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-08-09 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-08-09 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/how-to-use-context-in-react/",
+    "datePublished": "2019-08-09 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-08-09 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/how-to-use-context-in-react\/",
     "wordCount" : "670",
     "keywords" : [ "React", "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -81,11 +79,13 @@ import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; con
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -110,11 +110,13 @@ import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; con
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -160,284 +162,243 @@ import React from &quot;react&quot;; import { Radio } from &quot;antd&quot;; con
           
           
 
-          
-
-<h1 id="radio-组件是什么样的">Radio 组件是什么样的</h1>
-
+          <h1 id="radio-组件是什么样的">Radio 组件是什么样的</h1>
 <p>以官方文档的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Radio</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;antd&#34;</span>;
 
-<pre><code class="language-jsx">import React from &quot;react&quot;;
-import { Radio } from &quot;antd&quot;;
-
-class App extends React.Component {
-  state = {
-    value: 1
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
+  <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>
   };
 
-  onChange = e =&gt; {
-    console.log(&quot;radio checked&quot;, e.target.value);
-    this.setState({
-      value: e.target.value
+  <span style="color:#a6e22e">onChange</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span> =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;radio checked&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
+      <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>
     });
   };
 
-  render() {
-    return (
-      &lt;Radio.Group onChange={this.onChange} value={this.state.value}&gt;
-        &lt;Radio value={1}&gt;A&lt;/Radio&gt;
-        &lt;Radio value={2}&gt;B&lt;/Radio&gt;
-        &lt;Radio value={3}&gt;C&lt;/Radio&gt;
-        &lt;Radio value={4}&gt;D&lt;/Radio&gt;
-      &lt;/Radio.Group&gt;
+  <span style="color:#a6e22e">render</span>() {
+    <span style="color:#66d9ef">return</span> (
+      &lt;<span style="color:#f92672">Radio.Group</span> <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onChange</span>} <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value</span>}&gt;
+        &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">1</span>}&gt;<span style="color:#a6e22e">A</span>&lt;/<span style="color:#f92672">Radio</span>&gt;
+        &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">2</span>}&gt;<span style="color:#a6e22e">B</span>&lt;/<span style="color:#f92672">Radio</span>&gt;
+        &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">3</span>}&gt;<span style="color:#a6e22e">C</span>&lt;/<span style="color:#f92672">Radio</span>&gt;
+        &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#ae81ff">4</span>}&gt;<span style="color:#a6e22e">D</span>&lt;/<span style="color:#f92672">Radio</span>&gt;
+      &lt;/<span style="color:#f92672">Radio.Group</span>&gt;
     );
   }
 }
 
-ReactDOM.render(&lt;App /&gt;, mountNode);
-</code></pre>
+<span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(&lt;<span style="color:#f92672">App</span> /&gt;, <span style="color:#a6e22e">mountNode</span>);
+</code></pre></div><p>除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-jsx" data-lang="jsx"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Radio</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;antd&#34;</span>;
 
-<p>除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：</p>
-
-<pre><code class="language-jsx">import React from &quot;react&quot;;
-import { Radio } from &quot;antd&quot;;
-
-const plainOptions = [&quot;Apple&quot;, &quot;Pear&quot;, &quot;Orange&quot;];
-const options = [
-  { label: &quot;Apple&quot;, value: &quot;Apple&quot; },
-  { label: &quot;Pear&quot;, value: &quot;Pear&quot; },
-  { label: &quot;Orange&quot;, value: &quot;Orange&quot; }
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">plainOptions</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Apple&#34;</span>, <span style="color:#e6db74">&#34;Pear&#34;</span>, <span style="color:#e6db74">&#34;Orange&#34;</span>];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> [
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span> },
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Pear&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Pear&#34;</span> },
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Orange&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Orange&#34;</span> }
 ];
-const optionsWithDisabled = [
-  { label: &quot;Apple&quot;, value: &quot;Apple&quot; },
-  { label: &quot;Pear&quot;, value: &quot;Pear&quot; },
-  { label: &quot;Orange&quot;, value: &quot;Orange&quot;, disabled: false }
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">optionsWithDisabled</span> <span style="color:#f92672">=</span> [
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span> },
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Pear&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Pear&#34;</span> },
+  { <span style="color:#a6e22e">label</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Orange&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Orange&#34;</span>, <span style="color:#a6e22e">disabled</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> }
 ];
 
-class App extends React.Component {
-  state = {
-    value1: &quot;Apple&quot;,
-    value2: &quot;Apple&quot;,
-    value3: &quot;Apple&quot;
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">App</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span> {
+  <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">value1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span>,
+    <span style="color:#a6e22e">value2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span>,
+    <span style="color:#a6e22e">value3</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Apple&#34;</span>
   };
 
-  onChange1 = e =&gt; {
-    console.log(&quot;radio1 checked&quot;, e.target.value);
-    this.setState({
-      value1: e.target.value
+  <span style="color:#a6e22e">onChange1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span> =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;radio1 checked&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
+      <span style="color:#a6e22e">value1</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>
     });
   };
 
-  onChange2 = e =&gt; {
-    console.log(&quot;radio2 checked&quot;, e.target.value);
-    this.setState({
-      value2: e.target.value
+  <span style="color:#a6e22e">onChange2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span> =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;radio2 checked&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
+      <span style="color:#a6e22e">value2</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>
     });
   };
 
-  onChange3 = e =&gt; {
-    console.log(&quot;radio3 checked&quot;, e.target.value);
-    this.setState({
-      value3: e.target.value
+  <span style="color:#a6e22e">onChange3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span> =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;radio3 checked&#34;</span>, <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
+      <span style="color:#a6e22e">value3</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>
     });
   };
 
-  render() {
-    return (
-      &lt;div&gt;
-        &lt;Radio.Group
-          options={plainOptions}
-          onChange={this.onChange1}
-          value={this.state.value1}
+  <span style="color:#a6e22e">render</span>() {
+    <span style="color:#66d9ef">return</span> (
+      &lt;<span style="color:#f92672">div</span>&gt;
+        &lt;<span style="color:#f92672">Radio.Group</span>
+          <span style="color:#a6e22e">options</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">plainOptions</span>}
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onChange1</span>}
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value1</span>}
         /&gt;
-        &lt;Radio.Group
-          options={options}
-          onChange={this.onChange2}
-          value={this.state.value2}
+        &lt;<span style="color:#f92672">Radio.Group</span>
+          <span style="color:#a6e22e">options</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">options</span>}
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onChange2</span>}
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value2</span>}
         /&gt;
-        &lt;Radio.Group
-          options={optionsWithDisabled}
-          onChange={this.onChange3}
-          value={this.state.value3}
+        &lt;<span style="color:#f92672">Radio.Group</span>
+          <span style="color:#a6e22e">options</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">optionsWithDisabled</span>}
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onChange3</span>}
+          <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">value3</span>}
         /&gt;
-      &lt;/div&gt;
+      &lt;/<span style="color:#f92672">div</span>&gt;
     );
   }
 }
 
-ReactDOM.render(&lt;App /&gt;, mountNode);
-</code></pre>
-
-<h1 id="ant-design-怎样实现的">ant design 怎样实现的</h1>
-
+<span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(&lt;<span style="color:#f92672">App</span> /&gt;, <span style="color:#a6e22e">mountNode</span>);
+</code></pre></div><h1 id="ant-design-怎样实现的">ant design 怎样实现的</h1>
 <p>从 ant design 的 <a href="https://github.com/ant-design/ant-design/tree/master/components/radio">github</a> 上，可以看到（这里我们只关心 radio group）这个模块里面有 radio.tsx 和 group.tsx 组件。</p>
-
-<h2 id="index-tsx">index.tsx</h2>
-
+<h2 id="indextsx">index.tsx</h2>
 <p>首先在 index.tsx 中，实现的是模块的 export，这里通过 Radio 的 static property 把 Group 组件引入，这样就可以实现 <code>&lt;Radio.Group&gt;</code> 的写法。同时由于 TypeScript 的类型检查，我们需要再 Radio 的类里面写上 static property。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-TypeScript" data-lang="TypeScript"><span style="color:#75715e">/** index.tsx */</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Radio</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./radio&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Group</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./group&#39;</span>;
 
-<pre><code class="language-TypeScript">/** index.tsx */
-import Radio from './radio';
-import Group from './group';
+<span style="color:#a6e22e">Radio</span>.<span style="color:#a6e22e">Group</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Group</span>;
+<span style="color:#66d9ef">export</span> { <span style="color:#a6e22e">Group</span> };
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">Radio</span>;
 
-Radio.Group = Group;
-export { Group };
-export default Radio;
-
-/** radio.tsx */
-static Group: typeof RadioGroup;
-</code></pre>
-
-<h2 id="group-tsx-与-radio-tsx">group.tsx 与 radio.tsx</h2>
-
+<span style="color:#75715e">/** radio.tsx */</span>
+<span style="color:#66d9ef">static</span> <span style="color:#a6e22e">Group</span>: <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">RadioGroup</span>;
+</code></pre></div><h2 id="grouptsx-与-radiotsx">group.tsx 与 radio.tsx</h2>
 <p>首先这里使用了 <a href="https://github.com/ant-design/ant-design/blob/master/components/config-provider/index.tsx">config-provider</a>，这个组件的作用是使用 <code>@ant-design/create-react-context</code> 注入了一些配置在 context 中。在这里我们不需要关注它的实现方式，只需要知道它使用了 React 的 context。</p>
-
 <p>接着我们看 group.tsx 中 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L98">render</a> 的部分。</p>
-
 <p>使用 options 的部分就不多说了，根据数组渲染 Radio 组件即可。关键是另一种渲染方式，我们知道我们需要在 Radio.Group 的 props 传入这个 radio group 的 value 和 onChange 事件，而 <code>&lt;Radio.Group&gt;</code> 在这里只是一个包裹的组件，在 Radio.Group 中我们需要将 Radio 的 onChange 和 props 的 onChange 关联起来。在使用 options 的方式中，我们可以直接把 onChange 通过 props 传给 Radio，但是 Radio 作为 Radio.Group 的 children 时我们却不能这样传。</p>
-
 <p>ant design 的做法是在 group.tsx 中用了 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/group.tsx#L68">getChildContext</a> 将父组件的 onChange 设置到 context 中：</p>
-
-<pre><code class="language-TypeScript">getChildContext() {
-  return {
-    radioGroup: {
-      onChange: this.onRadioChange,
-      value: this.state.value,
-      disabled: this.props.disabled,
-      name: this.props.name,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-TypeScript" data-lang="TypeScript"><span style="color:#a6e22e">getChildContext() {</span>
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">radioGroup</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">onChange</span>: <span style="color:#66d9ef">this.onRadioChange</span>,
+      <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">this.state.value</span>,
+      <span style="color:#a6e22e">disabled</span>: <span style="color:#66d9ef">this.props.disabled</span>,
+      <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">this.props.name</span>,
     },
   };
 }
-</code></pre>
-
-<p>同时在 radio.tsx 中，在 Radio 的 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/radio.tsx#L40">onChange</a> 中调用 context 的 onChange：</p>
-
-<pre><code class="language-TypeScript"> onChange = (e: RadioChangeEvent) =&gt; {
-  if (this.props.onChange) {
-    this.props.onChange(e);
+</code></pre></div><p>同时在 radio.tsx 中，在 Radio 的 <a href="https://github.com/ant-design/ant-design/blob/28323b785cb8d42a4af7d2ab551c2e3141bd0545/components/radio/radio.tsx#L40">onChange</a> 中调用 context 的 onChange：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-TypeScript" data-lang="TypeScript"> <span style="color:#a6e22e">onChange</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">RadioChangeEvent</span>) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">onChange</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">onChange</span>(<span style="color:#a6e22e">e</span>);
   }
 
-  if (this.context.radioGroup &amp;&amp; this.context.radioGroup.onChange) {
-    this.context.radioGroup.onChange(e);
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">radioGroup</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">radioGroup</span>.<span style="color:#a6e22e">onChange</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">radioGroup</span>.<span style="color:#a6e22e">onChange</span>(<span style="color:#a6e22e">e</span>);
   }
 };
-</code></pre>
-
-<p><code>getChildContext</code> 是 legacy 的 Context API 了，React 官方也推荐使用最新的 <a href="https://reactjs.org/docs/context.html">Context API</a>。</p>
-
+</code></pre></div><p><code>getChildContext</code> 是 legacy 的 Context API 了，React 官方也推荐使用最新的 <a href="https://reactjs.org/docs/context.html">Context API</a>。</p>
 <h1 id="我的实现方式">我的实现方式</h1>
-
-<h2 id="tl-dr">TL;DR</h2>
-
+<h2 id="tldr">TL;DR</h2>
 <p>首先为什么会有这种需求呢，是因为正在做的项目的设计风格是 antd + Material Design 的结合体，我们使用了 antd，但是有很多 Material Design 的动画效果无法简单地实现，所以需要一部分 Material Design 的组件。而 material-ui 的学习成本对我们团队来说有点高，恰好 Material Design 官方有提供 web 组件与封装好的 <a href="https://github.com/material-components/material-components-web-react">React 组件</a>，引入单个组件以适应某些控件的设计需求比较不容易增加包大小。同时，这些 React 组件其实并不易用，做一层封装之后会让它能够和 ant design 的组件具有相同的用法，同样也更适合为业务组件定制样式、统一管理样式等。</p>
-
 <h2 id="具体实现">具体实现</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-TypeScript" data-lang="TypeScript"><span style="color:#75715e">// context.ts
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
 
-<pre><code class="language-TypeScript">// context.ts
-import React from 'react'
-
-export const RadioGroupContext = React.createContext({
-  groupValue: '',
-  onChange: (value: string) =&gt; {}
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">RadioGroupContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">createContext</span>({
+  <span style="color:#a6e22e">groupValue</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+  <span style="color:#a6e22e">onChange</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> {}
 })
-</code></pre>
+</code></pre></div><p>这里使用了新的 Context API 创建了 context。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#75715e">// radio.tsx
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Radio</span>, { <span style="color:#a6e22e">NativeRadioControl</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@material/react-radio&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RadioGroupContext</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./context&#34;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#e6db74">&#34;@material/react-radio/dist/radio.css&#34;</span>;
 
-<p>这里使用了新的 Context API 创建了 context。</p>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRadio</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span>&lt;<span style="color:#f92672">RadioProps</span>&gt; {
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">Group</span>: <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">RadioGroup</span>;
 
-<pre><code class="language-tsx">// radio.tsx
-import React from &quot;react&quot;;
-import Radio, { NativeRadioControl } from &quot;@material/react-radio&quot;;
-import { RadioGroupContext } from &quot;./context&quot;;
-import &quot;@material/react-radio/dist/radio.css&quot;;
-
-export default class MyRadio extends React.Component&lt;RadioProps&gt; {
-  public static Group: typeof RadioGroup;
-
-  public render(): JSX.Element {
-    const { disabled, nativeProps, value, children } = this.props;
-    return (
-      &lt;RadioGroupContext.Consumer&gt;
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">render</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">JSX</span>.<span style="color:#a6e22e">Element</span> {
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">disabled</span>, <span style="color:#a6e22e">nativeProps</span>, <span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">children</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>;
+    <span style="color:#66d9ef">return</span> (
+      &lt;<span style="color:#f92672">RadioGroupContext.Consumer</span>&gt;
         {({
-          groupValue,
-          onChange
-        }: {
-          groupValue: string;
-          onChange: (value: string) =&gt; void;
-        }) =&gt; (
-          &lt;div&gt;
-            &lt;Radio&gt;
-              &lt;NativeRadioControl
-                {...nativeProps}
-                checked={value === groupValue}
-                value={value}
-                disabled={disabled}
-                onChange={(e: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
-                  onChange(e.target.value);
+          <span style="color:#a6e22e">groupValue</span>,
+          <span style="color:#a6e22e">onChange</span>
+        }<span style="color:#f92672">:</span> {
+          <span style="color:#a6e22e">groupValue</span>: <span style="color:#66d9ef">string</span>;
+          <span style="color:#a6e22e">onChange</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+        }) <span style="color:#f92672">=&gt;</span> (
+          &lt;<span style="color:#f92672">div</span>&gt;
+            &lt;<span style="color:#f92672">Radio</span>&gt;
+              &lt;<span style="color:#f92672">NativeRadioControl</span>
+                {<span style="color:#a6e22e">...nativeProps</span>}
+                <span style="color:#a6e22e">checked</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">groupValue</span>}
+                <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">value</span>}
+                <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">disabled</span>}
+                <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.ChangeEvent</span>&lt;<span style="color:#f92672">HTMLInputElement</span>&gt;) <span style="color:#f92672">=&gt;</span> {
+                  <span style="color:#a6e22e">onChange</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>);
                 }}
               /&gt;
-            &lt;/Radio&gt;
-            {children}
-          &lt;/div&gt;
+            &lt;/<span style="color:#f92672">Radio</span>&gt;
+            {<span style="color:#a6e22e">children</span>}
+          &lt;/<span style="color:#f92672">div</span>&gt;
         )}
-      &lt;/RadioGroupContext.Consumer&gt;
+      &lt;/<span style="color:#f92672">RadioGroupContext.Consumer</span>&gt;
     );
   }
 }
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx"><span style="color:#75715e">// group.tsx
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RadioGroupContext</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./context&#34;</span>;
 
-<pre><code class="language-tsx">// group.tsx
-import React from &quot;react&quot;;
-import { RadioGroupContext } from &quot;./context&quot;;
-
-export default class MyRadioGroup extends React.Component&lt;
-  PortalRadioGroupProps,
-  PortalRadioGroupState
-&gt; {
-  public constructor(props: PortalRadioGroupProps) {
-    super(props);
-    this.state = {
-      value: props.value || &quot;&quot;
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyRadioGroup</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">React</span>.<span style="color:#a6e22e">Component</span><span style="color:#f92672">&lt;</span>
+  <span style="color:#a6e22e">PortalRadioGroupProps</span>,
+  <span style="color:#a6e22e">PortalRadioGroupState</span>
+<span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">PortalRadioGroupProps</span>) {
+    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">props</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> {
+      <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">props.value</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;&#34;</span>
     };
   }
 
-  private onChange = (value: string) =&gt; {
-    const { onChange } = this.props;
-    this.setState({
-      value
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">onChange</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>) <span style="color:#f92672">=&gt;</span> {
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">onChange</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>({
+      <span style="color:#a6e22e">value</span>
     });
-    onChange &amp;&amp; onChange(value);
+    <span style="color:#a6e22e">onChange</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">onChange</span>(<span style="color:#a6e22e">value</span>);
   };
 
-  public render(): JSX.Element {
-    const { children } = this.props;
-    return (
-      &lt;RadioGroupContext.Provider
-        value={{
-          groupValue: this.state.value,
-          onChange: this.onChange
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">render</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">JSX</span>.<span style="color:#a6e22e">Element</span> {
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">children</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">props</span>;
+    <span style="color:#66d9ef">return</span> (
+      &lt;<span style="color:#f92672">RadioGroupContext.Provider</span>
+        <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{{
+          <span style="color:#a6e22e">groupValue</span>: <span style="color:#66d9ef">this.state.value</span>,
+          <span style="color:#a6e22e">onChange</span>: <span style="color:#66d9ef">this.onChange</span>
         }}
       &gt;
-        {children}
-      &lt;/RadioGroupContext.Provider&gt;
+        {<span style="color:#a6e22e">children</span>}
+      &lt;/<span style="color:#f92672">RadioGroupContext.Provider</span>&gt;
     );
   }
 }
-</code></pre>
-
-<p>新 Context API 的使用方式很简单，在父组件用 Provider 传入 value，这样所有的子组件就可以接收到 value 了。而在使用的地方需要用到 Consumer，要注意的是这个组件是以 render callback 的方式实现的，所以我们也需要写成 render callback 的形式。callback 的参数是上述的 value，而返回值则是我们需要的组件，在这里我们就可以使用从 Provider 传入的 context 了。</p>
-
+</code></pre></div><p>新 Context API 的使用方式很简单，在父组件用 Provider 传入 value，这样所有的子组件就可以接收到 value 了。而在使用的地方需要用到 Consumer，要注意的是这个组件是以 render callback 的方式实现的，所以我们也需要写成 render callback 的形式。callback 的参数是上述的 value，而返回值则是我们需要的组件，在这里我们就可以使用从 Provider 传入的 context 了。</p>
 <p>而它使用的方式也很简单，和 antd 基本相同。</p>
-
-<pre><code class="language-tsx">&lt;Radio.Group onChange={onChange} value={value}&gt;
-  &lt;Radio key=&quot;1&quot; value=&quot;1&quot;&gt;
-    111
-  &lt;/Radio&gt;
-  &lt;Radio key=&quot;2&quot; value=&quot;2&quot;&gt;
-    222
-  &lt;/Radio&gt;
-&lt;/Radio.Group&gt;
-</code></pre>
-
-<p>这个组件唯一的问题是无法在 antd 的表单中使用。antd Form 其实实现了双向绑定，劫持了 value（或者自定义属性）以及 onChange，但是这个组件点击的时候无法触发 onChange，可能与 Material Design 组件的<a href="https://github.com/material-components/material-components-web-react/blob/master/packages/checkbox/index.tsx">内部实现</a>有关。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tsx" data-lang="tsx">&lt;<span style="color:#f92672">Radio.Group</span> <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">onChange</span>} <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">value</span>}&gt;
+  &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>&gt;
+    <span style="color:#ae81ff">111</span>
+  &lt;/<span style="color:#f92672">Radio</span>&gt;
+  &lt;<span style="color:#f92672">Radio</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2&#34;</span>&gt;
+    <span style="color:#ae81ff">222</span>
+  &lt;/<span style="color:#f92672">Radio</span>&gt;
+&lt;/<span style="color:#f92672">Radio.Group</span>&gt;
+</code></pre></div><p>这个组件唯一的问题是无法在 antd 的表单中使用。antd Form 其实实现了双向绑定，劫持了 value（或者自定义属性）以及 onChange，但是这个组件点击的时候无法触发 onChange，可能与 Material Design 组件的<a href="https://github.com/material-components/material-components-web-react/blob/master/packages/checkbox/index.tsx">内部实现</a>有关。</p>
 
     </div>
 

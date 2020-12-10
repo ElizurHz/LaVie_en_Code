@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>其他 on Variation Palladion - 撕裂时间的帕拉迪昂</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 其他 on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/categories/%E5%85%B6%E4%BB%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHub 上 Fork 的仓库如何与原仓库同步并提交内容</title>
       <link>https://elizurhz.cn/tips/git-upstream/</link>
@@ -22,11 +18,11 @@ Fork 仓库 你可以在 GitHub 网页上点击 Fork，之后你可以在你的�
 然后你就可以将其 clone 到本地。
 Fork 的本地仓库与源仓库连接 参考：Syncing a fork - User Documentation
 首先在命令行工具中输入
-$ git remote -v  此时应该显示如下：
-origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)  因为我们没有将其连接到源仓库，所以需要用命令去连接。
-$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git  这里的地址是源仓库的地址。接着我们再输入
-$ git remote -v  这时应该能看到：
-origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) upstream https://github.</description>
+$ git remote -v 此时应该显示如下：
+origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) 因为我们没有将其连接到源仓库，所以需要用命令去连接。
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git 这里的地址是源仓库的地址。接着我们再输入
+$ git remote -v 这时应该能看到：
+origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch) origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push) upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch) upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push) 这样我们就完成了与与源仓库的连接。</description>
     </item>
     
   </channel>

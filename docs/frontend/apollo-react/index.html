@@ -41,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
     "name" : "Apollo GraphQL 在 React 中的应用",
     "headline" : "Apollo GraphQL 在 React 中的应用",
-    "description" : "这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。
-Apollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。
-GraphQL 注：本节示例代码大多来自于 GraphQL 官网。
-提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。
-import gql from 'graphql-tag' const SAMPLE_QUERY = gql` { hero { name height } } `  上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：
-const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } `  HeroNameAndFriends 在 GraphQL 里叫做 operation name。",
+    "description" : "这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。\nApollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。\nGraphQL 注：本节示例代码大多来自于 GraphQL 官网。\n提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。\nimport gql from \u0026#39;graphql-tag\u0026#39; const SAMPLE_QUERY = gql` { hero { name height } } ` 上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：\nconst SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } ` HeroNameAndFriends 在 GraphQL 里叫做 operation name。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -59,10 +54,10 @@ const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Epis
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2020",
-    "datePublished": "2020-05-22 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2020-05-22 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/apollo-react/",
-    "wordCount" : "909",
+    "datePublished": "2020-05-22 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2020-05-22 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/apollo-react\/",
+    "wordCount" : "908",
     "keywords" : [ "GraphQL","React", "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
 </script>
@@ -84,11 +79,13 @@ const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Epis
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -113,11 +110,13 @@ const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Epis
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -163,328 +162,273 @@ const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Epis
           
           
 
-          
-
-<p>这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。</p>
-
+          <p>这篇文章大概介绍下 GraphQL 的使用，Apollo 的使用，以及我在项目中遇到的一些场景和情况。</p>
 <p>Apollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。</p>
-
 <h2 id="graphql">GraphQL</h2>
-
 <p>注：本节示例代码大多来自于 <a href="https://graphql.org/">GraphQL 官网</a>。</p>
-
 <p>提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 <code>gql</code> 这个包来写 queries 和 mutations。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">gql</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;graphql-tag&#39;</span>
 
-<pre><code class="language-JavaScript">import gql from 'graphql-tag'
-
-const SAMPLE_QUERY = gql`
-  {
-    hero {
-      name
-      height
-    }
-  }
-`
-</code></pre>
-
-<p>上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 <code>gql</code> 包我们需要这么写：</p>
-
-<pre><code class="language-JavaScript">const SAMPLE_QUERY_WITH_VARIABLES = gql`
-  query HeroNameAndFriends($episode: Episode) {
-    hero(episode: $episode) {
-      name
-      friends {
-        name
-      }
-    }
-  }
-`
-</code></pre>
-
-<p><code>HeroNameAndFriends</code> 在 GraphQL 里叫做 <code>operation name</code>。</p>
-
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SAMPLE_QUERY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  {
+</span><span style="color:#e6db74">    hero {
+</span><span style="color:#e6db74">      name
+</span><span style="color:#e6db74">      height
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 <code>gql</code> 包我们需要这么写：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SAMPLE_QUERY_WITH_VARIABLES</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  query HeroNameAndFriends($episode: Episode) {
+</span><span style="color:#e6db74">    hero(episode: $episode) {
+</span><span style="color:#e6db74">      name
+</span><span style="color:#e6db74">      friends {
+</span><span style="color:#e6db74">        name
+</span><span style="color:#e6db74">      }
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">`</span>
+</code></pre></div><p><code>HeroNameAndFriends</code> 在 GraphQL 里叫做 <code>operation name</code>。</p>
 <p>而在 GraphQL 中我们还会有一种常用的模式就是 Fragments。以官网的代码为例，使用 <code>gql</code> 包我们需要这么写：</p>
-
-<pre><code class="language-JavaScript">const sampleFragments = {
-  fragments: {
-    entry: gql`
-      fragment comparisonFields on Character {
-        name
-        appearsIn
-        friends {
-          name
-        }
-      }
-    `
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sampleFragments</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">fragments</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">      fragment comparisonFields on Character {
+</span><span style="color:#e6db74">        name
+</span><span style="color:#e6db74">        appearsIn
+</span><span style="color:#e6db74">        friends {
+</span><span style="color:#e6db74">          name
+</span><span style="color:#e6db74">        }
+</span><span style="color:#e6db74">      }
+</span><span style="color:#e6db74">    `</span>
   }
 }
-</code></pre>
-
-<p>Fragments 可以用来定义重复使用的一种数据结构，这样我们可以不需要重复定义这些 schema。假设有个适用场景是用户管理系统，用户有一系列共有的属性，我们就可以将其定义为 Fragments。在进行各种 queries 和 mutations 的时候，例如请求用户列表、修改用户信息等等，我们就可以直接引用这个 Fragments，而不用重复写这段 schema，例如</p>
-
-<pre><code class="language-JavaScript">const SAMPLE_QUERY_WITH_FRAGMENTS = gql`
-  query findHero($episode: Episode) {
-    leftComparison: hero(episode: $episode) {
-      ...comparisonFields
-    }
-    rightComparison: hero(episode: $episode) {
-      ...comparisonFields
-    }
-  }
-  ${sampleFragments.fragments.entry}
-`
-</code></pre>
-
-<p>mutations 的写法和 query 非常相似，只需要把 <code>query</code> 关键字换成 <code>mutation</code> 即可。
+</code></pre></div><p>Fragments 可以用来定义重复使用的一种数据结构，这样我们可以不需要重复定义这些 schema。假设有个适用场景是用户管理系统，用户有一系列共有的属性，我们就可以将其定义为 Fragments。在进行各种 queries 和 mutations 的时候，例如请求用户列表、修改用户信息等等，我们就可以直接引用这个 Fragments，而不用重复写这段 schema，例如</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">SAMPLE_QUERY_WITH_FRAGMENTS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  query findHero($episode: Episode) {
+</span><span style="color:#e6db74">    leftComparison: hero(episode: $episode) {
+</span><span style="color:#e6db74">      ...comparisonFields
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">    rightComparison: hero(episode: $episode) {
+</span><span style="color:#e6db74">      ...comparisonFields
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">  </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">sampleFragments</span>.<span style="color:#a6e22e">fragments</span>.<span style="color:#a6e22e">entry</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>mutations 的写法和 query 非常相似，只需要把 <code>query</code> 关键字换成 <code>mutation</code> 即可。
 这里非常容易遇到变量名字写错等等问题，写的时候还需要仔细参考模板。
 另外关于 GraphQL 中的类型，例如上面示例代码中的 <code>Episode</code> 和 <code>Character</code>，这个一般是在后端定义的。至于如何获取类型名，这个后端是会在 endpoint 提供一个 playground 来显示有哪些 queries 哪些 mutations 可用的，包括需要传的参数都会写出来，也就相当于一个 API 文档。我们也可以在 playground 上测试我们的 queries 和 mutations 有没有写对。另外关于参数和类型，带感叹号的就是必传参数，其他并没有太多需要注意的地方。</p>
-
 <h2 id="apollo">Apollo</h2>
-
 <h3 id="使用">使用</h3>
-
 <p>注：本节示例代码主要来自于 <a href="https://www.apollographql.com/">Apollo 官网</a>，以 3.0beta 版本的 API 为准。</p>
-
 <p>上面简单介绍了下怎样写 queries 和 mutations，但是我们需要一个工具来发起 GraphQL 请求。在 React 中，除了 Apollo，还有 Facebook 做的 Relay。我没用过 Relay，但是看评价是说它比较“重”。本文就着重介绍 Apollo。</p>
-
 <p>Apollo 是个工具，它有各端的实现，而在 React 端它可以以组件的形式存在于 App 中。要使用 Apollo，我们需要先做两件事：写创建 <code>ApolloClient</code> 的代码，和将 <code>ApolloProvider</code> 加入到组件树中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">/** apolloClient.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ApolloClient</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;apollo-client&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">InMemoryCache</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;apollo-cache-inmemory&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">HttpLink</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;apollo-link-http&#39;</span>;
 
-<pre><code class="language-JavaScript">/** apolloClient.js */
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-
-// Instantiate required constructor fields
-const cache = new InMemoryCache();
-const link = new HttpLink({
-  uri: 'http://yourbackendendpoint.com/graphql',
+<span style="color:#75715e">// Instantiate required constructor fields
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">InMemoryCache</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">link</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HttpLink</span>({
+  <span style="color:#a6e22e">uri</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;http://yourbackendendpoint.com/graphql&#39;</span>,
 });
 
-const client = new ApolloClient({
-  // Provide required constructor fields
-  cache: cache,
-  link: link,
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">client</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ApolloClient</span>({
+  <span style="color:#75715e">// Provide required constructor fields
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">cache</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cache</span>,
+  <span style="color:#a6e22e">link</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">link</span>,
 
-  // Provide some optional constructor fields
-  name: 'react-web-client',
-  version: '1.3',
-  queryDeduplication: false,
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'cache-and-network',
+  <span style="color:#75715e">// Provide some optional constructor fields
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;react-web-client&#39;</span>,
+  <span style="color:#a6e22e">version</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;1.3&#39;</span>,
+  <span style="color:#a6e22e">queryDeduplication</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+  <span style="color:#a6e22e">defaultOptions</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">watchQuery</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">fetchPolicy</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;cache-and-network&#39;</span>,
     },
   },
 });
 
-export default client
-</code></pre>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">client</span>
+</code></pre></div><p>按照上面的方式创建一个 <code>ApolloClient</code>，然后我们可以在组件中引用它，因为 <code>ApolloProvider</code> 需要它作为 prop 传入。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">render</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react-dom&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./client&#39;</span> <span style="color:#75715e">// sample
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ApolloProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@apollo/react-hooks&#39;</span>;
 
-<p>按照上面的方式创建一个 <code>ApolloClient</code>，然后我们可以在组件中引用它，因为 <code>ApolloProvider</code> 需要它作为 prop 传入。</p>
-
-<pre><code class="language-JSX">import React from 'react';
-import { render } from 'react-dom';
-import client from './client' // sample
-
-import { ApolloProvider } from '@apollo/react-hooks';
-
-const App = () =&gt; (
-  &lt;ApolloProvider client={client}&gt;
-    &lt;div&gt;
-      &lt;h2&gt;My first Apollo app 🚀&lt;/h2&gt;
-    &lt;/div&gt;
-  &lt;/ApolloProvider&gt;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">App</span> <span style="color:#f92672">=</span> () =&gt; (
+  &lt;<span style="color:#f92672">ApolloProvider</span> <span style="color:#a6e22e">client</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">client</span>}&gt;
+    &lt;<span style="color:#f92672">div</span>&gt;
+      &lt;<span style="color:#f92672">h2</span>&gt;<span style="color:#a6e22e">My</span> <span style="color:#a6e22e">first</span> <span style="color:#a6e22e">Apollo</span> <span style="color:#a6e22e">app</span> <span style="color:#960050;background-color:#1e0010">🚀</span>&lt;/<span style="color:#f92672">h2</span>&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+  &lt;/<span style="color:#f92672">ApolloProvider</span>&gt;
 );
 
-render(&lt;App /&gt;, document.getElementById('root'));
-</code></pre>
-
-<p>题外话：需要注意一下 <code>ApolloProvider</code> 注入的位置，同时创建 <code>ApolloClient</code> 的时候需要导出一个创建 client 的函数（如果业务定制较为复杂的话可能需要这么做，例如绑定通用的错误处理和国际化）时，需要防止 <code>ApolloProvider</code> re-render 导致的 <code>ApolloClient</code> 被重复创建，因为这样相当于会清空 Apollo 的缓存，导致额外不必要的网络请求。缓存相关的内容会在下面提到。</p>
-
+<span style="color:#a6e22e">render</span>(&lt;<span style="color:#f92672">App</span> /&gt;, document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;root&#39;</span>));
+</code></pre></div><p>题外话：需要注意一下 <code>ApolloProvider</code> 注入的位置，同时创建 <code>ApolloClient</code> 的时候需要导出一个创建 client 的函数（如果业务定制较为复杂的话可能需要这么做，例如绑定通用的错误处理和国际化）时，需要防止 <code>ApolloProvider</code> re-render 导致的 <code>ApolloClient</code> 被重复创建，因为这样相当于会清空 Apollo 的缓存，导致额外不必要的网络请求。缓存相关的内容会在下面提到。</p>
 <p>而如果我们要发起请求，我们需要使用 Apollo 提供的 API。Apollo 提供了 <code>&lt;Query /&gt;</code> 和 <code>&lt;Mutation /&gt;</code> 的组件，它们是以 render callback 的模式来应用的。而我在项目中主要运用了 hooks。Apollo 的 hooks 主要常用的有 3 个，分别是 <code>useQuery</code>, <code>useLazyQuery</code> 和 <code>useMutation</code>。<code>useQuery</code> 和 <code>useLazyQuery</code> 的区别是，<code>useQuery</code> 在组件 render/re-render 的时候会自动执行（发起请求），而 <code>useLazyQuery</code> 则允许用户在特定的时候调用一个函数来发起请求。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#75715e">/** useQuery */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">gql</span>, <span style="color:#a6e22e">useQuery</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@apollo/client&#39;</span>; <span style="color:#75715e">// 注： 3.0beta 将 gql 整合至 @apollo/client 包中，和上文的从 &#39;graphql-tag&#39; 包中引用的方式并不冲突
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GET_GREETING</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  query GetGreeting($language: String!) {
+</span><span style="color:#e6db74">    greeting(language: $language) {
+</span><span style="color:#e6db74">      message
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">`</span>;
 
-<pre><code class="language-JSX">/** useQuery */
-import { gql, useQuery } from '@apollo/client'; // 注： 3.0beta 将 gql 整合至 @apollo/client 包中，和上文的从 'graphql-tag' 包中引用的方式并不冲突
-
-const GET_GREETING = gql`
-  query GetGreeting($language: String!) {
-    greeting(language: $language) {
-      message
-    }
-  }
-`;
-
-function Hello() {
-  const { loading, error, data } = useQuery(GET_GREETING, {
-    variables: { language: 'english' },
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Hello</span>() {
+  <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">data</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">useQuery</span>(<span style="color:#a6e22e">GET_GREETING</span>, {
+    <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;english&#39;</span> },
   });
-  if (loading) return &lt;p&gt;Loading ...&lt;/p&gt;;
-  return &lt;h1&gt;Hello {data.greeting.message}!&lt;/h1&gt;;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">loading</span>) <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Loading</span> ...&lt;/<span style="color:#f92672">p</span>&gt;;
+  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">h1</span>&gt;<span style="color:#a6e22e">Hello</span> {<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">greeting</span>.<span style="color:#a6e22e">message</span>}<span style="color:#f92672">!</span>&lt;/<span style="color:#f92672">h1</span>&gt;;
 }
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#75715e">/** useLazyQuery */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">gql</span>, <span style="color:#a6e22e">useLazyQuery</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@apollo/client&#34;</span>;
 
-<pre><code class="language-JSX">/** useLazyQuery */
-import { gql, useLazyQuery } from &quot;@apollo/client&quot;;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">GET_GREETING</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  query GetGreeting($language: String!) {
+</span><span style="color:#e6db74">    greeting(language: $language) {
+</span><span style="color:#e6db74">      message
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">`</span>;
 
-const GET_GREETING = gql`
-  query GetGreeting($language: String!) {
-    greeting(language: $language) {
-      message
-    }
-  }
-`;
-
-function Hello() {
-  const [loadGreeting, { called, loading, data }] = useLazyQuery(
-    GET_GREETING,
-    { variables: { language: &quot;english&quot; } }
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Hello</span>() {
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">loadGreeting</span>, { <span style="color:#a6e22e">called</span>, <span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">data</span> }] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useLazyQuery</span>(
+    <span style="color:#a6e22e">GET_GREETING</span>,
+    { <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;english&#34;</span> } }
   );
-  if (called &amp;&amp; loading) return &lt;p&gt;Loading ...&lt;/p&gt;
-  if (!called) {
-    return &lt;button onClick={() =&gt; loadGreeting()}&gt;Load greeting&lt;/button&gt;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">called</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">loading</span>) <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">p</span>&gt;<span style="color:#a6e22e">Loading</span> ...&lt;/<span style="color:#f92672">p</span>&gt;
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">called</span>) {
+    <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">loadGreeting</span>()}&gt;<span style="color:#a6e22e">Load</span> <span style="color:#a6e22e">greeting</span>&lt;/<span style="color:#f92672">button</span>&gt;
   }
-  return &lt;h1&gt;Hello {data.greeting.message}!&lt;/h1&gt;;
+  <span style="color:#66d9ef">return</span> &lt;<span style="color:#f92672">h1</span>&gt;<span style="color:#a6e22e">Hello</span> {<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">greeting</span>.<span style="color:#a6e22e">message</span>}<span style="color:#f92672">!</span>&lt;/<span style="color:#f92672">h1</span>&gt;;
 }
-</code></pre>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#75715e">/** useMutation */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">gql</span>, <span style="color:#a6e22e">useMutation</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@apollo/client&#39;</span>;
 
-<pre><code class="language-JSX">/** useMutation */
-import { gql, useMutation } from '@apollo/client';
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ADD_TODO</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">gql</span><span style="color:#e6db74">`
+</span><span style="color:#e6db74">  mutation AddTodo($type: String!) {
+</span><span style="color:#e6db74">    addTodo(type: $type) {
+</span><span style="color:#e6db74">      id
+</span><span style="color:#e6db74">      type
+</span><span style="color:#e6db74">    }
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">`</span>;
 
-const ADD_TODO = gql`
-  mutation AddTodo($type: String!) {
-    addTodo(type: $type) {
-      id
-      type
-    }
-  }
-`;
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">AddTodo</span>() {
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">input</span>;
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">addTodo</span>, { <span style="color:#a6e22e">data</span> }] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useMutation</span>(<span style="color:#a6e22e">ADD_TODO</span>);
 
-function AddTodo() {
-  let input;
-  const [addTodo, { data }] = useMutation(ADD_TODO);
-
-  return (
-    &lt;div&gt;
-      &lt;form
-        onSubmit={e =&gt; {
-          e.preventDefault();
-          addTodo({ variables: { type: input.value } });
-          input.value = '';
+  <span style="color:#66d9ef">return</span> (
+    &lt;<span style="color:#f92672">div</span>&gt;
+      &lt;<span style="color:#f92672">form</span>
+        <span style="color:#a6e22e">onSubmit</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">e</span> =&gt; {
+          <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">preventDefault</span>();
+          <span style="color:#a6e22e">addTodo</span>({ <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> } });
+          <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
         }}
       &gt;
-        &lt;input
-          ref={node =&gt; {
-            input = node;
+        &lt;<span style="color:#f92672">input</span>
+          <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">node</span> =&gt; {
+            <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">node</span>;
           }}
         /&gt;
-        &lt;button type=&quot;submit&quot;&gt;Add Todo&lt;/button&gt;
-      &lt;/form&gt;
-    &lt;/div&gt;
+        &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;<span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">Todo</span>&lt;/<span style="color:#f92672">button</span>&gt;
+      &lt;/<span style="color:#f92672">form</span>&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
   );
 }
-</code></pre>
-
-<p>上面分别展示了 <code>useQuery</code>, <code>useLazyQuery</code> 和 <code>useMutation</code> 的用法。如果了解 hooks 的话，参考 Apollo 的 API 文档应该上手难度不大。那么在上一节提到的请求参数，我们就可以在这边以 <code>variables</code> 传入：</p>
-
-<pre><code class="language-JavaScript">const [loadGreeting, { called, loading, data }] = useLazyQuery(
-  GET_GREETING,
-  { variables: { language: &quot;english&quot; } } // 参数
-)
-</code></pre>
-
-<p>而在 Apollo 中，<code>options</code> 是非常重要的，它可以定制 queries 和 mutations 的行为。举例来说，<code>variables</code> 其实就是 <code>options</code> 的一部分。在 queries 中有几个比较重要的参数：</p>
-
+</code></pre></div><p>上面分别展示了 <code>useQuery</code>, <code>useLazyQuery</code> 和 <code>useMutation</code> 的用法。如果了解 hooks 的话，参考 Apollo 的 API 文档应该上手难度不大。那么在上一节提到的请求参数，我们就可以在这边以 <code>variables</code> 传入：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">loadGreeting</span>, { <span style="color:#a6e22e">called</span>, <span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">data</span> }] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useLazyQuery</span>(
+  <span style="color:#a6e22e">GET_GREETING</span>,
+  { <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">language</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;english&#34;</span> } } <span style="color:#75715e">// 参数
+</span><span style="color:#75715e"></span>)
+</code></pre></div><p>而在 Apollo 中，<code>options</code> 是非常重要的，它可以定制 queries 和 mutations 的行为。举例来说，<code>variables</code> 其实就是 <code>options</code> 的一部分。在 queries 中有几个比较重要的参数：</p>
 <ul>
 <li>notifyOnNetworkStatusChange: <code>networkStatus</code> 变化的时候是否需要 re-render 组件</li>
 <li>fetchPolicy: 这关系到 Apollo 会不会缓存数据。设置为 <code>cache-first</code> 的话，针对同样的请求参数，Apollo 会直接读取 client 中的缓存而不会重新请求；设置为 <code>network-only</code> 的话，则会每次都请求新的数据</li>
 <li>pollInterval: 轮询间隔时间。虽然我们常规的业务不需要轮询，但是这个参数其实是可以用作刷新策略的</li>
 <li>onCompleted: 请求完成后的回调。我一般比较少用这个，因为之前有发现它会被重复调用的 bug。监听数据状态其实可以简单地用 <code>useEffect</code></li>
 </ul>
-
 <p>那么这些参数如何使用呢？假设我们有个场景，在一个用户列表打开一个弹窗，修改用户信息后需要重新获取用户列表：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSX" data-lang="JSX"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">useState</span>, <span style="color:#a6e22e">useEffect</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;react&#39;</span>
 
-<pre><code class="language-JSX">import React, { useState, useEffect } from 'react'
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UserModule</span> <span style="color:#f92672">=</span> () =&gt; {
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">pollInterval</span>, <span style="color:#a6e22e">setPollInterval</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>)
 
-const UserModule = () =&gt; {
-  const [pollInterval, setPollInterval] = useState(0)
-
-  const [updateUserInfo, { data: mutationData }] = useMutation(UPDATE_USER_INFO); // updateUserInfo 会在某处被调用
-
-  const [called, loading, data] = useQuery(
-    GET_USERS,
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">updateUserInfo</span>, { <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">mutationData</span> }] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useMutation</span>(<span style="color:#a6e22e">UPDATE_USER_INFO</span>); <span style="color:#75715e">// updateUserInfo 会在某处被调用
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">called</span>, <span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">data</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useQuery</span>(
+    <span style="color:#a6e22e">GET_USERS</span>,
     {
-      variables: {}, // 省略
-      pollInterval
+      <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 省略
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">pollInterval</span>
     }
   )
 
-  useEffect(() =&gt; {
-    // mutation 成功
-    if (mutationData.res === 'success') {
-      setPollInterval(500)
+  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+    <span style="color:#75715e">// mutation 成功
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mutationData</span>.<span style="color:#a6e22e">res</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;success&#39;</span>) {
+      <span style="color:#a6e22e">setPollInterval</span>(<span style="color:#ae81ff">500</span>)
     }
-  }, [mutationData])
+  }, [<span style="color:#a6e22e">mutationData</span>])
 
-  useEffect(() =&gt; {
-    // 重置 pollInterval 防止重复请求
-    if (data &amp;&amp; pollInterval !== 0) {
-      setPollInterval(0)
+  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+    <span style="color:#75715e">// 重置 pollInterval 防止重复请求
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">data</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">pollInterval</span> <span style="color:#f92672">!==</span> <span style="color:#ae81ff">0</span>) {
+      <span style="color:#a6e22e">setPollInterval</span>(<span style="color:#ae81ff">0</span>)
     }
-  }, [data])
+  }, [<span style="color:#a6e22e">data</span>])
 
-  // 数据处理和渲染就不实现了
-  return &lt;&gt;&lt;/&gt;
+  <span style="color:#75715e">// 数据处理和渲染就不实现了
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> &lt;&gt;&lt;/&gt;
 }
-</code></pre>
-
-<p>上面的代码逻辑是：发起 <code>UPDATE_USER_INFO</code> 的 mutation，请求成功后将 <code>pollInterval</code> 设置成 500ms，这样 <code>GET_USERS</code> 的 query 就会在 500ms 后重新请求。这个重新请求是无视缓存的，就算你设置缓存为 <code>cache-first</code> 也会重新请求。而 <code>fetchPolicy</code> 主要影响的是 <code>variables</code> 变化导致的行为，例如请求一个用户表格会有不同页码、每页数量、排序字段、过滤字段等参数，使用同样的参数是读取缓存还是重新获取数据。接着我们需要找一个时机将 <code>pollInterval</code> 重新设置成 0，防止无限循环的请求。另外建议不要在 React 组件中使用 <code>setTimeout</code> 去设置 <code>pollInterval</code>，因为我们看上面的代码涉及到了很多 state 变化和 effects，这些在 React 中某种程度上是“异步”的，如果在业务很复杂的场景下使用 <code>setTimeout</code>，反而会导致组件的行为难以控制，而且也可能会出现在已经 unmounted 的组件上更新 state 的 error，尽管对用户使用的影响不大，但是对性能是不利的。</p>
-
+</code></pre></div><p>上面的代码逻辑是：发起 <code>UPDATE_USER_INFO</code> 的 mutation，请求成功后将 <code>pollInterval</code> 设置成 500ms，这样 <code>GET_USERS</code> 的 query 就会在 500ms 后重新请求。这个重新请求是无视缓存的，就算你设置缓存为 <code>cache-first</code> 也会重新请求。而 <code>fetchPolicy</code> 主要影响的是 <code>variables</code> 变化导致的行为，例如请求一个用户表格会有不同页码、每页数量、排序字段、过滤字段等参数，使用同样的参数是读取缓存还是重新获取数据。接着我们需要找一个时机将 <code>pollInterval</code> 重新设置成 0，防止无限循环的请求。另外建议不要在 React 组件中使用 <code>setTimeout</code> 去设置 <code>pollInterval</code>，因为我们看上面的代码涉及到了很多 state 变化和 effects，这些在 React 中某种程度上是“异步”的，如果在业务很复杂的场景下使用 <code>setTimeout</code>，反而会导致组件的行为难以控制，而且也可能会出现在已经 unmounted 的组件上更新 state 的 error，尽管对用户使用的影响不大，但是对性能是不利的。</p>
 <h3 id="单元测试">单元测试</h3>
-
 <p>我们知道 React 组件的单元测试可以用 jest + enzyme 来完成。单元测试的时候我们一般会使用 shallow render。而在使用了 Apollo 相关的 API 比如 hooks 之后，jest 会提示我们该组件没有 <code>ApolloProvider</code>，这些 Apollo 相关的 API 只能在 <code>ApolloProvider</code> 内使用。Apollo 也提供了用于测试的 API：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">MockedProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@apollo/client/testing&#34;</span>;
+</code></pre></div><p>具体使用例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">MockedProvider</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@apollo/client/testing&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mount</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;enzyme&#39;</span>
 
-<pre><code class="language-JavaScript">import { MockedProvider } from &quot;@apollo/client/testing&quot;;
-</code></pre>
-
-<p>具体使用例如下：</p>
-
-<pre><code class="language-JavaScript">import { MockedProvider } from &quot;@apollo/client/testing&quot;;
-import { mount } from 'enzyme'
-
-const mocks = [
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mocks</span> <span style="color:#f92672">=</span> [
   {
-    request: {
-      query: SOME_QUERY,
-      variables: { first: 4 }
+    <span style="color:#a6e22e">request</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">SOME_QUERY</span>,
+      <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span> }
     },
-    result: {
-      data: {
-        dog: {
-          name: &quot;Douglas&quot;
+    <span style="color:#a6e22e">result</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">dog</span><span style="color:#f92672">:</span> {
+          <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Douglas&#34;</span>
         }
       }
     }
   },
   {
-    request: {
-      query: SOME_QUERY,
-      variables: { first: 8}
+    <span style="color:#a6e22e">request</span><span style="color:#f92672">:</span> {
+      <span style="color:#a6e22e">query</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">SOME_QUERY</span>,
+      <span style="color:#a6e22e">variables</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">first</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>}
     },
-    error: new Error(&quot;Something went wrong&quot;)
+    <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;Something went wrong&#34;</span>)
   }
 ]
 
-it(&quot;runs the mocked query&quot;, () =&gt; {
-  const wrapper = mount(
-    &lt;MockedProvider mocks={mocks}&gt;
-      &lt;MyQueryComponent /&gt;
-    &lt;/MockedProvider&gt;
+<span style="color:#a6e22e">it</span>(<span style="color:#e6db74">&#34;runs the mocked query&#34;</span>, () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">wrapper</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mount</span>(
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MockedProvider</span> <span style="color:#a6e22e">mocks</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">mocks</span>}<span style="color:#f92672">&gt;</span>
+      <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MyQueryComponent</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/MockedProvider&gt;</span>
   )
-  // Run assertions on &lt;MyQueryComponent/&gt;
-});
-</code></pre>
-
-<p>如果你是把组件实际渲染的部分和 <code>MockedProvider</code> 写在同一个组件内，那么测试的时候需要用 <code>mount</code>，否则无法将组件内部的内容渲染出来。对测试比较友好的方式可能是，将 queries/mutations 的部分独立出来做一个 container 组件，渲染部分作为 dumb 组件。但是这具体得看这方面的需求和代码规范是怎么制定的。</p>
-
+  <span style="color:#75715e">// Run assertions on &lt;MyQueryComponent/&gt;
+</span><span style="color:#75715e"></span>});
+</code></pre></div><p>如果你是把组件实际渲染的部分和 <code>MockedProvider</code> 写在同一个组件内，那么测试的时候需要用 <code>mount</code>，否则无法将组件内部的内容渲染出来。对测试比较友好的方式可能是，将 queries/mutations 的部分独立出来做一个 container 组件，渲染部分作为 dumb 组件。但是这具体得看这方面的需求和代码规范是怎么制定的。</p>
 <p>目前这个测试可能还是有点 bug 的状态，我目前项目还没迁移到 3.0beta，所以不大清楚会不会在新版修复。我在旧版中遇到过几种情况，例如 mock 的数据都写对，但实际上返回了 network error，提示参数有问题；还有遇到过 mocks 里写两个对象会出现读取错误的问题，也就是不方便同时 mock 多个 queries/mutations。</p>
 
     </div>

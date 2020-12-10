@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Frontends on Variation Palladion - 撕裂时间的帕拉迪昂</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Frontends on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/frontend/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/frontend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apollo GraphQL 在 React 中的应用</title>
       <link>https://elizurhz.cn/frontend/apollo-react/</link>
@@ -21,8 +17,8 @@
 Apollo 是生产级的 GraphQL 框架（官方简介）。那么我使用 Apollo 的契机是，我们项目的后端（美国团队）已经长期在使用 GraphQL。在这个项目初期，后端是有提供 SDK 给部分接口的，但是后来由于业务的发展，我们还是全部接入 GraphQL，因为他们的很多服务都是提供 GraphQL 的 endpoint 的，封装成 SDK 相对困难。
 GraphQL 注：本节示例代码大多来自于 GraphQL 官网。
 提到 GraphQL，不明白的人可能会联想到 SQL。这确实没错，GraphQL 本身就是一种 query language。在 Apollo 中，我们需要借助 gql 这个包来写 queries 和 mutations。
-import gql from &#39;graphql-tag&#39; const SAMPLE_QUERY = gql` { hero { name height } } `  上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：
-const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } `  HeroNameAndFriends 在 GraphQL 里叫做 operation name。</description>
+import gql from &amp;#39;graphql-tag&amp;#39; const SAMPLE_QUERY = gql` { hero { name height } } ` 上面的是不需要传入任何参数的 query。而我们知道，大部分接口都需要参数，所以使用 gql 包我们需要这么写：
+const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Episode) { hero(episode: $episode) { name friends { name } } } ` HeroNameAndFriends 在 GraphQL 里叫做 operation name。</description>
     </item>
     
     <item>
@@ -56,8 +52,8 @@ const SAMPLE_QUERY_WITH_VARIABLES = gql` query HeroNameAndFriends($episode: Epis
       
       <guid>https://elizurhz.cn/frontend/how-to-use-context-in-react/</guid>
       <description>Radio 组件是什么样的 以官方文档的例子：
-import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; class App extends React.Component { state = { value: 1 }; onChange = e =&amp;gt; { console.log(&amp;quot;radio checked&amp;quot;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &amp;lt;Radio.Group onChange={this.onChange} value={this.state.value}&amp;gt; &amp;lt;Radio value={1}&amp;gt;A&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={2}&amp;gt;B&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={3}&amp;gt;C&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={4}&amp;gt;D&amp;lt;/Radio&amp;gt; &amp;lt;/Radio.Group&amp;gt; ); } } ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode);  除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
-import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;antd&amp;quot;; const plainOptions = [&amp;quot;Apple&amp;quot;, &amp;quot;Pear&amp;quot;, &amp;quot;Orange&amp;quot;]; const options = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot; } ]; const optionsWithDisabled = [ { label: &amp;quot;Apple&amp;quot;, value: &amp;quot;Apple&amp;quot; }, { label: &amp;quot;Pear&amp;quot;, value: &amp;quot;Pear&amp;quot; }, { label: &amp;quot;Orange&amp;quot;, value: &amp;quot;Orange&amp;quot;, disabled: false } ]; class App extends React.</description>
+import React from &amp;#34;react&amp;#34;; import { Radio } from &amp;#34;antd&amp;#34;; class App extends React.Component { state = { value: 1 }; onChange = e =&amp;gt; { console.log(&amp;#34;radio checked&amp;#34;, e.target.value); this.setState({ value: e.target.value }); }; render() { return ( &amp;lt;Radio.Group onChange={this.onChange} value={this.state.value}&amp;gt; &amp;lt;Radio value={1}&amp;gt;A&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={2}&amp;gt;B&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={3}&amp;gt;C&amp;lt;/Radio&amp;gt; &amp;lt;Radio value={4}&amp;gt;D&amp;lt;/Radio&amp;gt; &amp;lt;/Radio.Group&amp;gt; ); } } ReactDOM.render(&amp;lt;App /&amp;gt;, mountNode); 除了这种方式，还有使用 options 这个 prop 传递配置文件进行渲染的：
+import React from &amp;#34;react&amp;#34;; import { Radio } from &amp;#34;antd&amp;#34;; const plainOptions = [&amp;#34;Apple&amp;#34;, &amp;#34;Pear&amp;#34;, &amp;#34;Orange&amp;#34;]; const options = [ { label: &amp;#34;Apple&amp;#34;, value: &amp;#34;Apple&amp;#34; }, { label: &amp;#34;Pear&amp;#34;, value: &amp;#34;Pear&amp;#34; }, { label: &amp;#34;Orange&amp;#34;, value: &amp;#34;Orange&amp;#34; } ]; const optionsWithDisabled = [ { label: &amp;#34;Apple&amp;#34;, value: &amp;#34;Apple&amp;#34; }, { label: &amp;#34;Pear&amp;#34;, value: &amp;#34;Pear&amp;#34; }, { label: &amp;#34;Orange&amp;#34;, value: &amp;#34;Orange&amp;#34;, disabled: false } ]; class App extends React.</description>
     </item>
     
     <item>
@@ -69,7 +65,7 @@ import React from &amp;quot;react&amp;quot;; import { Radio } from &amp;quot;ant
       <description>TL;DR 很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。
 这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。
 Before &amp;amp; After Hooks 使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。
-Before /** container.ts */ import { connect } from &#39;react-redux&#39; import { injectIntl } from &#39;react-intl&#39; import ComponentA from &#39;./componentA&#39; import * as actions from &#39;your/path/to/actions&#39; import { bindActionCreators, Dispatch } from &#39;redux&#39; function mapStateToProps(state: any): any { return { variableA: state.</description>
+Before /** container.ts */ import { connect } from &amp;#39;react-redux&amp;#39; import { injectIntl } from &amp;#39;react-intl&amp;#39; import ComponentA from &amp;#39;./componentA&amp;#39; import * as actions from &amp;#39;your/path/to/actions&amp;#39; import { bindActionCreators, Dispatch } from &amp;#39;redux&amp;#39; function mapStateToProps(state: any): any { return { variableA: state.</description>
     </item>
     
     <item>
@@ -110,21 +106,9 @@ Before /** container.ts */ import { connect } from &#39;react-redux&#39; import 
 本文所涉及的代码是基于 szimek/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。
 Canvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。
 基本用法 &amp;lt;canvas&amp;gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：
-&amp;lt;canvas id=&amp;quot;test&amp;quot; width=&amp;quot;150&amp;quot; height=&amp;quot;150&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
+&amp;lt;canvas id=&amp;#34;test&amp;#34; width=&amp;#34;150&amp;#34; height=&amp;#34;150&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; 其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
 如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”
-const test = document.getElementById(&#39;test&#39;) const ctx = test.getContext(&#39;2d&#39;)  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。</description>
-    </item>
-    
-    <item>
-      <title>React &#43; TypeScript 从云玩家到入门</title>
-      <link>https://elizurhz.cn/frontend/typescript-for-jser/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://elizurhz.cn/frontend/typescript-for-jser/</guid>
-      <description>React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
-TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
-基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&amp;lt;string&amp;gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
-interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &amp;quot;asdf&amp;quot; };  Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</description>
+const test = document.getElementById(&amp;#39;test&amp;#39;) const ctx = test.getContext(&amp;#39;2d&amp;#39;) 绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。</description>
     </item>
     
     <item>
@@ -141,6 +125,18 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
     </item>
     
     <item>
+      <title>React &#43; TypeScript 从云玩家到入门</title>
+      <link>https://elizurhz.cn/frontend/typescript-for-jser/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/typescript-for-jser/</guid>
+      <description>React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
+TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
+基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&amp;lt;string&amp;gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
+interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &amp;#34;asdf&amp;#34; }; Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</description>
+    </item>
+    
+    <item>
       <title>在 React 中使用防抖动</title>
       <link>https://elizurhz.cn/frontend/react-debounce/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
@@ -149,8 +145,8 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
       <description>在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
 更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
 基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
-function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
-function print(value) { console.log(value) } debounce(print, 100)(&#39;123&#39;)  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
+function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } } 如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
+function print(value) { console.log(value) } debounce(print, 100)(&amp;#39;123&amp;#39;) 这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
 进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。</description>
     </item>
     

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>后端 on Variation Palladion - 撕裂时间的帕拉迪昂</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 后端 on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>
       <link>https://elizurhz.cn/backend/aws-serverless-deployment/</link>
@@ -37,7 +33,7 @@ serverless 命令行部署 首先我们需要安装 serverless：运行 yarn add
       <description>ECS 上的 git 管理工具踩坑记 gitlab 在 CentOS 上安装 gitlab 参考 8 小时外实践系列(六) - 在阿里云服务器上搭建 GitLab(草稿) - CSDN 博客
  gitlab 非常吃性能，在 1 核 1G 的服务器上安装后会导致机子非常卡，同时域名/IP 访问也会出现 502，查资料之后发现是配置太低的问题。官方推荐的配置是 2 核心 8G 内存，我们普通个人用户显然难以支付这么昂贵的服务器配置，更不用说海外主机了。
  使用 docker 部署 gitlab 只需要在 docker hub 中 docker pull gitlab/gitlab-ce 就行，然后我启动容器的的代码如下：
-sudo docker run --detach \ --hostname gitlab.mydomain.com \ --publish 8443:443 --publish 80:80 --publish 2222:22 \ --name gitlab \ --restart always \ --volume /srv/gitlab/config:/etc/gitlab \ --volume /srv/gitlab/logs:/var/log/gitlab \ --volume /srv/gitlab/data:/var/opt/gitlab \ gitlab/gitlab-ce  如需修改 gitlab.</description>
+sudo docker run --detach \  --hostname gitlab.mydomain.com \  --publish 8443:443 --publish 80:80 --publish 2222:22 \  --name gitlab \  --restart always \  --volume /srv/gitlab/config:/etc/gitlab \  --volume /srv/gitlab/logs:/var/log/gitlab \  --volume /srv/gitlab/data:/var/opt/gitlab \  gitlab/gitlab-ce 如需修改 gitlab.</description>
     </item>
     
     <item>
@@ -76,7 +72,7 @@ sudo docker run --detach \ --hostname gitlab.mydomain.com \ --publish 8443:443 -
       
       <guid>https://elizurhz.cn/backend/docker-ops/</guid>
       <description>前后端分离项目的容器化 docker CentOS 7 上
-yum install -y docker  基本命令 docker images # 列出当前本地所有的 docker 镜像  docker search [docker-name] # 在 docker hub 中搜索镜像  docker pull [docker-name] # 在 docker hub 中拉取镜像到本机  docker run \ # 启动镜像 -d \ # --detach -h example.com \ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \ # 容器的名字 -e XXX=xxx \ # 指定环境变量 -v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等  docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像  docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名  容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</description>
+yum install -y docker 基本命令 docker images # 列出当前本地所有的 docker 镜像 docker search [docker-name] # 在 docker hub 中搜索镜像 docker pull [docker-name] # 在 docker hub 中拉取镜像到本机 docker run \ # 启动镜像 -d \ # --detach -h example.com \ # --hostname，主机 -p 8443:443 -p 8888:80 -p 2222:22 \ # --publish 端口，格式：本机端口:容器端口，将容器端口映射到本机端口 --name example \ # 容器的名字 -e XXX=xxx \ # 指定环境变量 -v /your/local/path:/your/image/path \ # --volume，格式：本机路径:容器路径，挂载卷，可以使本机的目录和容器中的目录互通、同步，可以用于持久化容器数据 [docker-name] # 镜像名字，如 mysql, gitlab/gitlab-ce 等 docker ps # 查看所有已创建的镜像 docker ps -a # 查看所有运行中的镜像 docker start/stop/restart/rm [container id/container name] # 启动、停止、重启、删除某个容器，可以使用容器 id 或者容器名 容器在 docker run 之后会在 docker ps -a 的列表中，如果需要重新运行这个容器，必须先停止它再 rm。</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>单元测试 on Variation Palladion - 撕裂时间的帕拉迪昂</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 单元测试 on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TypeScript &#43; 单元测试：从零开始的经验之谈</title>
       <link>https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/</link>

@@ -1,15 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Javascript on Variation Palladion - 撕裂时间的帕拉迪昂</title>
+    <title>JavaScript on Variation Palladion - 撕裂时间的帕拉迪昂</title>
     <link>https://elizurhz.cn/tags/javascript/</link>
-    <description>Recent content in Javascript on Variation Palladion - 撕裂时间的帕拉迪昂</description>
+    <description>Recent content in JavaScript on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React Hooks 能给我们带来什么</title>
+      <link>https://elizurhz.cn/frontend/how-hooks-helps/</link>
+      <pubDate>Thu, 18 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/frontend/how-hooks-helps/</guid>
+      <description>TL;DR 很多 React 的新技术，我们大多数人也只是听说而已，实际上投入生产的机会非常少。首先很多旧项目不会去升级 React 的版本，很多团队因为不精通技术而且只需要专注于做业务，所以也没有这样的成本来升级 React 的版本。而我刚好遇到了好的机会，让我有足够的技术自由度，我也趁着一个重构的机会，顺便把负责组件全部用 hooks 重构了。这次重构是在 2019 年 6 月下旬开始的，并且也要感谢 react-redux 在 6 月上旬的时候发布了 v7.1.0，Hooks API 正式投入生产了，让我能够大展身手。
+这篇文章不会涉及到 React 中所有 Hooks 的细节，而是就开发而言谈谈常用的一些 Hooks，特别是最近推出的、让 redux app 能够使用 functional component 替代 connect 的 Hooks。
+Before &amp;amp; After Hooks 使用 Hooks 对代码的修改不少，但是完成重构后代码看着会非常简洁，因为少了非常多的代码，我们维护一个组件只需要看一个 function 即可。
+Before /** container.ts */ import { connect } from &amp;#39;react-redux&amp;#39; import { injectIntl } from &amp;#39;react-intl&amp;#39; import ComponentA from &amp;#39;./componentA&amp;#39; import * as actions from &amp;#39;your/path/to/actions&amp;#39; import { bindActionCreators, Dispatch } from &amp;#39;redux&amp;#39; function mapStateToProps(state: any): any { return { variableA: state.</description>
+    </item>
     
     <item>
       <title>Next.js 实战：从 CSR 迁移到 SSR</title>
@@ -46,8 +54,8 @@
       <description>在 React 中使用防抖动 什么是防抖动 防抖动其实就是保证在事件发生后的固定时间内，如果再触发该事件，则重新计算延时，直到这段延时内没有再次触发事件，则执行用户自定的函数。
 更进一步说，防抖动分为立即执行和非立即执行，立即执行的运作方式有所不同，它是会先执行用户自定的函数，若在一段延时内未再触发该事件，则触发该事件才能再次执行函数；在该延时内触发的事件不执行函数，且重新计算延时。
 基础版 关于防抖动的详情和具体实现，网上很多文章应该都介绍过了，这里不赘述，推荐一篇看过的应该是最好的文章：函数防抖和节流 - 掘金 。不过这种代码实现比较“传统”，使用的是 ES5 和闭包。
-function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } }  如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
-function print(value) { console.log(value) } debounce(print, 100)(&#39;123&#39;)  这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
+function debounce(func, wait) { var timeout; return function () { var context = this; var args = arguments; if (timeout) clearTimeout(timeout); timeout = setTimeout(function(){ func.apply(context, args) }, wait); } } 如果是按照上面的 ES5 + 闭包的形式编写 debounce 函数，那么使用方法如下：
+function print(value) { console.log(value) } debounce(print, 100)(&amp;#39;123&amp;#39;) 这也是 lodash 和 underscore 中 debounce 的实现与使用方式。
 进阶版 当然，我们也可以使用 Promise 来实现防抖动，参考：理解函数防抖 Debounce - 掘金 。</description>
     </item>
     

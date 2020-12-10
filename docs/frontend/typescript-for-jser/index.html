@@ -9,8 +9,8 @@
   
   
   
-  <link rel="prev" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
-  <link rel="next" href="https://elizurhz.cn/frontend/canvas-writing-pad/" />
+  <link rel="prev" href="https://elizurhz.cn/frontend/react-debounce/" />
+  <link rel="next" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,15 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
-    "name" : "React &#43; TypeScript 从云玩家到入门",
-    "headline" : "React &#43; TypeScript 从云玩家到入门",
-    "description" : "React + TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。
-TypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。
-基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array&lt;string&gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。
-interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj = { num: 123 }; // tslint 报错 let obj2: IObj = { str: &quot;asdf&quot; };  Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。",
+    "name" : "React \u002b TypeScript 从云玩家到入门",
+    "headline" : "React \u002b TypeScript 从云玩家到入门",
+    "description" : "React \u002b TypeScript 从云玩家到入门 TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。\nTypeScript 基础 这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。\n基础类型  number: 数字 string: 字符串 boolean: 布尔值 Array: 数组。在使用数组类型的时候必须标记数组中的数据类型，如 number[] 或者 Array\u0026lt;string\u0026gt; Tuple: 元组。let x: [string, number]; any: 任意类型 void: 空，一般用于函数的返回值 never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。  可选类型 标记为可选类型的属性并非是必须的。\ninterface IObj { str?: string; num: number; } \/\/ tslint 不报错 let obj1: IObj = { num: 123 }; \/\/ tslint 报错 let obj2: IObj = { str: \u0026#34;asdf\u0026#34; }; Readonly 一般在 Interface 和 Class 中会使用。设置为 readonly 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -57,9 +54,9 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/typescript-for-jser/",
+    "datePublished": "2019-03-24 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/typescript-for-jser\/",
     "wordCount" : "1157",
     "keywords" : [ "typescript", "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -82,11 +79,13 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -111,11 +110,13 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -163,18 +164,11 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
           
           
 
-          
-
-<h1 id="react-typescript-从云玩家到入门">React + TypeScript 从云玩家到入门</h1>
-
+          <h1 id="react--typescript-从云玩家到入门">React + TypeScript 从云玩家到入门</h1>
 <p>TypeScript 对我们开发最大的帮助就是类型检查，所以玩转 TypeScript 其实就是在玩转类型。而 TypeScript 本身和 Java, C# 等面向对象的语言有非常多类似的地方，有相应经验的读者能够较快地入门。本文旨在于帮助无面向对象开发经验的 JavaScript 使用者能最快速地上手并使用 TypeScript 编写 React 应用。由于篇幅和定位所限，本文将不会涉及到较为复杂的组件设计模式。</p>
-
 <h2 id="typescript-基础">TypeScript 基础</h2>
-
 <p>这部分主要介绍入门 TypeScript 必须掌握的，以及 React 开发中经常会用到的一些语法规范。</p>
-
 <h3 id="基础类型">基础类型</h3>
-
 <ul>
 <li>number: 数字</li>
 <li>string: 字符串</li>
@@ -185,162 +179,116 @@ interface IObj { str?: string; num: number; } // tslint 不报错 let obj1: IObj
 <li>void: 空，一般用于函数的返回值</li>
 <li>never: 永远不会出现的类型，一般用于函数的返回值，例如抛出错误或者永远不结束的死循环。</li>
 </ul>
-
 <h3 id="可选类型">可选类型</h3>
-
 <p>标记为可选类型的属性并非是必须的。</p>
-
-<pre><code class="language-typescript">interface IObj {
-  str?: string;
-  num: number;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IObj</span> {
+  <span style="color:#a6e22e">str?</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">num</span>: <span style="color:#66d9ef">number</span>;
 }
 
-// tslint 不报错
-let obj1: IObj = {
-  num: 123
+<span style="color:#75715e">// tslint 不报错
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj1</span>: <span style="color:#66d9ef">IObj</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">num</span>: <span style="color:#66d9ef">123</span>
 };
 
-// tslint 报错
-let obj2: IObj = {
-  str: &quot;asdf&quot;
+<span style="color:#75715e">// tslint 报错
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj2</span>: <span style="color:#66d9ef">IObj</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">str</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;asdf&#34;</span>
 };
-</code></pre>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/optional-error.png" alt="optional-error" class="lazyload"><figcaption class="image-caption">optional-error</figcaption></figure></p>
-
+</code></pre></div><p><img src="/images/typescript-for-jser/optional-error.png" alt="optional-error"></p>
 <h3 id="readonly">Readonly</h3>
-
 <p>一般在 Interface 和 Class 中会使用。设置为 <code>readonly</code> 的变量、属性，一旦定义后就无法直接修改。如果在代码中有修改的操作，则 tslint 会报错。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/readonly-error.png" alt="readonly-error" class="lazyload"><figcaption class="image-caption">readonly-error</figcaption></figure></p>
-
+<p><img src="/images/typescript-for-jser/readonly-error.png" alt="readonly-error"></p>
 <h3 id="函数">函数</h3>
-
-<pre><code class="language-typescript">function add(x: number, y: number): number {
-  return x + y;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
 }
 
-let myAdd: (x: number, y: number) =&gt; number = function(
-  x: number,
-  y: number
-): number {
-  return x + y;
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">myAdd</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">number</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(
+  <span style="color:#a6e22e">x</span>: <span style="color:#66d9ef">number</span>,
+  <span style="color:#a6e22e">y</span>: <span style="color:#66d9ef">number</span>
+)<span style="color:#f92672">:</span> <span style="color:#66d9ef">number</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
 };
-</code></pre>
-
-<p>函数的类型限制主要在参数和返回值的位置需要定义。如果在等号左侧已经定义了类型，那么右侧可以不需要写类型，如：</p>
-
-<pre><code class="language-typescript">let myAdd: (baseValue: number, increment: number) =&gt; number = function(x, y) {
-  return x + y;
+</code></pre></div><p>函数的类型限制主要在参数和返回值的位置需要定义。如果在等号左侧已经定义了类型，那么右侧可以不需要写类型，如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">myAdd</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">baseValue</span>: <span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">increment</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">number</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
 };
-</code></pre>
-
-<p>这个在 TypeScript 中被称作 “contextual typing”。</p>
-
+</code></pre></div><p>这个在 TypeScript 中被称作 “contextual typing”。</p>
 <h2 id="interface">interface</h2>
-
 <blockquote>
 <p>One of TypeScript’s core principles is that type-checking focuses on the shape that values have. This is sometimes called “duck typing” or “structural subtyping”.</p>
 </blockquote>
-
 <p>Interface 一般用于描述一个较为复杂的限制，例如在一个对象中限制某些属性的类型。有时被称为“鸭子类型”。</p>
-
 <blockquote>
 <p>&ldquo;当看到一只鸟走起来像鸭子、游泳起来像鸭子、叫起来也像鸭子，那么这只鸟就可以被称为鸭子。&rdquo;
 在鸭子类型中，关注的不是对象的类型本身，而是它是如何使用的。</p>
 </blockquote>
-
-<pre><code class="language-typescript">interface ITest {
-  a: number;
-  b: string;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ITest</span> {
+  <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">string</span>;
 }
 
-const test: ITest = {
-  a: 1,
-  b: &quot;123&quot;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span>: <span style="color:#66d9ef">ITest</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">1</span>,
+  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;123&#34;</span>
 };
-</code></pre>
-
-<ul>
-<li><p>Interface 和 class 的区别:</p>
-
+</code></pre></div><ul>
+<li>
+<p>Interface 和 class 的区别:</p>
 <ul>
 <li>Interface 和 class 在 TypeScript 中都可以去描述一个限制，与 PHP、Java 中的 interface、class 一样，TypeScript 中的 interface 只做声明不做实现。</li>
 <li>如果把上面的 interface 声明换成 class，tslint 不会报错，代码可以正常执行，但是二者编译出来的 JavaScript 不同。</li>
-</ul></li>
 </ul>
-
-<pre><code class="language-typescript">// 使用 interface 编译后的代码
-var test = {
-  a: 1,
-  b: &quot;123&quot;
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// 使用 interface 编译后的代码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">1</span>,
+  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;123&#34;</span>
 };
 
-// 使用 class 编译后的代码
-var ITest = /** @class */ (function() {
-  function ITest() {}
-  return ITest;
+<span style="color:#75715e">// 使用 class 编译后的代码
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ITest</span> <span style="color:#f92672">=</span> <span style="color:#75715e">/** @class */</span> (<span style="color:#66d9ef">function</span>() {
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ITest() {</span>}
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ITest</span>;
 })();
-var test = {
-  a: 1,
-  b: &quot;123&quot;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">1</span>,
+  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;123&#34;</span>
 };
-</code></pre>
-
-<ul>
+</code></pre></div><ul>
 <li>class 可以使用 implements 关键字来实现 interface。</li>
 </ul>
-
 <h3 id="类型别名">类型别名</h3>
-
 <p>TypeScript 中允许使用 type 关键字来声明类型别名。</p>
-
-<pre><code class="language-typescript">type State = {
-  a: string;
-  b: Array&lt;number&gt;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">State</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">Array</span>&lt;<span style="color:#f92672">number</span>&gt;;
 };
-</code></pre>
-
-<p>类型别名和 interface 通常具有同样的功能，但是类型别名不能被 <code>extends</code> 或者 <code>implements</code>，也不能 <code>extends</code> 或者 <code>implements</code> 其他类型。并且类型别名在编译器中显示的是 Object 字面量类型，而 interface 显示是 interface。</p>
-
+</code></pre></div><p>类型别名和 interface 通常具有同样的功能，但是类型别名不能被 <code>extends</code> 或者 <code>implements</code>，也不能 <code>extends</code> 或者 <code>implements</code> 其他类型。并且类型别名在编译器中显示的是 Object 字面量类型，而 interface 显示是 interface。</p>
 <blockquote>
 <p>Because <a href="https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle">an ideal property of software is being open to extension</a>, you should always use an interface over a type alias if possible.
 【软件中的对象应该对于扩展是开放的，但是对于修改是封闭的】</p>
 </blockquote>
-
 <h3 id="泛型">泛型</h3>
-
-<pre><code class="language-typescript">function identity(arg: any): any {
-  return arg;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">identity</span>(<span style="color:#a6e22e">arg</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">any</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>;
 }
-</code></pre>
-
-<p>当我们在写这样一个函数的时候，参数和返回值都可以是任意类型，但实际上这样我们就丢失了参数和返回值的类型信息（实际上输入和输出应该是相同的类型）。
+</code></pre></div><p>当我们在写这样一个函数的时候，参数和返回值都可以是任意类型，但实际上这样我们就丢失了参数和返回值的类型信息（实际上输入和输出应该是相同的类型）。
 这时我们可以用一个类型变量 T：</p>
-
-<pre><code class="language-typescript">function identity&lt;T&gt;(arg: T): T {
-  return arg;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">identity</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">arg</span>: <span style="color:#66d9ef">T</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span> {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">arg</span>;
 }
-</code></pre>
-
-<p>这样保证了参数和返回值的类型都是 T。
+</code></pre></div><p>这样保证了参数和返回值的类型都是 T。
 我们可以通过如下的方式使用这个泛型函数：</p>
-
-<pre><code class="language-typescript">let output = identity&lt;string&gt;(&quot;myString&quot;); // type of output will be 'string'
-</code></pre>
-
-<h3 id="映射类型">映射类型</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">identity</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#34;myString&#34;</span>); <span style="color:#75715e">// type of output will be &#39;string&#39;
+</span></code></pre></div><h3 id="映射类型">映射类型</h3>
 <p>映射类型包括 Partial 和 Readonly，它们可以在原有 interface 的基础上分别映射出所有属性都是可选类型，和所有属性都是只读的新的 type。这两种映射类型实现如下：</p>
-
-<pre><code class="language-typescript">type Readonly&lt;T&gt; = { readonly [P in keyof T]: T[P] };
-type Partial&lt;T&gt; = { [P in keyof T]?: T[P] };
-</code></pre>
-
-<h2 id="在-react-中使用-typescript">在 React 中使用 TypeScript</h2>
-
-<h3 id="创建一个-react-typescript-的项目">创建一个 React + TypeScript 的项目</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Readonly</span>&lt;<span style="color:#f92672">T</span>&gt; <span style="color:#f92672">=</span> { <span style="color:#66d9ef">readonly</span> [<span style="color:#a6e22e">P</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">keyof</span> <span style="color:#a6e22e">T</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span>[<span style="color:#a6e22e">P</span>] };
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Partial</span>&lt;<span style="color:#f92672">T</span>&gt; <span style="color:#f92672">=</span> { [<span style="color:#a6e22e">P</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">keyof</span> <span style="color:#a6e22e">T</span>]<span style="color:#f92672">?:</span> <span style="color:#a6e22e">T</span>[<span style="color:#a6e22e">P</span>] };
+</code></pre></div><h2 id="在-react-中使用-typescript">在 React 中使用 TypeScript</h2>
+<h3 id="创建一个-react--typescript-的项目">创建一个 React + TypeScript 的项目</h3>
 <ol>
 <li>create-react-app
 通过 create-react-app 来搭建，我们只需要在命令中加入额外参数即可：
@@ -349,240 +297,190 @@ type Partial&lt;T&gt; = { [P in keyof T]?: T[P] };
 <li>手动安装
 手动安装需要通过 npm 或者 yarn 安装 <code>typescript</code> 和 <code>ts-loader</code> 等 TypeScript 相关的 package，同时需要手动配置 <code>tsconfig.json</code>。</li>
 </ol>
-
-<h3 id="definitelytyped-d-ts">DefinitelyTyped - *.d.ts</h3>
-
+<h3 id="definitelytyped---dts">DefinitelyTyped - *.d.ts</h3>
 <p><a href="https://github.com/DefinitelyTyped/DefinitelyTyped">GitHub - DefinitelyTyped/DefinitelyTyped: The repository for high quality TypeScript type definitions.</a></p>
-
 <p>TypeScript 的模块发布的时候都是打包成 JavaScript 来发布的，但是这样会丢失定义好的数据类型。 .d.ts 可以约定 type, class, interface, function, 变量以及常量等的行为，相当于是一个 package 或者 library 的“说明书”。</p>
-
 <p>在 React 中，我们常常会需要安装一些如 <code>@types/react-router-dom</code> 这种以 <code>@types</code> 作为开头的 package。在 JS 中我们直接 <code>npm install react-router-dom</code> 即可，但是在 TypeScript 中，如果没有 DefinitelyTyped，将会报如下的错误：
-<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/typescript-for-jser/types-error.png" alt="@types-error" class="lazyload"><figcaption class="image-caption">@types-error</figcaption></figure></p>
-
+<img src="/images/typescript-for-jser/types-error.png" alt="@types-error"></p>
 <p>当然并不是所有的 package 都需要一个对应的 <code>@types</code> ，不少 package 自身已经有 .d.ts 文件了，例如 antd，所以我们不需要额外的 <code>@types</code> 。</p>
-
 <h3 id="无状态组件">无状态组件</h3>
-
 <p>在 JavaScript 中，我们可以按如下的方式写一个 Stateless Functional Component ：</p>
-
-<pre><code class="language-javascript">import React from &quot;react&quot;;
-const Button = ({ onClick, children }) =&gt; (
-  &lt;button onClick={handleClick}&gt;{children}&lt;/button&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Button</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">onClick</span>, <span style="color:#a6e22e">children</span> }) =&gt; (
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleClick</span>}<span style="color:#f92672">&gt;</span>{<span style="color:#a6e22e">children</span>}<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/button&gt;</span>
 );
-</code></pre>
-
-<p>但是在 TypeScript 中，我们需要加入类型，所以具体怎么加呢？我们可以通过 <code>@types/react</code> 中的 <code>index.d.ts</code>来进行分析：</p>
-
+</code></pre></div><p>但是在 TypeScript 中，我们需要加入类型，所以具体怎么加呢？我们可以通过 <code>@types/react</code> 中的 <code>index.d.ts</code>来进行分析：</p>
 <blockquote>
 <p>注：以下代码都去除了大段的注释，若需要查看官方的注释请至 <code>npm install</code> 后下载的 <code>./node_modules/@types/react</code> 中查看。</p>
 </blockquote>
-
-<pre><code class="language-typescript">type SFC&lt;P = {}&gt; = StatelessComponent&lt;P&gt;;
-interface StatelessComponent&lt;P = {}&gt; {
-  (props: P &amp; { children?: ReactNode }, context?: any): ReactElement&lt;
-    any
-  &gt; | null;
-  propTypes?: ValidationMap&lt;P&gt;;
-  contextTypes?: ValidationMap&lt;any&gt;;
-  defaultProps?: Partial&lt;P&gt;;
-  displayName?: string;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">SFC</span>&lt;<span style="color:#f92672">P</span> <span style="color:#960050;background-color:#1e0010">=</span> {}&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">StatelessComponent</span>&lt;<span style="color:#f92672">P</span>&gt;;
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">StatelessComponent</span>&lt;<span style="color:#f92672">P</span> <span style="color:#960050;background-color:#1e0010">=</span> {}&gt; {
+  (<span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">P</span> <span style="color:#f92672">&amp;</span> { <span style="color:#a6e22e">children?</span>: <span style="color:#66d9ef">ReactNode</span> }, <span style="color:#a6e22e">context?</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">ReactElement</span><span style="color:#f92672">&lt;</span>
+    <span style="color:#66d9ef">any</span>
+  <span style="color:#f92672">&gt;</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#a6e22e">propTypes?</span>: <span style="color:#66d9ef">ValidationMap</span>&lt;<span style="color:#f92672">P</span>&gt;;
+  <span style="color:#a6e22e">contextTypes?</span>: <span style="color:#66d9ef">ValidationMap</span>&lt;<span style="color:#f92672">any</span>&gt;;
+  <span style="color:#a6e22e">defaultProps?</span>: <span style="color:#66d9ef">Partial</span>&lt;<span style="color:#f92672">P</span>&gt;;
+  <span style="color:#a6e22e">displayName?</span>: <span style="color:#66d9ef">string</span>;
 }
-</code></pre>
-
-<p>从这段代码中可以看出，props 是 P 和 一个对象的联合类型，P 指的是我们通常传入的 props，而对象中的 children 就是 React 中的 children，是可选类型，type 是 ReactNode，是 React 中的类型。另外在 React 的 <code>index.d.ts</code>中，对于事件有专门的类型定义 <code>MouseEvent</code>（同时也有其他 Event 的类型定义）：</p>
-
-<pre><code class="language-typescript">interface MouseEvent&lt;T = Element&gt; extends SyntheticEvent&lt;T&gt; {
-  altKey: boolean;
-  button: number;
-  buttons: number;
-  clientX: number;
-  clientY: number;
-  ctrlKey: boolean;
-  getModifierState(key: string): boolean;
-  metaKey: boolean;
-  nativeEvent: NativeMouseEvent;
-  pageX: number;
-  pageY: number;
-  relatedTarget: EventTarget;
-  screenX: number;
-  screenY: number;
-  shiftKey: boolean;
+</code></pre></div><p>从这段代码中可以看出，props 是 P 和 一个对象的联合类型，P 指的是我们通常传入的 props，而对象中的 children 就是 React 中的 children，是可选类型，type 是 ReactNode，是 React 中的类型。另外在 React 的 <code>index.d.ts</code>中，对于事件有专门的类型定义 <code>MouseEvent</code>（同时也有其他 Event 的类型定义）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">MouseEvent</span>&lt;<span style="color:#f92672">T</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#a6e22e">Element</span>&gt; <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">SyntheticEvent</span>&lt;<span style="color:#f92672">T</span>&gt; {
+  <span style="color:#a6e22e">altKey</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">button</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">buttons</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">clientX</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">clientY</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">ctrlKey</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">getModifierState</span>(<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">metaKey</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">nativeEvent</span>: <span style="color:#66d9ef">NativeMouseEvent</span>;
+  <span style="color:#a6e22e">pageX</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">pageY</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">relatedTarget</span>: <span style="color:#66d9ef">EventTarget</span>;
+  <span style="color:#a6e22e">screenX</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">screenY</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">shiftKey</span>: <span style="color:#66d9ef">boolean</span>;
 }
-</code></pre>
-
-<p>所以针对上面的 JavaScript 代码，我们可以按如下的方式写出相应的 TypeScript 代码：</p>
-
-<pre><code class="language-typescript">import React, { MouseEvent, ReactNode } from &quot;react&quot;;
-interface IProps {
-  onClick(e: MouseEvent&lt;HTMLElement&gt;): void;
-  children?: ReactNode;
+</code></pre></div><p>所以针对上面的 JavaScript 代码，我们可以按如下的方式写出相应的 TypeScript 代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">MouseEvent</span>, <span style="color:#a6e22e">ReactNode</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IProps</span> {
+  <span style="color:#a6e22e">onClick</span>(<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">MouseEvent</span>&lt;<span style="color:#f92672">HTMLElement</span>&gt;)<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">children?</span>: <span style="color:#66d9ef">ReactNode</span>;
 }
-const Button = ({ onClick: handleClick, children }: IProps) =&gt; (
-  &lt;button onClick={handleClick}&gt;{children}&lt;/button&gt;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Button</span> <span style="color:#f92672">=</span> ({ <span style="color:#a6e22e">onClick</span>: <span style="color:#66d9ef">handleClick</span>, <span style="color:#a6e22e">children</span> }<span style="color:#f92672">:</span> <span style="color:#a6e22e">IProps</span>) <span style="color:#f92672">=&gt;</span> (
+  &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleClick</span>}&gt;{<span style="color:#a6e22e">children</span>}&lt;/<span style="color:#f92672">button</span>&gt;
 );
-</code></pre>
-
-<p>其中 <code>HTMLElement</code> 被定义在<code>@types/react</code> 中的<code>global.d.ts</code></p>
-
-<pre><code class="language-typescript">interface Element {}
-interface HTMLElement extends Element {}
-</code></pre>
-
-<h3 id="有状态组件">有状态组件</h3>
-
+</code></pre></div><p>其中 <code>HTMLElement</code> 被定义在<code>@types/react</code> 中的<code>global.d.ts</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Element</span> {}
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">HTMLElement</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Element</span> {}
+</code></pre></div><h3 id="有状态组件">有状态组件</h3>
 <p>无状态组件其实是一个函数，只需要按照函数的写法来实现即可。而对于有状态组件，这边有一个计数器的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">React</span>, { <span style="color:#a6e22e">Component</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;react&#34;</span>;
 
-<pre><code class="language-typescript">import React, { Component } from &quot;react&quot;;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Button</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./Button&#34;</span>; <span style="color:#75715e">// 这里的 Button 是上面 SFC 部分的 Button 组件
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialState</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">clicksCount</span>: <span style="color:#66d9ef">0</span> };
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">State</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Readonly</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">initialState</span>&gt;;
 
-import Button from &quot;./Button&quot;; // 这里的 Button 是上面 SFC 部分的 Button 组件
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ButtonCounter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Component</span>&lt;<span style="color:#f92672">object</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">State</span>&gt; {
+  <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">State</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initialState</span>;
 
-const initialState = { clicksCount: 0 };
-type State = Readonly&lt;typeof initialState&gt;;
-
-class ButtonCounter extends Component&lt;object, State&gt; {
-  readonly state: State = initialState;
-
-  public render() {
-    const { clicksCount } = this.state;
-    return (
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">render() {</span>
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">clicksCount</span> } <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">state</span>;
+    <span style="color:#66d9ef">return</span> (
       &lt;&gt;
-        &lt;Button onClick={this.handleIncrement}&gt;Increment&lt;/Button&gt;
-        &lt;Button onClick={this.handleDecrement}&gt;Decrement&lt;/Button&gt;
-        You've clicked me {clicksCount} times!
+        &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">handleIncrement</span>}&gt;<span style="color:#a6e22e">Increment</span>&lt;/<span style="color:#f92672">Button</span>&gt;
+        &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">handleDecrement</span>}&gt;<span style="color:#a6e22e">Decrement</span>&lt;/<span style="color:#f92672">Button</span>&gt;
+        <span style="color:#a6e22e">You</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">ve</span> <span style="color:#a6e22e">clicked</span> <span style="color:#a6e22e">me</span> {<span style="color:#a6e22e">clicksCount</span>} <span style="color:#a6e22e">times</span><span style="color:#f92672">!</span>
       &lt;/&gt;
     );
   }
 
-  private handleIncrement = () =&gt; this.setState(incrementClicksCount);
-  private handleDecrement = () =&gt; this.setState(decrementClicksCount);
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">handleIncrement</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">incrementClicksCount</span>);
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">handleDecrement</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">decrementClicksCount</span>);
 }
 
-const incrementClicksCount = (prevState: State) =&gt; ({
-  clicksCount: prevState.clicksCount + 1
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">incrementClicksCount</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">prevState</span>: <span style="color:#66d9ef">State</span>) <span style="color:#f92672">=&gt;</span> ({
+  <span style="color:#a6e22e">clicksCount</span>: <span style="color:#66d9ef">prevState.clicksCount</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 });
-const decrementClicksCount = (prevState: State) =&gt; ({
-  clicksCount: prevState.clicksCount - 1
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">decrementClicksCount</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">prevState</span>: <span style="color:#66d9ef">State</span>) <span style="color:#f92672">=&gt;</span> ({
+  <span style="color:#a6e22e">clicksCount</span>: <span style="color:#66d9ef">prevState.clicksCount</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
 });
-</code></pre>
-
-<p>若要读懂这段代码，可以从<code>@types/react</code> 中的 <code>index.d.ts</code>说起：</p>
-
+</code></pre></div><p>若要读懂这段代码，可以从<code>@types/react</code> 中的 <code>index.d.ts</code>说起：</p>
 <blockquote>
 <p>注：以下代码都去除了大段的注释，若需要查看官方的注释请至 <code>npm install</code> 后下载的 <code>./node_modules/@types/react</code> 中查看。</p>
 </blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Component</span>&lt;<span style="color:#f92672">P</span> <span style="color:#960050;background-color:#1e0010">=</span> {}<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S </span><span style="color:#f92672">=</span> {}<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS </span><span style="color:#f92672">=</span> <span style="color:#a6e22e">any</span>&gt;
+  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">ComponentLifecycle</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS</span>&gt; {}
 
-<pre><code class="language-typescript">interface Component&lt;P = {}, S = {}, SS = any&gt;
-  extends ComponentLifecycle&lt;P, S, SS&gt; {}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PureComponent</span>&lt;<span style="color:#f92672">P</span> <span style="color:#960050;background-color:#1e0010">=</span> {}<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S </span><span style="color:#f92672">=</span> {}<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS </span><span style="color:#f92672">=</span> <span style="color:#a6e22e">any</span>&gt; <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Component</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS</span>&gt; {}
 
-class PureComponent&lt;P = {}, S = {}, SS = any&gt; extends Component&lt;P, S, SS&gt; {}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Component</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span>&gt; {
+  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;);
+  <span style="color:#a6e22e">setState</span>&lt;<span style="color:#f92672">K</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">keyof</span> <span style="color:#a6e22e">S</span>&gt;(
+    <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span>
+      <span style="color:#f92672">|</span> ((<span style="color:#a6e22e">prevState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;, <span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">Pick</span>&lt;<span style="color:#f92672">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">K</span>&gt; <span style="color:#f92672">|</span> <span style="color:#a6e22e">S</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>)
+      <span style="color:#f92672">|</span> (<span style="color:#a6e22e">Pick</span>&lt;<span style="color:#f92672">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">K</span>&gt; <span style="color:#f92672">|</span> <span style="color:#a6e22e">S</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>),
+    <span style="color:#a6e22e">callback</span><span style="color:#f92672">?:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>
+  )<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
 
-class Component&lt;P, S&gt; {
-  constructor(props: Readonly&lt;P&gt;);
-  setState&lt;K extends keyof S&gt;(
-    state:
-      | ((prevState: Readonly&lt;S&gt;, props: Readonly&lt;P&gt;) =&gt; Pick&lt;S, K&gt; | S | null)
-      | (Pick&lt;S, K&gt; | S | null),
-    callback?: () =&gt; void
-  ): void;
-
-  forceUpdate(callBack?: () =&gt; void): void;
-  render(): ReactNode;
-  readonly props: Readonly&lt;{ children?: ReactNode }&gt; &amp; Readonly&lt;P&gt;;
-  state: Readonly&lt;S&gt;;
-  context: any;
-  refs: {
-    [key: string]: ReactInstance;
+  <span style="color:#a6e22e">forceUpdate</span>(<span style="color:#a6e22e">callBack</span><span style="color:#f92672">?:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">render</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">ReactNode</span>;
+  <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">Readonly</span><span style="color:#f92672">&lt;</span>{ <span style="color:#a6e22e">children?</span>: <span style="color:#66d9ef">ReactNode</span> }<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;;
+  <span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;;
+  <span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">any</span>;
+  <span style="color:#a6e22e">refs</span><span style="color:#f92672">:</span> {
+    [<span style="color:#a6e22e">key</span>: <span style="color:#66d9ef">string</span>]<span style="color:#f92672">:</span> <span style="color:#a6e22e">ReactInstance</span>;
   };
 }
-</code></pre>
-
-<p>我们常用的 Component 类就是在这里被定义的，其中 P 代表 props，S 代表 state。在这里我们可以发现，props 和 state 都使用了 readonly 或者是使用了 Mapped types 中的 Readonly。
+</code></pre></div><p>我们常用的 Component 类就是在这里被定义的，其中 P 代表 props，S 代表 state。在这里我们可以发现，props 和 state 都使用了 readonly 或者是使用了 Mapped types 中的 Readonly。
 而 Component 的 Interface 继承了 ComponentLifecycle 的 Interface，源码如下：</p>
-
-<pre><code class="language-typescript">interface &lt;P, S, SS = any&gt; extends NewLifecycle&lt;P, S, SS&gt;, DeprecatedLifecycle&lt;P, S&gt; {
-	componentDidMount?(): void;
-	shouldComponentUpdate?(nextProps: Readonly&lt;P&gt;, nextState: Readonly&lt;S&gt;, nextContext: any): boolean;
-	componentWillUnmount?(): void;
-	componentDidCatch?(error: Error, errorInfo: ErrorInfo): void;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> &lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS </span><span style="color:#f92672">=</span> <span style="color:#a6e22e">any</span>&gt; <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">NewLifecycle</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS</span>&gt;, <span style="color:#a6e22e">DeprecatedLifecycle</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span>&gt; {
+	<span style="color:#a6e22e">componentDidMount</span><span style="color:#f92672">?</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+	<span style="color:#a6e22e">shouldComponentUpdate</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">nextProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;, <span style="color:#a6e22e">nextState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;, <span style="color:#a6e22e">nextContext</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">boolean</span>;
+	<span style="color:#a6e22e">componentWillUnmount</span><span style="color:#f92672">?</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+	<span style="color:#a6e22e">componentDidCatch</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">Error</span>, <span style="color:#a6e22e">errorInfo</span>: <span style="color:#66d9ef">ErrorInfo</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
 }
-</code></pre>
-
-<p>ComponentLifecycle 的 Interface 定义了一些常用的生命周期函数的类型如 componentDidMount、shouldComponentUpdate、componentWillUnmount 和 componentDidCatch。ComponentLifecycle 同样继承了 NewLifecycle 和 DeprecatedLifecycle 两个接口，代码分别如下：</p>
-
-<pre><code class="language-typescript">interface NewLifecycle&lt;P, S, SS&gt; {
-  getSnapshotBeforeUpdate?(
-    prevProps: Readonly&lt;P&gt;,
-    prevState: Readonly&lt;S&gt;
-  ): SS | null;
-  componentDidUpdate?(
-    prevProps: Readonly&lt;P&gt;,
-    prevState: Readonly&lt;S&gt;,
-    snapshot?: SS
-  ): void;
+</code></pre></div><p>ComponentLifecycle 的 Interface 定义了一些常用的生命周期函数的类型如 componentDidMount、shouldComponentUpdate、componentWillUnmount 和 componentDidCatch。ComponentLifecycle 同样继承了 NewLifecycle 和 DeprecatedLifecycle 两个接口，代码分别如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NewLifecycle</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">SS</span>&gt; {
+  <span style="color:#a6e22e">getSnapshotBeforeUpdate</span><span style="color:#f92672">?</span>(
+    <span style="color:#a6e22e">prevProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;,
+    <span style="color:#a6e22e">prevState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;
+  )<span style="color:#f92672">:</span> <span style="color:#a6e22e">SS</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span>;
+  <span style="color:#a6e22e">componentDidUpdate</span><span style="color:#f92672">?</span>(
+    <span style="color:#a6e22e">prevProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;,
+    <span style="color:#a6e22e">prevState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;,
+    <span style="color:#a6e22e">snapshot?</span>: <span style="color:#66d9ef">SS</span>
+  )<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
 }
 
-interface DeprecatedLifecycle&lt;P, S&gt; {
-  componentWillMount?(): void;
-  UNSAFE_componentWillMount?(): void;
-  componentWillReceiveProps?(nextProps: Readonly&lt;P&gt;, nextContext: any): void;
-  UNSAFE_componentWillReceiveProps?(
-    nextProps: Readonly&lt;P&gt;,
-    nextContext: any
-  ): void;
-  componentWillUpdate?(
-    nextProps: Readonly&lt;P&gt;,
-    nextState: Readonly&lt;S&gt;,
-    nextContext: any
-  ): void;
-  UNSAFE_componentWillUpdate?(
-    nextProps: Readonly&lt;P&gt;,
-    nextState: Readonly&lt;S&gt;,
-    nextContext: any
-  ): void;
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">DeprecatedLifecycle</span>&lt;<span style="color:#f92672">P</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">S</span>&gt; {
+  <span style="color:#a6e22e">componentWillMount</span><span style="color:#f92672">?</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">UNSAFE_componentWillMount</span><span style="color:#f92672">?</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">componentWillReceiveProps</span><span style="color:#f92672">?</span>(<span style="color:#a6e22e">nextProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;, <span style="color:#a6e22e">nextContext</span>: <span style="color:#66d9ef">any</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">UNSAFE_componentWillReceiveProps</span><span style="color:#f92672">?</span>(
+    <span style="color:#a6e22e">nextProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;,
+    <span style="color:#a6e22e">nextContext</span>: <span style="color:#66d9ef">any</span>
+  )<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">componentWillUpdate</span><span style="color:#f92672">?</span>(
+    <span style="color:#a6e22e">nextProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;,
+    <span style="color:#a6e22e">nextState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;,
+    <span style="color:#a6e22e">nextContext</span>: <span style="color:#66d9ef">any</span>
+  )<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">UNSAFE_componentWillUpdate</span><span style="color:#f92672">?</span>(
+    <span style="color:#a6e22e">nextProps</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">P</span>&gt;,
+    <span style="color:#a6e22e">nextState</span>: <span style="color:#66d9ef">Readonly</span>&lt;<span style="color:#f92672">S</span>&gt;,
+    <span style="color:#a6e22e">nextContext</span>: <span style="color:#66d9ef">any</span>
+  )<span style="color:#f92672">:</span> <span style="color:#66d9ef">void</span>;
 }
-</code></pre>
-
-<p>NewLifecycle 是 React 16.3 新增的生命周期钩子，而 DeprecatedLifecycle 则是 React 16.3 之前常用的生命周期钩子，即将在未来版本被废弃。</p>
-
+</code></pre></div><p>NewLifecycle 是 React 16.3 新增的生命周期钩子，而 DeprecatedLifecycle 则是 React 16.3 之前常用的生命周期钩子，即将在未来版本被废弃。</p>
 <p>所以通过以上分析，我们可以知道，React 的 Class 继承于 <code>class Component&lt;P, S&gt;</code>，而 <code>class Component&lt;P, S&gt;</code> 是泛型 <code>interface Component&lt;P = {}, S = {}, SS = any&gt;</code> 的实现。其中 P 是 props 的类型，S 是 state 的类型，它们都是 object 类型。</p>
-
 <p><strong>因此，TypeScript 的有状态组件大致可以按以下步骤来编写或者阅读：</strong></p>
-
 <ul>
 <li>设置 initialState，并根据 initialState 来设定 State 类型或者 State 的 interface：</li>
 </ul>
-
-<pre><code class="language-typescript">const initialState = { clicksCount: 0 };
-type State = Readonly&lt;typeof initialState&gt;;
-</code></pre>
-
-<ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initialState</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">clicksCount</span>: <span style="color:#66d9ef">0</span> };
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">State</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Readonly</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">initialState</span>&gt;;
+</code></pre></div><ul>
 <li>使用 type 或者 interface 设定 props 类型</li>
 <li><code>class Example extends Component&lt;P, S&gt;</code> 这里需要指定 props 和 state 的类型 P 和 S</li>
 <li><code>readonly state: State = initialState;</code> 这里建议将 state 设置为 readonly 类型，防止 state 被直接修改</li>
 <li>生命周期方法可以使用 public 来修饰（tslint 要求 class 内部方法必须加入 public 或者 private 来修饰）</li>
 <li>内部方法可以使用 private 来修饰以保护其安全性</li>
 </ul>
-
 <h2 id="小-tips">小 Tips</h2>
-
 <ol>
 <li>从上面的 d.ts 文件的分析可以得知， <code>setState()</code> 的具体逻辑是可以被提取到组件外部的，这样做的优点是可以将操作 state 的方法剥离出来维护，不需要了解渲染逻辑。</li>
 <li>在使用 mock 数据调试组件的时候，我们可以多用 any 类型来节约 React 组件调试时间成本，直至数据结构完全确定后，再编写完整的数据验证流程</li>
 <li>如果你想使用一个 package 但是遇到了找不到 @types 相关 package 的报错，可以到 Microsoft 的 <a href="https://microsoft.github.io/TypeSearch/">TypeScript Types Search</a> 查询需要 <code>npm install</code> 什么 package</li>
 </ol>
-
 <h2 id="reference">Reference</h2>
-
 <h3 id="typescript-官方文档">TypeScript 官方文档</h3>
-
 <ul>
 <li><a href="https://www.typescriptlang.org/">英文版</a></li>
 <li><a href="https://www.tslang.cn/">中文版</a></li>
 </ul>
-
-<h3 id="ultimate-react-component-patterns-with-typescript-2-8">Ultimate React Component Patterns with Typescript 2.8</h3>
-
+<h3 id="ultimate-react-component-patterns-with-typescript-28">Ultimate React Component Patterns with Typescript 2.8</h3>
 <ul>
 <li><a href="https://levelup.gitconnected.com/ultimate-react-component-patterns-with-typescript-2-8-82990c516935">英文原版</a></li>
 <li><a href="https://juejin.im/post/5b07caf16fb9a07aa83f2977">蚂蚁金服技术团队翻译版</a></li>
@@ -630,10 +528,10 @@ type State = Readonly&lt;typeof initialState&gt;;
 
     <div class="post-nav">
         
-        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="prev" rel="prev" title="mpvue 小程序开发踩坑记"><i class="iconfont icon-left"></i>&nbsp;mpvue 小程序开发踩坑记</a>
+        <a href="https://elizurhz.cn/frontend/react-debounce/" class="prev" rel="prev" title="在 React 中使用防抖动"><i class="iconfont icon-left"></i>&nbsp;在 React 中使用防抖动</a>
          
         
-        <a href="https://elizurhz.cn/frontend/canvas-writing-pad/" class="next" rel="next" title="Canvas 手写板的实现与优化">Canvas 手写板的实现与优化&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="next" rel="next" title="mpvue 小程序开发踩坑记">mpvue 小程序开发踩坑记&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

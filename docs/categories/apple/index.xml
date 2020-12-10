@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apple on Variation Palladion - 撕裂时间的帕拉迪昂</title>
@@ -6,17 +6,13 @@
     <description>Recent content in Apple on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://elizurhz.cn/categories/apple/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/categories/apple/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apple M1 对前端开发者有什么影响</title>
-      <link>https://elizurhz.cn/tips/apple-m1-for-fe/</link>
+      <title>生产力硬件：Apple M1 对前端开发者有什么影响</title>
+      <link>https://elizurhz.cn/by-talk/apple-m1-for-fe/</link>
       <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://elizurhz.cn/tips/apple-m1-for-fe/</guid>
+      <guid>https://elizurhz.cn/by-talk/apple-m1-for-fe/</guid>
       <description>这篇文章主要是从我最近微博动态等提取的观点整合成的一份总结，就不详细附图了，有兴趣可以关注下我的微博，在顶部导航栏的“About”中有，可能写得更详细，不过个人情绪也比较多，可能没有这篇文章来得客观。
  最近入手了 M1 Mac mini，低配加到 16G 内存，就迫不及待拿来尝试。目前从前端的角度来说，基本是正面的。
 硬件上就不多说了，M1 有计算能力、内存带宽、SSD 速度、功耗、发热等方面的优势，总体体验是好于 Intel 不少的。

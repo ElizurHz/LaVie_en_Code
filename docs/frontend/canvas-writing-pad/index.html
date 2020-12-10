@@ -9,7 +9,7 @@
   
   
   
-  <link rel="prev" href="https://elizurhz.cn/frontend/typescript-for-jser/" />
+  <link rel="prev" href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" />
   <link rel="next" href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" />
   <link rel="canonical" href="https://elizurhz.cn/frontend/canvas-writing-pad/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -41,18 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://elizurhz.cn/"
+         "@id": "https:\/\/elizurhz.cn\/"
     },
     "articleSection" : "frontend",
     "name" : "Canvas 手写板的实现与优化",
     "headline" : "Canvas 手写板的实现与优化",
-    "description" : "最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。
-本文所涉及的代码是基于 szimek/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。
-Canvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。
-基本用法 &lt;canvas&gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：
-&lt;canvas id=&quot;test&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;  其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】
-如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”
-const test = document.getElementById('test') const ctx = test.getContext('2d')  绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。",
+    "description" : "最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（GitHub - ElizurHz\/vue-percentage: 圆环百分比小组件），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。\n本文所涉及的代码是基于 szimek\/signature_pad 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。\nCanvas 相关基础知识 本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 Canvas - Web API 接口参考 | MDN 查看。\n基本用法 \u0026lt;canvas\u0026gt; 是 HTML5 中的一个标签，我们可以以如下方式书写：\n\u0026lt;canvas id=\u0026#34;test\u0026#34; width=\u0026#34;150\u0026#34; height=\u0026#34;150\u0026#34;\u0026gt;\u0026lt;\/canvas\u0026gt; 其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 document.getElementById 的方式获取 DOM 节点，并设置其 width 和 height 属性。【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】\n如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”\nconst test = document.getElementById(\u0026#39;test\u0026#39;) const ctx = test.getContext(\u0026#39;2d\u0026#39;) 绘制 在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。",
     "inLanguage" : "zh-CN",
     "author" : "Haoze Harry Xu",
     "creator" : "Haoze Harry Xu",
@@ -60,9 +54,9 @@ const test = document.getElementById('test') const ctx = test.getContext('2d')  
     "accountablePerson" : "Haoze Harry Xu",
     "copyrightHolder" : "Haoze Harry Xu",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-03-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://elizurhz.cn/frontend/canvas-writing-pad/",
+    "datePublished": "2019-03-24 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-03-24 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/frontend\/canvas-writing-pad\/",
     "wordCount" : "1367",
     "keywords" : [ "Canvas", "Variation Palladion - 撕裂时间的帕拉迪昂"]
 }
@@ -85,11 +79,13 @@ const test = document.getElementById('test') const ctx = test.getContext('2d')  
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -114,11 +110,13 @@ const test = document.getElementById('test') const ctx = test.getContext('2d')  
                 
                 <a class="menu-item" href="/frontend/" title="">Web 前端</a>
                 
-                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
                 
                 <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
                 
-                <a class="menu-item" href="/tips/" title="">其他</a>
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
@@ -166,35 +164,19 @@ const test = document.getElementById('test') const ctx = test.getContext('2d')  
           
           
 
-          
-
-<p>最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（<a href="https://github.com/ElizurHz/vue-percentage">GitHub - ElizurHz/vue-percentage: 圆环百分比小组件</a>），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。</p>
-
+          <p>最近在公司接了几个项目，都和 Canvas 手绘手写有关的，有历史遗留项目，还有要从头写的新需求。之前对 Canvas 的认知比较少，只写过一个带动画的圆环百分比小组件（<a href="https://github.com/ElizurHz/vue-percentage">GitHub - ElizurHz/vue-percentage: 圆环百分比小组件</a>），是定好数据后再把它画到 Canvas 上，而手写板是第一次接触。</p>
 <p>本文所涉及的代码是基于 <a href="https://github.com/szimek/signature_pad">szimek/signature_pad</a> 这个开源组件进行改造的，所以下面会对源码进行一些解析，也会讲解一些我自己对其进行改造的经验。</p>
-
 <h2 id="canvas-相关基础知识">Canvas 相关基础知识</h2>
-
 <p>本文列举一些本文涉及到的必备知识和常用的 API，API 具体内容不过多赘述，详情可以在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API">Canvas - Web API 接口参考 | MDN</a> 查看。</p>
-
 <h3 id="基本用法">基本用法</h3>
-
 <p><code>&lt;canvas&gt;</code> 是 HTML5 中的一个标签，我们可以以如下方式书写：</p>
-
-<pre><code class="language-html">&lt;canvas id=&quot;test&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;
-</code></pre>
-
-<p>其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 <code>document.getElementById</code> 的方式获取 DOM 节点，并设置其 width 和 height 属性。<strong>【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】</strong></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;test&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;150&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;150&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+</code></pre></div><p>其中 width 和 height 是 canvas 的必需属性，否则无法看到绘制的内容。在初始化时我们也可以通过 <code>document.getElementById</code> 的方式获取 DOM 节点，并设置其 width 和 height 属性。<strong>【注意：在已经绘制过的 canvas 上重设这两个属性会导致已绘制内容被清空】</strong></p>
 <p>如需在 canvas 上绘制，我们需要获取它的“渲染上下文 (The rendering context)”</p>
-
-<pre><code class="language-JavaScript">const test = document.getElementById('test')
-const ctx = test.getContext('2d')
-</code></pre>
-
-<h3 id="绘制">绘制</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;test&#39;</span>)
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>)
+</code></pre></div><h3 id="绘制">绘制</h3>
 <p>在 Canvas 中我们定位使用的是坐标系，(0, 0) 代表的是最左上的点，可视区域最右下的点为 (width, height)。</p>
-
 <ul>
 <li>context.clearRect(x, y, width, height): 以 (x, y) 为基准（左上角的点），清空长为 width、宽为 height 的矩形中所绘制的所有内容</li>
 <li>context.eginPath(): 新建路径</li>
@@ -204,366 +186,315 @@ const ctx = test.getContext('2d')
 <li>context.lineTo(x, y): 绘制一条从当前点到 (x, y) 的直线</li>
 <li>context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y): 三次贝塞尔曲线</li>
 </ul>
-
 <p>与图片相关的 API</p>
-
 <ul>
 <li>canvas.toBlob(): 当前 canvas 转化为 blob 对象，参数是一个回调函数，回调函数的参数就是 blob 对象。<strong>回调函数是异步执行的！</strong></li>
 <li>canvas.toDataURL(): 转化为 base64 编码的 url。参数为图片格式，如 <code>'image/png'</code>。</li>
 <li>context.drawImage(): 把图片绘制到 canvas 上。它有三种使用方式，根据传参数量的不同会有不同的结果。详情见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">CanvasRenderingContext2D.drawImage() - Web API 接口参考 | MDN</a>。</li>
 </ul>
-
 <h3 id="贝塞尔曲线">贝塞尔曲线</h3>
-
 <p><a href="https://zh.wikipedia.org/wiki/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A">贝塞尔曲线 - 维基百科，自由的百科全书</a></p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/canvas-writing-pad/Bezier_3_big.gif" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
-
+<p><img src="/images/canvas-writing-pad/Bezier_3_big.gif" alt=""></p>
 <p>这里主要讲一下本文涉及到的三次贝塞尔曲线。它有起点、控制点 1、控制点 2、终点四个关键的点。</p>
-
 <p>三次贝塞尔曲线的公式如下（LeaveIt 主题的 Dark Mode 下会看不清，请切换到 Light Mode）：</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/canvas-writing-pad/bezier_3_formulation.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
-
+<p><img src="/images/canvas-writing-pad/bezier_3_formulation.jpg" alt=""></p>
 <p>其中 t 为参数。使 t 逐渐从 0 增大到 1，即可通过这个方程式画出贝塞尔曲线。</p>
-
 <h3 id="事件">事件</h3>
-
 <p>实现手写板，我们需要监听 Canvas 上的事件。由于我们可能是用鼠标去绘画，也可能是在触屏上绘画，所以我们除了监听鼠标事件之外，还需要监听触摸事件。</p>
-
 <ul>
 <li>mousedown/touchstart: 鼠标点击/开始触摸</li>
 <li>mousemove/touchmove: 鼠标/触摸移动中</li>
 <li>mouseup/touchend: 鼠标按键抬起/触摸结束(离开屏幕)</li>
 </ul>
-
 <p>用这些 API 能满足大多数情况下的需求，但是现在出现了如 Surface Pen, Apple Pen 这类的手写笔，W3C 也有相应的新标准：PointerEvent (<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent">PointerEvent - Web API 接口 | MDN</a>)。</p>
-
 <blockquote>
 <p>PointerEvent 接口代表了由 指针 引发的 DOM 事件的状态，包括接触点的位置，引发事件的设备类型，接触表面受到的压力等。
 指针 是输入设备的硬件层抽象（比如鼠标，触摸笔，或触摸屏上的一个触摸点）。指针 能指向一个具体表面（如屏幕）上的一个（或一组）坐标。
 指针的 击中检测 指浏览器用来检测 指针事件的目标元素的过程。大多数情况下，这个目标元素是由 指针的位置和元素在文章中的位置和分层共同决定的。</p>
 </blockquote>
-
 <p>PointerEvent 的使用方法和 MouseEvent、TouchEvent 很类似，但有新增一些有用的 Properties:</p>
-
 <ul>
 <li>PointerEvent.pointerType: 这个 property 表示的是接触类型，有 3 种 string 类型的值 - mouse, pen, touch，分别代表鼠标、触控笔、触摸。</li>
 <li>PointerEvent.pressure: 这个 property 表示的是压力等级，数值范围是从 0 到 1 ，如果我们没有压感触控笔，或者使用鼠标，那么这个值默认是 0.5。</li>
 </ul>
-
 <h2 id="实现方案">实现方案</h2>
-
 <ul>
 <li>历史遗留的项目中使用的是监听 move 的事件，每次都用 <code>lineTo()</code>和<code>stroke()</code>绘制出线条。这样做存在的问题是延迟很严重，笔画不跟笔，同时锯齿感也很严重。</li>
 <li>参考了 <a href="https://github.com/szimek/signature_pad">GitHub - szimek/signature_pad: HTML5 canvas based smooth signature drawing</a> 的实现方案，使用的是三次贝塞尔曲线，由于三次贝塞尔曲线的绘制需要至少 4 个点，分别是起点、控制点 1、控制点 2、终点，所以不能每次 move 都 <code>stroke()</code>进行绘制，而是需要记录点坐标并通过计算来绘制。实际效果比上面一种方法的延迟和锯齿感都好很多，<strong>但是唯独在 Surface Book + Surface Pen 上的延迟感还是很明显，而前一代的 iPad Pro + Apple Pen 非常流畅，不知道有没有做过 Surface Pen 适配的大神能解答这个问题</strong>。于是我就想能不能用 PointerEvent 来解决，但测试用的 Surface Book 是公司的开发机，我们小组只有一台，常常被其他开发和 QA 抢去使用，所以没有机会去验证这个问题。</li>
 </ul>
-
 <h2 id="具体实现">具体实现</h2>
-
 <p>接下来，我们对 <a href="https://github.com/szimek/signature_pad">szimek/signature_pad</a> 的源码进行一番解析。需要注意的是，master 分支的源码是用 TypeScript 写的，而在 gh-pages 分支上有 ES5 的版本。为了让不懂 ts 的读者能看懂，下面会对 <a href="https://github.com/szimek/signature_pad/blob/gh-pages/js/signature_pad.js">ES5 版本</a> 的代码进行解析。</p>
-
 <h3 id="classes">Classes</h3>
-
 <p>这里用了两个辅助类，Bezier 是贝塞尔曲线，而 Point 是 canvas 中需要用到的点。</p>
-
-<pre><code class="language-JavaScript">function Bezier(startPoint, control1, control2, endPoint) {
-  this.startPoint = startPoint;
-  this.control1 = control1;
-  this.control2 = control2;
-  this.endPoint = endPoint;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Bezier</span>(<span style="color:#a6e22e">startPoint</span>, <span style="color:#a6e22e">control1</span>, <span style="color:#a6e22e">control2</span>, <span style="color:#a6e22e">endPoint</span>) {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">startPoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">startPoint</span>;
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">control1</span>;
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">control2</span>;
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">endPoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">endPoint</span>;
 }
 
-// Returns approximated length.
-Bezier.prototype.length = function () {
-  var steps = 10;
-  var length = 0;
-  var px = void 0;
-  var py = void 0;
+<span style="color:#75715e">// Returns approximated length.
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Bezier</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">steps</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">px</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">py</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span>;
 
-  for (var i = 0; i &lt;= steps; i += 1) {
-    var t = i / steps;
-    var cx = this._point(t, this.startPoint.x, this.control1.x, this.control2.x, this.endPoint.x);
-    var cy = this._point(t, this.startPoint.y, this.control1.y, this.control2.y, this.endPoint.y);
-    if (i &gt; 0) {
-      var xdiff = cx - px;
-      var ydiff = cy - py;
-      length += Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">steps</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">steps</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cx</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_point</span>(<span style="color:#a6e22e">t</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">startPoint</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control1</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control2</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">endPoint</span>.<span style="color:#a6e22e">x</span>);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cy</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_point</span>(<span style="color:#a6e22e">t</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">startPoint</span>.<span style="color:#a6e22e">y</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control1</span>.<span style="color:#a6e22e">y</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">control2</span>.<span style="color:#a6e22e">y</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">endPoint</span>.<span style="color:#a6e22e">y</span>);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">xdiff</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cx</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">px</span>;
+      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ydiff</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cy</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">py</span>;
+      <span style="color:#a6e22e">length</span> <span style="color:#f92672">+=</span> Math.<span style="color:#a6e22e">sqrt</span>(<span style="color:#a6e22e">xdiff</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">xdiff</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ydiff</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">ydiff</span>);
     }
-    px = cx;
-    py = cy;
+    <span style="color:#a6e22e">px</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cx</span>;
+    <span style="color:#a6e22e">py</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cy</span>;
   }
 
-  return length;
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">length</span>;
 };
 
-Bezier.prototype._point = function (t, start, c1, c2, end) {
-  return start * (1.0 - t) * (1.0 - t) * (1.0 - t) + 3.0 * c1 * (1.0 - t) * (1.0 - t) * t + 3.0 * c2 * (1.0 - t) * t * t + end * t * t * t;
+<span style="color:#a6e22e">Bezier</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_point</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">c1</span>, <span style="color:#a6e22e">c2</span>, <span style="color:#a6e22e">end</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">3.0</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">c1</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3.0</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">c2</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">end</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span>;
 };
-</code></pre>
-
-<pre><code class="language-JavaScript">function Point(x, y, time) {
-  this.x = x;
-  this.y = y;
-  this.time = time || new Date().getTime();
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">time</span>) {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">time</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">getTime</span>();
 }
 
-Point.prototype.velocityFrom = function (start) {
-  return this.time !== start.time ? this.distanceTo(start) / (this.time - start.time) : 1;
+<span style="color:#a6e22e">Point</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">velocityFrom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">start</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">!==</span> <span style="color:#a6e22e">start</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">distanceTo</span>(<span style="color:#a6e22e">start</span>) <span style="color:#f92672">/</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">start</span>.<span style="color:#a6e22e">time</span>) <span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>;
 };
 
-Point.prototype.distanceTo = function (start) {
-  return Math.sqrt(Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2));
+<span style="color:#a6e22e">Point</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">distanceTo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">start</span>) {
+  <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">sqrt</span>(Math.<span style="color:#a6e22e">pow</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">start</span>.<span style="color:#a6e22e">x</span>, <span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> Math.<span style="color:#a6e22e">pow</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">start</span>.<span style="color:#a6e22e">y</span>, <span style="color:#ae81ff">2</span>));
 };
 
-Point.prototype.equals = function (other) {
-  return this.x === other.x &amp;&amp; this.y === other.y &amp;&amp; this.time === other.time;
+<span style="color:#a6e22e">Point</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">equals</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">other</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">other</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">other</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">other</span>.<span style="color:#a6e22e">time</span>;
 };
-</code></pre>
-
-<p>值得注意的是 Point 这个类中，原作者加入了点绘制的时间，在原作者的项目中是有根据绘制速度调整笔画粗细的，但这个在我的改造中因为需求的缘故被去掉了。</p>
-
-<h3 id="mousedown-touchstart">mousedown/touchstart</h3>
-
+</code></pre></div><p>值得注意的是 Point 这个类中，原作者加入了点绘制的时间，在原作者的项目中是有根据绘制速度调整笔画粗细的，但这个在我的改造中因为需求的缘故被去掉了。</p>
+<h3 id="mousedowntouchstart">mousedown/touchstart</h3>
 <p>首先源码使用构造函数创建了一个 SignaturePad 的类。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_strokeBegin</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">push</span>([]);
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_reset</span>();
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_strokeUpdate</span>(<span style="color:#a6e22e">event</span>);
 
-<pre><code class="language-JavaScript">SignaturePad.prototype._strokeBegin = function (event) {
-  this._data.push([]);
-  this._reset();
-  this._strokeUpdate(event);
-
-  if (typeof this.onBegin === 'function') {
-    this.onBegin(event);
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onBegin</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onBegin</span>(<span style="color:#a6e22e">event</span>);
   }
 };
-</code></pre>
-
-<p>从这里开始的代码会出现很多 this 或者 self，它们如果没有特殊说明都是指代的构造函数中的 this 本身。</p>
-
+</code></pre></div><p>从这里开始的代码会出现很多 this 或者 self，它们如果没有特殊说明都是指代的构造函数中的 this 本身。</p>
 <p>这部分没有什么关键的代码，直接调用 <code>this._strokeUpdate</code> 了。<code>onBegin</code> 是用户可以自定义的回调函数。</p>
+<h3 id="mousemovetouchmove">mousemove/touchmove</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_strokeUpdate</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">clientX</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">clientY</span>;
 
-<h3 id="mousemove-touchmove">mousemove/touchmove</h3>
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">point</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_createPoint</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>); <span style="color:#75715e">// 根据 event 对象中的 clientX 和 clientY 生成该点在 canvas 坐标系中的 Point 对象
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lastPointGroup</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>[<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastPointGroup</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">lastPointGroup</span>[<span style="color:#a6e22e">lastPointGroup</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">isLastPointTooClose</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">distanceTo</span>(<span style="color:#a6e22e">lastPoint</span>) <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">minDistance</span>;
 
-<pre><code class="language-JavaScript">SignaturePad.prototype._strokeUpdate = function (event) {
-  var x = event.clientX;
-  var y = event.clientY;
+  <span style="color:#75715e">// 如果绘制的点和之前的点距离太近，则跳过该点的绘制
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// Skip this point if it&#39;s too close to the previous one
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(<span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isLastPointTooClose</span>)) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_addPoint</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_addPoint</span>(<span style="color:#a6e22e">point</span>),
+        <span style="color:#a6e22e">curve</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_addPoint</span>.<span style="color:#a6e22e">curve</span>,
+        <span style="color:#a6e22e">widths</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_addPoint</span>.<span style="color:#a6e22e">widths</span>;
 
-  var point = this._createPoint(x, y); // 根据 event 对象中的 clientX 和 clientY 生成该点在 canvas 坐标系中的 Point 对象
-  var lastPointGroup = this._data[this._data.length - 1];
-  var lastPoint = lastPointGroup &amp;&amp; lastPointGroup[lastPointGroup.length - 1];
-  var isLastPointTooClose = lastPoint &amp;&amp; point.distanceTo(lastPoint) &lt; this.minDistance;
-
-  // 如果绘制的点和之前的点距离太近，则跳过该点的绘制
-  // Skip this point if it's too close to the previous one
-  if (!(lastPoint &amp;&amp; isLastPointTooClose)) {
-    var _addPoint = this._addPoint(point),
-        curve = _addPoint.curve,
-        widths = _addPoint.widths;
-
-    if (curve &amp;&amp; widths) {
-      this._drawCurve(curve, widths.start, widths.end);
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">curve</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">widths</span>) {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_drawCurve</span>(<span style="color:#a6e22e">curve</span>, <span style="color:#a6e22e">widths</span>.<span style="color:#a6e22e">start</span>, <span style="color:#a6e22e">widths</span>.<span style="color:#a6e22e">end</span>);
     }
 
-    this._data[this._data.length - 1].push({
-      x: point.x,
-      y: point.y,
-      time: point.time,
-      color: this.penColor
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>[<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>].<span style="color:#a6e22e">push</span>({
+      <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">x</span>,
+      <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">y</span>,
+      <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">time</span>,
+      <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">penColor</span>
     });
   }
 };
 
-SignaturePad.prototype._createPoint = function (x, y, time) {
-  var rect = this._canvas.getBoundingClientRect();
+<span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_createPoint</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">time</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">rect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_canvas</span>.<span style="color:#a6e22e">getBoundingClientRect</span>();
 
-  return new Point(x - rect.left, y - rect.top, time || new Date().getTime());
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">rect</span>.<span style="color:#a6e22e">left</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">rect</span>.<span style="color:#a6e22e">top</span>, <span style="color:#a6e22e">time</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">getTime</span>());
 };
 
-/*
- * 生成 Bezier 对象和曲线的宽度值
- * curve: Bezier 对象
- * widths: 包含 start 和 end 两个 properties
-*/
-SignaturePad.prototype._addPoint = function (point) {
-  var points = this.points;
-  var tmp = void 0;
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * 生成 Bezier 对象和曲线的宽度值
+</span><span style="color:#75715e"> * curve: Bezier 对象
+</span><span style="color:#75715e"> * widths: 包含 start 和 end 两个 properties
+</span><span style="color:#75715e">*/</span>
+<span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_addPoint</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">point</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">points</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">points</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tmp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">void</span> <span style="color:#ae81ff">0</span>;
 
-  points.push(point);
+  <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">point</span>);
 
-  if (points.length &gt; 2) {
-    // Bezier 类需要 4 个点的参数，作者为了减少延迟，把第一个点复制了一次，构造成 4 个点的数组，以此计算前两个点之间的三次贝塞尔曲线的控制点
-    // To reduce the initial lag make it work with 3 points
-    // by copying the first point to the beginning.
-    if (points.length === 3) points.unshift(points[0]);
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+    <span style="color:#75715e">// Bezier 类需要 4 个点的参数，作者为了减少延迟，把第一个点复制了一次，构造成 4 个点的数组，以此计算前两个点之间的三次贝塞尔曲线的控制点
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// To reduce the initial lag make it work with 3 points
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// by copying the first point to the beginning.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">3</span>) <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">unshift</span>(<span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">0</span>]);
 
-    tmp = this._calculateCurveControlPoints(points[0], points[1], points[2]);
-    var c2 = tmp.c2;
-    tmp = this._calculateCurveControlPoints(points[1], points[2], points[3]);
-    var c3 = tmp.c1;
-    var curve = new Bezier(points[1], c2, c3, points[2]);
-    var widths = this._calculateCurveWidths(curve);
+    <span style="color:#a6e22e">tmp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_calculateCurveControlPoints</span>(<span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">2</span>]);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tmp</span>.<span style="color:#a6e22e">c2</span>;
+    <span style="color:#a6e22e">tmp</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_calculateCurveControlPoints</span>(<span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">2</span>], <span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">3</span>]);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tmp</span>.<span style="color:#a6e22e">c1</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">curve</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Bezier</span>(<span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">1</span>], <span style="color:#a6e22e">c2</span>, <span style="color:#a6e22e">c3</span>, <span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">2</span>]);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">widths</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_calculateCurveWidths</span>(<span style="color:#a6e22e">curve</span>);
 
-    // Remove the first element from the list,
-    // so that we always have no more than 4 points in points array.
-    points.shift();
+    <span style="color:#75715e">// Remove the first element from the list,
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// so that we always have no more than 4 points in points array.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">shift</span>();
 
-    return { curve: curve, widths: widths };
+    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">curve</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">curve</span>, <span style="color:#a6e22e">widths</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">widths</span> };
   }
 
-  return {};
+  <span style="color:#66d9ef">return</span> {};
 };
 
-/*
- * 绘制贝塞尔曲线
- * 绘制方法为从 0 至 1 逐步增大贝塞尔曲线的参数 t
- * 代码实际上就是公式的计算
-*/
-SignaturePad.prototype._drawCurve = function (curve, startWidth, endWidth) {
-  var ctx = this._ctx;
-  var widthDelta = endWidth - startWidth;
-  var drawSteps = Math.floor(curve.length()); // 绘制步长是曲线的长度
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * 绘制贝塞尔曲线
+</span><span style="color:#75715e"> * 绘制方法为从 0 至 1 逐步增大贝塞尔曲线的参数 t
+</span><span style="color:#75715e"> * 代码实际上就是公式的计算
+</span><span style="color:#75715e">*/</span>
+<span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_drawCurve</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">curve</span>, <span style="color:#a6e22e">startWidth</span>, <span style="color:#a6e22e">endWidth</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_ctx</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">widthDelta</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">endWidth</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">startWidth</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">drawSteps</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">length</span>()); <span style="color:#75715e">// 绘制步长是曲线的长度
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>();
 
-  ctx.beginPath();
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">drawSteps</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
+    <span style="color:#75715e">// Calculate the Bezier (x, y) coordinate for this step.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">drawSteps</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ttt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">u</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">t</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">uu</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">u</span>;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">uuu</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uu</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">u</span>;
 
-  for (var i = 0; i &lt; drawSteps; i += 1) {
-    // Calculate the Bezier (x, y) coordinate for this step.
-    var t = i / drawSteps;
-    var tt = t * t;
-    var ttt = tt * t;
-    var u = 1 - t;
-    var uu = u * u;
-    var uuu = uu * u;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uuu</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">startPoint</span>.<span style="color:#a6e22e">x</span>;
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">uu</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">control1</span>.<span style="color:#a6e22e">x</span>;
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">tt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">control2</span>.<span style="color:#a6e22e">x</span>;
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ttt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">endPoint</span>.<span style="color:#a6e22e">x</span>;
 
-    var x = uuu * curve.startPoint.x;
-    x += 3 * uu * t * curve.control1.x;
-    x += 3 * u * tt * curve.control2.x;
-    x += ttt * curve.endPoint.x;
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">uuu</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">startPoint</span>.<span style="color:#a6e22e">y</span>;
+    <span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">uu</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">control1</span>.<span style="color:#a6e22e">y</span>;
+    <span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">u</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">tt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">control2</span>.<span style="color:#a6e22e">y</span>;
+    <span style="color:#a6e22e">y</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">ttt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">curve</span>.<span style="color:#a6e22e">endPoint</span>.<span style="color:#a6e22e">y</span>;
 
-    var y = uuu * curve.startPoint.y;
-    y += 3 * uu * t * curve.control1.y;
-    y += 3 * u * tt * curve.control2.y;
-    y += ttt * curve.endPoint.y;
-
-    var width = startWidth + ttt * widthDelta;
-    this._drawPoint(x, y, width);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">startWidth</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ttt</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">widthDelta</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_drawPoint</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">width</span>);
   }
 
-  ctx.closePath();
-  ctx.fill();
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">closePath</span>();
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fill</span>();
 };
 
-// 绘制弧线
-SignaturePad.prototype._drawPoint = function (x, y, size) {
-  var ctx = this._ctx;
+<span style="color:#75715e">// 绘制弧线
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_drawPoint</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">size</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_ctx</span>;
 
-  ctx.moveTo(x, y);
-  ctx.arc(x, y, size, 0, 2 * Math.PI, false);
-  this._isEmpty = false;
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">moveTo</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>);
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">arc</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">size</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">PI</span>, <span style="color:#66d9ef">false</span>);
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_isEmpty</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
 };
 
-// 计算贝塞尔曲线的控制点
-SignaturePad.prototype._calculateCurveControlPoints = function (s1, s2, s3) {
-  var dx1 = s1.x - s2.x;
-  var dy1 = s1.y - s2.y;
-  var dx2 = s2.x - s3.x;
-  var dy2 = s2.y - s3.y;
+<span style="color:#75715e">// 计算贝塞尔曲线的控制点
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_calculateCurveControlPoints</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">s1</span>, <span style="color:#a6e22e">s2</span>, <span style="color:#a6e22e">s3</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dx1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">x</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dy1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">y</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dx2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">x</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dy2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">y</span>;
 
-  var m1 = { x: (s1.x + s2.x) / 2.0, y: (s1.y + s2.y) / 2.0 };
-  var m2 = { x: (s2.x + s3.x) / 2.0, y: (s2.y + s3.y) / 2.0 };
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m1</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">s1</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">y</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span> };
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">x</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">s3</span>.<span style="color:#a6e22e">y</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2.0</span> };
 
-  var l1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
-  var l2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">l1</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">sqrt</span>(<span style="color:#a6e22e">dx1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dx1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">dy1</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dy1</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">sqrt</span>(<span style="color:#a6e22e">dx2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dx2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">dy2</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">dy2</span>);
 
-  var dxm = m1.x - m2.x;
-  var dym = m1.y - m2.y;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dxm</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">m1</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">x</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">dym</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">m1</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">y</span>;
 
-  var k = l2 / (l1 + l2);
-  var cm = { x: m2.x + dxm * k, y: m2.y + dym * k };
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">l2</span> <span style="color:#f92672">/</span> (<span style="color:#a6e22e">l1</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">l2</span>);
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cm</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">dxm</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">k</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">dym</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">k</span> };
 
-  var tx = s2.x - cm.x;
-  var ty = s2.y - cm.y;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">cm</span>.<span style="color:#a6e22e">x</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ty</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">s2</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">cm</span>.<span style="color:#a6e22e">y</span>;
 
-  return {
-    c1: new Point(m1.x + tx, m1.y + ty),
-    c2: new Point(m2.x + tx, m2.y + ty)
+  <span style="color:#66d9ef">return</span> {
+    <span style="color:#a6e22e">c1</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">m1</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">tx</span>, <span style="color:#a6e22e">m1</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ty</span>),
+    <span style="color:#a6e22e">c2</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">tx</span>, <span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ty</span>)
   };
 };
-</code></pre>
-
-<p>这一部分就是绘图的核心算法了，我在项目中也是直接使用了作者编写的代码。
+</code></pre></div><p>这一部分就是绘图的核心算法了，我在项目中也是直接使用了作者编写的代码。
 在 <code>_addPoint()</code> 中有名为 <code>_calculateCurveWidths</code> 的函数，是原作者用于根据绘制速度计算笔画粗细的算法，原代码对应的相关参数是 <code>constructor</code> 中的 <code>this.maxWidth</code> 和 <code>this.minWidth</code>。
 由于我做的项目不需要这个功能，所以我只需要把 <code>this.maxWidth</code> 和 <code>this.minWidth</code> 设置成相同的值即可。
 这个功能详情可以参考前文提供的作者的 GitHub 上的源码。</p>
-
 <p>主要内容已经用中文备注在代码中了，总结起来就是：选取 3 个点来计算控制点，根据控制点绘制出两点之间的曲线</p>
+<h3 id="mouseuptouchend">mouseup/touchend</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_strokeEnd</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">canDrawCurve</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// 如果点的数量太少，则无法绘制曲线
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">point</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">points</span>[<span style="color:#ae81ff">0</span>]; <span style="color:#75715e">// Point instance
+</span><span style="color:#75715e"></span>
+  <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">canDrawCurve</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">point</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_drawDot</span>(<span style="color:#a6e22e">point</span>); <span style="color:#75715e">// 点数量太少时改为绘制单个点
+</span><span style="color:#75715e"></span>  }
 
-<h3 id="mouseup-touchend">mouseup/touchend</h3>
-
-<pre><code class="language-JavaScript">SignaturePad.prototype._strokeEnd = function (event) {
-  var canDrawCurve = this.points.length &gt; 2; // 如果点的数量太少，则无法绘制曲线
-  var point = this.points[0]; // Point instance
-
-  if (!canDrawCurve &amp;&amp; point) {
-    this._drawDot(point); // 点数量太少时改为绘制单个点
-  }
-
-  if (point) {
-    var lastPointGroup = this._data[this._data.length - 1];
-    var lastPoint = lastPointGroup[lastPointGroup.length - 1]; // plain object
-
-    // 相同的点会被排除，不会被绘制
-    // When drawing a dot, there's only one point in a group, so without this check
-    // such group would end up with exactly the same 2 points.
-    if (!point.equals(lastPoint)) {
-      lastPointGroup.push({
-        x: point.x,
-        y: point.y,
-        time: point.time,
-        color: this.penColor
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">point</span>) {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lastPointGroup</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>[<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_data</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">lastPoint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lastPointGroup</span>[<span style="color:#a6e22e">lastPointGroup</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]; <span style="color:#75715e">// plain object
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// 相同的点会被排除，不会被绘制
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// When drawing a dot, there&#39;s only one point in a group, so without this check
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// such group would end up with exactly the same 2 points.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">equals</span>(<span style="color:#a6e22e">lastPoint</span>)) {
+      <span style="color:#a6e22e">lastPointGroup</span>.<span style="color:#a6e22e">push</span>({
+        <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">x</span>,
+        <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">y</span>,
+        <span style="color:#a6e22e">time</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">time</span>,
+        <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">penColor</span>
       });
     }
   }
 
-  if (typeof this.onEnd === 'function') {
-    this.onEnd(event);
+  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onEnd</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">onEnd</span>(<span style="color:#a6e22e">event</span>);
   }
 };
 
-// 画点
-SignaturePad.prototype._drawDot = function (point) {
-  var ctx = this._ctx;
-  var width = typeof this.dotSize === 'function' ? this.dotSize() : this.dotSize;
+<span style="color:#75715e">// 画点
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">SignaturePad</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">_drawDot</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">point</span>) {
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_ctx</span>;
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dotSize</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;function&#39;</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dotSize</span>() <span style="color:#f92672">:</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dotSize</span>;
 
-  ctx.beginPath();
-  this._drawPoint(point.x, point.y, width);
-  ctx.closePath();
-  ctx.fill();
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">beginPath</span>();
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">_drawPoint</span>(<span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">point</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">width</span>);
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">closePath</span>();
+  <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">fill</span>();
 };
-</code></pre>
-
-<p>这里作者做了一个处理，就是在生成有效的点数量太少时则不会绘制曲线，改为绘制单点。如果忽略了此步，则会出现点触和小范围内移动无反应的情况，严重影响手写体验。</p>
-
+</code></pre></div><p>这里作者做了一个处理，就是在生成有效的点数量太少时则不会绘制曲线，改为绘制单点。如果忽略了此步，则会出现点触和小范围内移动无反应的情况，严重影响手写体验。</p>
 <h2 id="其他功能">其他功能</h2>
-
 <p>这部分功能都是我根据需求加进去的。</p>
-
 <h3 id="单次手写保存成图片">单次手写保存成图片</h3>
-
 <p>首先我使用的 canvas 区域很大，但是实际上可能有手写内容的范围很小，所以这边要做一步剪裁的操作。
 在上面的代码中有一个 <code>this._data</code> 的变量，这个变量记录了所有绘制过的点。
 因此我们可以通过这个坐标数据来找出一个包含所有点的区域，再用 <code>drawImage()</code> 将其绘制到一个大小和这个区域相同的、隐藏的 canvas 中。
 接着使用 <code>toBlob()</code> 或者 <code>toDataURL()</code> 就可以导出图片了。</p>
-
 <h3 id="所有的手写内容拼接并保存为一张图片">所有的手写内容拼接并保存为一张图片</h3>
-
 <p>上面的【单次手写保存成图片】，在项目中我们是把它们排列起来，有空格、换行、退格等操作供排版，但是最后需要把这些所有的内容都导出成一张图片进行保存。
 这里同样需要用到 <code>drawImage()</code>，不过区别在于不需要裁切。</p>
-
 <p>我的解决方案是：首先每张图大小不同，所以我给每一行横向排列的图片定了一个固定的高度，超过这个高度的图片会被等比缩放到这个高度，未超过的则不作处理。
 而绘制上去之后，每次都会移动绘制起始点，在同一行内的则直接向右侧平移（缩放后的）图片的宽度，空格就向右移动一段空白的位置，换行则向下移动一行的高度并移动到最左侧。</p>
-
 <h2 id="总结">总结</h2>
-
 <p>仅仅是一个入门级的操作，但是用比较粗暴的方式实现的话，体验上和更优的方案的差距会比较明显。</p>
 
     </div>
@@ -608,7 +539,7 @@ SignaturePad.prototype._drawDot = function (point) {
 
     <div class="post-nav">
         
-        <a href="https://elizurhz.cn/frontend/typescript-for-jser/" class="prev" rel="prev" title="React &#43; TypeScript 从云玩家到入门"><i class="iconfont icon-left"></i>&nbsp;React &#43; TypeScript 从云玩家到入门</a>
+        <a href="https://elizurhz.cn/frontend/mpvue-wx-mini-app-first-look/" class="prev" rel="prev" title="mpvue 小程序开发踩坑记"><i class="iconfont icon-left"></i>&nbsp;mpvue 小程序开发踩坑记</a>
          
         
         <a href="https://elizurhz.cn/frontend/typescript-and-unit-testing-in-action/" class="next" rel="next" title="TypeScript &#43; 单元测试：从零开始的经验之谈">TypeScript &#43; 单元测试：从零开始的经验之谈&nbsp;<i class="iconfont icon-right"></i></a>
