@@ -2,6 +2,10 @@
 title: About
 ---
 
+## Discussion
+
+[Discussion 请点这里](https://github.com/ElizurHz/VariationPalladion/discussions)
+
 ## About the Blog's Name
 
 Variation Palladion: 帕拉迪昂变奏曲，FGO 中莉莉丝的 ex 攻击的台词。莉莉丝的人就与芭蕾舞相关，包括 CCC 联动活动也是。有很多名词需要详细考据，这里不再赘述。

@@ -55,7 +55,7 @@ preserveTaxonomyNames = true
     since = 2019
     author = "Haoze Harry Xu"                           # Author's name
     avatar = "/images/me/avatar.png"           # Author's avatar
-    subtitle = "温馨提示：点击左上角的心可开灯/关灯"         # Subtitle
+    subtitle = "温馨提示：点击左上角的心可开灯/关灯。本 Blog 的 GitHub 仓库已开启 Discussion，详见顶部导航的 “About” 栏目"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 
@@ -72,9 +72,9 @@ preserveTaxonomyNames = true
 [params.social]
     GitHub = "ElizurHz"
     Email = "elizurhz@gmail.com"
-    Instagram = "elizur_hz"
+    # Instagram = "elizur_hz"
     # Wechat = "/images/me/wechat.jpg"  # Wechat QRcode image
-    Facebook = "elizurhz"
+    # Facebook = "elizurhz"
     # Telegram = "xxoo"
     # Dribbble = "xxoo"
     # Medium = "xxoo"
