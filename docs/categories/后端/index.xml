@@ -6,7 +6,22 @@
     <description>Recent content in 后端 on Variation Palladion - 撕裂时间的帕拉迪昂</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>无后端经验的前端怎样学习 Node.js？</title>
+      <link>https://elizurhz.cn/by-talk/fe-learn-node-js/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://elizurhz.cn/by-talk/fe-learn-node-js/</guid>
+      <description>很多前端都是只做纯粹的前端工作，虽然工作中有涉及到一些 npm、webpack 相关的内容会需要一点 Node.js 的知识，但是可能这并不是很好地掌握它的一个方法。而我的经验是，不要太局限于 Node.js 技术本身，把眼光放广一点，可能你对它的理解更深一点。
+在讲怎样学之前 首先，为什么是 Node.js 很简单，就是它的语言、环境、生态都和前端基本一样。而且很重要的一点是，如果我们要做 SSR（比如已有的非 SSR 项目的首屏优化以及 SEO），那么我们可以直接在 Node.js 里使用比如 react-dom/server 这种 library，这是其他语言所做不到的。不过如果仅仅是搭一个数据的中转平台，那么其实什么语言都可以，而且不一定要前端同学来做。
+其次，学来做什么 BFF（Backend for Frontend）。这是近年来兴起的一个架构模式。它让前端参与后端编程，可以针对不同的场景、不同的端，提供不同类型、不同结构的数据，完全由前端掌控业务，迭代起来也较为方便，直接解决了前后端协作最大的矛盾之一，后端在这里只需要专注于基础数据和基础设施即可。当然，架构是架构师定的，你也不可能在已有的系统内随意加 BFF，毕竟这需要考虑到系统总体性能、稳定性等等因素。但是当你接到这样一个工作，或者转入一个这种工作模式的团队，起码你可以不会显得像无头苍蝇一样。
+那么，怎样学呢 让我印象最深刻的是极客时间上的那个 Node.js 的实战课程，讲师是腾讯的，也是从前端角度来讲它的，但是它的侧重点是【Node.js 在 BFF 层的这个构架模式中扮演的角色】。首先作为前端，如果我们纯粹去看 Node.js 的技术实现，很可能不知道看了有什么用，从哪里入手，这也是学技术时不能掌握的原因之一。而 BFF 层对于前端来说则是最直接的一种 Node.js 使用方式，它能做的除了 SSR，还有向其他微服务请求数据。可能有很多人可能以为前端学 Node.js 就是要转向后端。学 Node.js 是在做“后端”的工作没错，也就是你要什么数据就提供给你，但是 BFF 实际上并不涉及到“怎样找数据最快”、“怎样维护基础设施”这种问题，这些都是给后端同学做的，本质上就是数据拼接、数据转换的工作（SSR 也只是把结构化数据转换成 HTML/Virtual DOM 而已）。
+那么在明白这一点之后，其实有两个“方向”需要考虑的，一就是和前端项目的交互，二就是和后端服务的交互。
+首先和前端的交互这方面，其实很好理解，最主要的两个工作，一就是要接收前端发来的请求，二就是提供数据给前端项目，这也是大多数前端对与前端协作的后端的看法。当然还有一个点要注意的就是鉴权，不过这部分一般会有单独的鉴权服务来做，BFF 需要做到的就是正确地转发。而数据这部分，除了 RESTful 去手动拼接，也可以用 GraphQL。至于 SSR 方面，其实看文档就比较明白了。需要全项目 SSR 的话，有 Next.js 等框架可以使用，具体也是看文档就好。
+其次是与后端服务的交互，这就会涉及到二进制协议了，也是很多前端完全不了解的领域。后端服务间为了通讯效率，一般不会 HTTP 来请求。用得比较多的是基于 TCP 的自定义的协议。那么在 BFF 层，我们需要知道的就是如何进行数据的 encode 和 decode。首先需要了解的就是怎样使用二进制数据，也就是 Node.</description>
+    </item>
+    
     <item>
       <title>Amazon AWS Serverless 部署 React 项目</title>
       <link>https://elizurhz.cn/backend/aws-serverless-deployment/</link>

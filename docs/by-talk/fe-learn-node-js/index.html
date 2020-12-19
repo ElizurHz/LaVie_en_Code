@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Haoze Harry Xu">
+  
+  
+  
+  <link rel="prev" href="https://elizurhz.cn/by-talk/keyboard-for-programmers/" />
+  
+  <link rel="canonical" href="https://elizurhz.cn/by-talk/fe-learn-node-js/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           无后端经验的前端怎样学习 Node.js？ | Variation Palladion - 撕裂时间的帕拉迪昂
+       
+  </title>
+  <meta name="title" content="无后端经验的前端怎样学习 Node.js？ | Variation Palladion - 撕裂时间的帕拉迪昂">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/elizurhz.cn\/"
+    },
+    "articleSection" : "by-talk",
+    "name" : "无后端经验的前端怎样学习 Node.js？",
+    "headline" : "无后端经验的前端怎样学习 Node.js？",
+    "description" : "很多前端都是只做纯粹的前端工作，虽然工作中有涉及到一些 npm、webpack 相关的内容会需要一点 Node.js 的知识，但是可能这并不是很好地掌握它的一个方法。而我的经验是，不要太局限于 Node.js 技术本身，把眼光放广一点，可能你对它的理解更深一点。\n在讲怎样学之前 首先，为什么是 Node.js 很简单，就是它的语言、环境、生态都和前端基本一样。而且很重要的一点是，如果我们要做 SSR（比如已有的非 SSR 项目的首屏优化以及 SEO），那么我们可以直接在 Node.js 里使用比如 react-dom\/server 这种 library，这是其他语言所做不到的。不过如果仅仅是搭一个数据的中转平台，那么其实什么语言都可以，而且不一定要前端同学来做。\n其次，学来做什么 BFF（Backend for Frontend）。这是近年来兴起的一个架构模式。它让前端参与后端编程，可以针对不同的场景、不同的端，提供不同类型、不同结构的数据，完全由前端掌控业务，迭代起来也较为方便，直接解决了前后端协作最大的矛盾之一，后端在这里只需要专注于基础数据和基础设施即可。当然，架构是架构师定的，你也不可能在已有的系统内随意加 BFF，毕竟这需要考虑到系统总体性能、稳定性等等因素。但是当你接到这样一个工作，或者转入一个这种工作模式的团队，起码你可以不会显得像无头苍蝇一样。\n那么，怎样学呢 让我印象最深刻的是极客时间上的那个 Node.js 的实战课程，讲师是腾讯的，也是从前端角度来讲它的，但是它的侧重点是【Node.js 在 BFF 层的这个构架模式中扮演的角色】。首先作为前端，如果我们纯粹去看 Node.js 的技术实现，很可能不知道看了有什么用，从哪里入手，这也是学技术时不能掌握的原因之一。而 BFF 层对于前端来说则是最直接的一种 Node.js 使用方式，它能做的除了 SSR，还有向其他微服务请求数据。可能有很多人可能以为前端学 Node.js 就是要转向后端。学 Node.js 是在做“后端”的工作没错，也就是你要什么数据就提供给你，但是 BFF 实际上并不涉及到“怎样找数据最快”、“怎样维护基础设施”这种问题，这些都是给后端同学做的，本质上就是数据拼接、数据转换的工作（SSR 也只是把结构化数据转换成 HTML\/Virtual DOM 而已）。\n那么在明白这一点之后，其实有两个“方向”需要考虑的，一就是和前端项目的交互，二就是和后端服务的交互。\n首先和前端的交互这方面，其实很好理解，最主要的两个工作，一就是要接收前端发来的请求，二就是提供数据给前端项目，这也是大多数前端对与前端协作的后端的看法。当然还有一个点要注意的就是鉴权，不过这部分一般会有单独的鉴权服务来做，BFF 需要做到的就是正确地转发。而数据这部分，除了 RESTful 去手动拼接，也可以用 GraphQL。至于 SSR 方面，其实看文档就比较明白了。需要全项目 SSR 的话，有 Next.js 等框架可以使用，具体也是看文档就好。\n其次是与后端服务的交互，这就会涉及到二进制协议了，也是很多前端完全不了解的领域。后端服务间为了通讯效率，一般不会 HTTP 来请求。用得比较多的是基于 TCP 的自定义的协议。那么在 BFF 层，我们需要知道的就是如何进行数据的 encode 和 decode。首先需要了解的就是怎样使用二进制数据，也就是 Node.",
+    "inLanguage" : "zh-CN",
+    "author" : "Haoze Harry Xu",
+    "creator" : "Haoze Harry Xu",
+    "publisher": "Haoze Harry Xu",
+    "accountablePerson" : "Haoze Harry Xu",
+    "copyrightHolder" : "Haoze Harry Xu",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-12-10 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2020-12-10 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/elizurhz.cn\/by-talk\/fe-learn-node-js\/",
+    "wordCount" : "92",
+    "keywords" : [ "前端","后端","Node.js", "Variation Palladion - 撕裂时间的帕拉迪昂"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">Variation Palladion - 撕裂时间的帕拉迪昂</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://elizurhz.cn/">Variation Palladion - 撕裂时间的帕拉迪昂</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/frontend/" title="">Web 前端</a>
+                
+                <a class="menu-item" href="/by-talk/" title="">开发杂谈</a>
+                
+                <a class="menu-item" href="/backend/" title="">后端/运维/部署</a>
+                
+                <a class="menu-item" href="/mobile/" title="">移动开发</a>
+                
+                <a class="menu-item" href="/tips/" title="">其他技术</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">无后端经验的前端怎样学习 Node.js？</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://elizurhz.cn/" rel="author">Haoze Harry Xu</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-12-10 itemprop="datePublished">December 10, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://elizurhz.cn/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+                        <a href="https://elizurhz.cn/categories/%E5%90%8E%E7%AB%AF/"> 后端 </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>很多前端都是只做纯粹的前端工作，虽然工作中有涉及到一些 npm、webpack 相关的内容会需要一点 Node.js 的知识，但是可能这并不是很好地掌握它的一个方法。而我的经验是，不要太局限于 Node.js 技术本身，把眼光放广一点，可能你对它的理解更深一点。</p>
+<h2 id="在讲怎样学之前">在讲怎样学之前</h2>
+<h3 id="首先为什么是-nodejs">首先，为什么是 Node.js</h3>
+<p>很简单，就是它的语言、环境、生态都和前端基本一样。而且很重要的一点是，如果我们要做 SSR（比如已有的非 SSR 项目的首屏优化以及 SEO），那么我们可以直接在 Node.js 里使用比如 <code>react-dom/server</code> 这种 library，这是其他语言所做不到的。不过如果仅仅是搭一个数据的中转平台，那么其实什么语言都可以，而且不一定要前端同学来做。</p>
+<h3 id="其次学来做什么">其次，学来做什么</h3>
+<p>BFF（Backend for Frontend）。这是近年来兴起的一个架构模式。它让前端参与后端编程，可以针对不同的场景、不同的端，提供不同类型、不同结构的数据，完全由前端掌控业务，迭代起来也较为方便，直接解决了前后端协作最大的矛盾之一，后端在这里只需要专注于基础数据和基础设施即可。当然，架构是架构师定的，你也不可能在已有的系统内随意加 BFF，毕竟这需要考虑到系统总体性能、稳定性等等因素。但是当你接到这样一个工作，或者转入一个这种工作模式的团队，起码你可以不会显得像无头苍蝇一样。</p>
+<h2 id="那么怎样学呢">那么，怎样学呢</h2>
+<p>让我印象最深刻的是极客时间上的那个 Node.js 的实战课程，讲师是腾讯的，也是从前端角度来讲它的，但是它的侧重点是【Node.js 在 BFF 层的这个构架模式中扮演的角色】。首先作为前端，如果我们纯粹去看 Node.js 的技术实现，很可能不知道看了有什么用，从哪里入手，这也是学技术时不能掌握的原因之一。而 BFF 层对于前端来说则是最直接的一种 Node.js 使用方式，它能做的除了 SSR，还有向其他微服务请求数据。可能有很多人可能以为前端学 Node.js 就是要转向后端。学 Node.js 是在做“后端”的工作没错，也就是你要什么数据就提供给你，但是 BFF 实际上并不涉及到“怎样找数据最快”、“怎样维护基础设施”这种问题，这些都是给后端同学做的，本质上就是数据拼接、数据转换的工作（SSR 也只是把结构化数据转换成 HTML/Virtual DOM 而已）。</p>
+<p>那么在明白这一点之后，其实有两个“方向”需要考虑的，一就是和前端项目的交互，二就是和后端服务的交互。</p>
+<p>首先和前端的交互这方面，其实很好理解，最主要的两个工作，一就是要接收前端发来的请求，二就是提供数据给前端项目，这也是大多数前端对与前端协作的后端的看法。当然还有一个点要注意的就是鉴权，不过这部分一般会有单独的鉴权服务来做，BFF 需要做到的就是正确地转发。而数据这部分，除了 RESTful 去手动拼接，也可以用 GraphQL。至于 SSR 方面，其实看文档就比较明白了。需要全项目 SSR 的话，有 Next.js 等框架可以使用，具体也是看文档就好。</p>
+<p>其次是与后端服务的交互，这就会涉及到二进制协议了，也是很多前端完全不了解的领域。后端服务间为了通讯效率，一般不会 HTTP 来请求。用得比较多的是基于 TCP 的自定义的协议。那么在 BFF 层，我们需要知道的就是如何进行数据的 encode 和 decode。首先需要了解的就是怎样使用二进制数据，也就是 Node.js 的 <code>Buffer</code> 这个 API。而因为 BFF 和微服务需要用同样的方式来 encode 和 decode，所以需要一套通用的转换方式。一般可以从比较简单的开始了解，比如 protobuf。</p>
+<p>在这个过程中，我们可能会遇到一些问题，比如 Node.js 的异步、前端工作未涉及到的 I/O、Stream 是什么等等问题，那么再以此为切入点去深入探究各个技术点即可。有兴趣深入研究的话，还可以读 C++ 源码、编写 C++ 插件等等。</p>
+<hr>
+<p>总结一下的话，就是，以架构的角度去学习它。以类比的方式去学习我觉得并不太好，比如看到异步的时候和浏览器端的异步进行对比，这样显得很无目的性、无方向性。当然这仅仅是【作为前端】的学习方式，如果你真想转后端，那么以这种方式入坑我觉得也是可以的，不过你需要进一步掌握它作为一个微服务是怎样使用的，包括数据库、消息队列什么的，甚至包括基础设施方面。</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Haoze Harry Xu </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://elizurhz.cn/by-talk/fe-learn-node-js/>https://elizurhz.cn/by-talk/fe-learn-node-js/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可：全文转载需要本人许可，如有引用需署名。
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/%E5%89%8D%E7%AB%AF/">
+                    #前端</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/%E5%90%8E%E7%AB%AF/">
+                    #后端</a></span>
+            
+            <span class="tag"><a href="https://elizurhz.cn/tags/node.js/">
+                    #Node.js</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://elizurhz.cn/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://elizurhz.cn/by-talk/keyboard-for-programmers/" class="prev" rel="prev" title="生产力工具：我是如何挑选键盘的"><i class="iconfont icon-left"></i>&nbsp;生产力工具：我是如何挑选键盘的</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://elizurhz.cn/">Haoze Harry Xu</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
